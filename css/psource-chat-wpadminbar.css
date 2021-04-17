@@ -1,0 +1,35 @@
+/* Styles related to the WP admin bar */
+#wpadminbar #wp-admin-bar-psource-chat-user-friends span.psource-chat-friend-avatar img {
+	height: 20px;
+	width: 20px;
+}
+#wpadminbar #wp-admin-bar-psource-chat-container div.ab-sub-wrapper li#wp-admin-bar-psource-chat-user-statuses div.ab-item span.psource-chat-user-status-label {
+	color: inherit;
+	text-shadow: none;
+	cursor: pointer;
+}
+
+body.mp6 #wpadminbar li#wp-admin-bar-psource-chat-container:hover span.psource-chat-ab-label,
+body.mp6 #wpadminbar #wp-admin-bar-psource-chat-container div.ab-sub-wrapper li#wp-admin-bar-psource-chat-user-statuses div.ab-item span.psource-chat-user-status-label {	 	 		 	  			   			
+	color: inherit;
+}
+
+#wpadminbar li#wp-admin-bar-psource-chat-container li.psource-chat-user-status-current {
+	display: none;
+}
+
+body.buddypress ul#members-list div.action div.psource-chat-now-button {
+	margin-bottom: 5px;
+}
+
+body.buddypress ul#member-list div.action div.psource-chat-now-button {
+	margin-top: 5px;
+}
+
+body.buddypress ul#members-list div.action div.psource-chat-now-button a.psource-chat-button,
+body.buddypress ul#member-list div.action div.psource-chat-now-button a.psource-chat-button {
+	display: block;
+}
+
+
+/*  */
