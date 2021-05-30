@@ -4,11 +4,14 @@
  * Front end styles
  */
 
+
 /* This is the root elemet. All interior elements MUST be within this element */
+
 div.psource-chat-box {
     /*	overflow: auto; */
     text-align: left;
     position: relative;
+    overflow: hidden;
 }
 
 div.psource-chat-box p {
@@ -28,7 +31,9 @@ div.psource-chat-box p code {
     padding-left: 10px;
 }
 
+
 /* safety in case someone posts an ebmed item */
+
 div.psource-chat-box embed {
     width: 0;
     height: 0;
@@ -62,7 +67,6 @@ div.psource-chat-box div.psource-chat-module-message-area button.psource-chat-se
     overflow: hidden;
     word-break: break-all;
 }
-
 
 div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta {
     list-style: none;
@@ -133,10 +137,12 @@ div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-m
     width: 1.1em;
     font-size: 1.0em
 }
+
 ul.psource-chat-emoticons-list li img {
     height: 1em !important;
     width: 1em !important;
 }
+
 div.psource-chat-box span.chat-auth-button {
     margin-right: 5px;
 }
@@ -152,7 +158,8 @@ div.psource-chat-box div.psource-chat-module-messages-list span.time {
     margin-right: 4px;
     margin-bottom: 0px;
     line-height: 1em;
-    font-size: 0.7em;5
+    font-size: 0.7em;
+    5
 }
 
 div.psource-chat-box div.psource-chat-module-messages-list span.name {
@@ -162,7 +169,6 @@ div.psource-chat-box div.psource-chat-module-messages-list span.name {
 div.psource-chat-box div.psource-chat-module-messages-list span.message {
     line-height: 1.7em;
     display: block;
-    vertical-align: middle;
     margin-top: 0;
     padding-top: 0;
     min-height: 20px;
@@ -361,6 +367,7 @@ div.psource-chat-box-moderator div.psource-chat-module-messages-list div.psource
     text-decoration: line-through;
 }
 
+
 /*
 div.psource-chat-box-moderator div.psource-chat-module-messages-list div.psource-chat-row.psource-chat-row-moderator ul.psource-chat-row-footer li.psource-chat-admin-actions-item.psource-chat-admin-actions-item-delete,
 div.psource-chat-box-moderator div.psource-chat-module-messages-list div.psource-chat-row.psource-chat-row-moderator ul.psource-chat-row-footer li.psource-chat-admin-actions-item.psource-chat-admin-actions-item-block-ip,
@@ -387,7 +394,8 @@ div.psource-chat-box .psource-chat-module {
     width: 100%;
 }
 
-div.psource-chat-box .psource-chat-module:first-child, div.psource-chat-box .psource-chat-module:last-child {
+div.psource-chat-box .psource-chat-module:first-child,
+div.psource-chat-box .psource-chat-module:last-child {
     margin-bottom: 0;
 }
 
@@ -453,13 +461,17 @@ div.psource-chat-box div.psource-chat-module-users-list.psource-chat-users-list-
     content: '';
 }
 
+
 /* div.psource-chat-box div.psource-chat-module div.psource-chat-module-users-list ul li a { display: block; } */
 
 div.psource-chat-box div.psource-chat-module div.chat-button-toolbar input.ed_button {
     font-size: 0.85em;
 }
 
+
 /* Stlyes for Bottom Corner/Private Chats */
+
+
 /*
 .psource-chat-box.psource-chat-box-site {
 	padding: 0px;
@@ -470,6 +482,7 @@ div.psource-chat-box div.psource-chat-module div.chat-button-toolbar input.ed_bu
 	z-index: 10000;
 }
 */
+
 div.psource-chat-box div.psource-chat-module-header {
     height: 20px;
     line-height: 20px;
@@ -513,6 +526,7 @@ div.psource-chat-box-bp-group div.psource-chat-module-header ul.psource-chat-act
 div.psource-chat-box-bp-group div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-logout {
     display: none;
 }
+
 
 /*
 .psource-chat-box span.chat-prompt-text, .psource-chat-box-site.closed span.psource-chat-title-text  {
@@ -777,6 +791,7 @@ div.psource-chat-box.psource-chat-session-closed.psource-chat-box-moderator div.
     display: block;
 }
 
+
 /*
 div.psource-chat-box.psource-chat-session-no-auth  div.psource-chat-module-login-prompt {
 	display: block;
@@ -806,7 +821,9 @@ ul.psource-chat-friends-widget li {
     padding: 0;
 }
 
+
 /* Available Icon */
+
 span.psource-chat-ab-icon,
 #wpadminbar li#wp-admin-bar-psource-chat-container .psource-chat-ab-icon {
     /*    float: left; */
@@ -829,9 +846,11 @@ span.psource-chat-ab-icon-available {
     background-image: url("../images/icon_status_green.png");
 }
 
-.psource-chat-box-network-site .psource-chat-actions-menu .psource-chat-min-max, .psource-chat-box-site .psource-chat-actions-menu .psource-chat-min-max {
+.psource-chat-box-network-site .psource-chat-actions-menu .psource-chat-min-max,
+.psource-chat-box-site .psource-chat-actions-menu .psource-chat-min-max {
     margin-top: 1px !important;
 }
+
 
 /*
 div#item-buttons div.psource-chat-now-button {
@@ -839,12 +858,15 @@ div#item-buttons div.psource-chat-now-button {
     margin: 4px 0 0;
 }
 */
+
+
 /*
 div#item-buttons div.psource-chat-now-button a {
     float: left;
     margin: 0 10px 0 0;
 }
 */
+
 
 /*
 .ui-resizable { position: relative;}
@@ -859,6 +881,7 @@ div#item-buttons div.psource-chat-now-button a {
 .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
 .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
 */
+
 
 /*
 select.psource-chat-status-widget {
@@ -885,6 +908,7 @@ select.psource-chat-status-widget option.available {
 	background-image: url("../images/icon_status_green.png");
 }
 */
+
 .psource-chat-users-list-header {
     font-size: 12px;
 }
