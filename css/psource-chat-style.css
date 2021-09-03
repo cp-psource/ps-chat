@@ -159,7 +159,6 @@ div.psource-chat-box div.psource-chat-module-messages-list span.time {
     margin-bottom: 0px;
     line-height: 1em;
     font-size: 0.7em;
-    5
 }
 
 div.psource-chat-box div.psource-chat-module-messages-list span.name {
@@ -385,7 +384,7 @@ div.psource-chat-box img {
 div.psource-chat-box .psource-chat-module-invite-prompt img {
     margin: 0 8px 0 8px;
     height: auto;
-    width: -webkit-fill-available;
+    width: auto;
 }
 
 div.psource-chat-box .psource-chat-module {
