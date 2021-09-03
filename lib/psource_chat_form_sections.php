@@ -1593,7 +1593,7 @@ function psource_chat_form_section_facebook( $form_section = 'global' ) {
 <?php
 }
 
-function psource_chat_form_section_google_plus( $form_section = 'global' ) {
+/*function psource_chat_form_section_google_plus( $form_section = 'global' ) {
 	global $psource_chat;
 	?>
 	<fieldset>
@@ -1639,7 +1639,7 @@ function psource_chat_form_section_google_plus( $form_section = 'global' ) {
 		</table>
 	</fieldset>
 <?php
-}
+}*/
 
 
 function psource_chat_form_section_blocked_words_global( $form_section = 'banned' ) {
@@ -1939,25 +1939,27 @@ function psource_chat_form_section_blocked_ip_addresses( $form_section = 'page' 
 	global $psource_chat;
 
 	?>
-	<fieldset>
-		<legend><?php _e( 'Blockierte IP Addressen', $psource_chat->translation_domain ); ?></legend>
-		<table border="0" cellpadding="4" cellspacing="0">
-			<tr>
-				<td class="chat-label-column chat-label-column-top">
+		<fieldset>
+			<legend><?php _e( 'Blockierte IP Addressen', $psource_chat->translation_domain ); ?></legend>
+				<table border="0" cellpadding="4" cellspacing="0">
+					<tr>
+					<td class="chat-label-column chat-label-column-top">
 					<label for="chat_blocked_words_active"><?php _e( 'Aktiv für diese Chat-Sitzung?', $psource_chat->translation_domain ); ?></label>
-				</td>
-				<td class="chat-value-column">
-					<select id="chat_blocked_ip_addresses_active" name="chat[blocked_ip_addresses_active]">
+					</td>
+					<td class="chat-value-column">
+						<select id="chat_blocked_ip_addresses_active" name="chat[blocked_ip_addresses_active]">
 						<option value="enabled" <?php print ( $psource_chat->get_option( 'blocked_ip_addresses_active', $form_section ) == 'enabled' ) ? 'selected="selected"' : '';
 						?>><?php _e( 'Aktiviert', $psource_chat->translation_domain ); ?></option>
 						<option value="disabled" <?php print ( $psource_chat->get_option( 'blocked_ip_addresses_active', $form_section ) == 'disabled' ) ? 'selected="selected"' : '';
 						?>><?php _e( 'Deaktiviert', $psource_chat->translation_domain ); ?></option>
-					</select>
-				</td>
-				<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'blocked_ip_addresses_active', 'tip' ); ?></td>
-			</tr>
+						</select>
+					</td>
+					<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'blocked_ip_addresses_active', 'tip' ); ?></td>
+					</tr>
+				</table>
+		</fieldset>
 
-<?php
+	<?php
 }
 
 
