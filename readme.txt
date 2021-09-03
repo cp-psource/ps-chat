@@ -21,6 +21,11 @@ entsprechendes Hosting, zB. einen Root-Server Dein Eigen nennst.
 
 == ChangeLog ==
 
+= 2.4.1 = DerN3rd =
+
+* Fixed Profilbild bei Chatanfrage
+* Deleted Plugin Ajax (Funktioniert nie, DoTo)
+
 = 2.3.5 = DerN3rd =
 
 * AutoUpdate Support für die automatische Plugin-Aktualisierung integriert
