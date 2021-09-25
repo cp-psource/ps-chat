@@ -2031,7 +2031,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				_x( "PS-Chat", 'menu label', $this->translation_domain ),
 				'manage_options',
 				'chat_settings_panel',
-				array( $this->_admin_panels, 'chat_settings_panel_page' )
+				array( $this->_admin_panels, 'chat_settings_panel_page' ),
+				'dashicons-format-status'
 			//plugin_dir_url( __FILE__ ) .'images/icon/greyscale-16.png'
 			);
 
