@@ -10,7 +10,7 @@ Text Domain: psource-chat
 Domain Path: /languages
 */
 
-require 'psource-plugin-update/plugin-update-checker.php';
+require 'psource/psource-plugin-update/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-chat', 
 	__FILE__, 
