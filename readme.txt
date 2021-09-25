@@ -1,9 +1,13 @@
 === PS Chat ===
-Contributors: DerN3rd, Paul Menard, UmeshSingla
-Tags: chat, twitter, facebook, google, shortcode, BuddyPress, widget, chat widget, buddypress group, buddypress friend
-Requires at least: 3.7
-Stable tag: trunk
+Contributors: DerN3rd (WMS N@W)
+Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
+Tags: multisite, abstimmung, voting, post,
+Requires at least: 4.9
 Tested up to: 5.6
+Stable tag: 2.4.1
+Requires PHP: 7.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Erlaube Deinen Usern, mit Dir oder anderen Usern zu chatten. Inkl. Gruppenchats für BuddyPress. Keine Drittanbieter, keine externen Abo-Kosten!
 
