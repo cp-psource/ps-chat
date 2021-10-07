@@ -52,6 +52,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Admin Dashicon hinzugefügt
 * PhP8 Fix Frontend-Chat
 * PhP8 Fixes Dashboard
+* Leeren Tooltipbalken im Daschboard ausgeblendet
 
 = 2.4.1 = DerN3rd =
 

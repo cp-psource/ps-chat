@@ -237,24 +237,24 @@ class PSOURCE_HelpTooltips {
 <?php
 		}
 ?>
-#psource-tooltip-source {
+/*#psource-tooltip-source {
 	margin: 0 13px;
 	padding: 8px;
 
 	background: #fff;
 	border-style: solid;
-	border-width: 1px;
+	border-width: 1px;*/
 	/* Fallback for non-rgba-compliant browsers */
-	border-color: #dfdfdf;
+	/*border-color: #dfdfdf;*/
 	/* Use rgba to look better against non-white backgrounds. */
-	border-color: rgba(0,0,0,.125);
+	/*border-color: rgba(0,0,0,.125);
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 
 	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,.19);
 	-moz-box-shadow: 0 2px 4px rgba(0,0,0,.19);
 	box-shadow: 0 2px 4px rgba(0,0,0,.19);
-}
+}*/
 .psource-left_pointer {
 	float: left;
 	width: 14px;
