@@ -106,7 +106,8 @@ function psource_chat_form_section_logs( $form_section = 'page' ) {
 					}
 
 				} else {
-					if ( count( $wp_roles ) ) {
+					/*if ( count( $wp_roles ) ) { //php8 fix */
+					if ( count( array($wp_roles ) ) ) {
 						foreach ( $wp_roles->roles as $role_slug => $role ) {
 							$role_level = psource_chat_get_user_role_highest_level( $role['capabilities'] );
 							if ( ! isset( $log_display_levels[ 'level_' . $role_level ] ) ) {
@@ -489,7 +490,8 @@ function psource_chat_form_section_login_options( $form_section = 'page' ) {
 					<ul id="psource-chat-login-options-list-wp" class="psource-chat-user-roles-list">
 
 						<?php
-						if ( count( $wp_roles ) ) {
+						/*if ( count( $wp_roles ) ) { //fix php8 */
+						if ( count( array($wp_roles ) ) ) {
 							foreach ( $wp_roles->roles as $role_slug => $role ) {
 								$checked  = '';
 								$disabled = '';
@@ -1231,7 +1233,8 @@ function psource_chat_form_section_moderator_roles( $form_section = 'page' ) {
 					<ul id="psource-chat-moderator-roles-list" class="psource-chat-user-roles-list">
 
 						<?php
-						if ( count( $wp_roles ) ) {
+						/*if ( count( $wp_roles ) ) { //php8 fix */
+						if ( count( array($wp_roles ) ) ) {
 							foreach ( $wp_roles->roles as $role_slug => $role ) {
 								$checked  = '';
 								$disabled = '';
