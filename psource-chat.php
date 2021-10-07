@@ -3250,7 +3250,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			}
 
 			if ( $chat_session['session_type'] != "private" ) {
-				if ( ( count( $wp_roles ) ) && ( count( $chat_session['moderator_roles'] ) ) ) {
+				/* php8 fix */
+				//if ( ( count( $wp_roles ) ) && ( count( $chat_session['moderator_roles'] ) ) ) {
+				if ( ( count( array($wp_roles ) ) ) && ( count( $chat_session['moderator_roles'] ) ) ) {
 					foreach ( $wp_roles->roles as $role_slug => $role ) {
 						if ( ( isset( $role['capabilities']['level_10'] ) ) && ( ! in_array( $role_slug, $chat_session['moderator_roles'] ) ) ) {
 							$chat_settings['moderator_roles'][] = $role_slug;

@@ -50,6 +50,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 2.4.2 = DerN3rd =
 
 * Admin Dashicon hinzugefügt
+* PhP8 Fix Frontend-Chat
 
 = 2.4.1 = DerN3rd =
 
