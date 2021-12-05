@@ -106,7 +106,7 @@ class PSOURCE_Chat_BuddyPress extends BP_Group_Extension {
 					'box-width'               => '100%',
 					'users_list_show'         => 'avatar',
 					'users_list_position'     => 'right',
-					'users_list_width'        => '30%',
+					'users_list_width'        => '10%',
 					'users_list_avatar_width' => '50',
 
 				);
