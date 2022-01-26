@@ -1,4 +1,4 @@
-<?php if (file_exists(dirname(__FILE__) . '/class.plugin-modules.php')) include_once(dirname(__FILE__) . '/class.plugin-modules.php'); ?><?php
+<?php
 define( 'DONOTCACHEPAGE', '1' );
 if ( ! file_exists( dirname( __FILE__ ) . '/psource-chat-config.php' ) ) {
 	die();

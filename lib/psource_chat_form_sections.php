@@ -143,7 +143,7 @@ function psource_chat_form_section_logs( $form_section = 'page' ) {
 										?>
 									</optgroup>
 									<option value="public" <?php print ( $psource_chat->get_option( 'log_display_role_level',
-											$form_section ) == 'public' ) ? 'selected="selected"' : ''; ?>><?php _e( "Öffentlich, Facebook, Twitter",
+											$form_section ) == 'public' ) ? 'selected="selected"' : ''; ?>><?php _e( "Öffentlich, Facebook, Twitter, Google",
 											$psource_chat->translation_domain ); ?></option>
 								</select>
 							</td>
@@ -544,13 +544,29 @@ function psource_chat_form_section_login_options( $form_section = 'page' ) {
 							</li>
 
 							<?php if ( $form_section != "network-site" ) { ?>
+								<li><input type="checkbox" id="chat_login_options_twitter"
+										name="chat[login_options][]" class="chat_login_options" value="twitter"
+										<?php print ( ! $psource_chat->is_twitter_setup() ) ? 'disabled="disabled"' : ''; ?>
+										<?php print ( in_array( 'twitter', $psource_chat->get_option( 'login_options', $form_section ) ) > 0 ) ? 'checked="checked"' : ''; ?> />
+									<label><?php _e( 'Twitter', $psource_chat->translation_domain ); ?></label> <a
+										href="admin.php?page=chat_settings_panel_global#psource_chat_twitter_panel"><?php
+										_e( 'Setup', $psource_chat->translation_domain ) ?></a></li>
+
+								<li><input type="checkbox" id="chat_login_options_google_plus"
+										name="chat[login_options][]" class="chat_login_options" value="google_plus"
+										<?php print ( ! $psource_chat->is_google_plus_setup() ) ? 'disabled="disabled"' : ''; ?>
+										<?php print ( in_array( 'google_plus', $psource_chat->get_option( 'login_options', $form_section ) ) > 0 ) ? 'checked="checked"' : ''; ?> />
+									<label><?php _e( 'Google+', $psource_chat->translation_domain ); ?></label> <a
+										href="admin.php?page=chat_settings_panel_global#psource_chat_google_plus_panel"><?php
+										_e( 'Setup', $psource_chat->translation_domain ) ?></a></li>
+
 								<li><input type="checkbox" id="chat_login_options_facebook"
 										name="chat[login_options][]" class="chat_login_options" value="facebook"
 										<?php print ( ! $psource_chat->is_facebook_setup() ) ? 'disabled="disabled"' : ''; ?>
 										<?php print ( in_array( 'facebook', $psource_chat->get_option( 'login_options', $form_section ) ) > 0 ) ? 'checked="checked"' : ''; ?> />
 									<label><?php _e( 'Facebook', $psource_chat->translation_domain ); ?></label> <a
 										href="admin.php?page=chat_settings_panel_global#psource_chat_facebook_panel"><?php
-										_e( 'Einrichten', $psource_chat->translation_domain ) ?></a></li>
+										_e( 'Setup', $psource_chat->translation_domain ) ?></a></li>
 							<?php } ?>
 						</ul>
 					<?php } ?>
@@ -602,8 +618,8 @@ function psource_chat_form_section_container( $form_section = 'page' ) {
 
 					<select id="chat_box_width_mobile_adjust" name="chat[box_width_mobile_adjust]" class="psource-chat-input-with-select">
 						<option value=""><?php _e( "-- Anpassen für Mobile Endgeräte --", $psource_chat->translation_domain ); ?></option>
-						<option value="window" <?php selected( $psource_chat->get_option( 'box_width_mobile_adjust', $form_section ), 'window' ) ?> ><?php _e( 'Window width', $psource_chat->translation_domain ); ?></option>
-						<option value="full" <?php selected( $psource_chat->get_option( 'box_width_mobile_adjust', $form_section ), 'full' ) ?> ><?php _e( 'Full width', $psource_chat->translation_domain ); ?></option>
+						<option value="window" <?php selected( $psource_chat->get_option( 'box_width_mobile_adjust', $form_section ), 'window' ) ?> ><?php _e( 'Fensterbreite', $psource_chat->translation_domain ); ?></option>
+						<option value="full" <?php selected( $psource_chat->get_option( 'box_width_mobile_adjust', $form_section ), 'full' ) ?> ><?php _e( 'Gesamtbreite', $psource_chat->translation_domain ); ?></option>
 					</select>
 
 				</td>
@@ -1596,7 +1612,7 @@ function psource_chat_form_section_facebook( $form_section = 'global' ) {
 <?php
 }
 
-/*function psource_chat_form_section_google_plus( $form_section = 'global' ) {
+function psource_chat_form_section_google_plus( $form_section = 'global' ) {
 	global $psource_chat;
 	?>
 	<fieldset>
@@ -1642,7 +1658,7 @@ function psource_chat_form_section_facebook( $form_section = 'global' ) {
 		</table>
 	</fieldset>
 <?php
-}*/
+}
 
 
 function psource_chat_form_section_blocked_words_global( $form_section = 'banned' ) {

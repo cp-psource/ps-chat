@@ -380,8 +380,12 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 							<li id="psource_chat_interval_tab"><a href="#psource_chat_interval_panel"><span><?php
 										_e( 'Abfrageintervalle', $psource_chat->translation_domain ); ?></span></a></li>
 							<?php if ( ! is_network_admin() ) { ?>
+								<li id="psource_chat_google_plus_tab"><a href="#psource_chat_google_plus_panel"><span><?php
+											_e( 'Google+', $psource_chat->translation_domain ); ?></span></a></li>
 								<li id="psource_chat_facebook_tab"><a href="#psource_chat_facebook_panel"><span><?php
 											_e( 'Facebook', $psource_chat->translation_domain ); ?></span></a></li>
+								<li id="psource_chat_twitter_tab"><a href="#psource_chat_twitter_panel"><span><?php
+											_e( 'Twitter', $psource_chat->translation_domain ); ?></span></a></li>
 								<li id="psource_chat_blocked_ip_addresses_tab">
 									<a href="#psource_chat_blocked_ip_addresses_panel"><span><?php
 											_e( 'Blockiere IP/User', $psource_chat->translation_domain ); ?></span></a></li>
@@ -408,8 +412,14 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 							<?php psource_chat_form_section_performance_content( $form_section ); ?>
 						</div>
 						<?php if ( ! is_network_admin() ) { ?>
+							<div id="psource_chat_google_plus_panel" class="chat_panel">
+								<?php psource_chat_form_section_google_plus( $form_section ); ?>
+							</div>
 							<div id="psource_chat_facebook_panel" class="chat_panel">
 								<?php psource_chat_form_section_facebook( $form_section ); ?>
+							</div>
+							<div id="psource_chat_twitter_panel" class="chat_panel current">
+								<?php psource_chat_form_section_twitter( $form_section ); ?>
 							</div>
 							<div id="psource_chat_blocked_ip_addresses_panel" class="chat_panel">
 								<?php psource_chat_form_section_blocked_ip_addresses_global( $form_section ); ?>
