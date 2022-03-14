@@ -4,7 +4,7 @@ Plugin Name: PS Chat
 Plugin URI: https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
 Author: Webmasterservice N3rds@Work
-Version: 2.4.1
+Version: 2.4.2
 Author URI: https://n3rds.work
 Text Domain: psource-chat
 Domain Path: /languages
@@ -30,7 +30,7 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 }
 if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
-		var $chat_current_version = '2.4.1';
+		var $chat_current_version = '2.4.2';
 		var $translation_domain = 'psource-chat';
 
 		/**

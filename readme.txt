@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: multisite, abstimmung, voting, post,
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 2.4.1
+Stable tag: 2.4.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -52,7 +52,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Admin Dashicon hinzugefügt
 * PhP8 Fix Frontend-Chat
 * PhP8 Fixes Dashboard
-* Leeren Tooltipbalken im Daschboard ausgeblendet
+* Leeren Tooltipbalken im Dashboard ausgeblendet
 * Widgets unter "PSC" gruppiert
 
 = 2.4.1 = DerN3rd =
