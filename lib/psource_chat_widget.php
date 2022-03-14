@@ -23,8 +23,8 @@ if (!class_exists('PSOURCEChatWidget')) {
 				'row_time_format'	=>	get_option('time_format'),
 			);
 
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('PS-Chat Widget, fügt der Seitenleiste einen Chat hinzu.', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PS-Chat Widget', $psource_chat->translation_domain), $widget_ops);
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('PSC-Chat Widget, fügt der Seitenleiste einen Chat hinzu.', $psource_chat->translation_domain));
+			parent::__construct(__CLASS__, __('PSC-Chat Widget', $psource_chat->translation_domain), $widget_ops);
 		}
 
 		function PSOURCEChatWidget () {
@@ -252,7 +252,7 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 			// Set defaults
 			// ...
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt Chat-Freunde und Status an. (PS Freunde Plugin erforderlich)', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PS Chat Freunde', $psource_chat->translation_domain), $widget_ops);
+			parent::__construct(__CLASS__, __('PSC-Chat Freunde', $psource_chat->translation_domain), $widget_ops);
 		}
 
 		function PSOURCEChatFriendsWidget () {
@@ -469,7 +469,7 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 			// Set defaults
 			// ...
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt aktive Chatsitzungen der gesamten Seite an.', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PS Chat Räume', $psource_chat->translation_domain), $widget_ops);
+			parent::__construct(__CLASS__, __('PSC-Chat Räume', $psource_chat->translation_domain), $widget_ops);
 		}
 
 		function PSOURCEChatRoomsWidget () {
@@ -690,8 +690,8 @@ if (!class_exists('PSOURCEChatStatusWidget')) {
 				'box_title' 		=> 	'',
 			);
 
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('Mit diesem Widget können WordPress-Benutzer ihren Chat-Status über ein Seitenleisten-Widget festlegen.', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PS Chat Status', $psource_chat->translation_domain), $widget_ops);
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Mit diesem Widget können Benutzer ihren Chat-Status über ein Seitenleisten-Widget festlegen.', $psource_chat->translation_domain));
+			parent::__construct(__CLASS__, __('PSC-Chat Status', $psource_chat->translation_domain), $widget_ops);
 		}
 
 		function PSOURCEChatStatusWidget () {

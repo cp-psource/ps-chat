@@ -53,6 +53,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * PhP8 Fix Frontend-Chat
 * PhP8 Fixes Dashboard
 * Leeren Tooltipbalken im Daschboard ausgeblendet
+* Widgets unter "PSC" gruppiert
 
 = 2.4.1 = DerN3rd =
 
