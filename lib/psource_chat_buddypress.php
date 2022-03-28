@@ -124,7 +124,7 @@ function psource_chat_buddypress_settings_setup_nav() {
 	$settings_link = trailingslashit( $user_domain . $slug_parent );
 	//echo "settings_link=[". $settings_link ."]<br />";
 	$sub_nav = array(
-		'name'            => __( 'Chat', $psource_chat->translation_domain ),
+		'name'            => __( 'Chat', 'psource-chat' ),
 		'slug'            => $slug_page,
 		'parent_url'      => $settings_link,
 		'parent_slug'     => $slug_parent,
@@ -163,7 +163,7 @@ function psource_chat_settings_screen_chat_proc() {
 		$psource_chat->user_meta = $user_meta;
 
 		// Show the standard BP green success message
-		bp_core_add_message( __( 'Einstellungen gespeichert.', $psource_chat->translation_domain ) );
+		bp_core_add_message( __( 'Einstellungen gespeichert.', 'psource-chat' ) );
 	}
 
 	add_action( 'bp_template_title', 'psource_chat_settings_show_screen_title' );
@@ -176,7 +176,7 @@ function psource_chat_settings_screen_chat_proc() {
 function psource_chat_settings_show_screen_title() {
 	global $psource_chat;
 
-	_e( 'Chat Einstellungen', $psource_chat->translation_domain );
+	_e( 'Chat Einstellungen', 'psource-chat' );
 
 	return;
 }
@@ -197,9 +197,9 @@ function psource_chat_settings_show_screen_content() {
 	?>
 	<form id="profile-edit-form" class="standard-form base" method="post" action="#">
 		<div class="editfield psource_chat_status">
-			<label for="psource_chat_status"><?php _e( 'Chat-Status festlegen', $psource_chat->translation_domain ); ?></label>
+			<label for="psource_chat_status"><?php _e( 'Chat-Status festlegen', 'psource-chat' ); ?></label>
 
-			<p class="description"><?php _e( 'Diese Benutzeroption steuert Deinen öffentlichen Chat-Status für andere Benutzer in Deinem Netzwerk. Auf diese Weise kannst Du steuern, wann andere Personen private Chat-Sitzungen mit Dir initiieren können. Beachte dass dies private Chats während bestehender Chat-Sitzungen, an denen Du teilnimmst, nicht verhindert.', $psource_chat->translation_domain ); ?></p>
+			<p class="description"><?php _e( 'Diese Benutzeroption steuert Deinen öffentlichen Chat-Status für andere Benutzer in Deinem Netzwerk. Auf diese Weise kannst Du steuern, wann andere Personen private Chat-Sitzungen mit Dir initiieren können. Beachte dass dies private Chats während bestehender Chat-Sitzungen, an denen Du teilnimmst, nicht verhindert.', 'psource-chat' ); ?></p>
 			<select name="psource_chat_user_settings[chat_user_status]" id="psource_chat_status">
 				<?php
 				foreach ( $psource_chat->_chat_options['user-statuses'] as $status_key => $status_label ) {
@@ -220,36 +220,36 @@ function psource_chat_settings_show_screen_content() {
 		</div>
 
 		<div class="editfield psource_chat_name_display">
-			<label for="psource_chat_name_display"><?php _e( 'In Chat-Sitzungen wird der Name als angezeigt', $psource_chat->translation_domain ); ?></label>
+			<label for="psource_chat_name_display"><?php _e( 'In Chat-Sitzungen wird der Name als angezeigt', 'psource-chat' ); ?></label>
 
-			<p class="description"><?php _e( 'Während Chat-Sitzungen, an denen Du teilnimmst, wird festgelegt, wie Du anderen Benutzern angezeigt wirst. Standard ist der Anzeigename.', $psource_chat->translation_domain ); ?></p>
+			<p class="description"><?php _e( 'Während Chat-Sitzungen, an denen Du teilnimmst, wird festgelegt, wie Du anderen Benutzern angezeigt wirst. Standard ist der Anzeigename.', 'psource-chat' ); ?></p>
 			<select name="psource_chat_user_settings[chat_name_display]" id="psource_chat_name_display">
 				<option value="display_name" <?php if ( $user_meta['chat_name_display'] == 'display_name' ) {
 					echo ' selected="selected" ';
-				} ?>><?php echo __( 'Anzeigename', $psource_chat->translation_domain ) . ": " . $current_user->display_name; ?></option>
+				} ?>><?php echo __( 'Anzeigename', 'psource-chat' ) . ": " . $current_user->display_name; ?></option>
 				<option value="user_login" <?php if ( $user_meta['chat_name_display'] == 'user_login' ) {
 					echo ' selected="selected" ';
-				} ?>><?php echo __( 'Benutzername', $psource_chat->translation_domain ) . ": " . $current_user->user_login; ?></option>
+				} ?>><?php echo __( 'Benutzername', 'psource-chat' ) . ": " . $current_user->user_login; ?></option>
 			</select>
 		</div>
 
 		<?php if ( is_admin_bar_showing() ) { ?>
 			<div class="editfield psource_chat_wp_toolbar">
-				<label for="psource_chat_wp_toolbar"><?php _e( 'Chat WordPress Symbolleistenmenü anzeigen?', $psource_chat->translation_domain ); ?></label>
+				<label for="psource_chat_wp_toolbar"><?php _e( 'Chat WordPress Symbolleistenmenü anzeigen?', 'psource-chat' ); ?></label>
 				<select name="psource_chat_user_settings[chat_wp_toolbar]" id="psource_chat_wp_toolbar">
 					<option value="enabled"<?php if ( $user_meta['chat_wp_toolbar'] == 'enabled' ) {
 						echo ' selected="selected" ';
 					} ?>><?php
-						_e( 'Aktiviert', $psource_chat->translation_domain ); ?></option>
+						_e( 'Aktiviert', 'psource-chat' ); ?></option>
 					<option value="disabled"<?php if ( $user_meta['chat_wp_toolbar'] == 'disabled' ) {
 						echo ' selected="selected" ';
 					} ?>><?php
-						_e( 'Deaktiviert', $psource_chat->translation_domain ); ?></option>
+						_e( 'Deaktiviert', 'psource-chat' ); ?></option>
 				</select>
 			</div>
 		<?php } ?>
 		<div class="submit">
-			<input id="psource_chat-submit" type="submit" value="<?php _e( 'Einstellungen speichern', $psource_chat->translation_domain ); ?>" name="psource_chat">
+			<input id="psource_chat-submit" type="submit" value="<?php _e( 'Einstellungen speichern', 'psource-chat' ); ?>" name="psource_chat">
 		</div>
 	</form>
 	<?php

@@ -31,7 +31,7 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
 		var $chat_current_version = '2.4.2';
-		var $translation_domain = 'psource-chat';
+		//var $translation_domain = 'psource-chat';
 
 		/**
 		 * @var        array $_chat_options Consolidated options
@@ -842,8 +842,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'session_status'                           => defined( 'PSOURCE_CHAT_PAGE_SESSION_STATUS' ) ? PSOURCE_CHAT_PAGE_SESSION_STATUS : '',
 				'blocked_ip_addresses_active'              => defined( 'PSOURCE_CHAT_PAGE_BLOCKED_IP_ADDRESSES_ACTIVE' ) ? PSOURCE_CHAT_PAGE_BLOCKED_IP_ADDRESSES_ACTIVE : 'enabled',
 				'blocked_words_active'                     => defined( 'PSOURCE_CHAT_PAGE_BLOCKED_WORDS_ACTIVE' ) ? PSOURCE_CHAT_PAGE_BLOCKED_WORDS_ACTIVE : 'disabled',
-				'session_status_message'                   => __( 'Der Moderator hat diese Chat-Sitzung geschlossen', $this->translation_domain ),
-				'session_cleared_message'                  => __( 'Der Moderator hat die Chat-Nachrichten gelöscht', $this->translation_domain ),
+				'session_status_message'                   => __( 'Der Moderator hat diese Chat-Sitzung geschlossen', 'psource-chat' ),
+				'session_cleared_message'                  => __( 'Der Moderator hat die Chat-Nachrichten gelöscht', 'psource-chat' ),
 				//session_status_auto_close' testweise
 				//'session_status_auto_close'			       => 'yes',
 				'box_title'                                => '',
@@ -897,7 +897,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'row_font_size'                            => defined( 'PSOURCE_CHAT_PAGE_ROW_FONT_SIZE' ) ? PSOURCE_CHAT_PAGE_ROW_FONT_SIZE : '',
 				'log_creation'                             => defined( 'PSOURCE_CHAT_PAGE_LOG_CREATION' ) ? PSOURCE_CHAT_PAGE_LOG_CREATION : 'disabled',
 				'log_display'                              => defined( 'PSOURCE_CHAT_PAGE_LOG_DISPLAY' ) ? PSOURCE_CHAT_PAGE_LOG_DISPLAY : 'disabled',
-				'log_display_label'                        => defined( 'PSOURCE_CHAT_PAGE_LOG_DISPLAY_LABEL' ) ? PSOURCE_CHAT_PAGE_LOG_DISPLAY_LABEL : __( 'Chat Verlauf', $this->translation_domain ),
+				'log_display_label'                        => defined( 'PSOURCE_CHAT_PAGE_LOG_DISPLAY_LABEL' ) ? PSOURCE_CHAT_PAGE_LOG_DISPLAY_LABEL : __( 'Chat Verlauf', 'psource-chat' ),
 				'log_display_limit'                        => defined( 'PSOURCE_CHAT_PAGE_LOG_DISPLAY_LIMIT' ) ? PSOURCE_CHAT_PAGE_LOG_DISPLAY_LIMIT : 10,
 				'log_display_hide_session'                 => defined( 'PSOURCE_CHAT_PAGE_LOG_DISPLAY_HIDE_SESSION' ) ? PSOURCE_CHAT_PAGE_LOG_DISPLAY_HIDE_SESSION : 'show',
 				'log_display_role_level'                   => defined( 'PSOURCE_CHAT_PAGE_LOG_DISPLAY_ROLE_LEVEL' ) ? PSOURCE_CHAT_PAGE_LOG_DISPLAY_ROLE_LEVEL : 'public',
@@ -917,7 +917,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'users_list_background_color'              => defined( 'PSOURCE_CHAT_PAGE_USERS_LIST_BACKGROUND_COLOR' ) ? PSOURCE_CHAT_PAGE_USERS_LIST_BACKGROUND_COLOR : '#FFFFFF',
 				'users_list_name_color'                    => defined( 'PSOURCE_CHAT_PAGE_USERS_LIST_NAME_COLOR' ) ? PSOURCE_CHAT_PAGE_USERS_LIST_NAME_COLOR : '#000000',
 				'users_list_moderator_color'               => defined( 'PSOURCE_CHAT_PAGE_USERS_LIST_MODERATOR_COLOR' ) ? PSOURCE_CHAT_PAGE_USERS_LIST_MODERATOR_COLOR : '#000000',
-				'users_list_header'                        => __( 'Aktive Teilnehmer', $this->translation_domain ),
+				'users_list_header'                        => __( 'Aktive Teilnehmer', 'psource-chat' ),
 				'users_list_font_size'                     => defined( 'PSOURCE_CHAT_PAGE_USERS_LIST_FONT_SIZE' ) ? PSOURCE_CHAT_PAGE_USERS_LIST_FONT_SIZE : '',
 				'users_list_header_color'                  => defined( 'PSOURCE_CHAT_PAGE_USERS_LIST_HEADER_COLOR' ) ? PSOURCE_CHAT_PAGE_USERS_LIST_HEADER_COLOR : '#000000',
 				'users_list_header_font_family'            => defined( 'PSOURCE_CHAT_PAGE_USERS_LIST_HEADER_FONT_FAMILY' ) ? PSOURCE_CHAT_PAGE_USERS_LIST_HEADER_FONT_FAMILY : '',
@@ -927,10 +927,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'tinymce_roles'                            => array(),
 				'tinymce_post_types'                       => array(),
 				'noauth_view'                              => defined( 'PSOURCE_CHAT_PAGE_NOAUTH_VIEW' ) ? PSOURCE_CHAT_PAGE_NOAUTH_VIEW : 'default',
-				'noauth_login_message'                     => __( 'Gib einfach Deine E-Mail-Adresse und den gewünschten Benutzernamen ein:', $this->translation_domain ),
-				'noauth_login_prompt'                      => __( 'Du musst Dich anmelden, um am Chat teilnehmen zu können', $this->translation_domain ),
+				'noauth_login_message'                     => __( 'Gib einfach Deine E-Mail-Adresse und den gewünschten Benutzernamen ein:', 'psource-chat' ),
+				'noauth_login_prompt'                      => __( 'Du musst Dich anmelden, um am Chat teilnehmen zu können', 'psource-chat' ),
 				'box_input_moderator_hide'				=>	'disabled',
-				'box_input_moderator_hide_label'		=>	__('Warte auf Moderator', $this->translation_domain),
+				'box_input_moderator_hide_label'		=>	__('Warte auf Moderator', 'psource-chat'),
 				'update_transient'                         => 'enabled'
 			);
 
@@ -997,13 +997,13 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->_chat_options_defaults['dashboard'] = wp_parse_args( array(
 				'session_type'                    => 'dashboard',
 				'dashboard_widget'                => defined( 'PSOURCE_CHAT_DASHBOARD_DASHBOARD_WIDGET' ) ? PSOURCE_CHAT_DASHBOARD_DASHBOARD_WIDGET : 'disabled',
-				'dashboard_widget_title'          => __( 'Chat', $this->translation_domain ),
+				'dashboard_widget_title'          => __( 'Chat', 'psource-chat' ),
 				'dashboard_widget_height'         => defined( 'PSOURCE_CHAT_DASHBOARD_DASHBOARD_WIDGET_HEIGHT' ) ? PSOURCE_CHAT_DASHBOARD_DASHBOARD_WIDGET_HEIGHT : '200px',
 				'dashboard_status_widget'         => defined( 'PSOURCE_CHAT_DASHBOARD_DASHBOARD_STATUS_WIDGET' ) ? PSOURCE_CHAT_DASHBOARD_DASHBOARD_STATUS_WIDGET : 'disabled',
-				'dashboard_status_widget_title'   => __( 'Chat Status', $this->translation_domain ),
+				'dashboard_status_widget_title'   => __( 'Chat Status', 'psource-chat' ),
 				'dashboard_friends_widget'        => defined( 'PSOURCE_CHAT_DASHBOARD_DASHBOARD_FRIENDS_WIDGET' ) ? PSOURCE_CHAT_DASHBOARD_DASHBOARD_FRIENDS_WIDGET : 'disabled',
 				'dashboard_friends_widget_height' => defined( 'PSOURCE_CHAT_DASHBOARD_DASHBOARD_FRIENDS_WIDGET_HEIGHT' ) ? PSOURCE_CHAT_DASHBOARD_DASHBOARD_FRIENDS_WIDGET_HEIGHT : '200px',
-				'dashboard_friends_widget_title'  => __( 'Chat Friends', $this->translation_domain ),
+				'dashboard_friends_widget_title'  => __( 'Chat Friends', 'psource-chat' ),
 				'box_border_color'                => defined( 'PSOURCE_CHAT_DASHBOARD_BOX_BORDER_COLOR' ) ? PSOURCE_CHAT_DASHBOARD_BOX_BORDER_COLOR : '#F1F1F1',
 			), $this->_chat_options_defaults['widget']
 			);
@@ -1032,9 +1032,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			);
 
 			$this->_chat_options_defaults['user-statuses'] = array(
-				'available'   => __( 'Online', $this->translation_domain ),
-				'unavailable' => __( 'Abwesend', $this->translation_domain ),
-				'away'        => __( 'Offline', $this->translation_domain )
+				'available'   => __( 'Online', 'psource-chat' ),
+				'unavailable' => __( 'Abwesend', 'psource-chat' ),
+				'away'        => __( 'Offline', 'psource-chat' )
 			);
 			$this->_chat_options_defaults['user-statuses'] = apply_filters( 'psource-chat-user-statuses', $this->_chat_options_defaults['user-statuses'] );
 
@@ -1059,8 +1059,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'blocked_front_urls'             => array(),
 				'blocked_users'                  => array(),
 				'blocked_words_active'           => 'disabled',
-				'blocked_ip_message'             => __( 'Dein Konto wurde von der Teilnahme an dieser Chat-Sitzung ausgeschlossen. Bitte wende Dich an den Site-Administrator, um weitere Informationen zu diesem Verbot zu erhalten.', $this->translation_domain ),
-				'bp_menu_label'                  => __( 'Gruppen Chat', $this->translation_domain ),
+				'blocked_ip_message'             => __( 'Dein Konto wurde von der Teilnahme an dieser Chat-Sitzung ausgeschlossen. Bitte wende Dich an den Site-Administrator, um weitere Informationen zu diesem Verbot zu erhalten.', 'psource-chat' ),
+				'bp_menu_label'                  => __( 'Gruppen Chat', 'psource-chat' ),
 				'bp_menu_slug'                   => 'psource-chat-bp-group',
 				'bp_group_show_site'             => defined( 'PSOURCE_CHAT_GLOBAL_BP_GROUP_SHOW_SITE' ) ? PSOURCE_CHAT_GLOBAL_BP_GROUP_SHOW_SITE : 'enabled',
 				'bp_group_admin_show_site'       => defined( 'PSOURCE_CHAT_GLOBAL_BP_GROUP_ADMIN_SHOW_SITE' ) ? PSOURCE_CHAT_GLOBAL_BP_GROUP_ADMIN_SHOW_SITE : 'enabled',
@@ -1150,9 +1150,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		function init() {
 
 			if ( preg_match( '/mu\-plugin/', PLUGINDIR ) > 0 ) {
-				load_muplugin_textdomain( $this->translation_domain, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+				load_muplugin_textdomain( 'psource-chat', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 			} else {
-				load_plugin_textdomain( $this->translation_domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+				load_plugin_textdomain( 'psource-chat', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 			}
 
 			$this->chat_performance = psource_chat_start_performance( $this->chat_performance );
@@ -1166,18 +1166,18 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->chat_localized['settings']                              = array();
 			$this->chat_localized['settings']['ajax_url']                  = admin_url( 'admin-ajax.php', 'relative' );
 			$this->chat_localized['settings']['plugin_url']                = plugins_url( "/", __FILE__ );
-			$this->chat_localized['settings']['google_plus_text_sign_out'] = __( 'Google abmelden', $this->translation_domain );
-			$this->chat_localized['settings']['facebook_text_sign_out']    = __( 'Facebook abmelden', $this->translation_domain );
-			$this->chat_localized['settings']['twitter_text_sign_out']     = __( 'Twitter abmelden', $this->translation_domain );
+			$this->chat_localized['settings']['google_plus_text_sign_out'] = __( 'Google abmelden', 'psource-chat' );
+			$this->chat_localized['settings']['facebook_text_sign_out']    = __( 'Facebook abmelden', 'psource-chat' );
+			$this->chat_localized['settings']['twitter_text_sign_out']     = __( 'Twitter abmelden', 'psource-chat' );
 
-			$this->chat_localized['settings']['please_wait']       = __( 'Bitte warte...', $this->translation_domain );
-			$this->chat_localized['settings']['row_delete_text']   = __( 'ausblenden', $this->translation_domain );
-			$this->chat_localized['settings']['row_undelete_text'] = __( 'einblenden', $this->translation_domain );
+			$this->chat_localized['settings']['please_wait']       = __( 'Bitte warte...', 'psource-chat' );
+			$this->chat_localized['settings']['row_delete_text']   = __( 'ausblenden', 'psource-chat' );
+			$this->chat_localized['settings']['row_undelete_text'] = __( 'einblenden', 'psource-chat' );
 
-			$this->chat_localized['settings']['user_entered_chat']  = __( 'Chat betreten', $this->translation_domain );
-			$this->chat_localized['settings']['user_exited_chat']   = __( 'Chat verlassen', $this->translation_domain );
-			$this->chat_localized['settings']['user_pending_chat']  = __( 'Ausstehend', $this->translation_domain );
-			$this->chat_localized['settings']['user_declined_chat'] = __( 'Abgelehnt', $this->translation_domain );
+			$this->chat_localized['settings']['user_entered_chat']  = __( 'Chat betreten', 'psource-chat' );
+			$this->chat_localized['settings']['user_exited_chat']   = __( 'Chat verlassen', 'psource-chat' );
+			$this->chat_localized['settings']['user_pending_chat']  = __( 'Ausstehend', 'psource-chat' );
+			$this->chat_localized['settings']['user_declined_chat'] = __( 'Abgelehnt', 'psource-chat' );
 
 			$this->chat_localized['settings']['wp_is_mobile'] = wp_is_mobile();
 
@@ -1852,12 +1852,12 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			if ( ! $nag_version ) {
 				?>
 				<div id="psource-chat-nag-error" class="error below-h2">
-				<p><?php echo sprintf( __( 'Du hast das PS-Chat Plugin installiert. <strong>Bitte überprüfe die <a href="%s">Abfrageintervall</a> Einstellungen bevor Du den Chat benutzt</strong>. In den meisten Fällen funktionieren die Standardoptionen für Deine Hostkonfiguration. In einigen Einzelfällen ist das Abfrageintervall jedoch zu häufig und kann dazu führen, dass Dein Hosting Dein Konto schließt. Nachdem Du die Chat-Einstellungen überprüft und gespeichert hast, wird diese Meldung nicht mehr angezeigt.', $this->translation_domain ), esc_url( $chat_admin_url ) ) ?></p>
+				<p><?php echo sprintf( __( 'Du hast das PS-Chat Plugin installiert. <strong>Bitte überprüfe die <a href="%s">Abfrageintervall</a> Einstellungen bevor Du den Chat benutzt</strong>. In den meisten Fällen funktionieren die Standardoptionen für Deine Hostkonfiguration. In einigen Einzelfällen ist das Abfrageintervall jedoch zu häufig und kann dazu führen, dass Dein Hosting Dein Konto schließt. Nachdem Du die Chat-Einstellungen überprüft und gespeichert hast, wird diese Meldung nicht mehr angezeigt.', 'psource-chat' ), esc_url( $chat_admin_url ) ) ?></p>
 				</div><?php
 			} else if ( version_compare( $this->_chat_plugin_settings['options_version'], $nag_version ) > 0 ) {
 				?>
 				<div id="psource-chat-nag-error" class="error">
-				<p><?php echo sprintf( __( 'Das PS-Chat Plugin wurde auf Deiner Webseite aktualisiert. <strong>Bitte überprüfe vor der Verwendung die Einstellungen für das <a href="%s">Abfrageintervall</a></strong>. In den meisten Fällen funktionieren die Standardoptionen für Deine Hostkonfiguration. In einigen Einzelfällen ist das Abfrageintervall jedoch zu häufig und kann dazu führen, dass Dein Hosting Dein Konto schließt. Nachdem Du die Chat-Einstellungen überprüft und gespeichert hast, wird diese Meldung nicht mehr angezeigt.', $this->translation_domain ), esc_url( $chat_admin_url ) ) ?></p>
+				<p><?php echo sprintf( __( 'Das PS-Chat Plugin wurde auf Deiner Webseite aktualisiert. <strong>Bitte überprüfe vor der Verwendung die Einstellungen für das <a href="%s">Abfrageintervall</a></strong>. In den meisten Fällen funktionieren die Standardoptionen für Deine Hostkonfiguration. In einigen Einzelfällen ist das Abfrageintervall jedoch zu häufig und kann dazu führen, dass Dein Hosting Dein Konto schließt. Nachdem Du die Chat-Einstellungen überprüft und gespeichert hast, wird diese Meldung nicht mehr angezeigt.', 'psource-chat' ), esc_url( $chat_admin_url ) ) ?></p>
 				</div><?php
 			}
 		}
@@ -1914,8 +1914,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->chat_localized['sessions']               = $this->chat_sessions;
 			$this->chat_localized['user']                   = $this->chat_user;
 			$this->chat_localized['auth']                   = $this->chat_auth;
-			$this->chat_localized['auto_scroll']['disable'] = __( 'Autoscroll aus', $this->translation_domain );
-			$this->chat_localized['auto_scroll']['enable']  = __( 'Autoscroll an', $this->translation_domain );
+			$this->chat_localized['auto_scroll']['disable'] = __( 'Autoscroll aus', 'psource-chat' );
+			$this->chat_localized['auto_scroll']['enable']  = __( 'Autoscroll an', 'psource-chat' );
 
 			wp_localize_script( 'psource-chat-js', 'psource_chat_localized', $this->chat_localized );
 		}
@@ -1954,8 +1954,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			require( dirname( __FILE__ ) . '/lib/psource_chat_admin_panels.php' );
 			$this->_admin_panels = new psource_chat_admin_panels();
 
-			$this->_pagehooks['chat_settings_panel_network_site'] = add_menu_page( _x( "Chat", 'page label', $this->translation_domain ),
-				_x( "Chat", 'menu label', $this->translation_domain ),
+			$this->_pagehooks['chat_settings_panel_network_site'] = add_menu_page( _x( "Chat", 'page label', 'psource-chat' ),
+				_x( "Chat", 'menu label', 'psource-chat' ),
 				'manage_network_options',
 				'chat_settings_panel_network_site',
 				array( $this->_admin_panels, 'chat_settings_panel_network_site' ),
@@ -1964,31 +1964,31 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			);
 
 			$this->_pagehooks['chat_settings_panel_network_site']      = add_submenu_page( 'chat_settings_panel_network_site',
-				_x( 'Frontendchat', 'page label', $this->translation_domain ),
-				_x( 'Frontendchat', 'menu label', $this->translation_domain ),
+				_x( 'Frontendchat', 'page label', 'psource-chat' ),
+				_x( 'Frontendchat', 'menu label', 'psource-chat' ),
 				'manage_network_options',
 				'chat_settings_panel_network_site',
 				array( &$this->_admin_panels, 'chat_settings_panel_network_site' )
 			);
 			$this->_pagehooks['chat_settings_panel_network_dashboard'] = add_submenu_page( 'chat_settings_panel_network_site',
-				_x( 'Dashboardchat', 'page label', $this->translation_domain ),
-				_x( 'Dashboardchat', 'menu label', $this->translation_domain ),
+				_x( 'Dashboardchat', 'page label', 'psource-chat' ),
+				_x( 'Dashboardchat', 'menu label', 'psource-chat' ),
 				'manage_network_options',
 				'chat_settings_panel_network_dashboard',
 				array( &$this->_admin_panels, 'chat_settings_panel_dashboard' )
 			);
 
 			$this->_pagehooks['chat_settings_panel_network_global'] = add_submenu_page( 'chat_settings_panel_network_site',
-				_x( 'Basiseinstellungen', 'page label', $this->translation_domain ),
-				_x( 'Basiseinstellungen', 'menu label', $this->translation_domain ),
+				_x( 'Basiseinstellungen', 'page label', 'psource-chat' ),
+				_x( 'Basiseinstellungen', 'menu label', 'psource-chat' ),
 				'manage_network_options',
 				'chat_settings_panel_network_global',
 				array( &$this->_admin_panels, 'chat_settings_panel_global' )
 			);
 
 			$this->_pagehooks['chat_session_logs_network_site'] = add_submenu_page( 'chat_settings_panel_network_site',
-				_x( 'Session Logs', 'page label', $this->translation_domain ),
-				_x( 'Session Logs', 'menu label', $this->translation_domain ),
+				_x( 'Session Logs', 'page label', 'psource-chat' ),
+				_x( 'Session Logs', 'menu label', 'psource-chat' ),
 				'manage_network_options',
 				'chat_session_logs',
 				array( &$this->_admin_panels, 'chat_settings_panel_session_logs' )
@@ -2028,8 +2028,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			require( dirname( __FILE__ ) . '/lib/psource_chat_admin_panels.php' );
 			$this->_admin_panels = new psource_chat_admin_panels();
 
-			add_menu_page( _x( "PS-Chat", 'page label', $this->translation_domain ),
-				_x( "PS-Chat", 'menu label', $this->translation_domain ),
+			add_menu_page( _x( "PS-Chat", 'page label', 'psource-chat' ),
+				_x( "PS-Chat", 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel',
 				array( $this->_admin_panels, 'chat_settings_panel_page' ),
@@ -2038,8 +2038,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			);
 
 			$this->_pagehooks['chat_settings_panel_page'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Beitragschat', 'page label', $this->translation_domain ),
-				_x( 'Beitragschat', 'menu label', $this->translation_domain ),
+				_x( 'Beitragschat', 'page label', 'psource-chat' ),
+				_x( 'Beitragschat', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel',
 				array( &$this->_admin_panels, 'chat_settings_panel_page' )
@@ -2048,8 +2048,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			//if ((!is_multisite()) || ($this->get_option('bottom_corner', 'network-site') == 'disabled')) {
 
 			$this->_pagehooks['chat_settings_panel_site'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Frontendchat', 'page label', $this->translation_domain ),
-				_x( 'Frontendchat', 'menu label', 'menu label', $this->translation_domain ),
+				_x( 'Frontendchat', 'page label', 'psource-chat' ),
+				_x( 'Frontendchat', 'menu label', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel_site',
 				array( &$this->_admin_panels, 'chat_settings_panel_site' )
@@ -2057,32 +2057,32 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			//}
 
 			$this->_pagehooks['chat_settings_panel_widget'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Widgetchat', 'page label', $this->translation_domain ),
-				_x( 'Widgetchat', 'menu label', 'menu label', $this->translation_domain ),
+				_x( 'Widgetchat', 'page label', 'psource-chat' ),
+				_x( 'Widgetchat', 'menu label', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel_widget',
 				array( &$this->_admin_panels, 'chat_settings_panel_widget' )
 			);
 
 			$this->_pagehooks['chat_settings_panel_dashboard'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Dashboardchat', 'page label', $this->translation_domain ),
-				_x( 'Dashboardchat', 'menu label', 'menu label', $this->translation_domain ),
+				_x( 'Dashboardchat', 'page label', 'psource-chat' ),
+				_x( 'Dashboardchat', 'menu label', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel_dashboard',
 				array( &$this->_admin_panels, 'chat_settings_panel_dashboard' )
 			);
 
 			$this->_pagehooks['chat_settings_panel_global'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Basiseinstellungen', 'page label', $this->translation_domain ),
-				_x( 'Basiseinstellungen', 'menu label', 'menu label', $this->translation_domain ),
+				_x( 'Basiseinstellungen', 'page label', 'psource-chat' ),
+				_x( 'Basiseinstellungen', 'menu label', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel_global',
 				array( &$this->_admin_panels, 'chat_settings_panel_global' )
 			);
 
 			$this->_pagehooks['chat_session_logs'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Session Logs', 'page label', $this->translation_domain ),
-				_x( 'Session Logs', 'menu label', $this->translation_domain ),
+				_x( 'Session Logs', 'page label', 'psource-chat' ),
+				_x( 'Session Logs', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_session_logs',
 				array( &$this->_admin_panels, 'chat_settings_panel_session_logs' )
@@ -2114,21 +2114,21 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->_show_own_admin = true;
 
 			/* These messages are displayed as part of the admin header message see 'admin_notices' WordPress action */
-			$this->_admin_notice_messages['success-settings'] = __( "Die Einstellungen wurden aktualisiert.", $this->translation_domain );
+			$this->_admin_notice_messages['success-settings'] = __( "Die Einstellungen wurden aktualisiert.", 'psource-chat' );
 
-			$this->_admin_notice_messages['success-log-delete']  = __( "Das Chat-Sitzungsprotokoll wurde gelöscht.", $this->translation_domain );
-			$this->_admin_notice_messages['success-logs-delete'] = __( "Chat-Sitzungsprotokolle wurden gelöscht.", $this->translation_domain );
-			$this->_admin_notice_messages['success-log-hide']    = __( "Das Chat-Sitzungsprotokoll wurde ausgeblendet.", $this->translation_domain );
-			$this->_admin_notice_messages['success-logs-hide']   = __( "Chat-Sitzungsprotokolle wurden ausgeblendet.", $this->translation_domain );
-			$this->_admin_notice_messages['success-log-unhide']  = __( "Das Chat-Sitzungsprotokoll wurde nicht ausgeblendet.", $this->translation_domain );
-			$this->_admin_notice_messages['success-logs-unhide'] = __( "Chat-Sitzungsprotokolle wurden nicht ausgeblendet.", $this->translation_domain );
+			$this->_admin_notice_messages['success-log-delete']  = __( "Das Chat-Sitzungsprotokoll wurde gelöscht.", 'psource-chat' );
+			$this->_admin_notice_messages['success-logs-delete'] = __( "Chat-Sitzungsprotokolle wurden gelöscht.", 'psource-chat' );
+			$this->_admin_notice_messages['success-log-hide']    = __( "Das Chat-Sitzungsprotokoll wurde ausgeblendet.", 'psource-chat' );
+			$this->_admin_notice_messages['success-logs-hide']   = __( "Chat-Sitzungsprotokolle wurden ausgeblendet.", 'psource-chat' );
+			$this->_admin_notice_messages['success-log-unhide']  = __( "Das Chat-Sitzungsprotokoll wurde nicht ausgeblendet.", 'psource-chat' );
+			$this->_admin_notice_messages['success-logs-unhide'] = __( "Chat-Sitzungsprotokolle wurden nicht ausgeblendet.", 'psource-chat' );
 
-			$this->_admin_notice_messages['success-message-delete']  = __( "Chat Session Log Message wurde gelöscht.", $this->translation_domain );
-			$this->_admin_notice_messages['success-messages-delete'] = __( "Chat-Sitzungsprotokollnachrichten wurden gelöscht.", $this->translation_domain );
-			$this->_admin_notice_messages['success-message-hide']    = __( "Die Chat-Sitzungsprotokollnachricht wurde ausgeblendet.", $this->translation_domain );
-			$this->_admin_notice_messages['success-messages-hide']   = __( "Chat-Sitzungsprotokollnachrichten wurden ausgeblendet.", $this->translation_domain );
-			$this->_admin_notice_messages['success-message-unhide']  = __( "Die Chat-Sitzungsprotokollnachricht wurde nicht ausgeblendet.", $this->translation_domain );
-			$this->_admin_notice_messages['success-messages-unhide'] = __( "Chat-Sitzungsprotokollnachrichten wurden nicht ausgeblendet.", $this->translation_domain );
+			$this->_admin_notice_messages['success-message-delete']  = __( "Chat Session Log Message wurde gelöscht.", 'psource-chat' );
+			$this->_admin_notice_messages['success-messages-delete'] = __( "Chat-Sitzungsprotokollnachrichten wurden gelöscht.", 'psource-chat' );
+			$this->_admin_notice_messages['success-message-hide']    = __( "Die Chat-Sitzungsprotokollnachricht wurde ausgeblendet.", 'psource-chat' );
+			$this->_admin_notice_messages['success-messages-hide']   = __( "Chat-Sitzungsprotokollnachrichten wurden ausgeblendet.", 'psource-chat' );
+			$this->_admin_notice_messages['success-message-unhide']  = __( "Die Chat-Sitzungsprotokollnachricht wurde nicht ausgeblendet.", 'psource-chat' );
+			$this->_admin_notice_messages['success-messages-unhide'] = __( "Chat-Sitzungsprotokollnachrichten wurden nicht ausgeblendet.", 'psource-chat' );
 
 
 			if ( ( isset( $_GET['page'] ) ) && ( $_GET['page'] == "chat_session_logs" ) ) {
@@ -2254,7 +2254,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 							}
 						}
 						add_screen_option( 'per_page', array(
-							'label'   => __( 'per Page', $this->translation_domain ),
+							'label'   => __( 'per Page', 'psource-chat' ),
 							'default' => $per_page
 						) );
 					}
@@ -2390,7 +2390,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						$per_page = 20;
 					}
 					add_screen_option( 'per_page', array(
-						'label'   => __( 'per Page', $this->translation_domain ),
+						'label'   => __( 'per Page', 'psource-chat' ),
 						'default' => $per_page
 					) );
 
@@ -2690,13 +2690,13 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$user_meta                     = wp_parse_args( $user_meta, $this->_chat_options_defaults['user_meta'] );
 
 			?>
-			<h3><?php _e( 'Chat Settings', $this->translation_domain ); ?></h3>
+			<h3><?php _e( 'Chat Settings', 'psource-chat' ); ?></h3>
 
 			<table class="form-table">
 				<tr>
 					<th>
 						<label
-							for="psource_chat_status"><?php _e( 'Set Chat status', $this->translation_domain ); ?></label>
+							for="psource_chat_status"><?php _e( 'Set Chat status', 'psource-chat' ); ?></label>
 					</th>
 					<td>
 						<select name="psource_chat_user_settings[chat_user_status]" id="psource_chat_status">
@@ -2723,17 +2723,17 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				<tr>
 					<th>
 						<label
-							for="psource_chat_name_display"><?php _e( 'In Chat-Sitzungen wird der Name angezeigt als', $this->translation_domain ); ?></label>
+							for="psource_chat_name_display"><?php _e( 'In Chat-Sitzungen wird der Name angezeigt als', 'psource-chat' ); ?></label>
 					</th>
 					<td>
 						<select name="psource_chat_user_settings[chat_name_display]" id="psource_chat_name_display">
 							<option
 								value="display_name" <?php if ( $user_meta['chat_name_display'] == 'display_name' ) {
 								echo ' selected="selected" ';
-							} ?>><?php echo __( 'Anzeigename', $this->translation_domain ) . ": " . $user->display_name; ?></option>
+							} ?>><?php echo __( 'Anzeigename', 'psource-chat' ) . ": " . $user->display_name; ?></option>
 							<option value="user_login" <?php if ( $user_meta['chat_name_display'] == 'user_login' ) {
 								echo ' selected="selected" ';
-							} ?>><?php echo __( 'Benutzer-Anmeldung', $this->translation_domain ) . ": " . $user->user_login; ?></option>
+							} ?>><?php echo __( 'Benutzer-Anmeldung', 'psource-chat' ) . ": " . $user->user_login; ?></option>
 						</select>
 					</td>
 				</tr>
@@ -2743,7 +2743,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					<tr>
 						<th>
 							<label
-								for="psource_chat_users_listing"><?php _e( 'Spalte "Chat-Status anzeigen" in der Liste "<br /> Benutzer>Alle Benutzer"?', $this->translation_domain ); ?></label>
+								for="psource_chat_users_listing"><?php _e( 'Spalte "Chat-Status anzeigen" in der Liste "<br /> Benutzer>Alle Benutzer"?', 'psource-chat' ); ?></label>
 						</th>
 						<td>
 							<select name="psource_chat_user_settings[chat_users_listing]"
@@ -2751,11 +2751,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 								<option value="enabled"<?php if ( $user_meta['chat_users_listing'] == 'enabled' ) {
 									echo ' selected="selected" ';
 								} ?>><?php
-									_e( 'Aktiviert', $this->translation_domain ); ?></option>
+									_e( 'Aktiviert', 'psource-chat' ); ?></option>
 								<option value="disabled"<?php if ( $user_meta['chat_users_listing'] == 'disabled' ) {
 									echo ' selected="selected" ';
 								} ?>><?php
-									_e( 'Deaktiviert', $this->translation_domain ); ?></option>
+									_e( 'Deaktiviert', 'psource-chat' ); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -2764,21 +2764,21 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				<tr>
 					<th>
 						<label
-							for="psource_chat_wp_admin"><?php _e( 'Chats in WP Admin anzeigen', $this->translation_domain ); ?></label>
+							for="psource_chat_wp_admin"><?php _e( 'Chats in WP Admin anzeigen', 'psource-chat' ); ?></label>
 					</th>
 					<td>
 						<select name="psource_chat_user_settings[chat_wp_admin]" id="psource_chat_wp_admin">
 							<option value="enabled"<?php if ( $user_meta['chat_wp_admin'] == 'enabled' ) {
 								echo ' selected="selected" ';
 							} ?>><?php
-								_e( 'Aktviert', $this->translation_domain ); ?></option>
+								_e( 'Aktviert', 'psource-chat' ); ?></option>
 							<option value="disabled"<?php if ( $user_meta['chat_wp_admin'] == 'disabled' ) {
 								echo ' selected="selected" ';
 							} ?>><?php
-								_e( 'Deaktiviert', $this->translation_domain ); ?></option>
+								_e( 'Deaktiviert', 'psource-chat' ); ?></option>
 						</select>
 
-						<p class="description"><?php _e( 'Dadurch werden alle Chat-Funktionen deaktiviert, einschließlich des WordPress-Symbolleistenmenüs, der Dashboard-Widgets usw.', $this->translation_domain ); ?></p>
+						<p class="description"><?php _e( 'Dadurch werden alle Chat-Funktionen deaktiviert, einschließlich des WordPress-Symbolleistenmenüs, der Dashboard-Widgets usw.', 'psource-chat' ); ?></p>
 					</td>
 				</tr>
 				<tr class="psource_chat_wp_admin_display" <?php if ( $user_meta['chat_wp_admin'] != 'enabled' ) {
@@ -2786,18 +2786,18 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				} ?>>
 					<th>
 						<label
-							for="psource_chat_wp_toolbar"><?php _e( 'Chat WordPress Symbolleistenmenü anzeigen?', $this->translation_domain ); ?></label>
+							for="psource_chat_wp_toolbar"><?php _e( 'Chat WordPress Symbolleistenmenü anzeigen?', 'psource-chat' ); ?></label>
 					</th>
 					<td>
 						<select name="psource_chat_user_settings[chat_wp_toolbar]" id="psource_chat_wp_toolbar">
 							<option value="enabled"<?php if ( $user_meta['chat_wp_toolbar'] == 'enabled' ) {
 								echo ' selected="selected" ';
 							} ?>><?php
-								_e( 'Aktiviert', $this->translation_domain ); ?></option>
+								_e( 'Aktiviert', 'psource-chat' ); ?></option>
 							<option value="disabled"<?php if ( $user_meta['chat_wp_toolbar'] == 'disabled' ) {
 								echo ' selected="selected" ';
 							} ?>><?php
-								_e( 'Deaktiviert', $this->translation_domain ); ?></option>
+								_e( 'Deaktiviert', 'psource-chat' ); ?></option>
 						</select>
 
 						<div
@@ -2810,14 +2810,14 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 									<option
 										value="enabled"<?php if ( $user_meta['chat_wp_toolbar_show_status'] == 'enabled' ) {
 										echo ' selected="selected" ';
-									} ?>><?php _e( 'Aktiviert', $this->translation_domain ); ?></option>
+									} ?>><?php _e( 'Aktiviert', 'psource-chat' ); ?></option>
 									<option
 										value="disabled"<?php if ( $user_meta['chat_wp_toolbar_show_status'] == 'disabled' ) {
 										echo ' selected="selected" ';
-									} ?>><?php _e( 'Deaktiviert', $this->translation_domain ); ?></option>
+									} ?>><?php _e( 'Deaktiviert', 'psource-chat' ); ?></option>
 								</select>
 								<label
-									for="psource_chat_wp_toolbar_show_status"><?php _e( 'Zeige Deinen Chat-Status im WordPress-Symbolleistenmenü an?', $this->translation_domain ); ?></label>
+									for="psource_chat_wp_toolbar_show_status"><?php _e( 'Zeige Deinen Chat-Status im WordPress-Symbolleistenmenü an?', 'psource-chat' ); ?></label>
 							</p>
 
 							<p>
@@ -2826,14 +2826,14 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 									<option
 										value="enabled"<?php if ( $user_meta['chat_wp_toolbar_show_friends'] == 'enabled' ) {
 										echo ' selected="selected" ';
-									} ?>><?php _e( 'Aktiviert', $this->translation_domain ); ?></option>
+									} ?>><?php _e( 'Aktiviert', 'psource-chat' ); ?></option>
 									<option
 										value="disabled"<?php if ( $user_meta['chat_wp_toolbar_show_friends'] == 'disabled' ) {
 										echo ' selected="selected" ';
-									} ?>><?php _e( 'Deaktiviert', $this->translation_domain ); ?></option>
+									} ?>><?php _e( 'Deaktiviert', 'psource-chat' ); ?></option>
 								</select>
 								<label
-									for="psource_chat_wp_toolbar_show_friends"><?php _e( 'Zeige Deine Chat-Freunde im WordPress-Symbolleistenmenü?', $this->translation_domain ); ?></label>
+									for="psource_chat_wp_toolbar_show_friends"><?php _e( 'Zeige Deine Chat-Freunde im WordPress-Symbolleistenmenü?', 'psource-chat' ); ?></label>
 							</p>
 						</div>
 
@@ -2852,7 +2852,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 							echo ' style="display:none;" ';
 						} ?>>
 							<th><label for="psource_chat_dashboard_widget"><?php
-									_e( 'Chat-Widget im Dashboard anzeigen', $this->translation_domain ); ?></label></th>
+									_e( 'Chat-Widget im Dashboard anzeigen', 'psource-chat' ); ?></label></th>
 							<td>
 								<?php
 								if ( is_network_admin() ) {
@@ -2866,11 +2866,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 									<option value="enabled"<?php if ( $user_meta[ $item_key ] == 'enabled' ) {
 										echo ' selected="selected" ';
 									} ?>><?php
-										_e( 'Aktiviert', $this->translation_domain ); ?></option>
+										_e( 'Aktiviert', 'psource-chat' ); ?></option>
 									<option value="disabled"<?php if ( $user_meta[ $item_key ] == 'disabled' ) {
 										echo ' selected="selected" ';
 									} ?>><?php
-										_e( 'Deaktiviert', $this->translation_domain ); ?></option>
+										_e( 'Deaktiviert', 'psource-chat' ); ?></option>
 								</select>
 
 								<div
@@ -2887,10 +2887,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 								<p>
 									<label
-										for="psource_chat_dashboard_widget_height"><?php _e( 'Höhe des Chat-Widgets', $this->translation_domain ); ?></label><br/><input
+										for="psource_chat_dashboard_widget_height"><?php _e( 'Höhe des Chat-Widgets', 'psource-chat' ); ?></label><br/><input
 										name="psource_chat_user_settings[<?php echo $item_option_key; ?>]"
 										id="psource_chat_dashboard_widget_height"
-										value="<?php echo $user_meta[ $item_option_key ]; ?>"/> <?php _e( 'Standard ist', $this->translation_domain ) ?> <?php echo $this->_chat_options['dashboard']['dashboard_widget_height'] ?>
+										value="<?php echo $user_meta[ $item_option_key ]; ?>"/> <?php _e( 'Standard ist', 'psource-chat' ) ?> <?php echo $this->_chat_options['dashboard']['dashboard_widget_height'] ?>
 								</p>
 								</div>
 							</td>
@@ -2910,7 +2910,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						echo ' style="display:none;" ';
 					} ?>>
 						<th><label for="psource_chat_dashboard_status_widget"><?php
-								_e( 'Chat-Status-Widget im Dashboard anzeigen', $this->translation_domain ); ?></label></th>
+								_e( 'Chat-Status-Widget im Dashboard anzeigen', 'psource-chat' ); ?></label></th>
 						<td>
 							<?php
 							if ( is_network_admin() ) {
@@ -2924,11 +2924,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 								<option value="enabled"<?php if ( $user_meta[ $item_key ] == 'enabled' ) {
 									echo ' selected="selected" ';
 								} ?>><?php
-									_e( 'Aktiviert', $this->translation_domain ); ?></option>
+									_e( 'Aktiviert', 'psource-chat' ); ?></option>
 								<option value="disabled"<?php if ( $user_meta[ $item_key ] == 'disabled' ) {
 									echo ' selected="selected" ';
 								} ?>><?php
-									_e( 'Deaktiviert', $this->translation_domain ); ?></option>
+									_e( 'Deaktiviert', 'psource-chat' ); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -2953,7 +2953,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 							echo ' style="display:none;" ';
 						} ?>>
 							<th><label for="psource_chat_dashboard_friends_widget"><?php
-									_e( 'Chat-Freunde-Widget im Dashboard anzeigen', $this->translation_domain ); ?></label>
+									_e( 'Chat-Freunde-Widget im Dashboard anzeigen', 'psource-chat' ); ?></label>
 							</th>
 							<td>
 								<?php
@@ -2968,11 +2968,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 									<option value="enabled"<?php if ( $user_meta[ $item_key ] == 'enabled' ) {
 										echo ' selected="selected" ';
 									} ?>><?php
-										_e( 'Aktiviert', $this->translation_domain ); ?></option>
+										_e( 'Aktiviert', 'psource-chat' ); ?></option>
 									<option value="disabled"<?php if ( $user_meta[ $item_key ] == 'disabled' ) {
 										echo ' selected="selected" ';
 									} ?>><?php
-										_e( 'Deaktiviert', $this->translation_domain ); ?></option>
+										_e( 'Deaktiviert', 'psource-chat' ); ?></option>
 								</select><br/>
 
 								<div
@@ -2989,10 +2989,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 								<p>
 									<label
-										for="psource_chat_dashboard_friends_widget_height"><?php _e( 'Min. Höhe des Chat-Freunde-Widgets', $this->translation_domain ); ?></label><br/><input
+										for="psource_chat_dashboard_friends_widget_height"><?php _e( 'Min. Höhe des Chat-Freunde-Widgets', 'psource-chat' ); ?></label><br/><input
 										name="psource_chat_user_settings[<?php echo $item_option_key; ?>]"
 										id="psource_chat_dashboard_friends_widget_height"
-										value="<?php echo $user_meta[ $item_option_key ]; ?>"/> <?php _e( 'Standard ist', $this->translation_domain ) ?> <?php echo $this->_chat_options['dashboard']['dashboard_friends_widget_height'] ?>
+										value="<?php echo $user_meta[ $item_option_key ]; ?>"/> <?php _e( 'Standard ist', 'psource-chat' ) ?> <?php echo $this->_chat_options['dashboard']['dashboard_friends_widget_height'] ?>
 								</p>
 								</div>
 							</td>
@@ -3083,7 +3083,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				//$psource_chat_user_settings = get_user_meta( get_current_user_id(), 'psource-chat-user', true);
 				if ( ( isset( $this->user_meta['chat_users_listing'] ) ) && ( $this->user_meta['chat_users_listing'] == "enabled" ) ) {
 					if ( ! isset( $columns['psource-chat-status'] ) ) {
-						$columns['psource-chat-status'] = __( 'Chat Status', $this->translation_domain );
+						$columns['psource-chat-status'] = __( 'Chat Status', 'psource-chat' );
 					}
 				}
 			}
@@ -3173,7 +3173,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_session['session_type'] = 'private';
 
 				if ( empty( $atts['box_title'] ) ) {
-					$chat_session['box_title'] = __( 'Privat', $this->translation_domain );
+					$chat_session['box_title'] = __( 'Privat', 'psource-chat' );
 				}
 
 			} else if ( ( isset( $atts['session_type'] ) ) && ( $atts['session_type'] == 'network-site' ) ) {
@@ -3182,7 +3182,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_session['session_type'] = 'network-site';
 
 				if ( empty( $atts['box_title'] ) ) {
-					$chat_session['box_title'] = __( 'Netzwerk', $this->translation_domain );
+					$chat_session['box_title'] = __( 'Netzwerk', 'psource-chat' );
 				}
 
 			} else if ( ( isset( $atts['session_type'] ) ) && ( $atts['session_type'] == 'dashboard' ) ) {
@@ -3191,7 +3191,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_session['session_type'] = 'dashboard';
 
 				//if (empty($atts['box_title']))
-				//	$chat_session['box_title']			= __('Group Chat', $this->translation_domain);
+				//	$chat_session['box_title']			= __('Group Chat', 'psource-chat');
 
 			} else if ( ( isset( $atts['session_type'] ) ) && ( $atts['session_type'] == 'widget' ) ) {
 				//$atts = $this->convert_config('widget', $atts);
@@ -3656,7 +3656,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					                               get_option( 'time_format' ), strtotime( $chat_session_date->end ) + get_option( 'gmt_offset' ) * 3600, false );
 
 					if ( isset( $_GET['chat-log-id'] ) && $_GET['chat-log-id'] == $chat_session_date->id ) {
-						$date_content .= '<li>' . $date_str . ' <a href="' . esc_url( remove_query_arg( 'chat-log-id' ) ) . '">' . __( 'Geschlossen', $this->translation_domain ) . "</a>";
+						$date_content .= '<li>' . $date_str . ' <a href="' . esc_url( remove_query_arg( 'chat-log-id' ) ) . '">' . __( 'Geschlossen', 'psource-chat' ) . "</a>";
 
 						if ( isset( $_GET['chat-log-id'] ) && $_GET['chat-log-id'] == $chat_session_date->id ) {
 							$chat_session_log                 = $chat_session;
@@ -3687,7 +3687,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				}
 			}
 			if ( empty( $date_content ) ) {
-				$date_content = "<p>" . __( 'Für diese Sitzung wurden keine Chat-Protokolle gefunden', $this->translation_domain ) . '</p>';
+				$date_content = "<p>" . __( 'Für diese Sitzung wurden keine Chat-Protokolle gefunden', 'psource-chat' ) . '</p>';
 			} else {
 				$date_content = "<ul>" . $date_content . "</ul>";
 			}
@@ -3695,7 +3695,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			if ( ( $chat_session['log_display'] == "enabled-list-above" ) || ( $chat_session['log_display'] == "enabled-list-below" ) ) {
 
 				//if (isset($_GET['chat-log-id']))
-				//	$return_link = ' <a href="'. remove_query_arg(array('chat-log-id')) .'">'. __('Return to Chat', $this->translation_domain) .'</a>';
+				//	$return_link = ' <a href="'. remove_query_arg(array('chat-log-id')) .'">'. __('Return to Chat', 'psource-chat') .'</a>';
 				//else
 				//	$return_link = '';
 
@@ -3713,7 +3713,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$return_link = '<a href="' . esc_url( remove_query_arg( array(
 							'chat-log-id',
 							'chat-show-logs'
-						) ) ) . '">' . __( 'Zurück zum Chat', $this->translation_domain ) . '</a>';
+						) ) ) . '">' . __( 'Zurück zum Chat', 'psource-chat' ) . '</a>';
 
 					$content .= '<div id="psource-chat-logs-wrap-' . $chat_session['id'] . '" class="psource-chat-logs-wrap"><p>' . $return_link . '</p>' . $date_content . '</div>';
 				} else {
@@ -4099,7 +4099,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		function chat_session_logout_module( $chat_session ) {
 			$content = '';
 
-			$content .= '<input type="button" value="' . __( 'Abmelden', $this->translation_domain ) . '" name="chat-logout-submit"
+			$content .= '<input type="button" value="' . __( 'Abmelden', 'psource-chat' ) . '" name="chat-logout-submit"
 		 	class="chat-logout-submit" id="chat-logout-submit-' . $chat_session['id'] . '" />';
 
 			$content = $this->chat_session_module_wrap( $chat_session, $content, 'psource-chat-module-logout', 'display:none;' );
@@ -4131,7 +4131,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$textarea_max_length = '';
 			}
 
-			$content .= '<textarea id="psource-chat-send-' . $chat_session['id'] . '" class="psource-chat-send" ' . $textarea_max_length . ' rows="5" placeholder="' . __( 'Tippe Deine Chatnachricht hier', $this->translation_domain ) . '"></textarea>';
+			$content .= '<textarea id="psource-chat-send-' . $chat_session['id'] . '" class="psource-chat-send" ' . $textarea_max_length . ' rows="5" placeholder="' . __( 'Tippe Deine Chatnachricht hier', 'psource-chat' ) . '"></textarea>';
 
 
 			if ( ( $chat_session['box_send_button_enable'] == "enabled" )
@@ -4151,10 +4151,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				if ( $chat_session['box_sound'] == "enabled" ) {
 					$content .= '<li class="psource-chat-action-menu-item-sound-on"><a href="#" class="psource-chat-action-sound" title="' .
-					            __( 'Schalte Chat-Sound aus', $this->translation_domain ) . '"><img height="16" width="16" src="' . plugins_url( '/images/sound-on.png', __FILE__ ) . '" alt="' . __( 'Schalte Chat-Sound aus', $this->translation_domain ) . '" class="psource-chat-sound-on" title="' . __( 'Schalte Chat-Sound aus', $this->translation_domain ) . '" /></a></li>';
+					            __( 'Schalte Chat-Sound aus', 'psource-chat' ) . '"><img height="16" width="16" src="' . plugins_url( '/images/sound-on.png', __FILE__ ) . '" alt="' . __( 'Schalte Chat-Sound aus', 'psource-chat' ) . '" class="psource-chat-sound-on" title="' . __( 'Schalte Chat-Sound aus', 'psource-chat' ) . '" /></a></li>';
 
 					$content .= '<li class="psource-chat-action-menu-item-sound-off"><a href="#" class="psource-chat-action-sound" title="' .
-					            __( 'Schalte Chat-Sound ein', $this->translation_domain ) . '"><img height="16" width="16" src="' . plugins_url( '/images/sound-off.png', __FILE__ ) . '" alt="' . __( 'Schalte Chat-Sound ein', $this->translation_domain ) . '" class="psource-chat-sound-off" title="' . __( 'Schalte Chat-Sound ein', $this->translation_domain ) . '" /></a></li>';
+					            __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '"><img height="16" width="16" src="' . plugins_url( '/images/sound-off.png', __FILE__ ) . '" alt="' . __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '" class="psource-chat-sound-off" title="' . __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '" /></a></li>';
 				}
 
                 //Hier kannst Du die Emoji-Liste bearbeiten. Verwende Icons von https://emojipedia.org/
@@ -4426,7 +4426,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				}
 
 				if ( ! empty( $content_auth ) ) {
-					$content .= '<div class="login-message">' . __( 'Melde Dich an mit:', $this->translation_domain ) . '</div>';
+					$content .= '<div class="login-message">' . __( 'Melde Dich an mit:', 'psource-chat' ) . '</div>';
 					$content .= '<div class="chat-login-wrap">';
 					$content .= $content_auth;
 					$content .= '</div>';
@@ -4481,10 +4481,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					}
 
 					$content .= '<p class="invite-avatar-wrapper">' . $avatar . '</p>';
-					$content .= '<p class="invite-chat-message">' . $chat_session['invite-info']['message']['host']['name'] . ' ' . __( 'möchte Gespräch beginnen', $this->translation_domain ) . '</p>';
-					$content .= '<p class="psource-chat-invite-buttons"><button class="psource-chat-invite-accept" type="button" style="background: green; color:white; text-transform: uppercase;">' . __( 'Annehmen', $this->translation_domain ) . '</button><button class="psource-chat-invite-declined" type="button" style="background: red; color:white; text-transform: uppercase;">' . __( 'Ablehnen', $this->translation_domain ) . '</button></p>';
+					$content .= '<p class="invite-chat-message">' . $chat_session['invite-info']['message']['host']['name'] . ' ' . __( 'möchte Gespräch beginnen', 'psource-chat' ) . '</p>';
+					$content .= '<p class="psource-chat-invite-buttons"><button class="psource-chat-invite-accept" type="button" style="background: green; color:white; text-transform: uppercase;">' . __( 'Annehmen', 'psource-chat' ) . '</button><button class="psource-chat-invite-declined" type="button" style="background: red; color:white; text-transform: uppercase;">' . __( 'Ablehnen', 'psource-chat' ) . '</button></p>';
 				} else {
-					$content .= '<p>' . __( 'Du wurdest zu einem privaten Chat eingeladen', $this->translation_domain ) . '</p>';
+					$content .= '<p>' . __( 'Du wurdest zu einem privaten Chat eingeladen', 'psource-chat' ) . '</p>';
 				}
 
 				return $this->chat_session_module_wrap( $chat_session, $content, 'psource-chat-module-invite-prompt' );
@@ -4777,8 +4777,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$chat_header_actions = '<div class="psource-chat-module-header-actions"><ul class="psource-chat-actions-menu">';
 
 			if ( $chat_session['session_type'] != "bp-group" ) {
-				$chat_header_images .= '<img class="psource-chat-min" src="' . plugins_url( '/images/16-square-blue-remove.png', __FILE__ ) . '" alt="-" width="16" height="16" style="' . $chat_style_min . '" title="' . __( 'Minimiere Chat', $this->translation_domain ) . '" />';
-				$chat_header_images .= '<img class="psource-chat-max" src="' . plugins_url( '/images/16-square-green-add.png', __FILE__ ) . '" alt="+" width="16" height="16" style="' . $chat_style_max . '" title="' . __( 'Maximiere Chat', $this->translation_domain ) . '" />';
+				$chat_header_images .= '<img class="psource-chat-min" src="' . plugins_url( '/images/16-square-blue-remove.png', __FILE__ ) . '" alt="-" width="16" height="16" style="' . $chat_style_min . '" title="' . __( 'Minimiere Chat', 'psource-chat' ) . '" />';
+				$chat_header_images .= '<img class="psource-chat-max" src="' . plugins_url( '/images/16-square-green-add.png', __FILE__ ) . '" alt="+" width="16" height="16" style="' . $chat_style_max . '" title="' . __( 'Maximiere Chat', 'psource-chat' ) . '" />';
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-min-max"><a href="#">' . $chat_header_images . '</a></li>';
 			}
 			if ( $this->chat_user[ $chat_session['id'] ]['status_max_min'] == "max" ) {
@@ -4787,17 +4787,17 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_style_settings = "display:none;";
 			}
 
-			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><img src="' . plugins_url( '/images/gear_icon.png', __FILE__ ) . '" alt="' . __( 'Chat Einstellungen', $this->translation_domain ) . '" width="16" height="16" title="' . __( 'Chat Einstellungen', $this->translation_domain ) . '" /></a>' . $chat_action_menu . '</li>';
+			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><img src="' . plugins_url( '/images/gear_icon.png', __FILE__ ) . '" alt="' . __( 'Chat Einstellungen', 'psource-chat' ) . '" width="16" height="16" title="' . __( 'Chat Einstellungen', 'psource-chat' ) . '" /></a>' . $chat_action_menu . '</li>';
 
 			//$transient_key = "chat-session-". $chat_session['blog_id'] ."-". $chat_session['id'] .'-'. $chat_session['session_type'];
 			$transient_key = "chat-session-" . $chat_session['id'] . '-' . $chat_session['session_type'];
 
 			if ( $chat_session['box_popout'] == "enabled" ) {
-				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', $this->translation_domain ) . '" href="' . add_query_arg( array(
+				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', 'psource-chat' ) . '" href="' . add_query_arg( array(
 						'psource-chat-action' => 'pop-out',
 						'psource-chat-key'    => base64_encode( $transient_key )
 					), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#10070;</a></li>';
-				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', $this->translation_domain ) . '" href="' . add_query_arg( array(
+				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', 'psource-chat' ) . '" href="' . add_query_arg( array(
 						'psource-chat-action' => 'pop-in',
 						'psource-chat-id'     => base64_encode( $chat_session['id'] )
 					), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#10063;</a></li>';
@@ -4816,19 +4816,19 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			}
 
 			if ( $chat_session['session_status'] == "open" ) {
-				$chat_title_status = __( 'Offen', $this->translation_domain );
+				$chat_title_status = __( 'Offen', 'psource-chat' );
 			} else {
-				$chat_title_status = __( 'Geschlossen', $this->translation_domain );
+				$chat_title_status = __( 'Geschlossen', 'psource-chat' );
 			}
 
 			$content .= '<div class="psource-chat-module-header-title">';
 			if ( ( $chat_session['session_type'] == 'private' ) || ( $chat_session['session_type'] == 'site' ) || ( $chat_session['session_type'] == 'network-site' ) ) {
 				if ( $chat_session['session_type'] == 'private' ) {
-					$content .= '<a title="' . __( 'Privatchat', $this->translation_domain ) . '" href="#">';
+					$content .= '<a title="' . __( 'Privatchat', 'psource-chat' ) . '" href="#">';
 				} else if ( $chat_session['session_type'] == 'site' ) {
-					$content .= '<a title="' . __( 'Gruppenchat', $this->translation_domain ) . '" href="#">';
+					$content .= '<a title="' . __( 'Gruppenchat', 'psource-chat' ) . '" href="#">';
 				} else if ( $chat_session['session_type'] == 'network-site' ) {
-					$content .= '<a title="' . __( 'Netzwerkgruppen-Chat', $this->translation_domain ) . '" href="#">';
+					$content .= '<a title="' . __( 'Netzwerkgruppen-Chat', 'psource-chat' ) . '" href="#">';
 				}
 
 			}
@@ -4872,20 +4872,20 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			}
 
 			$chat_action_menu .= '<li class="psource-chat-action-menu-item-login" style="' . $chat_style_login . '"><a href="#" class="psource-chat-action-login">' .
-			                     __( 'Anmelden', $this->translation_domain ) . '</a></li>';
+			                     __( 'Anmelden', 'psource-chat' ) . '</a></li>';
 			$chat_action_menu .= '<li class="psource-chat-action-menu-item-logout" style="' . $chat_style_logout . '"><a href="#" class="psource-chat-action-logout">' .
-			                     __( 'Abmelden', $this->translation_domain ) . '</a></li>';
+			                     __( 'Abmelden', 'psource-chat' ) . '</a></li>';
 
 			if ( $chat_session['session_type'] == "private" ) {
 				$chat_action_menu .= '<li class="psource-chat-action-menu-item-exit"><a href="#" class="psource-chat-action-exit">' .
-				                     __( 'Chat verlassen', $this->translation_domain ) . '</a></li>';
+				                     __( 'Chat verlassen', 'psource-chat' ) . '</a></li>';
 			}
 
 			if ( $chat_session['box_sound'] == "enabled" ) {
-				$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-on"><a title="' . __( 'Chat-Sound ausschalten', $this->translation_domain ) . '"
-				href="#" class="psource-chat-action-sound">' . __( 'Sound Aus', $this->translation_domain ) . '</a></li>';
-				$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-off"><a title="' . __( 'Chat-Sound einschalten', $this->translation_domain ) . '"
-				href="#" class="psource-chat-action-sound">' . __( 'Sound An', $this->translation_domain ) . '</a></li>';
+				$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-on"><a title="' . __( 'Chat-Sound ausschalten', 'psource-chat' ) . '"
+				href="#" class="psource-chat-action-sound">' . __( 'Sound Aus', 'psource-chat' ) . '</a></li>';
+				$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-off"><a title="' . __( 'Chat-Sound einschalten', 'psource-chat' ) . '"
+				href="#" class="psource-chat-action-sound">' . __( 'Sound An', 'psource-chat' ) . '</a></li>';
 			}
 
 			if ( psource_chat_is_moderator( $chat_session ) ) {
@@ -4895,24 +4895,24 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				if ( $chat_session['session_type'] != "private" ) {
 
-					$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-status-open" style="' . $chat_style_session_status_open . '"><a href="#" class="psource-chat-action-session-open">' . __( 'Chat öffnen', $this->translation_domain ) . '</a></li>';
-					$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-status-closed" style="' . $chat_style_session_status_closed . '"><a href="#" class="psource-chat-action-session-closed">' . __( 'Chat schliessen', $this->translation_domain ) . '</a></li>';
+					$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-status-open" style="' . $chat_style_session_status_open . '"><a href="#" class="psource-chat-action-session-open">' . __( 'Chat öffnen', 'psource-chat' ) . '</a></li>';
+					$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-status-closed" style="' . $chat_style_session_status_closed . '"><a href="#" class="psource-chat-action-session-closed">' . __( 'Chat schliessen', 'psource-chat' ) . '</a></li>';
 				}
 
 				$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-clear"><a href="#"
 				class="psource-chat-action-session-clear">' .
-				                     __( 'Chat löschen', $this->translation_domain ) . '</a></li>';
+				                     __( 'Chat löschen', 'psource-chat' ) . '</a></li>';
 
 				if ( $chat_session['session_type'] != "private" ) {
 
 					if ( isset( $chat_session['log_creation'] ) && $chat_session['log_creation'] == 'enabled' ) {
 						$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-archive"><a href="#" class="psource-chat-action-session-archive">' .
-						                     __( 'Archiviere Chat', $this->translation_domain ) . '</a></li>';
+						                     __( 'Archiviere Chat', 'psource-chat' ) . '</a></li>';
 					}
 				}
 			}
 			//Disable Auto Scroll
-			$chat_action_menu .= '<li class="manage-auto-scroll" data-auto_scroll="on"><a href="#">' . __( 'Autoscroll aus', $this->translation_domain ) . '</a></li>';
+			$chat_action_menu .= '<li class="manage-auto-scroll" data-auto_scroll="on"><a href="#">' . __( 'Autoscroll aus', 'psource-chat' ) . '</a></li>';
 			$chat_action_menu .= '</ul>';
 
 			return $chat_action_menu;
@@ -5062,28 +5062,28 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				$row_text .= '<ul class="psource-chat-row-footer">';
 
-				$this->chat_localized['settings']["row_delete_text"]   = __( 'ausblenden', $this->translation_domain );
-				$this->chat_localized['settings']["row_undelete_text"] = __( 'einblenden', $this->translation_domain );
+				$this->chat_localized['settings']["row_delete_text"]   = __( 'ausblenden', 'psource-chat' );
+				$this->chat_localized['settings']["row_undelete_text"] = __( 'einblenden', 'psource-chat' );
 
 				//if (($chat_session['session_type'] != "log") && ($row->moderator != "yes")) {
 				if ( $chat_session['session_type'] != "log" ) {
 
-					$row_text .= '<li class="psource-chat-admin-actions-item psource-chat-user-invite"><a class="psource-chat-user-invite" rel="' . $row->auth_hash . '" title="' . __( 'Zu privaten Chat einladen:', $this->translation_domain ) . ' ' . $row->name . '" href="#"><span class="action"><img height="10" src="' . plugins_url( '/images/padlock-icon-th.png', __FILE__ ) . '" alt=""/></span></a></li>';
+					$row_text .= '<li class="psource-chat-admin-actions-item psource-chat-user-invite"><a class="psource-chat-user-invite" rel="' . $row->auth_hash . '" title="' . __( 'Zu privaten Chat einladen:', 'psource-chat' ) . ' ' . $row->name . '" href="#"><span class="action"><img height="10" src="' . plugins_url( '/images/padlock-icon-th.png', __FILE__ ) . '" alt=""/></span></a></li>';
 
-					$row_text .= '<li class="psource-chat-admin-actions-item psource-chat-admin-actions-item-delete"><a class="psource-chat-admin-actions-item-delete" title="' . __( 'moderiere diese Nachricht', $this->translation_domain ) . '" href="#"><span  class="action">' . $this->chat_localized['settings']["row_delete_text"] . '</span></a></li>';
+					$row_text .= '<li class="psource-chat-admin-actions-item psource-chat-admin-actions-item-delete"><a class="psource-chat-admin-actions-item-delete" title="' . __( 'moderiere diese Nachricht', 'psource-chat' ) . '" href="#"><span  class="action">' . $this->chat_localized['settings']["row_delete_text"] . '</span></a></li>';
 
 					if ( ( $this->get_option( 'blocked_ip_addresses_active', 'global' ) == "enabled" )
 					     && ( $chat_session['blocked_ip_addresses_active'] == "enabled" )
 					) {
 
 						$row_text .= '<li class="psource-chat-admin-actions-item psource-chat-admin-actions-item-block-ip"><a
-							 class="psource-chat-admin-actions-item-block-ip" title="' . __( 'moderiere IP-Adresse:', $this->translation_domain ) .
+							 class="psource-chat-admin-actions-item-block-ip" title="' . __( 'moderiere IP-Adresse:', 'psource-chat' ) .
 						             $row->ip_address . '" rel="' . $row->ip_address . '" href="#"><span class="action">' . $row->ip_address . '</span></a></li>';
 					}
 					/*
 						$row_text .= '<li class="psource-chat-admin-actions-item psource-chat-admin-actions-item-block-user"><a
 						 	class="psource-chat-admin-actions-item-block-user"
-							title="'. __('moderate user:', $this->translation_domain) . $row->name .'" rel="'. $row->auth_hash .'"
+							title="'. __('moderate user:', 'psource-chat') . $row->name .'" rel="'. $row->auth_hash .'"
 						 	href="#"><span class="action">'. $row->name .'</span></a></li>';
 */
 					//$row_text .= '</ul>'; // End of ul.psource-chat-admin-actions
@@ -5143,10 +5143,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				$content .= '<div id="chat-login-wrap-' . $chat_session['id'] . '" class="chat-login-wrap">';
 				$content .= '<p class="psource-chat-login-error" style="color: #FF0000; display:none;"></p>';
-				$content .= '<label class="psource-chat-login-label" for="chat-login-name-' . $chat_session['id'] . '">' . __( 'Name', $this->translation_domain ) . '<br /></label><input id="chat-login-name-' . $chat_session['id'] . '" style="width: 90%" name="psource-chat-login-name" class="psource-chat-login-name" type="text" placeholder="' . __( 'Name eingeben', $this->translation_domain ) . '"/><br />';
-				$content .= '<label class="psource-chat-login-label" for="chat-login-email-' . $chat_session['id'] . '">' . __( 'Email', $this->translation_domain ) . '<br /></label><input id="chat-login-email-' . $chat_session['id'] . '" style="width: 90%" name="psource-chat-login-email" class="psource-chat-login-email" type="text" placeholder="' . __( 'Email eingeben', $this->translation_domain ) . '"/><br />';
+				$content .= '<label class="psource-chat-login-label" for="chat-login-name-' . $chat_session['id'] . '">' . __( 'Name', 'psource-chat' ) . '<br /></label><input id="chat-login-name-' . $chat_session['id'] . '" style="width: 90%" name="psource-chat-login-name" class="psource-chat-login-name" type="text" placeholder="' . __( 'Name eingeben', 'psource-chat' ) . '"/><br />';
+				$content .= '<label class="psource-chat-login-label" for="chat-login-email-' . $chat_session['id'] . '">' . __( 'Email', 'psource-chat' ) . '<br /></label><input id="chat-login-email-' . $chat_session['id'] . '" style="width: 90%" name="psource-chat-login-email" class="psource-chat-login-email" type="text" placeholder="' . __( 'Email eingeben', 'psource-chat' ) . '"/><br />';
 
-				$content .= '<p class="psource-chat-login-buttons"><button class="psource-chat-login-submit" type="button">' . __( 'Login', $this->translation_domain ) . '</button><button class="psource-chat-login-cancel" type="button">' . __( 'Abbrechen', $this->translation_domain ) . '</button></p>';
+				$content .= '<p class="psource-chat-login-buttons"><button class="psource-chat-login-submit" type="button">' . __( 'Login', 'psource-chat' ) . '</button><button class="psource-chat-login-cancel" type="button">' . __( 'Abbrechen', 'psource-chat' ) . '</button></p>';
 
 				$content .= '</div>';
 			}
@@ -5499,7 +5499,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			if ( ! isset( $_POST['user_info'] ) ) {
 
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'missing POST user_info', $this->translation_domain );
+				$reply_data['errorText']   = __( 'missing POST user_info', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5510,7 +5510,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				case 'public_user':
 					if ( ( ! isset( $user_info['name'] ) ) || ( ! isset( $user_info['email'] ) ) ) {
 
-						$reply_data['errorText']   = __( 'Bitte gültigen Namen und eine gültige E-Mail-Adresse angeben.', $this->translation_domain );
+						$reply_data['errorText']   = __( 'Bitte gültigen Namen und eine gültige E-Mail-Adresse angeben.', 'psource-chat' );
 						$reply_data['errorStatus'] = true;
 
 						wp_send_json( $reply_data );
@@ -5520,7 +5520,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$user_info['email'] = esc_attr( $user_info['email'] );
 					if ( ( empty( $user_info['name'] ) ) || ( empty( $user_info['email'] ) ) || ( ! is_email( $user_info['email'] ) ) ) {
 
-						$reply_data['errorText']   = __( 'Bitte gültigen Namen und eine gültige E-Mail-Adresse angeben.', $this->translation_domain );
+						$reply_data['errorText']   = __( 'Bitte gültigen Namen und eine gültige E-Mail-Adresse angeben.', 'psource-chat' );
 						$reply_data['errorStatus'] = true;
 
 						wp_send_json( $reply_data );
@@ -5530,7 +5530,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$user_name_id = username_exists( $user_info['name'] );
 					if ( $user_name_id ) {
 
-						$reply_data['errorText']   = __( 'Name bereits vergeben', $this->translation_domain );
+						$reply_data['errorText']   = __( 'Name bereits vergeben', 'psource-chat' );
 						$reply_data['errorStatus'] = true;
 
 						wp_send_json( $reply_data );
@@ -5539,7 +5539,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$user_name_id = email_exists( $user_info['email'] );
 					if ( $user_name_id ) {
 
-						$reply_data['errorText']   = __( 'Email bereits registriert.', $this->translation_domain );
+						$reply_data['errorText']   = __( 'Email bereits registriert.', 'psource-chat' );
 						$reply_data['errorStatus'] = true;
 
 						wp_send_json( $reply_data );
@@ -5641,7 +5641,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 								foreach ( $users_active['users'] as $user ) {
 									if ( $user['connect_status'] == 'exited' ) {
 										$reply_data['sessions'][ $chat_id ]['errorStatus'] = true;
-										$reply_data['sessions'][ $chat_id ]['errorText']   = __( 'Der Benutzer hat die Einladung zum privaten Chat abgelehnt.', $this->translation_domain );
+										$reply_data['sessions'][ $chat_id ]['errorText']   = __( 'Der Benutzer hat die Einladung zum privaten Chat abgelehnt.', 'psource-chat' );
 										$reply_data['sessions'][ $chat_id ]['errorText']   = apply_filters( 'wc_chat_decline_message', $reply_data['sessions'][ $chat_id ]['errorText'] );
 									}
 									break;
@@ -5723,7 +5723,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			// Get Private chats
 			if ( ( ! isset( $this->chat_auth['auth_hash'] ) ) || ( empty( $this->chat_auth['auth_hash'] ) ) ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid auth_hash', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid auth_hash', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5748,13 +5748,13 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			// If the user doesn't have a type
 			if ( ! isset( $this->chat_auth['type'] ) ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
 			} else if ( $this->chat_auth['type'] != "wordpress" ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5762,7 +5762,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 			if ( ! is_user_logged_in() ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5781,7 +5781,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$this->chat_session_update_message_rows_deleted( $chat_session );
 				} else {
 					$reply_data['errorStatus'] = true;
-					$reply_data['errorText']   = __( 'Not moderator', $this->translation_domain );
+					$reply_data['errorText']   = __( 'Not moderator', 'psource-chat' );
 					die();
 				}
 			}
@@ -5797,14 +5797,14 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			// If the user doesn't have a type
 			if ( ! isset( $this->chat_auth['type'] ) ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
 
 			} else if ( $this->chat_auth['type'] != "wordpress" ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5812,7 +5812,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 			if ( ! is_user_logged_in() ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5839,7 +5839,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			if ( ! isset( $_POST['chat_session'] ) ) {
 
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_session', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_session', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5848,7 +5848,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$chat_id      = esc_attr( $chat_session['id'] );
 			if ( $chat_id == '' ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_id', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_id', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5856,7 +5856,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 			if ( ! isset( $_POST['chat_session_status'] ) ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_session_status', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_session_status', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5865,7 +5865,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$chat_session_status = esc_attr( $_POST['chat_session_status'] );
 			if ( ( $chat_session_status != "open" ) && ( $chat_session_status != "closed" ) ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_session_status', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_session_status', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5874,13 +5874,13 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			// If the user doesn't have a type
 			if ( ! isset( $this->chat_auth['type'] ) ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
 			} else if ( $this->chat_auth['type'] != "wordpress" ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5889,7 +5889,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 			if ( ! is_user_logged_in() ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', $this->translation_domain );
+				$reply_data['errorText']   = __( 'Invalid chat_auth [type]', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -5898,7 +5898,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 			if ( ! psource_chat_is_moderator( $chat_session ) ) {
 				$reply_data['errorStatus'] = true;
-				$reply_data['errorText']   = __( 'not moderator', $this->translation_domain );
+				$reply_data['errorText']   = __( 'not moderator', 'psource-chat' );
 
 				wp_send_json( $reply_data );
 				die();
@@ -6542,8 +6542,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						$atts['id']                   = $invite_chat['chat_id'];
 						$atts['session_type']         = 'private';
 						$atts['box_moderator_footer'] = 'disabled';
-						//$atts['box_title']				= __('Private', $this->translation_domain) .'<span class="psource-chat-private-attendees"></span>';
-						$atts['box_title'] = __( '(P)', $this->translation_domain );
+						//$atts['box_title']				= __('Private', 'psource-chat') .'<span class="psource-chat-private-attendees"></span>';
+						$atts['box_title'] = __( '(P)', 'psource-chat' );
 
 						if ( ! isset( $invite_chat['message']['invite-status'] ) ) {
 							$invite_chat['message']['invite-status'] = "pending";

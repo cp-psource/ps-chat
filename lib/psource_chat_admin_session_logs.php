@@ -32,9 +32,9 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			global $psource_chat;
 
 			$actions = array(
-				'hide'   => __( 'Ausblenden', $psource_chat->translation_domain ),
-				'unhide' => __( 'Einblenden', $psource_chat->translation_domain ),
-				'delete' => __( 'Löschen', $psource_chat->translation_domain )
+				'hide'   => __( 'Ausblenden', 'psource-chat' ),
+				'unhide' => __( 'Einblenden', 'psource-chat' ),
+				'delete' => __( 'Löschen', 'psource-chat' )
 			);
 
 			return $actions;
@@ -136,19 +136,19 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			global $psource_chat;
 			?>
 			<select name="status" id="status">
-				<option value=""><?php _e( 'Alle anzeigen', $psource_chat->translation_domain ); ?></option>
+				<option value=""><?php _e( 'Alle anzeigen', 'psource-chat' ); ?></option>
 				<option <?php if ( 'no' == $this->filters['status'] ) {
 					echo ' selected="selected" ';
 				} ?>
-					value="open"><?php _e( 'Offen', $psource_chat->translation_domain ); ?></option>
+					value="open"><?php _e( 'Offen', 'psource-chat' ); ?></option>
 				<option <?php if ( 'yes' == $this->filters['status'] ) {
 					echo ' selected="selected" ';
 				} ?>
-					value="archived"><?php _e( 'Archiviert', $psource_chat->translation_domain ); ?></option>
+					value="archived"><?php _e( 'Archiviert', 'psource-chat' ); ?></option>
 				<option <?php if ( 'hidden' == $this->filters['status'] ) {
 					echo ' selected="selected" ';
 				} ?>
-					value="hidden"><?php _e( 'Versteckt', $psource_chat->translation_domain ); ?></option>
+					value="hidden"><?php _e( 'Versteckt', 'psource-chat' ); ?></option>
 			</select>
 		<?php
 		}
@@ -174,7 +174,7 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			?>
 			<select
 				name="chat_id" id="chat_id">
-				<option value=""><?php _e( 'Alle Chats anzeigen', $psource_chat->translation_domain ); ?></option>
+				<option value=""><?php _e( 'Alle Chats anzeigen', 'psource-chat' ); ?></option>
 				<?php
 				if ( ( $results ) && ( count( $results ) ) ) {
 					foreach ( $results as $result ) {
@@ -206,7 +206,7 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			?>
 			<select
 				name="session_type" id="session_type">
-				<option value=""><?php _e( 'Alle Typen anzeigen', $psource_chat->translation_domain ); ?></option>
+				<option value=""><?php _e( 'Alle Typen anzeigen', 'psource-chat' ); ?></option>
 				<?php
 				if ( ( $results ) && ( count( $results ) ) ) {
 					foreach ( $results as $result ) {
@@ -228,9 +228,9 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			global $psource_chat;
 
 			?>
-			<input type="text" placeholder="<?php _e( 'Anfangsdatum', $psource_chat->translation_domain ); ?>" name="start" size="15"
+			<input type="text" placeholder="<?php _e( 'Anfangsdatum', 'psource-chat' ); ?>" name="start" size="15"
 				class="chat-start" value="<?php echo $this->filters['start']; ?>" id="start"/>
-			<input type="text" placeholder="<?php _e( 'Enddatum', $psource_chat->translation_domain ); ?>" name="end" size="15" class="chat-end" value="<?php echo $this->filters['end']; ?>" id="end"/>
+			<input type="text" placeholder="<?php _e( 'Enddatum', 'psource-chat' ); ?>" name="end" size="15" class="chat-end" value="<?php echo $this->filters['end']; ?>" id="end"/>
 
 			<script>
 				jQuery(document).ready(function () {
@@ -293,17 +293,17 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 
 			$columns['cb'] = '<input type="checkbox" />';
 
-			$columns['time'] = __( 'Zeit', $psource_chat->translation_domain );
+			$columns['time'] = __( 'Zeit', 'psource-chat' );
 
 //			if (is_multisite())
-//				$columns['blog']		=	__('Blog', 			$psource_chat->translation_domain);
+//				$columns['blog']		=	__('Blog', 			'psource-chat');
 
-			$columns['title']          = __( 'Sitzung', $psource_chat->translation_domain );
-			$columns['status']         = __( 'Status', $psource_chat->translation_domain );
-			$columns['type']           = __( 'Typ', $psource_chat->translation_domain );
-			$columns['moderators']     = __( 'Moderatoren', $psource_chat->translation_domain );
-			$columns['users']          = __( 'Benutzer', $psource_chat->translation_domain );
-			$columns['messages_count'] = __( 'Nachrichten', $psource_chat->translation_domain );
+			$columns['title']          = __( 'Sitzung', 'psource-chat' );
+			$columns['status']         = __( 'Status', 'psource-chat' );
+			$columns['type']           = __( 'Typ', 'psource-chat' );
+			$columns['moderators']     = __( 'Moderatoren', 'psource-chat' );
+			$columns['users']          = __( 'Benutzer', 'psource-chat' );
+			$columns['messages_count'] = __( 'Nachrichten', 'psource-chat' );
 
 			return $columns;
 		}
@@ -312,7 +312,7 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			global $psource_chat;
 
 			if ( $item->session_type == "private" ) {
-				echo __( 'Privat', $psource_chat->translation_domain );
+				echo __( 'Privat', 'psource-chat' );
 			} else if ( ( isset( $item->box_title ) ) && ( ! empty( $item->box_title ) ) ) {
 				echo strip_tags( $item->box_title ) . ' (' . $item->chat_id . ')';
 			} else {
@@ -326,12 +326,12 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			//status
 			if ( $item->archived == "yes" ) {
 				if ( $item->deleted == "yes" ) {
-					_e( 'Versteckt', $psource_chat->translation_domain );
+					_e( 'Versteckt', 'psource-chat' );
 				} else {
-					_e( 'Archiviert', $psource_chat->translation_domain );
+					_e( 'Archiviert', 'psource-chat' );
 				}
 			} else if ( $item->archived == "no" ) {
-				_e( 'Offen', $psource_chat->translation_domain );
+				_e( 'Offen', 'psource-chat' );
 			}
 		}
 
@@ -340,7 +340,7 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 			if ( ! empty( $item->session_type ) ) {
 				echo $item->session_type;
 			} else {
-				_e( 'Chat', $psource_chat->translation_domain );
+				_e( 'Chat', 'psource-chat' );
 			}
 		}
 
@@ -385,8 +385,8 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 
 			$details_array            = array();
 			$details_array['details'] = array(
-				'label' => __( 'Details', $psource_chat->translation_domain ),
-				'title' => __( 'Details zu dieser Chat-Sitzung anzeigen', $psource_chat->translation_domain ),
+				'label' => __( 'Details', 'psource-chat' ),
+				'title' => __( 'Details zu dieser Chat-Sitzung anzeigen', 'psource-chat' ),
 				'href'  => $chat_details_href
 			);
 
@@ -400,23 +400,23 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 					if ( $item->deleted == 'no' ) {
 						$chat_hide_href        = add_query_arg( 'laction', 'hide', $chat_href_tmp );
 						$details_array['hide'] = array(
-							'label' => __( 'ausblenden', $psource_chat->translation_domain ),
-							'title' => __( 'Blende die gesamte Chat-Sitzung aus, um die öffentliche Ansicht zu blockieren', $psource_chat->translation_domain ),
+							'label' => __( 'ausblenden', 'psource-chat' ),
+							'title' => __( 'Blende die gesamte Chat-Sitzung aus, um die öffentliche Ansicht zu blockieren', 'psource-chat' ),
 							'href'  => $chat_hide_href
 						);
 					} else if ( $item->deleted == 'yes' ) {
 						$chat_unhide_href        = add_query_arg( 'laction', 'unhide', $chat_href_tmp );
 						$details_array['unhide'] = array(
-							'label' => __( 'einblenden', $psource_chat->translation_domain ),
-							'title' => __( 'Blende die gesamte Chat-Sitzung ein, um die öffentliche Ansicht zu ermöglichen', $psource_chat->translation_domain ),
+							'label' => __( 'einblenden', 'psource-chat' ),
+							'title' => __( 'Blende die gesamte Chat-Sitzung ein, um die öffentliche Ansicht zu ermöglichen', 'psource-chat' ),
 							'href'  => $chat_unhide_href
 						);
 					}
 				}
 				$chat_delete_href        = add_query_arg( 'laction', 'delete', $chat_href_tmp );
 				$details_array['delete'] = array(
-					'label' => __( 'löschen', $psource_chat->translation_domain ),
-					'title' => __( 'Lösche die gesamte Chat-Sitzung dauerhaft', $psource_chat->translation_domain ),
+					'label' => __( 'löschen', 'psource-chat' ),
+					'title' => __( 'Lösche die gesamte Chat-Sitzung dauerhaft', 'psource-chat' ),
 					'href'  => $chat_delete_href
 				);
 			} else {
@@ -430,8 +430,8 @@ if ( ! class_exists( 'PSOURCEChat_Session_Logs_Table' ) ) {
 				$chat_show_href        = add_query_arg( 'laction', 'show', $chat_href_tmp );
 				$chat_show_href        = add_query_arg( 'session_type', $item->session_type, $chat_show_href );
 				$details_array['show'] = array(
-					'label' => __( 'Chat anzeigen', $psource_chat->translation_domain ),
-					'title' => __( 'Live-Chat-Sitzung anzeigen', $psource_chat->translation_domain ),
+					'label' => __( 'Chat anzeigen', 'psource-chat' ),
+					'title' => __( 'Live-Chat-Sitzung anzeigen', 'psource-chat' ),
 					'href'  => $chat_show_href
 				);
 

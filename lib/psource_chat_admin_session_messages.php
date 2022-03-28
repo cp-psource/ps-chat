@@ -40,12 +40,12 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 			global $psource_chat;
 
 			$actions = array(
-				'hide'   => __( 'Ausblenden', $psource_chat->translation_domain ),
-				'unhide' => __( 'Einblenden', $psource_chat->translation_domain )
+				'hide'   => __( 'Ausblenden', 'psource-chat' ),
+				'unhide' => __( 'Einblenden', 'psource-chat' )
 			);
 
 			if ( $this->log_item->archived == 'yes' ) {
-				$actions['delete'] = __( 'Löschen', $psource_chat->translation_domain );
+				$actions['delete'] = __( 'Löschen', 'psource-chat' );
 			}
 
 			return $actions;
@@ -169,15 +169,15 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 			global $psource_chat;
 			?>
 			<select name="status" id="status">
-				<option value=""><?php _e( 'Zeige jeden Status', $psource_chat->translation_domain ); ?></option>
+				<option value=""><?php _e( 'Zeige jeden Status', 'psource-chat' ); ?></option>
 				<option <?php if ( 'archived' == $this->filters['status'] ) {
 					echo ' selected="selected" ';
 				} ?>
-					value="archived"><?php _e( 'Archiviert', $psource_chat->translation_domain ); ?></option>
+					value="archived"><?php _e( 'Archiviert', 'psource-chat' ); ?></option>
 				<option <?php if ( 'hidden' == $this->filters['status'] ) {
 					echo ' selected="selected" ';
 				} ?>
-					value="hidden"><?php _e( 'Versteckt', $psource_chat->translation_domain ); ?></option>
+					value="hidden"><?php _e( 'Versteckt', 'psource-chat' ); ?></option>
 			</select>
 		<?php
 		}
@@ -188,9 +188,9 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 			if ( ( $this->moderator_names ) && ( count( $this->moderator_names ) ) ) {
 				?>
 				<select name="moderators" id="moderators">
-					<option value=""><?php _e( 'Alle Moderatoren anzeigen', $psource_chat->translation_domain ); ?></option>
+					<option value=""><?php _e( 'Alle Moderatoren anzeigen', 'psource-chat' ); ?></option>
 					<?php if ( $this->filters['users'] != '__NONE__' ) { ?>
-						<option value="__NONE__" <?php selected( $this->filters['moderators'], '__NONE__' ) ?>><?php _e( 'Keine Moderatoren anzeigen', $psource_chat->translation_domain ); ?></option>
+						<option value="__NONE__" <?php selected( $this->filters['moderators'], '__NONE__' ) ?>><?php _e( 'Keine Moderatoren anzeigen', 'psource-chat' ); ?></option>
 					<?php } ?>
 					<?php
 					foreach ( $this->moderator_names as $moderator_name ) {
@@ -210,9 +210,9 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 			if ( ( $this->user_names ) && ( count( $this->user_names ) ) ) {
 				?>
 				<select name="users" id="users">
-					<option value=""><?php _e( 'Alle Benutzer anzeigen', $psource_chat->translation_domain ); ?></option>
+					<option value=""><?php _e( 'Alle Benutzer anzeigen', 'psource-chat' ); ?></option>
 					<?php if ( $this->filters['moderators'] != '__NONE__' ) { ?>
-						<option value="__NONE__" <?php selected( $this->filters['users'], '__NONE__' ) ?>><?php _e( 'Keine Benutzer anzeigen', $psource_chat->translation_domain ); ?></option>
+						<option value="__NONE__" <?php selected( $this->filters['users'], '__NONE__' ) ?>><?php _e( 'Keine Benutzer anzeigen', 'psource-chat' ); ?></option>
 					<?php } ?>
 					<?php
 					foreach ( $this->user_names as $user_name ) {
@@ -288,10 +288,10 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 			$columns = array();
 
 			$columns['cb']        = '<input type="checkbox" />';
-			$columns['timestamp'] = __( 'Zeit', $psource_chat->translation_domain );
-			$columns['status']    = __( 'Status', $psource_chat->translation_domain );
-			$columns['user']      = __( 'Benutzer', $psource_chat->translation_domain );
-			$columns['message']   = __( 'Nachricht', $psource_chat->translation_domain );
+			$columns['timestamp'] = __( 'Zeit', 'psource-chat' );
+			$columns['status']    = __( 'Status', 'psource-chat' );
+			$columns['user']      = __( 'Benutzer', 'psource-chat' );
+			$columns['message']   = __( 'Nachricht', 'psource-chat' );
 
 			return $columns;
 		}
@@ -331,15 +331,15 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 				if ( $item->deleted == 'no' ) {
 					$chat_hide_href        = add_query_arg( 'maction', 'hide', $chat_href_tmp );
 					$details_array['hide'] = array(
-						'label' => __( 'hide', $psource_chat->translation_domain ),
-						'title' => __( 'Blende diese Chat-Nachricht aus der Öffentlichkeit aus', $psource_chat->translation_domain ),
+						'label' => __( 'hide', 'psource-chat' ),
+						'title' => __( 'Blende diese Chat-Nachricht aus der Öffentlichkeit aus', 'psource-chat' ),
 						'href'  => $chat_hide_href
 					);
 				} else {
 					$chat_unhide_href        = add_query_arg( 'maction', 'unhide', $chat_href_tmp );
 					$details_array['unhide'] = array(
-						'label' => __( 'unhide', $psource_chat->translation_domain ),
-						'title' => __( 'Blende diese Chat-Nachricht ein, um die öffentliche Ansicht zu ermöglichen', $psource_chat->translation_domain ),
+						'label' => __( 'unhide', 'psource-chat' ),
+						'title' => __( 'Blende diese Chat-Nachricht ein, um die öffentliche Ansicht zu ermöglichen', 'psource-chat' ),
 						'href'  => $chat_unhide_href
 					);
 				}
@@ -347,8 +347,8 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 			if ( $this->log_item->archived == 'yes' ) {
 				$chat_delete_href        = add_query_arg( 'maction', 'delete', $chat_href_tmp );
 				$details_array['delete'] = array(
-					'label' => __( 'delete', $psource_chat->translation_domain ),
-					'title' => __( 'Lösche diese Chat-Nachricht dauerhaft', $psource_chat->translation_domain ),
+					'label' => __( 'delete', 'psource-chat' ),
+					'title' => __( 'Lösche diese Chat-Nachricht dauerhaft', 'psource-chat' ),
 					'href'  => $chat_delete_href
 				);
 			}
@@ -382,12 +382,12 @@ if ( ! class_exists( 'PSOURCEChat_Session_Messages_Table' ) ) {
 
 			if ( $item->archived == "yes" ) {
 				if ( $item->deleted == "yes" ) {
-					_e( 'Versteckt', $psource_chat->translation_domain );
+					_e( 'Versteckt', 'psource-chat' );
 				} else {
-					_e( 'Archiviert', $psource_chat->translation_domain );
+					_e( 'Archiviert', 'psource-chat' );
 				}
 			} else if ( $item->archived == "no" ) {
-				_e( 'Offen', $psource_chat->translation_domain );
+				_e( 'Offen', 'psource-chat' );
 			}
 		}
 

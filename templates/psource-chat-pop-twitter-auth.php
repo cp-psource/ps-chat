@@ -35,7 +35,7 @@ if ( ( isset( $_GET['oauth_token'] ) ) && ( ! empty( $_GET['oauth_token'] ) )
 
 				$twitter_content = $twitter_connection->get( 'account/verify_credentials' );
 				if ( isset( $twitter_content->errors[0]->message ) ) {
-					$twitter_status_message = __( "ERROR:", $psource_chat->translation_domain ) . " " . $twitter_content->errors[0]->message . "<br />";
+					$twitter_status_message = __( "ERROR:", 'psource-chat' ) . " " . $twitter_content->errors[0]->message . "<br />";
 				} else {
 
 					$psource_chat->chat_auth                 = array();

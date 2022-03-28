@@ -23,8 +23,8 @@ if (!class_exists('PSOURCEChatWidget')) {
 				'row_time_format'	=>	get_option('time_format'),
 			);
 
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('PSC-Chat Widget, fügt der Seitenleiste einen Chat hinzu.', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PSC-Chat Widget', $psource_chat->translation_domain), $widget_ops);
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('PSC-Chat Widget, fügt der Seitenleiste einen Chat hinzu.', 'psource-chat'));
+			parent::__construct(__CLASS__, __('PSC-Chat Widget', 'psource-chat'), $widget_ops);
 		}
 
 		function PSOURCEChatWidget () {
@@ -70,74 +70,74 @@ if (!class_exists('PSOURCEChatWidget')) {
 			<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
 				class="widefat" value="<?php echo $instance['id'] ?> "/>
 			<p>
-				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Title:', $psource_chat->translation_domain); ?></label>
+				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Title:', 'psource-chat'); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name('box_title'); ?>" id="<?php echo $this->get_field_id('box_title'); ?>"
 					class="widefat" value="<?php echo $instance['box_title'] ?>" />
 			</p>
 
 			<p>
 				<label for="<?php echo $this->get_field_id( 'box_height' ); ?>"><?php
-					_e('Höhe des Widgets:', $psource_chat->translation_domain); ?></label>
+					_e('Höhe des Widgets:', 'psource-chat'); ?></label>
 
 				<input type="text" id="<?php echo $this->get_field_id( 'box_height' ); ?>" value="<?php echo $instance['box_height']; ?>"
 					name="<?php echo $this->get_field_name( 'box_height'); ?>" class="widefat" style="width:100%;" />
-					<span class="description"><?php _e('Die Breite beträgt 100% des Widget-Bereichs', $psource_chat->translation_domain); ?></span>
+					<span class="description"><?php _e('Die Breite beträgt 100% des Widget-Bereichs', 'psource-chat'); ?></span>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'box_sound' ); ?>"><?php
-										_e('Aktiviere Sound', $psource_chat->translation_domain); ?></label><br />
+										_e('Aktiviere Sound', 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'box_sound' ); ?>" name="<?php echo $this->get_field_name('box_sound'); ?>">
 					<option value="enabled" <?php print ($instance['box_sound'] == 'enabled')?'selected="selected"':''; ?>><?php
-						_e("Aktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Aktiviert", 'psource-chat'); ?></option>
 					<option value="disabled" <?php print ($instance['box_sound'] == 'disabled')?'selected="selected"':''; ?>><?php
-						_e("Deaktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Deaktiviert", 'psource-chat'); ?></option>
 				</select>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'row_name_avatar' ); ?>"><?php _e("Zeige Avatar/Name", $psource_chat->translation_domain); ?></label><br />
+				<label for="<?php echo $this->get_field_id( 'row_name_avatar' ); ?>"><?php _e("Zeige Avatar/Name", 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'row_name_avatar' ); ?>" name="<?php echo $this->get_field_name( 'row_name_avatar' ); ?>" >
 					<option value="avatar" <?php print ($instance['row_name_avatar'] == 'avatar')?'selected="selected"':''; ?>><?php
-					 	_e("Avatar", $psource_chat->translation_domain); ?></option>
+					 	_e("Avatar", 'psource-chat'); ?></option>
 					<option value="name" <?php print ($instance['row_name_avatar'] == 'name')?'selected="selected"':''; ?>><?php
-						_e("Name", $psource_chat->translation_domain); ?></option>
+						_e("Name", 'psource-chat'); ?></option>
 					<option value="name-avatar" <?php print ($instance['row_name_avatar'] == 'name-avatar')?'selected="selected"':''; ?>><?php
-					 	_e("Avatar und Name", $psource_chat->translation_domain); ?></option>
+					 	_e("Avatar und Name", 'psource-chat'); ?></option>
 					<option value="disabled" <?php print ($instance['row_name_avatar'] == 'disabled')?'selected="selected"':''; ?>><?php
-					 	_e("Nichts", $psource_chat->translation_domain); ?></option>
+					 	_e("Nichts", 'psource-chat'); ?></option>
 				</select>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'box_emoticons' ); ?>"><?php
-										_e('Zeige Emoticons', $psource_chat->translation_domain); ?></label><br />
+										_e('Zeige Emoticons', 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'box_emoticons' ); ?>" name="<?php echo $this->get_field_name( 'box_emoticons'); ?>">
 					<option value="enabled" <?php print ($instance['box_emoticons'] == 'enabled')?'selected="selected"':''; ?>><?php
-						_e("Aktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Aktiviert", 'psource-chat'); ?></option>
 					<option value="disabled" <?php print ($instance['box_emoticons'] == 'disabled')?'selected="selected"':''; ?>><?php
-						_e("Deaktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Deaktiviert", 'psource-chat'); ?></option>
 				</select>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'row_date' ); ?>"><?php
-										_e('Zeige Datum', $psource_chat->translation_domain); ?></label><br />
+										_e('Zeige Datum', 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'row_date' ); ?>" name="<?php echo $this->get_field_name( 'row_date'); ?>">
 					<option value="enabled" <?php print ($instance['row_date'] == 'enabled')?'selected="selected"':''; ?>><?php
-						_e("Aktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Aktiviert", 'psource-chat'); ?></option>
 					<option value="disabled" <?php print ($instance['row_date'] == 'disabled')?'selected="selected"':''; ?>><?php
-						_e("Deaktivert", $psource_chat->translation_domain); ?></option>
+						_e("Deaktivert", 'psource-chat'); ?></option>
 				</select> <input id="<?php echo $this->get_field_id( 'row_date_format' ); ?>" type="text" style="width:100px;" name="<?php echo $this->get_field_name( 'row_date_format'); ?>" value="<?php echo $instance['row_date_format']; ?>"/>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'row_time' ); ?>"><?php
-					_e('Zeige Uhrzeit', $psource_chat->translation_domain); ?></label><br />
+					_e('Zeige Uhrzeit', 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'row_time' ); ?>" name="<?php echo $this->get_field_name( 'row_time'); ?>">
 					<option value="enabled" <?php print ($instance['row_time'] == 'enabled')?'selected="selected"':''; ?>><?php
-						_e("Aktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Aktiviert", 'psource-chat'); ?></option>
 					<option value="disabled" <?php print ($instance['row_time'] == 'disabled')?'selected="selected"':''; ?>><?php
-						_e("Deaktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Deaktiviert", 'psource-chat'); ?></option>
 				</select> <input id="<?php echo $this->get_field_id( 'row_time_format' ); ?>" type="text" style="width:100px;" name="<?php echo $this->get_field_name( 'row_time_format'); ?>" value="<?php echo $instance['row_time_format']; ?>"/>
 			</p>
-			<p><?php _e('Mehr Kontrolle über Widgets-Optionen über', $psource_chat->translation_domain)?> <a
-				href="<?php echo admin_url( 'admin.php?page=chat_settings_panel_widget'); ?>"><?php _e('Widget Einstellungen', $psource_chat->translation_domain); ?></a></p>
+			<p><?php _e('Mehr Kontrolle über Widgets-Optionen über', 'psource-chat')?> <a
+				href="<?php echo admin_url( 'admin.php?page=chat_settings_panel_widget'); ?>"><?php _e('Widget Einstellungen', 'psource-chat'); ?></a></p>
 			<?php
 		}
 
@@ -247,12 +247,12 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 				'avatar_width'		=>	'25px'
 			);
 
-			$this->plugin_error_message = __('Für dieses Widget sind entweder BuddyPress Friends aktiviert oder PS Freunde Plugin.', $psource_chat->translation_domain);
+			$this->plugin_error_message = __('Für dieses Widget sind entweder BuddyPress Friends aktiviert oder PS Freunde Plugin.', 'psource-chat');
 
 			// Set defaults
 			// ...
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt Chat-Freunde und Status an. (PS Freunde Plugin erforderlich)', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PSC-Chat Freunde', $psource_chat->translation_domain), $widget_ops);
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt Chat-Freunde und Status an. (PS Freunde Plugin erforderlich)', 'psource-chat'));
+			parent::__construct(__CLASS__, __('PSC-Chat Freunde', 'psource-chat'), $widget_ops);
 		}
 
 		function PSOURCEChatFriendsWidget () {
@@ -269,36 +269,36 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 			$instance = wp_parse_args( $instance, $this->defaults );
 
 			?>
-			<p class="info"><?php _e('Dieses Widget zeigt Informationen an, die für den von WordPress authentifizierten Benutzer spezifisch sind. Wenn der Benutzer nicht authentifiziert ist, gibt das Widget nichts aus.', $psource_chat->translation_domain);?></p>
+			<p class="info"><?php _e('Dieses Widget zeigt Informationen an, die für den von WordPress authentifizierten Benutzer spezifisch sind. Wenn der Benutzer nicht authentifiziert ist, gibt das Widget nichts aus.', 'psource-chat');?></p>
 			<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
 				class="widefat" value="<?php echo $instance['id'] ?> "/>
 			<p>
-				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('widgettitel:', $psource_chat->translation_domain); ?></label>
+				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('widgettitel:', 'psource-chat'); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name('box_title'); ?>" id="<?php echo $this->get_field_id('box_title'); ?>"
 					class="widefat" value="<?php echo $instance['box_title'] ?>" />
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php
-					_e('Höhe für Widget:', $psource_chat->translation_domain); ?></label>
+					_e('Höhe für Widget:', 'psource-chat'); ?></label>
 
 				<input type="text" id="<?php echo $this->get_field_id( 'height' ); ?>" value="<?php echo $instance['height']; ?>"
 					name="<?php echo $this->get_field_name( 'height'); ?>" class="widefat" style="width:100%;" />
-					<span class="description"><?php _e('Das Widget scrollt bei Bedarf durch die Ausgabe.', $psource_chat->translation_domain); ?></span>
+					<span class="description"><?php _e('Das Widget scrollt bei Bedarf durch die Ausgabe.', 'psource-chat'); ?></span>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'row_name_avatar' ); ?>"><?php _e("Avatar/Name anzeigen", $psource_chat->translation_domain); ?></label><br />
+				<label for="<?php echo $this->get_field_id( 'row_name_avatar' ); ?>"><?php _e("Avatar/Name anzeigen", 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'row_name_avatar' ); ?>" name="<?php echo $this->get_field_name( 'row_name_avatar' ); ?>" >
 					<option value="avatar" <?php print ($instance['row_name_avatar'] == 'avatar')?'selected="selected"':''; ?>><?php
-					 	_e("Avatar", $psource_chat->translation_domain); ?></option>
+					 	_e("Avatar", 'psource-chat'); ?></option>
 					<option value="name" <?php print ($instance['row_name_avatar'] == 'name')?'selected="selected"':''; ?>><?php
-						_e("Name", $psource_chat->translation_domain); ?></option>
+						_e("Name", 'psource-chat'); ?></option>
 					<option value="name-avatar" <?php print ($instance['row_name_avatar'] == 'name-avatar')?'selected="selected"':''; ?>><?php
-					 	_e("Avatar und Name", $psource_chat->translation_domain); ?></option>
+					 	_e("Avatar und Name", 'psource-chat'); ?></option>
 				</select>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'avatar_width' ); ?>"><?php
-					_e('Avatar Breite/Höhe:', $psource_chat->translation_domain); ?></label>
+					_e('Avatar Breite/Höhe:', 'psource-chat'); ?></label>
 
 				<input type="text" id="<?php echo $this->get_field_id( 'avatar_width' ); ?>" value="<?php echo $instance['avatar_width']; ?>"
 					name="<?php echo $this->get_field_name( 'avatar_width'); ?>" class="widefat" style="width:100%;" />
@@ -386,7 +386,7 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 					if ((isset($friend->chat_status)) && ($friend->chat_status == "available")) {
 						$friend_status_data = psource_chat_get_chat_status_data($current_user->ID, $friend);
 
-						$chat_output .= '<li><a class="'. $friend_status_data['href_class'] .'" title="'. $friend_status_data['href_title'] .' - '. __('Klicken, um Chat-Sitzung zu starten', $psource_chat->translation_domain) .'" href="#" rel="'.md5($friend->ID) .'">';
+						$chat_output .= '<li><a class="'. $friend_status_data['href_class'] .'" title="'. $friend_status_data['href_title'] .' - '. __('Klicken, um Chat-Sitzung zu starten', 'psource-chat') .'" href="#" rel="'.md5($friend->ID) .'">';
 
 						//$chat_output .= '<span class="psource-chat-ab-icon psource-chat-ab-icon-'. $friend->chat_status .'"></span>';
 
@@ -417,7 +417,7 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 				}
 
 			} else {
-				$chat_output = '<p>'. __("Keine Freunde online.", $psource_chat->translation_domain) .'</p>';
+				$chat_output = '<p>'. __("Keine Freunde online.", 'psource-chat') .'</p>';
 			}
 
 			if (!empty($chat_output)) {
@@ -446,7 +446,7 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 			global $psource_chat, $bp;
 
 			$this->defaults = array(
-				'box_title' 				=> 	__('Chat-Räume', $psource_chat->translation_domain),
+				'box_title' 				=> 	__('Chat-Räume', 'psource-chat'),
 				'height'					=>	'300px',
 				'show_active_user_count'	=>	'enabled',
 				'show_title'				=>	'chat',
@@ -454,22 +454,22 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 					'page'		=>	'on',
 				),
 				'session_types_labels'		=>	array(
-					'page'		=>	__('Seite', $psource_chat->translation_domain),
+					'page'		=>	__('Seite', 'psource-chat'),
 				)
 
 			);
 
 			if ((!empty($bp)) && (is_object($bp))) {
-				$this->defaults['session_types_labels']['bp-group'] =	__('BuddyPress Gruppe', $psource_chat->translation_domain);
+				$this->defaults['session_types_labels']['bp-group'] =	__('BuddyPress Gruppe', 'psource-chat');
 				$this->defaults['session_types']['bp-group'] 		=	'on';
 			}
 
-			$this->plugin_error_message = __('Für dieses Widget sind entweder BuddyPress Friends aktiviert oder Friends Plugins.', $psource_chat->translation_domain);
+			$this->plugin_error_message = __('Für dieses Widget sind entweder BuddyPress Friends aktiviert oder Friends Plugins.', 'psource-chat');
 
 			// Set defaults
 			// ...
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt aktive Chatsitzungen der gesamten Seite an.', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PSC-Chat Räume', $psource_chat->translation_domain), $widget_ops);
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt aktive Chatsitzungen der gesamten Seite an.', 'psource-chat'));
+			parent::__construct(__CLASS__, __('PSC-Chat Räume', 'psource-chat'), $widget_ops);
 		}
 
 		function PSOURCEChatRoomsWidget () {
@@ -484,30 +484,30 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 			$instance['session_types'] = $session_types;
 
 			?>
-			<p class="info"><?php _e('Dieses Widget zeigt alle aktiven Chat-Sitzungen auf der Webseite an.', $psource_chat->translation_domain);?></p>
+			<p class="info"><?php _e('Dieses Widget zeigt alle aktiven Chat-Sitzungen auf der Webseite an.', 'psource-chat');?></p>
 			<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
 				class="widefat" value="<?php echo $instance['id'] ?> "/>
 			<p>
-				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Widgettitel:', $psource_chat->translation_domain); ?></label>
+				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Widgettitel:', 'psource-chat'); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name('box_title'); ?>" id="<?php echo $this->get_field_id('box_title'); ?>"
 					class="widefat" value="<?php echo $instance['box_title'] ?>" />
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php
-					_e('Height for widget:', $psource_chat->translation_domain); ?></label>
+					_e('Height for widget:', 'psource-chat'); ?></label>
 
 				<input type="text" id="<?php echo $this->get_field_id( 'height' ); ?>" value="<?php echo $instance['height']; ?>"
 					name="<?php echo $this->get_field_name( 'height'); ?>" class="widefat" style="width:100%;" />
-					<span class="description"><?php _e('Das Widget scrollt bei Bedarf durch die Ausgabe.', $psource_chat->translation_domain); ?></span>
+					<span class="description"><?php _e('Das Widget scrollt bei Bedarf durch die Ausgabe.', 'psource-chat'); ?></span>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'show_active_user_count' ); ?>"><?php
-										_e('Anzahl aktiver Benutzer anzeigen', $psource_chat->translation_domain); ?></label><br />
+										_e('Anzahl aktiver Benutzer anzeigen', 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'show_active_user_count' ); ?>" name="<?php echo $this->get_field_name('show_active_user_count'); ?>">
 					<option value="enabled" <?php print ($instance['show_active_user_count'] == 'enabled')?'selected="selected"':''; ?>><?php
-						_e("Aktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Aktiviert", 'psource-chat'); ?></option>
 					<option value="disabled" <?php print ($instance['show_active_user_count'] == 'disabled')?'selected="selected"':''; ?>><?php
-						_e("Deaktiviert", $psource_chat->translation_domain); ?></option>
+						_e("Deaktiviert", 'psource-chat'); ?></option>
 				</select>
 			</p>
 
@@ -538,12 +538,12 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 			</ul>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e('Link-Titel aus der Chat-Sitzung oder der Seite/Gruppe anzeigen', $psource_chat->translation_domain); ?></label><br />
+				<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e('Link-Titel aus der Chat-Sitzung oder der Seite/Gruppe anzeigen', 'psource-chat'); ?></label><br />
 				<select id="<?php echo $this->get_field_id( 'show_title' ); ?>" name="<?php echo $this->get_field_name('show_title'); ?>">
 					<option value="page" <?php selected($instance['show_title'], 'page') ?>><?php
-						_e("Seite/Gruppe", $psource_chat->translation_domain); ?></option>
+						_e("Seite/Gruppe", 'psource-chat'); ?></option>
 					<option value="chat" <?php selected($instance['show_title'], 'chat') ?>><?php
-						_e("Chat-Sitzung", $psource_chat->translation_domain); ?></option>
+						_e("Chat-Sitzung", 'psource-chat'); ?></option>
 				</select>
 			</p>
 
@@ -690,8 +690,8 @@ if (!class_exists('PSOURCEChatStatusWidget')) {
 				'box_title' 		=> 	'',
 			);
 
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('Mit diesem Widget können Benutzer ihren Chat-Status über ein Seitenleisten-Widget festlegen.', $psource_chat->translation_domain));
-			parent::__construct(__CLASS__, __('PSC-Chat Status', $psource_chat->translation_domain), $widget_ops);
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Mit diesem Widget können Benutzer ihren Chat-Status über ein Seitenleisten-Widget festlegen.', 'psource-chat'));
+			parent::__construct(__CLASS__, __('PSC-Chat Status', 'psource-chat'), $widget_ops);
 		}
 
 		function PSOURCEChatStatusWidget () {
@@ -704,12 +704,12 @@ if (!class_exists('PSOURCEChatStatusWidget')) {
 			$instance = wp_parse_args( $instance, $this->defaults );
 
 			?>
-			<p class="info"><?php _e('Dieses Widget zeigt Informationen an, die für den von WordPress authentifizierten Benutzer spezifisch sind. Wenn der Benutzer nicht authentifiziert ist, gibt das Widget nichts aus.', $psource_chat->translation_domain);?></p>
+			<p class="info"><?php _e('Dieses Widget zeigt Informationen an, die für den von WordPress authentifizierten Benutzer spezifisch sind. Wenn der Benutzer nicht authentifiziert ist, gibt das Widget nichts aus.', 'psource-chat');?></p>
 
 			<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
 				class="widefat" value="<?php echo $instance['id'] ?> "/>
 			<p>
-				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Widgettitel:', $psource_chat->translation_domain); ?></label>
+				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Widgettitel:', 'psource-chat'); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name('box_title'); ?>" id="<?php echo $this->get_field_id('box_title'); ?>"
 					class="widefat" value="<?php echo $instance['box_title'] ?>" />
 			</p>
@@ -829,7 +829,7 @@ if (!class_exists('PSOURCEChatDashboardWidget')) {
 						$this->instance['session_status']		= 'open';
 
 						if ((!isset($this->instance['dashboard_widget_title'])) || (empty($this->instance['dashboard_widget_title']))) {
-							$this->instance['dashboard_widget_title'] = __('Chat', $psource_chat->translation_domain);
+							$this->instance['dashboard_widget_title'] = __('Chat', 'psource-chat');
 						}
 
 						if ((isset($user_meta['chat_dashboard_widget_height'])) && (!empty($user_meta['chat_dashboard_widget_height']))) {
@@ -859,7 +859,7 @@ if (!class_exists('PSOURCEChatDashboardWidget')) {
 							$this->instance['session_status']		= 'open';
 
 							if ((!isset($this->instance['dashboard_widget_title'])) || (empty($this->instance['dashboard_widget_title']))) {
-								$this->instance['dashboard_widget_title'] = __('Chat', $psource_chat->translation_domain);
+								$this->instance['dashboard_widget_title'] = __('Chat', 'psource-chat');
 							}
 
 							if ((isset($user_meta['chat_dashboard_widget_height'])) && (!empty($user_meta['chat_dashboard_widget_height']))) {
@@ -907,7 +907,7 @@ if (!class_exists('PSOURCEChatDashboardWidget')) {
 			<p><input id="psource-chat-dashboard-widget-<?php echo $this->instance['id'] ?>-action-archive" type="checkbox" value="1"
 				name="psource-chat[dashboard-widget][<?php echo $this->instance['id'] ?>][action][archive]" /> <label
 				for="psource-chat-dashboard-widget-<?php echo $this->instance['id'] ?>-action-archive"><?php
-					_e('Aktiviert - Chat-Nachricht archivieren', $psource_chat->translation_domain); ?></label></p>
+					_e('Aktiviert - Chat-Nachricht archivieren', 'psource-chat'); ?></label></p>
 			<?php
 		}
 	}
@@ -953,7 +953,7 @@ if (!class_exists('PSOURCEChatStatusDashboardWidget')) {
 					 && (isset($user_meta['chat_network_dashboard_status_widget'])) && ($user_meta['chat_network_dashboard_status_widget'] == 'enabled')) {
 
 						if ((!isset($this->instance['dashboard_status_widget_title'])) || (empty($this->instance['dashboard_status_widget_title']))) {
-							$this->instance['dashboard_status_widget_title'] = __('WordPress Chat', $psource_chat->translation_domain);
+							$this->instance['dashboard_status_widget_title'] = __('WordPress Chat', 'psource-chat');
 						}
 
 						wp_add_dashboard_widget(
@@ -971,7 +971,7 @@ if (!class_exists('PSOURCEChatStatusDashboardWidget')) {
 						//	|| (array_intersect($this->instance['login_options'], $current_user->roles))) {
 
 							if ((!isset($this->instance['dashboard_status_widget_title'])) || (empty($this->instance['dashboard_status_widget_title']))) {
-								$this->instance['dashboard_status_widget_title'] = __('WordPress Chat', $psource_chat->translation_domain);
+								$this->instance['dashboard_status_widget_title'] = __('WordPress Chat', 'psource-chat');
 							}
 
 							wp_add_dashboard_widget(
@@ -1060,7 +1060,7 @@ if (!class_exists('PSOURCEChatFriendsDashboardWidget')) {
 					 && (isset($user_meta['chat_network_dashboard_friends_widget'])) && ($user_meta['chat_network_dashboard_friends_widget'] == 'enabled')) {
 
 						if ((!isset($this->instance['dashboard_friends_widget_title'])) || (empty($this->instance['dashboard_friends_widget_title']))) {
-							$this->instance['dashboard_friends_widget_title'] = __('Chat Freunde', $psource_chat->translation_domain);
+							$this->instance['dashboard_friends_widget_title'] = __('Chat Freunde', 'psource-chat');
 						}
 
 						if ((isset($user_meta['chat_dashboard_friends_widget_height'])) && (!empty($user_meta['chat_dashboard_friends_widget_height']))) {
@@ -1085,7 +1085,7 @@ if (!class_exists('PSOURCEChatFriendsDashboardWidget')) {
 						//	|| (array_intersect($this->instance['login_options'], $current_user->roles))) {
 
 							if ((!isset($this->instance['dashboard_friends_widget_title'])) || (empty($this->instance['dashboard_friends_widgettitle']))) {
-								$this->instance['dashboard_friends_widget_title'] = __('Chat Freunde', $psource_chat->translation_domain);
+								$this->instance['dashboard_friends_widget_title'] = __('Chat Freunde', 'psource-chat');
 							}
 
 							if ((isset($user_meta['chat_dashboard_friends_widget_height'])) && (!empty($user_meta['chat_dashboard_friends_widget_height']))) {
@@ -1162,7 +1162,7 @@ if (!class_exists('PSOURCEChatFriendsDashboardWidget')) {
 					echo '<ul id="psource-chat-friends-dashboard-widget" '. $height_style.' class="psource-chat-friends-widget">'. $chat_output .'</ul>';
 				}
 			} else {
-				?><p><?php _e("Keine Freunde online.", $psource_chat->translation_domain); ?></p><?php
+				?><p><?php _e("Keine Freunde online.", 'psource-chat'); ?></p><?php
 			}
 
 		}

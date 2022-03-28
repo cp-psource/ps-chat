@@ -39,29 +39,29 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 			$form_section = "page";
 			?>
 			<div id="psource-chat-wrap" class="wrap psource-chat-wrap-settings-page">
-				<h2><?php _e( 'Chateinstellungen Seiten', $psource_chat->translation_domain ); ?></h2>
+				<h2><?php _e( 'Chateinstellungen Seiten', 'psource-chat' ); ?></h2>
 
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
 
-					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um die Inline-Chat-Shortcodes zu steuern, die auf Posts, Seiten usw. angewendet werden. Hier kannst Du Standardoptionen einrichten. Überschreibe diese Standardoptionen nicht nur mit Shortcode-Parametern für den jeweiligen Beitrag, die Seite usw..', $psource_chat->translation_domain ); ?></p>
+					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um die Inline-Chat-Shortcodes zu steuern, die auf Posts, Seiten usw. angewendet werden. Hier kannst Du Standardoptionen einrichten. Überschreibe diese Standardoptionen nicht nur mit Shortcode-Parametern für den jeweiligen Beitrag, die Seite usw..', 'psource-chat' ); ?></p>
 
 					<div id="chat_tab_pane" class="chat_tab_pane">
 						<ul>
 							<li id="chat_box_appearance_tab"><a href="#chat_box_appearance_panel"><span><?php
-										_e( 'Box Aussehen', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Aussehen', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_messages_appearance_tab"><a href="#chat_messages_appearance_panel"><span><?php
-										_e( 'Nachrichten Darstellung', $psource_chat->translation_domain ); ?></span></a>
+										_e( 'Nachrichten Darstellung', 'psource-chat' ); ?></span></a>
 							</li>
 							<li id="chat_messages_input_tab"><a href="#chat_messages_input_panel"><span><?php
-										_e( 'Eingabebox', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Eingabebox', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_users_list_tab"><a href="#chat_users_list_panel"><span><?php
-										_e( 'Benutzerliste', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Benutzerliste', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_authentication_tab"><a href="#chat_authentication_panel"><span><?php
-										_e( 'Autentifizierung', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Autentifizierung', 'psource-chat' ); ?></span></a></li>
 							<li id="psource_chat_timymce_buttom_tab"><a href="#psource_chat_timymce_buttom_panel"><span><?php
-										_e( 'WYSIWYG Button', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'WYSIWYG Button', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Erweitert', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Erweitert', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_box_appearance_panel" class="panel">
 							<?php psource_chat_form_section_container( $form_section ); ?>
@@ -102,7 +102,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					<input type="hidden" name="chat[section]" value="<?php echo $form_section; ?>"/>
 					<?php wp_nonce_field( 'psource_chat_settings_save', 'psource_chat_settings_save_wpnonce' ); ?>
 					<p class="submit"><input type="submit" name="Submit" class="button-primary"
-					                         value="<?php _e( 'Änderungen speichern', $psource_chat->translation_domain ) ?>"/>
+					                         value="<?php _e( 'Änderungen speichern', 'psource-chat' ) ?>"/>
 					</p>
 				</form>
 			</div>
@@ -116,34 +116,34 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 
 			?>
 			<div id="psource-chat-wrap" class="wrap psource-chat-wrap-settings-page">
-				<h2><?php _e( 'Chateinstellungen Webseite', $psource_chat->translation_domain ); ?></h2>
+				<h2><?php _e( 'Chateinstellungen Webseite', 'psource-chat' ); ?></h2>
 
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
 
-					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um die Einstellungen für die untere Ecke und den privaten Chatbereich zu steuern.', $psource_chat->translation_domain ); ?></p>
+					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um die Einstellungen für die untere Ecke und den privaten Chatbereich zu steuern.', 'psource-chat' ); ?></p>
 					<?php if ( is_multisite() ) {
 						?>
-						<p><?php _e( 'Unter Multisite kann der Chat in der unteren Ecke im Netzwerk aktiviert werden. In diesem Fall wird der Chat in der unteren Ecke der lokalen Site ersetzt.', $psource_chat->translation_domain ); ?></p><?php
+						<p><?php _e( 'Unter Multisite kann der Chat in der unteren Ecke im Netzwerk aktiviert werden. In diesem Fall wird der Chat in der unteren Ecke der lokalen Site ersetzt.', 'psource-chat' ); ?></p><?php
 					} ?>
 					<div id="chat_tab_pane" class="chat_tab_pane">
 						<ul>
 							<li id="chat_bottom_corner_tab"><a href="#chat_bottom_corner_panel" class="current"><span><?php
-										_e( 'Untere Ecke', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Untere Ecke', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_box_appearance_tab"><a href="#chat_box_appearance_panel" class="current"><span><?php
-										_e( 'Box Aussehen', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Aussehen', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_box_position_tab"><a href="#chat_box_position_panel"><span><?php
-										_e( 'Box Position', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Position', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_messages_appearance_tab"><a href="#chat_messages_appearance_panel"><span><?php
-										_e( 'Nachrichten Darstellung', $psource_chat->translation_domain ); ?></span></a>
+										_e( 'Nachrichten Darstellung', 'psource-chat' ); ?></span></a>
 							</li>
 							<li id="chat_messages_input_tab"><a href="#chat_messages_input_panel"><span><?php
-										_e( 'Nachrichteneingabe', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Nachrichteneingabe', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_users_list_tab"><a href="#chat_users_list_panel"><span><?php
-										_e( 'Benutzerliste', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Benutzerliste', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_authentication_tab"><a href="#chat_authentication_panel"><span><?php
-										_e( 'Autentifikation', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Autentifikation', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Erweitert', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Erweitert', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_bottom_corner_panel" class="panel current">
 							<?php psource_chat_form_section_bottom_corner( $form_section ); ?>
@@ -187,7 +187,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					<input type="hidden" name="chat[section]" value="<?php echo $form_section; ?>"/>
 					<?php wp_nonce_field( 'psource_chat_settings_save', 'psource_chat_settings_save_wpnonce' ); ?>
 					<p class="submit"><input type="submit" name="Submit" class="button-primary"
-					                         value="<?php _e( 'Änderungen speichern', $psource_chat->translation_domain ) ?>"/>
+					                         value="<?php _e( 'Änderungen speichern', 'psource-chat' ) ?>"/>
 					</p>
 
 				</form>
@@ -202,27 +202,27 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 
 			?>
 			<div id="psource-chat-wrap" class="wrap psource-chat-wrap-settings-page">
-				<h2><?php _e( 'Chateinstellungen Widget', $psource_chat->translation_domain ); ?></h2>
+				<h2><?php _e( 'Chateinstellungen Widget', 'psource-chat' ); ?></h2>
 
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
 
-					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um alle Chat-Widgets zu steuern.', $psource_chat->translation_domain ); ?></p>
+					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um alle Chat-Widgets zu steuern.', 'psource-chat' ); ?></p>
 
 					<div id="chat_tab_pane" class="chat_tab_pane">
 						<ul>
 							<li id="chat_box_appearance_tab"><a href="#chat_box_appearance_panel" class="current"><span><?php
-										_e( 'Box Aussehen', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Aussehen', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_messages_appearance_tab"><a href="#chat_messages_appearance_panel"><span><?php
-										_e( 'Nachricht Aussehen', $psource_chat->translation_domain ); ?></span></a>
+										_e( 'Nachricht Aussehen', 'psource-chat' ); ?></span></a>
 							</li>
 							<li id="chat_messages_input_tab"><a href="#chat_messages_input_panel"><span><?php
-										_e( 'Nachrichteneingabe', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Nachrichteneingabe', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_users_list_tab"><a href="#chat_users_list_panel"><span><?php
-										_e( 'Benutzerliste', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Benutzerliste', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_authentication_tab"><a href="#chat_authentication_panel"><span><?php
-										_e( 'Authentication', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Authentication', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Erweitert', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Erweitert', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_box_appearance_panel" class="panel current">
 							<?php psource_chat_form_section_container( $form_section ); ?>
@@ -260,7 +260,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					<input type="hidden" name="chat[section]" value="<?php echo $form_section; ?>"/>
 					<?php wp_nonce_field( 'psource_chat_settings_save', 'psource_chat_settings_save_wpnonce' ); ?>
 					<p class="submit"><input type="submit" name="Submit" class="button-primary"
-					                         value="<?php _e( 'Änderungen speichern', $psource_chat->translation_domain ) ?>"/>
+					                         value="<?php _e( 'Änderungen speichern', 'psource-chat' ) ?>"/>
 					</p>
 				</form>
 			</div>
@@ -273,7 +273,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 			$form_section = "bp-group";
 			?>
 			<div id="psource-chat-wrap" class="wrap psource-chat-wrap-settings-page">
-				<h2><?php _e( 'Gruppenchat Einstellungen', $psource_chat->translation_domain ); ?></h2>
+				<h2><?php _e( 'Gruppenchat Einstellungen', 'psource-chat' ); ?></h2>
 
 				<?php if ( version_compare( bp_get_version(), '1.8' ) < 0 ) { ?>
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
@@ -287,16 +287,16 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					<div id="chat_tab_pane" class="chat_tab_pane">
 						<ul>
 							<li id="chat_box_appearance_tab"><a href="#chat_box_appearance_panel"><span><?php
-										_e( 'Box Aussehen', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Aussehen', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_messages_appearance_tab"><a href="#chat_messages_appearance_panel"><span><?php
-										_e( 'Nachrichten Aussehen', $psource_chat->translation_domain ); ?></span></a>
+										_e( 'Nachrichten Aussehen', 'psource-chat' ); ?></span></a>
 							</li>
 							<li id="chat_messages_input_tab"><a href="#chat_messages_input_panel"><span><?php
-										_e( 'Nachrichteneingabe', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Nachrichteneingabe', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_users_list_tab"><a href="#chat_users_list_panel"><span><?php
-										_e( 'Benutzerliste', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Benutzerliste', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Erweitert', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Erweitert', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_box_appearance_panel" class="panel">
 							<?php psource_chat_form_section_information( $form_section ); ?>
@@ -330,7 +330,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 
 					<?php /* if (!is_admin()) { ?>
 						<p class="submit"><input type="submit" name="Submit" class="button-primary"
-							value="<?php _e('Save Changes', $psource_chat->translation_domain) ?>" /></p>
+							value="<?php _e('Save Changes', 'psource-chat') ?>" /></p>
 					<?php } */
 					?>
 
@@ -365,40 +365,40 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 			?>
 			<div id="psource-chat-wrap" class="wrap psource-chat-wrap-settings-page">
 				<?php if ( is_network_admin() ) { ?>
-					<h2><?php _e( 'Chat-Einstellungen Netzwerk Allgemein', $psource_chat->translation_domain ); ?></h2>
+					<h2><?php _e( 'Chat-Einstellungen Netzwerk Allgemein', 'psource-chat' ); ?></h2>
 				<?php } else { ?>
-					<h2><?php _e( 'Chat Basiseinstellungen', $psource_chat->translation_domain ); ?></h2>
+					<h2><?php _e( 'Chat Basiseinstellungen', 'psource-chat' ); ?></h2>
 				<?php } ?>
 
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
 
 					<p><?php _e( 'Die folgenden Einstellungen werden für alle Chat-Sitzungstypen verwendet (Seite, Site, Privat, Support).',
-							$psource_chat->translation_domain ); ?></p>
+							'psource-chat' ); ?></p>
 
 					<div id="chat_tab_pane" class="chat_tab_pane">
 						<ul>
 							<li id="psource_chat_interval_tab"><a href="#psource_chat_interval_panel"><span><?php
-										_e( 'Abfrageintervalle', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Abfrageintervalle', 'psource-chat' ); ?></span></a></li>
 							<?php if ( ! is_network_admin() ) { ?>
 								<li id="psource_chat_google_plus_tab"><a href="#psource_chat_google_plus_panel"><span><?php
-											_e( 'Google+', $psource_chat->translation_domain ); ?></span></a></li>
+											_e( 'Google+', 'psource-chat' ); ?></span></a></li>
 								<li id="psource_chat_facebook_tab"><a href="#psource_chat_facebook_panel"><span><?php
-											_e( 'Facebook', $psource_chat->translation_domain ); ?></span></a></li>
+											_e( 'Facebook', 'psource-chat' ); ?></span></a></li>
 								<li id="psource_chat_twitter_tab"><a href="#psource_chat_twitter_panel"><span><?php
-											_e( 'Twitter', $psource_chat->translation_domain ); ?></span></a></li>
+											_e( 'Twitter', 'psource-chat' ); ?></span></a></li>
 								<li id="psource_chat_blocked_ip_addresses_tab">
 									<a href="#psource_chat_blocked_ip_addresses_panel"><span><?php
-											_e( 'Blockiere IP/User', $psource_chat->translation_domain ); ?></span></a></li>
+											_e( 'Blockiere IP/User', 'psource-chat' ); ?></span></a></li>
 								<li id="psource_chat_blocked_words_tab">
 									<a href="#psource_chat_blocked_words_panel"><span><?php
-											_e( 'Blockierte Wörter', $psource_chat->translation_domain ); ?></span></a></li>
+											_e( 'Blockierte Wörter', 'psource-chat' ); ?></span></a></li>
 								<li id="psource_chat_wp_tab"><a href="#psource_chat_blocked_urls"><span><?php
-											_e( 'Blockierte URLs', $psource_chat->translation_domain ); ?></span></a></li>
+											_e( 'Blockierte URLs', 'psource-chat' ); ?></span></a></li>
 								<li id="chat_wpadmin_tab"><a href="#chat_wpadmin_panel"><span><?php
-											_e( 'WPAdmin', $psource_chat->translation_domain ); ?></span></a></li>
+											_e( 'WPAdmin', 'psource-chat' ); ?></span></a></li>
 								<?php if ( $buddypress_active ) { ?>
 									<li>
-										<a href="#psource_chat_buddypress_panel"><span><?php _e( 'BuddyPress', $psource_chat->translation_domain ); ?></span></a>
+										<a href="#psource_chat_buddypress_panel"><span><?php _e( 'BuddyPress', 'psource-chat' ); ?></span></a>
 									</li>
 								<?php } ?>
 							<?php } ?>
@@ -437,7 +437,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 							</div>
 							<?php if ( $buddypress_active ) { ?>
 								<div id="psource_chat_buddypress_panel" class="chat_panel">
-									<p class="info"><?php _e( 'In diesem Abschnitt wird gesteuert, wie der Chat im BuddyPress-System funktioniert. Dies sind globale Einstellungen, die sich auf alle Gruppen auswirken', $psource_chat->translation_domain ); ?></p>
+									<p class="info"><?php _e( 'In diesem Abschnitt wird gesteuert, wie der Chat im BuddyPress-System funktioniert. Dies sind globale Einstellungen, die sich auf alle Gruppen auswirken', 'psource-chat' ); ?></p>
 									<?php psource_chat_form_section_buddypress_group_information( $form_section ); ?>
 									<?php psource_chat_form_section_buddypress_group_hide_site( $form_section ); ?>
 									<?php psource_chat_form_section_buddypress_group_hide_widget( $form_section ); ?>
@@ -449,7 +449,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					<input type="hidden" name="chat[section]" value="<?php echo $form_section; ?>"/>
 					<?php wp_nonce_field( 'psource_chat_settings_save', 'psource_chat_settings_save_wpnonce' ); ?>
 					<p class="submit"><input type="submit" name="Submit" class="button-primary"
-					                         value="<?php _e( 'Änderungen speichern', $psource_chat->translation_domain ) ?>"/>
+					                         value="<?php _e( 'Änderungen speichern', 'psource-chat' ) ?>"/>
 					</p>
 				</form>
 			</div>
@@ -472,10 +472,10 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 				<div id="psource-chat-messages-listing-panel"
 				     class="wrap psource-chat-wrap psource-chat-wrap-settings-page">
 					<?php //screen_icon('psource-chat'); ?>
-					<h2><?php _ex( "Chat-Sitzung", "Page Title", $psource_chat->translation_domain ); ?></h2>
+					<h2><?php _ex( "Chat-Sitzung", "Page Title", 'psource-chat' ); ?></h2>
 
 					<p>
-						<a href="admin.php?page=chat_session_logs"><?php _e( 'Return to Logs', $psource_chat->translation_domain ); ?></a>
+						<a href="admin.php?page=chat_session_logs"><?php _e( 'Return to Logs', 'psource-chat' ); ?></a>
 					</p>
 					<?php
 					if ( ( isset( $_GET['chat_id'] ) ) && ( ! empty( $_GET['chat_id'] ) ) ) {
@@ -513,10 +513,10 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 				<div id="psource-chat-messages-listing-panel"
 				     class="wrap psource-chat-wrap psource-chat-wrap-settings-page">
 					<?php //screen_icon('psource-chat'); ?>
-					<h2><?php _ex( "Chat-Sitzungsnachrichten", "Page Title", $psource_chat->translation_domain ); ?></h2>
+					<h2><?php _ex( "Chat-Sitzungsnachrichten", "Page Title", 'psource-chat' ); ?></h2>
 
 					<p>
-						<a href="admin.php?page=chat_session_logs"><?php _e( 'Zurück zu den Protokollen', $psource_chat->translation_domain ); ?></a>
+						<a href="admin.php?page=chat_session_logs"><?php _e( 'Zurück zu den Protokollen', 'psource-chat' ); ?></a>
 					</p>
 					<?php
 					//require_once( dirname(__FILE__) . '/psource_chat_admin_session_messages.php');
@@ -526,7 +526,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					if ( ( isset( $psource_chat->chat_log_list_table->log_item->deleted ) ) && ( $psource_chat->chat_log_list_table->log_item->deleted == 'yes' ) ) {
 						?>
 						<div id='chat-error' class='error fade'>
-						<p><?php _e( 'Diese gesamte Chat-Sitzung ist als ausgeblendet markiert. Es wird nicht in öffentlichen Protokollen angezeigt. Du kannst weiterhin einzelne Nachrichten unten ein-/ausblenden oder löschen.', $psource_chat->translation_domain ); ?></p>
+						<p><?php _e( 'Diese gesamte Chat-Sitzung ist als ausgeblendet markiert. Es wird nicht in öffentlichen Protokollen angezeigt. Du kannst weiterhin einzelne Nachrichten unten ein-/ausblenden oder löschen.', 'psource-chat' ); ?></p>
 						</div><?php
 					}
 
@@ -554,9 +554,9 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 				<div id="psource-chat-messages-listing-panel"
 				     class="wrap psource-chat-wrap psource-chat-wrap-settings-page">
 					<?php //screen_icon('psource-chat'); ?>
-					<h2><?php _ex( "Chat-Sitzungsprotokolle", "Page Title", $psource_chat->translation_domain ); ?></h2>
+					<h2><?php _ex( "Chat-Sitzungsprotokolle", "Page Title", 'psource-chat' ); ?></h2>
 
-					<p><?php _ex( "", 'page description', $psource_chat->translation_domain ); ?></p>
+					<p><?php _ex( "", 'page description', 'psource-chat' ); ?></p>
 					<?php
 					//require_once( dirname(__FILE__) . '/psource_chat_admin_session_logs.php');
 					//$this->_logs_table = new PSOURCEChat_Session_Logs_Table( );
@@ -581,31 +581,31 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 
 			?>
 			<div id="psource-chat-wrap" class="wrap psource-chat-wrap-settings-page">
-				<h2><?php _e( 'Chat-Einstellungen Netzwerkseite', $psource_chat->translation_domain ); ?></h2>
+				<h2><?php _e( 'Chat-Einstellungen Netzwerkseite', 'psource-chat' ); ?></h2>
 
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
 
-					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um die untere Ecke für alle Standorte in der Multisite-Umgebung zu steuern. Dieser Chat in der unteren Ecke ist global, dh, die Nachrichten sind auf allen Websites innerhalb der URLs des Multisite-Netzwerks gleich. Nach der Aktivierung ersetzt dieses Chatfeld in der unteren Ecke des Netzwerks das Chatfeld in der unteren Ecke der Site.', $psource_chat->translation_domain ); ?></p>
+					<p><?php _e( 'Die folgenden Einstellungen werden verwendet, um die untere Ecke für alle Standorte in der Multisite-Umgebung zu steuern. Dieser Chat in der unteren Ecke ist global, dh, die Nachrichten sind auf allen Websites innerhalb der URLs des Multisite-Netzwerks gleich. Nach der Aktivierung ersetzt dieses Chatfeld in der unteren Ecke des Netzwerks das Chatfeld in der unteren Ecke der Site.', 'psource-chat' ); ?></p>
 
 					<div id="chat_tab_pane" class="chat_tab_pane">
 						<ul>
 							<li id="chat_bottom_corner_tab"><a href="#chat_bottom_corner_panel" class="current"><span><?php
-										_e( 'Untere Ecke', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Untere Ecke', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_box_appearance_tab"><a href="#chat_box_appearance_panel" class="current"><span><?php
-										_e( 'Box Aussehen', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Aussehen', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_box_position_tab"><a href="#chat_box_position_panel"><span><?php
-										_e( 'Box Position', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Position', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_messages_appearance_tab"><a href="#chat_messages_appearance_panel"><span><?php
-										_e( 'Nachricht Aussehen', $psource_chat->translation_domain ); ?></span></a>
+										_e( 'Nachricht Aussehen', 'psource-chat' ); ?></span></a>
 							</li>
 							<li id="chat_messages_input_tab"><a href="#chat_messages_input_panel"><span><?php
-										_e( 'Nachrichteneingabe', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Nachrichteneingabe', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_users_list_tab"><a href="#chat_users_list_panel"><span><?php
-										_e( 'Benutzerliste', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Benutzerliste', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_authentication_tab"><a href="#chat_authentication_panel"><span><?php
-										_e( 'Authentifizierung', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Authentifizierung', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Erweitert', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Erweitert', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_bottom_corner_panel" class="panel current">
 							<?php psource_chat_form_section_bottom_corner( $form_section ); ?>
@@ -647,7 +647,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					<input type="hidden" name="chat[section]" value="<?php echo $form_section; ?>"/>
 					<?php wp_nonce_field( 'psource_chat_settings_save', 'psource_chat_settings_save_wpnonce' ); ?>
 					<p class="submit"><input type="submit" name="Submit" class="button-primary"
-					                         value="<?php _e( 'Änderungen speichern', $psource_chat->translation_domain ) ?>"/>
+					                         value="<?php _e( 'Änderungen speichern', 'psource-chat' ) ?>"/>
 					</p>
 
 				</form>
@@ -663,39 +663,39 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 			?>
 			<div id="psource-chat-wrap" class="wrap psource-chat-wrap-settings-page">
 				<?php if ( is_network_admin() ) { ?>
-					<h2><?php _e( 'Chat-Einstellungen Netzwerk-Dashboard-Widgets', $psource_chat->translation_domain ); ?></h2>
+					<h2><?php _e( 'Chat-Einstellungen Netzwerk-Dashboard-Widgets', 'psource-chat' ); ?></h2>
 				<?php } else { ?>
-					<h2><?php _e( 'Chat-Einstellungen Dashboard-Widgets', $psource_chat->translation_domain ); ?></h2>
+					<h2><?php _e( 'Chat-Einstellungen Dashboard-Widgets', 'psource-chat' ); ?></h2>
 				<?php } ?>
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
 
 					<?php if ( is_network_admin() ) { ?>
-						<p><?php _e( 'Dieser Abschnitt steuert die Sichtbarkeit von Netzwerk-Dashboard-Chat-Widgets', $psource_chat->translation_domain ); ?></p>
+						<p><?php _e( 'Dieser Abschnitt steuert die Sichtbarkeit von Netzwerk-Dashboard-Chat-Widgets', 'psource-chat' ); ?></p>
 					<?php } else { ?>
-						<p><?php _e( 'Dieser Abschnitt steuert die Sichtbarkeit von Dashboard-Chat-Widgets', $psource_chat->translation_domain ); ?></p>
+						<p><?php _e( 'Dieser Abschnitt steuert die Sichtbarkeit von Dashboard-Chat-Widgets', 'psource-chat' ); ?></p>
 					<?php } ?>
 					<div id="chat_tab_pane" class="chat_tab_pane">
 						<ul>
 							<li id="chat_widgets_tab"><a href="#chat_widgets_panel" class="current"><span><?php
-										_e( 'Widgets', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Widgets', 'psource-chat' ); ?></span></a></li>
 
 							<li id="chat_box_appearance_tab"><a href="#chat_box_appearance_panel"><span><?php
-										_e( 'Box Aussehen', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Box Aussehen', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_messages_appearance_tab"><a href="#chat_messages_appearance_panel"><span><?php
-										_e( 'Nachricht Aussehen', $psource_chat->translation_domain ); ?></span></a>
+										_e( 'Nachricht Aussehen', 'psource-chat' ); ?></span></a>
 							</li>
 							<li id="chat_messages_input_tab"><a href="#chat_messages_input_panel"><span><?php
-										_e( 'Nachrichteneingabe', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Nachrichteneingabe', 'psource-chat' ); ?></span></a></li>
 							<li id="chat_users_list_tab"><a href="#chat_users_list_panel"><span><?php
-										_e( 'Benutzerliste', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Benutzerliste', 'psource-chat' ); ?></span></a></li>
 
 							<?php if ( ! is_network_admin() ) { ?>
 								<li id="chat_authentication_tab"><a href="#chat_authentication_panel"><span><?php
-											_e( 'Authentifizierung', $psource_chat->translation_domain ); ?></span></a>
+											_e( 'Authentifizierung', 'psource-chat' ); ?></span></a>
 								</li>
 							<?php } ?>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Advanced', $psource_chat->translation_domain ); ?></span></a></li>
+										_e( 'Advanced', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_widgets_panel" class="panel current">
 							<?php psource_chat_form_section_dashboard( $form_section ); ?>
@@ -732,7 +732,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 					<input type="hidden" name="chat[section]" value="<?php echo $form_section; ?>"/>
 					<?php wp_nonce_field( 'psource_chat_settings_save', 'psource_chat_settings_save_wpnonce' ); ?>
 					<p class="submit"><input type="submit" name="Submit" class="button-primary"
-					                         value="<?php _e( 'Änderungen speichern', $psource_chat->translation_domain ) ?>"/>
+					                         value="<?php _e( 'Änderungen speichern', 'psource-chat' ) ?>"/>
 					</p>
 
 				</form>

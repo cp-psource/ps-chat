@@ -108,7 +108,7 @@ function psource_chat_wpadminbar_render() {
 				'parent' => false,
 				'id'     => $_parent_menu_id,
 				'title'  => '<span class="psource-chat-user-status-current"><span class="psource-chat-ab-icon psource-chat-ab-icon-' . $chat_user_status
-				            . '"></span><span class="psource-chat-ab-label">' . __( 'Chat', $psource_chat->translation_domain ) . '</span>'
+				            . '"></span><span class="psource-chat-ab-label">' . __( 'Chat', 'psource-chat' ) . '</span>'
 				            . '</span>',
 				'href'   => false,
 			) );
@@ -116,7 +116,7 @@ function psource_chat_wpadminbar_render() {
 			$wp_admin_bar->add_menu( array(
 				'parent' => $_parent_menu_id,
 				'id'     => 'psource-chat-user-statuses',
-				'title'  => __( 'Chat Status', $psource_chat->translation_domain ) . ' - <span class="psource-chat-current-status-label psource-chat-ab-label">' .
+				'title'  => __( 'Chat Status', 'psource-chat' ) . ' - <span class="psource-chat-current-status-label psource-chat-ab-label">' .
 				            $psource_chat->_chat_options['user-statuses'][ $chat_user_status ] . '</span>',
 				'href'   => false
 			) );
@@ -126,7 +126,7 @@ function psource_chat_wpadminbar_render() {
 					continue;
 				}
 
-				$sub_menu_meta_title  = __( 'Wechsle Chat Status auf', $psource_chat->translation_domain ) . ' ' . $status_label;
+				$sub_menu_meta_title  = __( 'Wechsle Chat Status auf', 'psource-chat' ) . ' ' . $status_label;
 				$sub_menu_meta_status = '<span class="psource-chat-ab-icon psource-chat-ab-icon-' . $status_key . '"></span><span class="psource-chat-ab-label">' .
 				                        $status_label . '</span>';
 				$sub_menu_meta_rel    = $status_key;
@@ -142,7 +142,7 @@ function psource_chat_wpadminbar_render() {
 			$wp_admin_bar->add_menu( array(
 				'parent' => false,
 				'id'     => $_parent_menu_id,
-				'title'  => '<span class="psource-chat-ab-label">' . __( 'Chat', $psource_chat->translation_domain ) . '</span>',
+				'title'  => '<span class="psource-chat-ab-label">' . __( 'Chat', 'psource-chat' ) . '</span>',
 				'href'   => false,
 			) );
 		}
@@ -199,7 +199,7 @@ function psource_chat_wpadminbar_menu_friends( $_parent_menu_id = '', $user_id =
 		$wp_admin_bar->add_menu( array(
 			'parent' => $_parent_menu_id,
 			'id'     => 'psource-chat-user-friends',
-			'title'  => __( 'Freunde Online', $psource_chat->translation_domain ),
+			'title'  => __( 'Freunde Online', 'psource-chat' ),
 			'href'   => false
 		) );
 		$has_friends = false;
@@ -228,7 +228,7 @@ function psource_chat_wpadminbar_menu_friends( $_parent_menu_id = '', $user_id =
 		if ( $has_friends == false ) {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'psource-chat-user-friends',
-				'title'  => __( 'Keine', $psource_chat->translation_domain ),
+				'title'  => __( 'Keine', 'psource-chat' ),
 				'id'     => 'none'
 			) );
 		}
@@ -237,13 +237,13 @@ function psource_chat_wpadminbar_menu_friends( $_parent_menu_id = '', $user_id =
 		$wp_admin_bar->add_menu( array(
 			'parent' => $_parent_menu_id,
 			'id'     => 'psource-chat-user-friends',
-			'title'  => __( 'Freunde Online', $psource_chat->translation_domain ),
+			'title'  => __( 'Freunde Online', 'psource-chat' ),
 			'href'   => false
 		) );
 
 		$wp_admin_bar->add_menu( array(
 			'parent' => 'psource-chat-user-friends',
-			'title'  => __( 'Keine', $psource_chat->translation_domain ),
+			'title'  => __( 'Keine', 'psource-chat' ),
 			'id'     => 'none'
 		) );
 	}
@@ -292,7 +292,7 @@ function psource_chat_get_chat_status_data( $user_id, $friend ) {
 		$chat_status_array['href_class'] = 'psource-chat-user-invite';
 	} else {
 		$chat_status_array['href']       = '';
-		$chat_status_array['href_title'] = $psource_chat->_chat_options['user-statuses'][ $friend->chat_status ]; //__('Chat - Offline', $psource_chat->translation_domain);
+		$chat_status_array['href_title'] = $psource_chat->_chat_options['user-statuses'][ $friend->chat_status ]; //__('Chat - Offline', 'psource-chat');
 		$chat_status_array['href_class'] = '';
 	}
 
@@ -343,7 +343,7 @@ function psource_chat_wpadminbar_menu_invites( $_parent_menu_id = '', $user_id =
 		$wp_admin_bar->add_menu( array(
 			'parent' => $_parent_menu_id,
 			'id'     => 'psource-chat-user-invites',
-			'title'  => __( 'Einladungen', $psource_chat->translation_domain ),
+			'title'  => __( 'Einladungen', 'psource-chat' ),
 			'href'   => '#'
 		) );
 
@@ -352,7 +352,7 @@ function psource_chat_wpadminbar_menu_invites( $_parent_menu_id = '', $user_id =
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'psource-chat-user-invites',
 				'id'     => 'psource-chat-user-invites-from',
-				'title'  => __( 'Von', $psource_chat->translation_domain ),
+				'title'  => __( 'Von', 'psource-chat' ),
 				'href'   => '#'
 			) );
 			foreach ( $invites['from'] as $invite_user_id => $invite ) {
@@ -369,7 +369,7 @@ function psource_chat_wpadminbar_menu_invites( $_parent_menu_id = '', $user_id =
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'psource-chat-user-invites',
 				'id'     => 'psource-chat-user-invites-to',
-				'title'  => __( 'To', $psource_chat->translation_domain ),
+				'title'  => __( 'To', 'psource-chat' ),
 				'href'   => '#'
 			) );
 			foreach ( $invites['to'] as $invite_user_id => $invite ) {

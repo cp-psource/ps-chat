@@ -76,7 +76,7 @@ class PSOURCE_Chat_BuddyPress extends BP_Group_Extension {
 		}
 
 		?><p><label for="<?php echo $this->settings_slug; ?>_enable"><input type="checkbox" name="<?php echo $this->settings_slug; ?>_enable" <?php echo $checked; ?>
-			id="<?php echo $this->settings_slug; ?>_enable" /> <?php _e("Enable Group Chat", $psource_chat->translation_domain); ?></label></p><?php
+			id="<?php echo $this->settings_slug; ?>_enable" /> <?php _e("Enable Group Chat", 'psource-chat'); ?></label></p><?php
 	}
 
 
@@ -242,7 +242,7 @@ class PSOURCE_Chat_BuddyPress extends BP_Group_Extension {
 			}
 			echo $psource_chat->process_chat_shortcode($atts);
 		} else {
-			?><p><?php _e('You must be a member of this group to use Chat', $psource_chat->translation_domain); ?></p><?php
+			?><p><?php _e('You must be a member of this group to use Chat', 'psource-chat'); ?></p><?php
 		}
     }
 

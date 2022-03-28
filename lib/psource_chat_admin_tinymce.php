@@ -180,7 +180,7 @@
 		}
 
 	</script>
-	<title><?php _e( 'WordPress Chat', $this->translation_domain ); ?></title>
+	<title><?php _e( 'WordPress Chat', 'psource-chat' ); ?></title>
 </head>
 <body style="display: none">
 <div id="psource-chat-wrap" class="wrap psource-chat-wrap-popup">
@@ -189,32 +189,32 @@
 			<ul>
 				<li id="psource-chat-box-appearance-tab" class="current"><span><a
 							href="javascript:mcTabs.displayTab('psource-chat-box-appearance-tab', 'psource-chat-box-appearance-panel');"
-							onmousedown="return false;"><?php _e( 'Box Darstellung', $this->translation_domain ); ?></a></span>
+							onmousedown="return false;"><?php _e( 'Box Darstellung', 'psource-chat' ); ?></a></span>
 				</li>
 
 				<li id="psource-chat-messages-appearance-tab"><span><a
 							href="javascript:mcTabs.displayTab('psource-chat-messages-appearance-tab', 'psource-chat-messages-appearance-panel');"
-							onmousedown="return false;"><?php _e( 'Nachricht Darstellung', $this->translation_domain ); ?></a></span>
+							onmousedown="return false;"><?php _e( 'Nachricht Darstellung', 'psource-chat' ); ?></a></span>
 				</li>
 
 				<li id="psource-chat-messages-input-tab"><span><a
 							href="javascript:mcTabs.displayTab('psource-chat-messages-input-tab', 'psource-chat-messages-input-panel');"
-							onmousedown="return false;"><?php _e( 'Nachrichteneingabe', $this->translation_domain ); ?></a></span>
+							onmousedown="return false;"><?php _e( 'Nachrichteneingabe', 'psource-chat' ); ?></a></span>
 				</li>
 
 				<li id="psource-chat-users-list-tab"><span><a
 							href="javascript:mcTabs.displayTab('psource-chat-users-list-tab', 'psource-chat-users-list-panel');"
-							onmousedown="return false;"><?php _e( 'Benutzerliste', $this->translation_domain ); ?></a></span>
+							onmousedown="return false;"><?php _e( 'Benutzerliste', 'psource-chat' ); ?></a></span>
 				</li>
 
 				<li id="psource-chat-authentication-tab"><span><a
 							href="javascript:mcTabs.displayTab('psource-chat-authentication-tab', 'psource-chat-authentication-panel');"
-							onmousedown="return false;"><?php _e( 'Authentication', $this->translation_domain ); ?></a></span>
+							onmousedown="return false;"><?php _e( 'Authentication', 'psource-chat' ); ?></a></span>
 				</li>
 
 				<li id="psource-chat-advanced-tab"><span><a
 							href="javascript:mcTabs.displayTab('psource-chat-advanced-tab', 'psource-chat-advanced-panel');"
-							onmousedown="return false;"><?php _e( 'Fortgeschritten', $this->translation_domain ); ?></a></span>
+							onmousedown="return false;"><?php _e( 'Fortgeschritten', 'psource-chat' ); ?></a></span>
 				</li>
 			</ul>
 		</div>
@@ -258,18 +258,18 @@
 		<div class="mceActionPanel">
 			<div style="float: left; width: 40%;">
 				<input type="button" id="cancel" name="cancel"
-					value="<?php _e( 'Abbrechen', $this->translation_domain ); ?>"
-					title="<?php _e( 'Änderung abbrechen und Popup schließen', $this->translation_domain ); ?>"
+					value="<?php _e( 'Abbrechen', 'psource-chat' ); ?>"
+					title="<?php _e( 'Änderung abbrechen und Popup schließen', 'psource-chat' ); ?>"
 					onclick="tinyMCEPopup.close();"/>
 			</div>
 
 			<div style="float: right; width: 60%;">
 				<input type="submit" id="reset" class="mceButton" name="reset" style="float: right;"
-					value="<?php _e( 'Standards', $this->translation_domain ); ?>"
-					title="<?php _e( 'Setze den Shortcode auf die Standardwerte zurück', $this->translation_domain ); ?>"/>
+					value="<?php _e( 'Standards', 'psource-chat' ); ?>"
+					title="<?php _e( 'Setze den Shortcode auf die Standardwerte zurück', 'psource-chat' ); ?>"/>
 				<input type="submit" id="insert" name="insert" style="float: right;"
-					value="<?php _e( 'Einfügen', $this->translation_domain ); ?>"
-					title="<?php _e( 'Speichere die Einstellungen und füge den Shortcode am Cursor ein', $this->translation_domain ); ?>"/>
+					value="<?php _e( 'Einfügen', 'psource-chat' ); ?>"
+					title="<?php _e( 'Speichere die Einstellungen und füge den Shortcode am Cursor ein', 'psource-chat' ); ?>"/>
 			</div>
 			<br />
 		</div>

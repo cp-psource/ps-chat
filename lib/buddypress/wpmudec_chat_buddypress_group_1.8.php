@@ -46,7 +46,7 @@ class PSOURCE_Chat_BuddyPress extends BP_Group_Extension {
 					'name'        => $this->name,
 					// Changes the text of the Submit button
 					// on the Edit page
-					'submit_text' => __( 'Speichern', $psource_chat->translation_domain ),
+					'submit_text' => __( 'Speichern', 'psource-chat' ),
 				),
 				'create' => array(
 					'position' => $this->create_step_position,
@@ -84,7 +84,7 @@ class PSOURCE_Chat_BuddyPress extends BP_Group_Extension {
 		?><p>
 		<label for="<?php echo self::settings_slug; ?>_enable">
 			<input type="checkbox" name="<?php echo self::settings_slug; ?>_enable" <?php echo $checked; ?>
-			       id="<?php echo self::settings_slug; ?>_enable"/> <?php _e( "Gruppenchat aktivieren", $psource_chat->translation_domain ); ?>
+			       id="<?php echo self::settings_slug; ?>_enable"/> <?php _e( "Gruppenchat aktivieren", 'psource-chat' ); ?>
 		</label></p><?php
 	}
 
@@ -119,7 +119,7 @@ class PSOURCE_Chat_BuddyPress extends BP_Group_Extension {
 			echo $psource_chat->process_chat_shortcode( $atts );
 		} else {
 			?>
-			<p><?php _e( 'Du musst Mitglied dieser Gruppe sein, um den Chat nutzen zu können', $psource_chat->translation_domain ); ?></p><?php
+			<p><?php _e( 'Du musst Mitglied dieser Gruppe sein, um den Chat nutzen zu können', 'psource-chat' ); ?></p><?php
 		}
 	}
 
