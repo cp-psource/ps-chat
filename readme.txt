@@ -47,6 +47,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 2.4.3 = DerN3rd =
+
+* Plugin Textdomain Angepasst
+
 = 2.4.2 = DerN3rd =
 
 * Admin Dashicon hinzugefügt
