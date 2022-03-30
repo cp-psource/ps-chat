@@ -60,7 +60,14 @@ if ( $_POST['function'] !== "chat_messages_update" ) {
 	if ( file_exists( ABSPATH . WPINC . '/rest-api.php' ) ) {
 		require( ABSPATH . WPINC . '/rest-api.php' );
 	}
-	if ( file_exists( ABSPATH . WPINC . '/session.php' ) ) {
+	/* Deprecated mit WP 4.8 */
+	/*if ( file_exists( ABSPATH . WPINC . '/session.php' ) ) {
+		require( ABSPATH . WPINC . '/session.php' );
+	}*/
+	if (file_exists(ABSPATH.WPINC.'/class-wp-session-tokens.php')) {
+		requireIfExists('class-wp-session-tokens.php');
+		requireIfExists('class-wp-user-meta-session-tokens.php');
+	} else {
 		require( ABSPATH . WPINC . '/session.php' );
 	}
 	require( ABSPATH . WPINC . '/meta.php' );

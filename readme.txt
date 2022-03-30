@@ -50,6 +50,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 2.4.3 = DerN3rd =
 
 * Plugin Textdomain Angepasst
+* Fix: Deprecated session.php
 
 = 2.4.2 = DerN3rd =
 
