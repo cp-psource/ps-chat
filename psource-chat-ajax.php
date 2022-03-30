@@ -64,9 +64,9 @@ if ( $_POST['function'] !== "chat_messages_update" ) {
 	/*if ( file_exists( ABSPATH . WPINC . '/session.php' ) ) {
 		require( ABSPATH . WPINC . '/session.php' );
 	}*/
-	if (file_exists(ABSPATH.WPINC.'/class-wp-session-tokens.php')) {
-		requireIfExists('class-wp-session-tokens.php');
-		requireIfExists('class-wp-user-meta-session-tokens.php');
+	if (file_exists(ABSPATH . WPINC.'/class-wp-session-tokens.php')) {
+		requireIffile_exists('class-wp-session-tokens.php');
+		requireIffile_exists('class-wp-user-meta-session-tokens.php');
 	} else {
 		require( ABSPATH . WPINC . '/session.php' );
 	}
