@@ -64,10 +64,11 @@ if ( $_POST['function'] !== "chat_messages_update" ) {
 	/*if ( file_exists( ABSPATH . WPINC . '/session.php' ) ) {
 		require( ABSPATH . WPINC . '/session.php' );
 	}*/
-	if (file_exists(ABSPATH . WPINC.'/class-wp-session-tokens.php')) {
-		requireIffile_exists('class-wp-session-tokens.php');
-		requireIffile_exists('class-wp-user-meta-session-tokens.php');
-	} else {
+	//Since WordPress 4.7
+	if ( file_exists( ABSPATH . WPINC . '/class-wp-session-tokens.php' ) ) {
+		require_once( ABSPATH . WPINC . '/class-wp-session-tokens.php' );
+		require_once( ABSPATH . WPINC . '/class-wp-user-meta-session-tokens.php' );
+	} elseif ( file_exists( ABSPATH . WPINC . '/session.php' ) ) {
 		require( ABSPATH . WPINC . '/session.php' );
 	}
 	require( ABSPATH . WPINC . '/meta.php' );
