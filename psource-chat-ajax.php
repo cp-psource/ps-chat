@@ -113,8 +113,8 @@ if ( $_POST['function'] !== "chat_messages_update" ) {
 	}
 	unset( $locale_file );
 
-	// Pull in locale data after loading text domain.
-	require_once( ABSPATH . WPINC . '/locale.php' );
+	// Pull in locale data after loading text domain. -> Deprecated
+	//require_once( ABSPATH . WPINC . '/locale.php' );
 
 	/**
 	 * WordPress Locale object for loading locale domain date and various strings.
