@@ -47,7 +47,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
-= 2.4.3 = DerN3rd =
+= 2.4.4 = DerN3rd =
 
 * Fix: Deprecated locale.php
 * Neues Options-Icon
