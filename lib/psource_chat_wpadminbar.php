@@ -395,7 +395,7 @@ function psource_chat_get_invites( $user_id = 0 ) {
 	return get_user_meta( $user_id, 'psource_chat_invites', true );
 }
 
-function psource_chat_update_invites( $user_id = 0, $invites ) {
+function psource_chat_update_invites( $invites, $user_id = 0  ) {
 	if ( ! $user_id ) {
 		$user_id = get_current_user_id();
 	}

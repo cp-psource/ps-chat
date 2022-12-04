@@ -60,10 +60,10 @@ if ( $_POST['function'] !== "chat_messages_update" ) {
 	if ( file_exists( ABSPATH . WPINC . '/rest-api.php' ) ) {
 		require( ABSPATH . WPINC . '/rest-api.php' );
 	}
-	/* Deprecated mit WP 4.8 */
-	/*if ( file_exists( ABSPATH . WPINC . '/session.php' ) ) {
+	
+	if ( file_exists( ABSPATH . WPINC . '/session.php' ) ) {
 		require( ABSPATH . WPINC . '/session.php' );
-	}*/
+	}
 	//Since WordPress 4.7
 	if ( file_exists( ABSPATH . WPINC . '/class-wp-session-tokens.php' ) ) {
 		require_once( ABSPATH . WPINC . '/class-wp-session-tokens.php' );
