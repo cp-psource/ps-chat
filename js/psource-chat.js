@@ -31,7 +31,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             psource_chat_localized['settings']['session_poll_interval_user'] = 5;
         }
 
-        jQuery(window).resize(function () {
+        jQuery(window).addEventListener('resize',function () {
             psource_chat.chat_session_size_box();
         });
         //console.log('wp_is_mobile['+psource_chat_localized['settings']['wp_is_mobile']+']');
