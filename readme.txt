@@ -52,6 +52,8 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Deprecated: Optional parameter Fix
 * Für PhP 8.1 getestet
 * Deprecated jQuery.fn.resize() Fix
+* Deprecated .click() fix
+* Bugfix in Textstring
 
 = 2.4.4 = DerN3rd =
 

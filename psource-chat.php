@@ -2743,7 +2743,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					<tr>
 						<th>
 							<label
-								for="psource_chat_users_listing"><?php _e( 'Spalte "Chat-Status anzeigen" in der Liste "<br /> Benutzer>Alle Benutzer"?', 'psource-chat' ); ?></label>
+								for="psource_chat_users_listing"><?php _e( 'Spalte "Chat-Status anzeigen" in der Liste <br />"Benutzer > Alle Benutzer"?', 'psource-chat' ); ?></label>
 						</th>
 						<td>
 							<select name="psource_chat_user_settings[chat_users_listing]"
