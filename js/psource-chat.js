@@ -31,7 +31,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             psource_chat_localized['settings']['session_poll_interval_user'] = 5;
         }
 
-        jQuery(window).addEventListener('resize',function () {
+        jQuery(window).on( 'resize', function () {
             psource_chat.chat_session_size_box();
         });
         //console.log('wp_is_mobile['+psource_chat_localized['settings']['wp_is_mobile']+']');
@@ -1149,7 +1149,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         var chat_session = psource_chat.chat_session_get_session_by_id(chat_id);
 
         if (jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area button.psource-chat-send-button').length) {
-            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area button.psource-chat-send-button').click(function (event) {
+            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area button.psource-chat-send-button').on( "click", function (event) {
                 event.preventDefault();
 
                 var chat_textarea = jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area textarea.psource-chat-send');
@@ -1381,7 +1381,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         var selector = 'div#psource-chat-box-' + chat_id + '.psource-chat-box-moderator div.psource-chat-module-messages-list div.psource-chat-row ul.psource-chat-row-footer li.psource-chat-admin-actions-item a';
         jQuery(selector).off('click');
-        jQuery(selector).click(function (event) {
+        jQuery(selector).on( "click", function (event) {
             event.preventDefault();
 
             var row_id = jQuery(this).parents('.psource-chat-row').attr('id').replace('psource-chat-row-', '');
@@ -1702,7 +1702,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         // Then setup a new click binding.
         jQuery('div#psource-chat-box-' + chat_id + ' div.psource-chat-module-messages-list div.psource-chat-row p.psource-chat-message a.psource-chat-user').off('click');
-        jQuery('div#psource-chat-box-' + chat_id + ' div.psource-chat-module-messages-list div.psource-chat-row p.psource-chat-message a.psource-chat-user').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + ' div.psource-chat-module-messages-list div.psource-chat-row p.psource-chat-message a.psource-chat-user').on( "click", function (event) {
             event.preventDefault();
 
             var name_title = jQuery(this).attr('title');
@@ -1753,7 +1753,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                 jQuery('div#psource-chat-box-' + chat_id + ' div.psource-chat-module-users-list ul.psource-chat-' + user_type).append(user_html);
 
                 // Need to setup the click action...
-                jQuery('div#psource-chat-box-' + chat_id + ' div.psource-chat-module-users-list ul.psource-chat-' + user_type + ' li#psource-chat-user-' + user_id + ' a').click(function (event) {
+                jQuery('div#psource-chat-box-' + chat_id + ' div.psource-chat-module-users-list ul.psource-chat-' + user_type + ' li#psource-chat-user-' + user_id + ' a').on( "click", function (event) {
                     event.preventDefault();
                     var name_title = jQuery(this).attr('title');
                     if (name_title != '') {
@@ -2140,7 +2140,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         //console.log('setup for settings gear icon events');
         // Handle the Settings 'gear' click events. We use clicks instead of hover.
         jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu').css({display: "none"});
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button').on( "click", function (event) {
 
             event.preventDefault();
 
@@ -2160,18 +2160,18 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         // Handle the Emoticons click/hover.
         jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-emoticons ul.psource-chat-emoticons-list').css({display: "none"});
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-emoticons').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-emoticons').on( "click", function (event) {
             event.preventDefault();
             jQuery('ul.psource-chat-emoticons-list', this).slideToggle(400);
         });
         // Emoticons child item. When clicked will close the parent UL
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-emoticons ul.psource-chat-emoticons-list li').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-emoticons ul.psource-chat-emoticons-list li').on( "click", function (event) {
             event.preventDefault();
             event.stopPropagation();
             jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-emoticons ul.psource-chat-emoticons-list').css({display: "none"});
         });
 
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out a').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out a').on( "click", function (event) {
             event.preventDefault();
             var popup_href = jQuery(this).attr('href');
 
@@ -2213,7 +2213,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         if (jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box-private').hasClass('psource-chat-box-invite-pending')) {
-            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box-private.psource-chat-box-invite-pending div.psource-chat-module-invite-prompt button').click(function (event) {
+            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box-private.psource-chat-box-invite-pending div.psource-chat-module-invite-prompt button').on( "click", function (event) {
                 event.preventDefault();
                 if (jQuery(this).hasClass('psource-chat-invite-accept')) {
                     psource_chat.chat_session_update_user_invite_status(chat_id, 'accepted');
@@ -2231,7 +2231,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
 
         // Close the Pop-out window
-        jQuery('body.psource-chat-pop-out div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-in a').click(function (event) {
+        jQuery('body.psource-chat-pop-out div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-in a').on( "click", function (event) {
             event.preventDefault();
             window.close();
         });
@@ -2282,20 +2282,20 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         //if ((chat_session['session_type'] == 'private') || (chat_session['session_type'] == 'site')) {
         if (jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box').hasClass('psource-chat-box-can-minmax')) {
 
-            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max a').click(function (event) {
+            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max a').on( "click", function (event) {
                 //console.log('click event min-max [%o]', event);
                 event.preventDefault();
                 psource_chat.chat_session_site_change_minmax(chat_id, event);
             });
 
-            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box .psource-chat-module-header div.psource-chat-module-header-title').click(function (event) {
+            jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box .psource-chat-module-header div.psource-chat-module-header-title').on( "click", function (event) {
                 //console.log('click event min-max [%o]', event);
                 event.preventDefault();
                 psource_chat.chat_session_site_change_minmax(chat_id, event);
             });
         }
         /*
-         jQuery('div#psource-chat-box-'+chat_id+'.psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max a').click(function(event) {
+         jQuery('div#psource-chat-box-'+chat_id+'.psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max a').on( "click", function(event) {
          // FPM
          console.log('click event min-max [%o]', event);
 
@@ -2323,7 +2323,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
          */
 
         // Event handler when the login event is clicked
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-login a.psource-chat-action-login').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-login a.psource-chat-action-login').on( "click", function (event) {
             event.preventDefault();
 
             //Hide settings menu
@@ -2342,7 +2342,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         // Event handler when logout is clicked
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-logout a.psource-chat-action-logout').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-logout a.psource-chat-action-logout').on( "click", function (event) {
             event.preventDefault();
 
             if (psource_chat.settings['auth']['type'] == "wordpress") {
@@ -2389,7 +2389,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             return false;
         });
 
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-exit a.psource-chat-action-exit').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-exit a.psource-chat-action-exit').on( "click", function (event) {
             event.preventDefault();
 
             //var chat_id = jQuery(this).parents('.psource-chat-box').attr('id').replace('psource-chat-box-', '');
@@ -2397,7 +2397,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         // From the login form if the Cancel button is clicked. Cancel and return to default view.
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box button.psource-chat-login-cancel').click(function () {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box button.psource-chat-login-cancel').on( "click", function () {
             var chat_box = jQuery(this).parents('.psource-chat-box');
             jQuery('div.psource-chat-module-login', chat_box).hide();
             psource_chat.chat_session_set_auth_view();
@@ -2405,10 +2405,10 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         // Event handler for Sound Off/On click
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box a.psource-chat-action-sound').click(psource_chat.chat_session_site_change_sound);
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box a.psource-chat-action-sound').on( "click", psource_chat.chat_session_site_change_sound);
 
         // From the login form if the Submit button is clicked. Validate the info and take the needed action.
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box button.psource-chat-login-submit').click(function () {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box button.psource-chat-login-submit').on( "click", function () {
             var chat_box_id = jQuery(this).parents('.psource-chat-box').attr('id');
             //var chat_id 		= chat_box_id.replace('psource-chat-box-', '');
 
@@ -2433,7 +2433,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         //jQuery('div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta ul.psource-chat-emoticons-list img').off('click');
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta ul.psource-chat-emoticons-list li').click(function (event) {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta ul.psource-chat-emoticons-list li').on( "click", function (event) {
             var chat_box_id = jQuery(this).parents('.psource-chat-box').attr('id');
             //var chat_id 		= chat_box_id.replace('psource-chat-box-', '');
             //jQuery('#'+chat_box_id+'.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta ul.psource-chat-emoticons-list').css('display', 'none');
@@ -2460,7 +2460,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         // ADMIN: Session Open
         //jQuery('div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open a.psource-chat-action-session-open').off('click');
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open a.psource-chat-action-session-open').click(function () {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open a.psource-chat-action-session-open').on( "click", function () {
             var chat_session_status = 'open';
             //var chat_id 				= jQuery(this).parents('div.psource-chat-box').attr('id').replace('psource-chat-box-', '');
             psource_chat.chat_session_status_update(chat_id, chat_session_status);
@@ -2470,7 +2470,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         // ADMIN: Session Close
         //jQuery('div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed a.psource-chat-action-session-closed').off('click');
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed a.psource-chat-action-session-closed').click(function () {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed a.psource-chat-action-session-closed').on( "click", function () {
             var chat_session_status = 'closed';
             //var chat_id 				= jQuery(this).parents('div.psource-chat-box').attr('id').replace('psource-chat-box-', '');
             psource_chat.chat_session_status_update(chat_id, chat_session_status);
@@ -2479,7 +2479,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         // ADMIN: Clear menu options
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-clear a.psource-chat-action-session-clear').click(function () {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-clear a.psource-chat-action-session-clear').on( "click", function () {
             var chat_box_id = jQuery(this).parents('.psource-chat-box').attr('id');
 
             var chat_session = psource_chat.chat_session_get_session_by_id(chat_id);
@@ -2525,7 +2525,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         // ADMIN: Archive menu option
         //jQuery('div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-archive a.psource-chat-action-session-archive').off('click');
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-archive a.psource-chat-action-session-archive').click(function () {
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-archive a.psource-chat-action-session-archive').on( "click", function () {
             var chat_box_id = jQuery(this).parents('.psource-chat-box').attr('id');
             //var chat_id 		= chat_box_id.replace('psource-chat-box-', '');
 
@@ -2857,7 +2857,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
     chat_session_twitter_setup: function () {
         if (psource_chat_localized['settings']['twitter_active'] == 1) {
             //console.log('Twitter active');
-            jQuery('.psource-chat-box .psource-chat-module-login a.chat-twitter-signin-btn').click(function (event) {
+            jQuery('.psource-chat-box .psource-chat-module-login a.chat-twitter-signin-btn').on( "click", function (event) {
                 event.preventDefault();
                 //var popup_href = jQuery(this).attr('href');
                 if (window.location.search == "") {
@@ -2907,7 +2907,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             if (psource_chat.bound != true) {
                 psource_chat.bound = true;
 
-                jQuery('#wp-toolbar li#wp-admin-bar-psource-chat-container li#wp-admin-bar-psource-chat-user-statuses ul#wp-admin-bar-psource-chat-user-statuses-default li a.ab-item').click(function (event) {
+                jQuery('#wp-toolbar li#wp-admin-bar-psource-chat-container li#wp-admin-bar-psource-chat-user-statuses ul#wp-admin-bar-psource-chat-user-statuses-default li a.ab-item').on( "click", function (event) {
                     event.preventDefault();
                     var user_new_status = jQuery(this).parents('li').attr('id').replace('wp-admin-bar-psource-chat-user-status-change-', '');
                     //var user_new_status = jQuery(this).attr('rel');
@@ -2918,7 +2918,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                     return false;
                 });
 
-                jQuery('#wp-toolbar li#wp-admin-bar-psource-chat-container li#wp-admin-bar-psource-chat-user-friends ul.ab-submenu li a.psource-chat-user-invite').click(function (event) {
+                jQuery('#wp-toolbar li#wp-admin-bar-psource-chat-container li#wp-admin-bar-psource-chat-user-friends ul.ab-submenu li a.psource-chat-user-invite').on( "click", function (event) {
                     event.preventDefault();
                     var user_hash = jQuery(this).attr('rel');
                     user_hash = user_hash ? user_hash : '';
@@ -2936,7 +2936,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
     chat_privite_invite_click: function () {
         // Check for WPMU DEV Friends list page
         if (jQuery('div.friends-wrap').length) {
-            jQuery('div.friends-wrap a.psource-chat-user-invite').click(function (event) {
+            jQuery('div.friends-wrap a.psource-chat-user-invite').on( "click", function (event) {
                 event.preventDefault();
                 var user_hash = jQuery(this).attr('rel');
                 user_hash = user_hash ? user_hash : '';
@@ -2948,7 +2948,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         // Check for WP User List
         if (jQuery('body.users-php table.wp-list-table td.column-psource-chat-status').length) {
-            jQuery('body.users-php table.wp-list-table td.column-psource-chat-status a.psource-chat-user-invite').click(function (event) {
+            jQuery('body.users-php table.wp-list-table td.column-psource-chat-status a.psource-chat-user-invite').on( "click", function (event) {
                 event.preventDefault();
                 var user_hash = jQuery(this).attr('rel');
                 user_hash = user_hash ? user_hash : '';
@@ -2978,7 +2978,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         if (jQuery('.psource-chat-friends-widget').length) {
-            jQuery('.psource-chat-friends-widget a.psource-chat-user-invite').click(function (event) {
+            jQuery('.psource-chat-friends-widget a.psource-chat-user-invite').on( "click", function (event) {
                 event.preventDefault();
                 var user_hash = jQuery(this).attr('rel');
                 user_hash = user_hash ? user_hash : '';
@@ -3071,7 +3071,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         }
     },
     handle_private_chat_click: function ($selector) {
-        jQuery($selector).click(function (event) {
+        jQuery($selector).on( "click", function (event) {
             event.preventDefault();
             var user_hash = jQuery(this).attr('rel');
             user_hash = user_hash ? user_hash : '';

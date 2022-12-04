@@ -439,7 +439,7 @@ $(".psource-help").each(function () {
 
 // Handle help requests
 $(".psource-help-trigger")
-	.click(function (e) {
+	.on( "click", function (e) {
 <?php if ($this->_use_notice) { ?>
 		show_help_block($(this));
 <?php } ?>

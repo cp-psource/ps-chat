@@ -4,7 +4,7 @@
 	$(document).ready(function () {
 		
 		// When the 'Reset' form button is clicked we remove all shortcode parameters. This will foce the shortcode to inherit all settings
-		jQuery('input#reset').click(function() {
+		jQuery('input#reset').on( "click", function() {
 			output  = '[chat ';
 			if ((psource_chat_current_options.id != undefined) && (psource_chat_current_options.id != ''))
 				output = output+'id="'+psource_chat_current_options.id+'" ]';
@@ -23,7 +23,7 @@
 
 		// When the 'Insert' form button button is clicked we go through the form fields and check the value against the
 		// default options. If there is a difference we add that parameter set to the shortcode output
-		jQuery('input#insert').click(function() {
+		jQuery('input#insert').on( "click", function() {
 			output  ='[chat ';
 
 			//console.log('psource_chat_wp_user_level_10_roles[%o]', psource_chat_wp_user_level_10_roles);
