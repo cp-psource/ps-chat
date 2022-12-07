@@ -11,12 +11,12 @@ Domain Path: /languages
 */
 
 require 'psource/psource-plugin-update/psource-plugin-updater.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+use Psource\PluginUpdateChecker\v5\PucFactory;
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-chat', 
 	__FILE__, 
 	'ps-chat' 
 );
-
 
 // Needs to be set BEFORE loading psource_chat_utilities.php!
 //define('CHAT_DEBUG_LOG', 1);
