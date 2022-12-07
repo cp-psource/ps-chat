@@ -1498,22 +1498,21 @@ function psource_chat_form_section_polling_content( $form_section = 'global' ) {
 				<td class="chat-value-column"><?php
 					?><select id="chat_session_poll_type" name="chat[session_poll_type]">
 						<?php if ( $_use_plugin_ajax === true ) { ?>
-							<option value="plugin" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'plugin' ) ? 'selected="selected"' : ''; ?>><?php _e( 'Plugin AJAX', 'psource-chat' ); ?></option><?php
+							<option value="plugin" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'wordpress' ) ? 'selected="selected"' : ''; ?>><?php _e( 'System AJAX', 'psource-chat' ); ?></option><?php
 						} ?>
-						<option value="wordpress" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'wordpress' ) ? 'selected="selected"' : '';
-						?>><?php _e( 'WordPress AJAX', 'psource-chat' ); ?></option>
+						<option value="wordpress" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'plugin' ) ? 'selected="selected"' : ''; ?>><?php _e( 'PS-Chat AJAX', 'psource-chat' ); ?></option>
 					</select>
 				</td>
 				<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'session_poll_type', 'tip' ); ?></td>
 			</tr>
-			<?php /* ?>
+			<?php /*?>
 		<tr>
 			<td class="chat-label-column"><label for="chat_session_static_file_path"><?php _e('Static Files Directory',
 				'psource-chat'); ?></label></td>
 			<td class="chat-value-column">
 				<input type="text" id="chat_session_static_file_path" name="chat[session_static_file_path]"
 					value="<?php echo $psource_chat->get_option('session_static_file_path', $form_section); ?>" />
-				<p class="description"><?php _e('This static file directory should be writable and accessible at all times from the chat plugin.',
+				<p class="description"><?php _e('Dieses statische Dateiverzeichnis sollte beschreibbar und jederzeit über das Chat-Plugin zugänglich sein.',
 				 	'psource-chat'); ?></p>
 			</td>
 			<td class="chat-help-column"><?php echo psource_chat_get_help_item('session_static_file_path', 'tip'); ?></td>

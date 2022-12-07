@@ -4,7 +4,7 @@ Plugin Name: PS Chat
 Plugin URI: https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
 Author: Webmasterservice N3rds@Work
-Version: 2.4.4
+Version: 2.4.5
 Author URI: https://n3rds.work
 Text Domain: psource-chat
 Domain Path: /languages
@@ -30,7 +30,7 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 }
 if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
-		var $chat_current_version = '2.4.4';
+		var $chat_current_version = '2.4.5';
 		//var $translation_domain = 'psource-chat';
 
 		/**
@@ -1042,7 +1042,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'session_poll_interval_messages' => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_MESSAGES' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_MESSAGES : '3',
 				'session_poll_interval_invites'  => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_INVITES' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_INVITES : '3',
 				'session_poll_interval_meta'     => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_META' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_META : '5',
-				'session_poll_type'              => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE : 'plugin',
+				'session_poll_type'              => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE : 'wordpress',
 				'session_performance'            => 'disabled',
 				'twitter_api_key'                => '',
 				'twitter_api_secret'             => '',
@@ -1885,7 +1885,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		}
 
 		function set_chat_localized() {
-			if ( $this->get_option( 'session_poll_type', 'global' ) == "plugin" ) {
+			if ( $this->get_option( 'session_poll_type', 'global' ) == "wordpress" ) {
 				if ( psource_chat_validate_config_file( $this->_chat_plugin_settings['config_file'], 'ABSPATH' ) === true ) {
 					$this->chat_localized['settings']["ajax_url"] = plugins_url( '/psource-chat-ajax.php', __FILE__ );
 				} else {
