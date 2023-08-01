@@ -270,8 +270,8 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 
 			?>
 			<p class="info"><?php _e('Dieses Widget zeigt Informationen an, die für den von WordPress authentifizierten Benutzer spezifisch sind. Wenn der Benutzer nicht authentifiziert ist, gibt das Widget nichts aus.', 'psource-chat');?></p>
-			<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
-				class="widefat" value="<?php echo $instance['id'] ?> "/>
+				<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
+					class="widefat" value="<?php echo isset($instance['id']) ? esc_attr($instance['id']) : ''; ?>"/>
 			<p>
 				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('widgettitel:', 'psource-chat'); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name('box_title'); ?>" id="<?php echo $this->get_field_id('box_title'); ?>"
@@ -466,7 +466,7 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 
 			$this->plugin_error_message = __('Für dieses Widget sind entweder BuddyPress Friends aktiviert oder Friends Plugins.', 'psource-chat');
 
-			// Set defaults
+			// Standardwerte festlegen
 			// ...
 			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt aktive Chatsitzungen der gesamten Seite an.', 'psource-chat'));
 			parent::__construct(__CLASS__, __('PSC-Chat Räume', 'psource-chat'), $widget_ops);
@@ -479,14 +479,18 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 		function form($instance) {
 			global $psource_chat, $bp;
 
-			$session_types = $instance['session_types'];
-			$instance = wp_parse_args( $instance, $this->defaults );
+			// Überprüft, ob der Schlüssel „session_types“ im Array „$instance“ vorhanden ist, bevor darauf zugegriffen wird
+			$session_types = isset($instance['session_types']) ? $instance['session_types'] : array();
+
+			$instance = wp_parse_args($instance, $this->defaults);
+
+			// Weiset den Schlüssel „session_types“ aus der zuvor gespeicherten Variablen „$session_types“ neu zu
 			$instance['session_types'] = $session_types;
 
 			?>
 			<p class="info"><?php _e('Dieses Widget zeigt alle aktiven Chat-Sitzungen auf der Webseite an.', 'psource-chat');?></p>
-			<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
-				class="widefat" value="<?php echo $instance['id'] ?> "/>
+				<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
+					class="widefat" value="<?php echo isset($instance['id']) ? esc_attr($instance['id']) : ''; ?>"/>
 			<p>
 				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Widgettitel:', 'psource-chat'); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name('box_title'); ?>" id="<?php echo $this->get_field_id('box_title'); ?>"
@@ -511,31 +515,35 @@ if (!class_exists('PSOURCEChatRoomsWidget')) {
 				</select>
 			</p>
 
-			<p><label for="<?php echo $this->get_field_id('session_types'); ?>"><?php _e('Sitzungstypen einschließen - mindestens einen auswählen'); ?></label><br />
+			<p>
+				<label for="<?php echo $this->get_field_id('session_types'); ?>"><?php _e('Sitzungstypen einschließen - mindestens einen auswählen'); ?></label><br />
 				<ul>
 				<?php
 
 				if ((empty($bp)) || (!is_object($bp))) {
-					if (isset($instance['session_types']['bp-group']))
-						{unset($instance['session_types']['bp-group']);}
-				}
-
-				if (count($instance['session_types']) == 0) {
-					$instance['session_types']['page'] = 'on';
-				}
-
-				foreach($this->defaults['session_types'] as $session_type_slug => $session_type_active) {
-					?><li><input id="<?php echo $this->get_field_id('session_types'); ?>-<?php echo $session_type_slug ?>" name="<?php echo $this->get_field_name('session_types'); ?>[<?php echo $session_type_slug ?>]" type="checkbox" <?php
-					checked($instance['session_types'][$session_type_slug], 'on', true)?> />&nbsp;<label for="<?php echo $this->get_field_id('session_types'); ?>-<?php echo $session_type_slug ?>"><?php
-					if (isset($this->defaults['session_types_labels'][$session_type_slug])) {
-						echo $this->defaults['session_types_labels'][$session_type_slug];
-					} else {
-						echo $session_type_slug;
+					if (isset($instance['session_types']['bp-group'])) {
+						unset($instance['session_types']['bp-group']);
 					}
-					?></label></li><?php
+				}
+
+				if (!empty($instance['session_types']) && is_array($instance['session_types'])) {
+					if (count($instance['session_types']) == 0) {
+						$instance['session_types']['page'] = 'on';
+					}
+
+					foreach ($this->defaults['session_types'] as $session_type_slug => $session_type_active) {
+						?><li><input id="<?php echo $this->get_field_id('session_types'); ?>-<?php echo $session_type_slug ?>" name="<?php echo $this->get_field_name('session_types'); ?>[<?php echo $session_type_slug ?>]" type="checkbox" <?php
+						checked(isset($instance['session_types'][$session_type_slug]) && $instance['session_types'][$session_type_slug] === 'on', true) ?> />&nbsp;<label for="<?php echo $this->get_field_id('session_types'); ?>-<?php echo $session_type_slug ?>"><?php
+						if (isset($this->defaults['session_types_labels'][$session_type_slug])) {
+							echo $this->defaults['session_types_labels'][$session_type_slug];
+						} else {
+							echo $session_type_slug;
+						}
+						?></label></li><?php
+					}
 				}
 				?>
-			</ul>
+				</ul>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e('Link-Titel aus der Chat-Sitzung oder der Seite/Gruppe anzeigen', 'psource-chat'); ?></label><br />
@@ -700,18 +708,19 @@ if (!class_exists('PSOURCEChatStatusWidget')) {
 
 		function form($instance) {
 			global $psource_chat;
-
-			$instance = wp_parse_args( $instance, $this->defaults );
-
+		
+			// Legt Standardwerte für die Widget-Instanz fest
+			$instance = wp_parse_args($instance, $this->defaults);
+		
 			?>
 			<p class="info"><?php _e('Dieses Widget zeigt Informationen an, die für den von WordPress authentifizierten Benutzer spezifisch sind. Wenn der Benutzer nicht authentifiziert ist, gibt das Widget nichts aus.', 'psource-chat');?></p>
-
+		
 			<input type="hidden" name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>"
-				class="widefat" value="<?php echo $instance['id'] ?> "/>
+				   class="widefat" value="<?php echo isset($instance['id']) ? esc_attr($instance['id']) : ''; ?>"/>
 			<p>
 				<label for="<?php echo $this->get_field_id('box_title') ?>"><?php _e('Widgettitel:', 'psource-chat'); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name('box_title'); ?>" id="<?php echo $this->get_field_id('box_title'); ?>"
-					class="widefat" value="<?php echo $instance['box_title'] ?>" />
+					   class="widefat" value="<?php echo isset($instance['box_title']) ? esc_attr($instance['box_title']) : ''; ?>" />
 			</p>
 			<?php
 		}

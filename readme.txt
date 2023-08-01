@@ -47,6 +47,11 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 2.4.6 = DerN3rd = 
+
+* Fix: Widget Bug mit ClassicPress 1.6
+* Fix: PHP Warning:  Undefined array
+
 = 2.4.5 = DerN3rd = 
 
 * Deprecated: Optional parameter Fix
