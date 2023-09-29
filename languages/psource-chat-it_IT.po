@@ -1,15 +1,15 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PS Chat\n"
-"POT-Creation-Date: 2023-09-29 23:10+0200\n"
-"PO-Revision-Date: 2023-09-29 23:09+0200\n"
+"POT-Creation-Date: 2023-09-29 23:26+0200\n"
+"PO-Revision-Date: 2023-09-29 23:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -22,258 +22,326 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.7.2.php:79
+#, fuzzy
 msgid "Enable Group Chat"
-msgstr ""
+msgstr "Abilita la chat di gruppo"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.7.2.php:195
+#, fuzzy
 msgid "There was an error saving, please try again"
-msgstr ""
+msgstr "Si è verificato un errore di salvataggio, riprovare"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.7.2.php:197
+#, fuzzy
 msgid "Settings saved successfully"
-msgstr ""
+msgstr "Impostazioni salvate con successo"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.7.2.php:245
+#, fuzzy
 msgid "You must be a member of this group to use Chat"
-msgstr ""
+msgstr "Per utilizzare la chat è necessario essere membri di questo gruppo"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.8.php:49
 #: lib/cpcommunity/psource_chat_cpcommunitie_group.php:49
 msgid "Speichern"
-msgstr ""
+msgstr "Salvare"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.8.php:87
 #: lib/cpcommunity/psource_chat_cpcommunitie_group.php:87
+#, fuzzy
 msgid "Gruppenchat aktivieren"
-msgstr ""
+msgstr "Attivare la chat di gruppo"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.8.php:122
 #: lib/cpcommunity/psource_chat_cpcommunitie_group.php:122
+#, fuzzy
 msgid "Du musst Mitglied dieser Gruppe sein, um den Chat nutzen zu können"
-msgstr ""
+msgstr "Per utilizzare la chat è necessario essere membri di questo gruppo"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.8.php:240
 #: lib/cpcommunity/psource_chat_cpcommunitie_group.php:240
+#, fuzzy
 msgid "Fehler beim speichern. Bitte versuche es erneut"
-msgstr ""
+msgstr "Errore durante il salvataggio. Riprovare"
 
 #: lib/buddypress/wpmudec_chat_buddypress_group_1.8.php:242
 #: lib/cpcommunity/psource_chat_cpcommunitie_group.php:242
+#, fuzzy
 msgid "Einstellungen erfolgreich gespeichert"
-msgstr ""
+msgstr "Impostazioni salvate con successo"
 
 #: lib/class_wd_help_tooltips.php:296
+#, fuzzy
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #: lib/psource_chat_admin_panels.php:42
+#, fuzzy
 msgid "Chateinstellungen Seiten"
-msgstr ""
+msgstr "Pagine di impostazione della chat"
 
 #: lib/psource_chat_admin_panels.php:46
+#, fuzzy
 msgid ""
 "Die folgenden Einstellungen werden verwendet, um die Inline-Chat-Shortcodes "
 "zu steuern, die auf Posts, Seiten usw. angewendet werden. Hier kannst Du "
 "Standardoptionen einrichten. Überschreibe diese Standardoptionen nicht nur "
 "mit Shortcode-Parametern für den jeweiligen Beitrag, die Seite usw.."
 msgstr ""
+"Le seguenti impostazioni servono a controllare gli shortcode della chat "
+"inline che vengono applicati a post, pagine e così via. Qui è possibile "
+"impostare le opzioni predefinite. Non sovrascrivere queste opzioni "
+"predefinite con i parametri dello shortcode per il post, la pagina ecc. in "
+"questione."
 
 #: lib/psource_chat_admin_panels.php:51 lib/psource_chat_admin_panels.php:133
 #: lib/psource_chat_admin_panels.php:214 lib/psource_chat_admin_panels.php:290
 #: lib/psource_chat_admin_panels.php:595 lib/psource_chat_admin_panels.php:683
+#, fuzzy
 msgid "Box Aussehen"
-msgstr ""
+msgstr "Aspetto della scatola"
 
 #: lib/psource_chat_admin_panels.php:53 lib/psource_chat_admin_panels.php:137
+#, fuzzy
 msgid "Nachrichten Darstellung"
-msgstr ""
+msgstr "Rappresentazione delle notizie"
 
 #: lib/psource_chat_admin_panels.php:56
+#, fuzzy
 msgid "Eingabebox"
-msgstr ""
+msgstr "Casella di input"
 
 #: lib/psource_chat_admin_panels.php:58 lib/psource_chat_admin_panels.php:142
 #: lib/psource_chat_admin_panels.php:221 lib/psource_chat_admin_panels.php:297
 #: lib/psource_chat_admin_panels.php:604 lib/psource_chat_admin_panels.php:690
 #: lib/psource_chat_admin_tinymce.php:207
 msgid "Benutzerliste"
-msgstr ""
+msgstr "User list"
 
 #: lib/psource_chat_admin_panels.php:60
+#, fuzzy
 msgid "Autentifizierung"
-msgstr ""
+msgstr "Autentificazione"
 
 #: lib/psource_chat_admin_panels.php:62
+#, fuzzy
 msgid "WYSIWYG Button"
-msgstr ""
+msgstr "Pulsante WYSIWYG"
 
 #: lib/psource_chat_admin_panels.php:64 lib/psource_chat_admin_panels.php:146
 #: lib/psource_chat_admin_panels.php:225 lib/psource_chat_admin_panels.php:299
 #: lib/psource_chat_admin_panels.php:608 lib/psource_chat_admin_panels.php:698
+#, fuzzy
 msgid "Erweitert"
-msgstr ""
+msgstr "Esteso"
 
 #: lib/psource_chat_admin_panels.php:105 lib/psource_chat_admin_panels.php:190
 #: lib/psource_chat_admin_panels.php:263 lib/psource_chat_admin_panels.php:452
 #: lib/psource_chat_admin_panels.php:650 lib/psource_chat_admin_panels.php:735
 msgid "Änderungen speichern"
-msgstr ""
+msgstr "Save changes"
 
 #: lib/psource_chat_admin_panels.php:119
+#, fuzzy
 msgid "Chateinstellungen Webseite"
-msgstr ""
+msgstr "Sito web delle impostazioni della chat"
 
 #: lib/psource_chat_admin_panels.php:123
+#, fuzzy
 msgid ""
 "Die folgenden Einstellungen werden verwendet, um die Einstellungen für die "
 "untere Ecke und den privaten Chatbereich zu steuern."
 msgstr ""
+"Le seguenti impostazioni sono utilizzate per controllare le impostazioni "
+"dell'angolo inferiore e dell'area di chat privata."
 
 #: lib/psource_chat_admin_panels.php:126
+#, fuzzy
 msgid ""
 "Unter Multisite kann der Chat in der unteren Ecke im Netzwerk aktiviert "
 "werden. In diesem Fall wird der Chat in der unteren Ecke der lokalen Site "
 "ersetzt."
 msgstr ""
+"In Multisito, la chat nell'angolo inferiore può essere attivata in rete. In "
+"questo caso, la chat nell'angolo inferiore del sito locale viene sostituita."
 
 #: lib/psource_chat_admin_panels.php:131 lib/psource_chat_admin_panels.php:593
+#, fuzzy
 msgid "Untere Ecke"
-msgstr ""
+msgstr "Angolo inferiore"
 
 #: lib/psource_chat_admin_panels.php:135 lib/psource_chat_admin_panels.php:597
+#, fuzzy
 msgid "Box Position"
-msgstr ""
+msgstr "Posizione della scatola"
 
 #: lib/psource_chat_admin_panels.php:140 lib/psource_chat_admin_panels.php:219
 #: lib/psource_chat_admin_panels.php:295 lib/psource_chat_admin_panels.php:602
 #: lib/psource_chat_admin_panels.php:688 lib/psource_chat_admin_tinymce.php:202
+#, fuzzy
 msgid "Nachrichteneingabe"
-msgstr ""
+msgstr "Inserimento del messaggio"
 
 #: lib/psource_chat_admin_panels.php:144
+#, fuzzy
 msgid "Autentifikation"
-msgstr ""
+msgstr "Autenticazione"
 
 #: lib/psource_chat_admin_panels.php:205
+#, fuzzy
 msgid "Chateinstellungen Widget"
-msgstr ""
+msgstr "Widget delle impostazioni di chat"
 
 #: lib/psource_chat_admin_panels.php:209
+#, fuzzy
 msgid ""
 "Die folgenden Einstellungen werden verwendet, um alle Chat-Widgets zu "
 "steuern."
 msgstr ""
+"Le seguenti impostazioni sono utilizzate per controllare tutti i widget "
+"della chat."
 
 #: lib/psource_chat_admin_panels.php:216 lib/psource_chat_admin_panels.php:599
 #: lib/psource_chat_admin_panels.php:685
+#, fuzzy
 msgid "Nachricht Aussehen"
-msgstr ""
+msgstr "Aspetto del messaggio"
 
 #: lib/psource_chat_admin_panels.php:223 lib/psource_chat_admin_tinymce.php:212
+#, fuzzy
 msgid "Authentication"
-msgstr ""
+msgstr "Autenticazione"
 
 #: lib/psource_chat_admin_panels.php:276
+#, fuzzy
 msgid "Gruppenchat Einstellungen"
-msgstr ""
+msgstr "Impostazioni della chat di gruppo"
 
 #: lib/psource_chat_admin_panels.php:292
+#, fuzzy
 msgid "Nachrichten Aussehen"
-msgstr ""
+msgstr "Apparizione di notizie"
 
 #: lib/psource_chat_admin_panels.php:368
+#, fuzzy
 msgid "Chat-Einstellungen Netzwerk Allgemein"
-msgstr ""
+msgstr "Impostazioni di chat Rete Generale"
 
 #: lib/psource_chat_admin_panels.php:370
+#, fuzzy
 msgid "Chat Basiseinstellungen"
-msgstr ""
+msgstr "Impostazioni di base della chat"
 
 #: lib/psource_chat_admin_panels.php:375
+#, fuzzy
 msgid ""
 "Die folgenden Einstellungen werden für alle Chat-Sitzungstypen verwendet "
 "(Seite, Site, Privat, Support)."
 msgstr ""
+"Le seguenti impostazioni sono utilizzate per tutti i tipi di sessione di "
+"chat (Pagina, Sito, Privata, Assistenza)."
 
 #: lib/psource_chat_admin_panels.php:381
+#, fuzzy
 msgid "Abfrageintervalle"
-msgstr ""
+msgstr "Intervalli di interrogazione"
 
 #: lib/psource_chat_admin_panels.php:384 lib/psource_chat_form_sections.php:559
+#, fuzzy
 msgid "Google+"
-msgstr ""
+msgstr "Google+"
 
 #: lib/psource_chat_admin_panels.php:386 lib/psource_chat_form_sections.php:567
 #: lib/psource_chat_form_sections.php:1573
+#, fuzzy
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: lib/psource_chat_admin_panels.php:388 lib/psource_chat_form_sections.php:551
 #: lib/psource_chat_form_sections.php:1376
+#, fuzzy
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: lib/psource_chat_admin_panels.php:391
+#, fuzzy
 msgid "Blockiere IP/User"
-msgstr ""
+msgstr "Blocco IP/Utente"
 
 #: lib/psource_chat_admin_panels.php:394
 #: lib/psource_chat_form_sections.php:1684
+#, fuzzy
 msgid "Blockierte Wörter"
-msgstr ""
+msgstr "Parole bloccate"
 
 #: lib/psource_chat_admin_panels.php:396
+#, fuzzy
 msgid "Blockierte URLs"
-msgstr ""
+msgstr "URL bloccati"
 
 #: lib/psource_chat_admin_panels.php:398
+#, fuzzy
 msgid "Dashboard"
-msgstr ""
+msgstr "Cruscotto"
 
 #: lib/psource_chat_admin_panels.php:401
+#, fuzzy
 msgid "BuddyPress"
-msgstr ""
+msgstr "BuddyPress"
 
 #: lib/psource_chat_admin_panels.php:440
+#, fuzzy
 msgid ""
 "In diesem Abschnitt wird gesteuert, wie der Chat im BuddyPress-System "
 "funktioniert. Dies sind globale Einstellungen, die sich auf alle Gruppen "
 "auswirken"
 msgstr ""
+"Questa sezione controlla il funzionamento della chat nel sistema BuddyPress. "
+"Si tratta di impostazioni globali che riguardano tutti i gruppi"
 
 #: lib/psource_chat_admin_panels.php:475
+#, fuzzy
 msgctxt "Page Title"
 msgid "Chat-Sitzung"
-msgstr ""
+msgstr "Sessione di chat"
 
 #: lib/psource_chat_admin_panels.php:478
+#, fuzzy
 msgid "Return to Logs"
-msgstr ""
+msgstr "Ritorno ai registri"
 
 #: lib/psource_chat_admin_panels.php:516
+#, fuzzy
 msgctxt "Page Title"
 msgid "Chat-Sitzungsnachrichten"
-msgstr ""
+msgstr "Messaggi della sessione di chat"
 
 #: lib/psource_chat_admin_panels.php:519
+#, fuzzy
 msgid "Zurück zu den Protokollen"
-msgstr ""
+msgstr "Torna ai protocolli"
 
 #: lib/psource_chat_admin_panels.php:529
+#, fuzzy
 msgid ""
 "Diese gesamte Chat-Sitzung ist als ausgeblendet markiert. Es wird nicht in "
 "öffentlichen Protokollen angezeigt. Du kannst weiterhin einzelne Nachrichten "
 "unten ein-/ausblenden oder löschen."
 msgstr ""
+"L'intera sessione di chat è contrassegnata come nascosta. Non sarà "
+"visualizzata nei registri pubblici. È comunque possibile mostrare/nascondere "
+"o eliminare i singoli messaggi qui sotto."
 
 #: lib/psource_chat_admin_panels.php:547
+#, fuzzy
 msgid "Nachrichten suchen"
-msgstr ""
+msgstr "Ricerca notizie"
 
 #: lib/psource_chat_admin_panels.php:557
+#, fuzzy
 msgctxt "Page Title"
 msgid "Chat-Sitzungsprotokolle"
-msgstr ""
+msgstr "Minuti della sessione di chat"
 
 #: lib/psource_chat_admin_panels.php:559
 msgctxt "page description"
@@ -281,14 +349,17 @@ msgid ""
 msgstr ""
 
 #: lib/psource_chat_admin_panels.php:567
+#, fuzzy
 msgid "Logs durchsuchen"
-msgstr ""
+msgstr "Registri di ricerca"
 
 #: lib/psource_chat_admin_panels.php:584
+#, fuzzy
 msgid "Chat-Einstellungen Netzwerkseite"
-msgstr ""
+msgstr "Impostazioni di chat Pagina di rete"
 
 #: lib/psource_chat_admin_panels.php:588
+#, fuzzy
 msgid ""
 "Die folgenden Einstellungen werden verwendet, um die untere Ecke für alle "
 "Standorte in der Multisite-Umgebung zu steuern. Dieser Chat in der unteren "
@@ -297,152 +368,218 @@ msgid ""
 "Chatfeld in der unteren Ecke des Netzwerks das Chatfeld in der unteren Ecke "
 "der Site."
 msgstr ""
+"Le seguenti impostazioni sono utilizzate per controllare l'angolo inferiore "
+"per tutti i siti dell'ambiente multisito. La chat nell'angolo inferiore è "
+"globale, ovvero i messaggi sono gli stessi su tutti i siti all'interno degli "
+"URL della rete multisito. Una volta attivata, questa casella di chat "
+"nell'angolo inferiore della rete sostituisce la casella di chat nell'angolo "
+"inferiore del sito."
 
 #: lib/psource_chat_admin_panels.php:606 lib/psource_chat_admin_panels.php:694
+#, fuzzy
 msgid "Authentifizierung"
-msgstr ""
+msgstr "Autenticazione"
 
 #: lib/psource_chat_admin_panels.php:666
+#, fuzzy
 msgid "Chat-Einstellungen Netzwerk-Dashboard-Widgets"
-msgstr ""
+msgstr "Impostazioni di chat Widget del cruscotto di rete"
 
 #: lib/psource_chat_admin_panels.php:668
+#, fuzzy
 msgid "Chat-Einstellungen Dashboard-Widgets"
-msgstr ""
+msgstr "Widget del cruscotto delle impostazioni di chat"
 
 #: lib/psource_chat_admin_panels.php:673
+#, fuzzy
 msgid ""
 "Dieser Abschnitt steuert die Sichtbarkeit von Netzwerk-Dashboard-Chat-Widgets"
 msgstr ""
+"Questa sezione controlla la visibilità dei widget di chat della dashboard di "
+"rete"
 
 #: lib/psource_chat_admin_panels.php:675
+#, fuzzy
 msgid "Dieser Abschnitt steuert die Sichtbarkeit von Dashboard-Chat-Widgets"
 msgstr ""
+"Questa sezione controlla la visibilità dei widget di chat della Dashboard"
 
 #: lib/psource_chat_admin_panels.php:680
+#, fuzzy
 msgid "Widgets"
-msgstr ""
+msgstr "Widget"
 
 #: lib/psource_chat_admin_panels_help.php:11
+#, fuzzy
 msgid "Dies ist die Seitenübersicht"
-msgstr ""
+msgstr "Questa è la panoramica della pagina"
 
 #: lib/psource_chat_admin_panels_help.php:14
+#, fuzzy
 msgid "Übersicht über die Seiteneinstellungen"
-msgstr ""
+msgstr "Panoramica delle impostazioni della pagina"
 
 #: lib/psource_chat_admin_panels_help.php:19
+#, fuzzy
 msgid "Dies ist die Seite-Übersicht"
-msgstr ""
+msgstr "Questa è la panoramica della pagina"
 
 #: lib/psource_chat_admin_panels_help.php:22
 #: lib/psource_chat_admin_panels_help.php:30
 #: lib/psource_chat_admin_panels_help.php:38
 #: lib/psource_chat_admin_panels_help.php:46
+#, fuzzy
 msgid "Übersicht über die Seite-Einstellungen"
-msgstr ""
+msgstr "Panoramica delle impostazioni della pagina"
 
 #: lib/psource_chat_admin_panels_help.php:27
+#, fuzzy
 msgid "Dies ist die Widget-Übersicht"
-msgstr ""
+msgstr "Questa è la panoramica del widget"
 
 #: lib/psource_chat_admin_panels_help.php:35
+#, fuzzy
 msgid "Dies ist die globale Übersicht"
-msgstr ""
+msgstr "Questa è la panoramica globale"
 
 #: lib/psource_chat_admin_panels_help.php:43
+#, fuzzy
 msgid "Dies ist die Übersicht über die Sitzungsprotokolle"
-msgstr ""
+msgstr "Questa è la sintesi del verbale della riunione"
 
 #: lib/psource_chat_admin_panels_help.php:60
+#, fuzzy
 msgid ""
 "Wenn diese Option aktiviert ist, können Chat-Nachrichten am Ende der Chat-"
 "Sitzung archiviert werden."
 msgstr ""
+"Se questa opzione è attivata, i messaggi di chat possono essere archiviati "
+"al termine della sessione di chat."
 
 #: lib/psource_chat_admin_panels_help.php:64
+#, fuzzy
 msgid ""
 "Wenn diese Option aktiviert ist, wird unter dem Chatfeld eine Liste der "
 "Protokolle für vergangene Chat-Sitzungen angezeigt."
 msgstr ""
+"Quando questa opzione è attivata, sotto la finestra di chat viene "
+"visualizzato un elenco di registri delle sessioni di chat passate."
 
 #: lib/psource_chat_admin_panels_help.php:68
+#, fuzzy
 msgid "Beschriftungstext wird über der Liste des Chat-Archivs angezeigt."
 msgstr ""
+"Il testo della didascalia viene visualizzato sopra l'elenco degli archivi di "
+"chat."
 
 #: lib/psource_chat_admin_panels_help.php:71
+#, fuzzy
 msgid ""
 "Maximale Anzahl von Archivsitzungen, die in der Liste angezeigt werden "
 "sollen."
-msgstr ""
+msgstr "Numero massimo di sessioni di archivio da visualizzare nell'elenco."
 
 #: lib/psource_chat_admin_panels_help.php:72
+#, fuzzy
 msgid "z.B: 1, , 25, 100, leer für alle."
-msgstr ""
+msgstr "ad esempio: 1, , 25, 100, vuoto per tutti."
 
 #: lib/psource_chat_admin_panels_help.php:75
+#, fuzzy
 msgid ""
 "Ein-/Ausblenden der Haupt-Chat-Sitzung beim Anzeigen der Chat-Archivliste."
 msgstr ""
+"Mostra/nasconde la sessione di chat principale quando si visualizza l'elenco "
+"degli archivi di chat."
 
 #: lib/psource_chat_admin_panels_help.php:79
+#, fuzzy
 msgid ""
 "Wähle die Benutzerrollen der untersten Ebene aus, die zum Anzeigen der Chat-"
 "Protokollarchive zulässig sind. Bei Einstellung auf öffentlich werden "
 "Protokolle für alle Benutzer angezeigt. <br /> <br /> Vergleicht die "
 "Rollenstufen der WordPress-Benutzer (level_10, level_7, level_0 usw.)."
 msgstr ""
+"Selezionare i ruoli utente di livello più basso che possono visualizzare gli "
+"archivi dei registri di chat. Se impostato su pubblico, i registri vengono "
+"visualizzati per tutti gli utenti. <br /> <br /> Confronta i livelli di "
+"ruolo degli utenti di WordPress (livello_10, livello_7, livello_0, ecc.)."
 
 #: lib/psource_chat_admin_panels_help.php:83
+#, fuzzy
 msgid ""
 "Wähle die niedrigsten BuddyPress-Gruppenrollen aus, die zum Anzeigen der "
 "Chat-Protokollarchive zulässig sind."
 msgstr ""
+"Selezionare i ruoli più bassi del gruppo BuddyPress che possono visualizzare "
+"gli archivi dei registri di chat."
 
 #: lib/psource_chat_admin_panels_help.php:87
+#, fuzzy
 msgid ""
 "Wenn ein Benutzer zum ersten Mal in den Chat eintritt, wird nur die letzte "
 "Anzahl von Nachrichten angezeigt. Wenn neue Nachrichten hinzugefügt werden, "
 "werden ältere Nachrichten aus der Nachrichtenliste entfernt. Diese Option "
 "löscht die Datenbank nicht."
 msgstr ""
+"Quando un utente entra per la prima volta nella chat, viene visualizzato "
+"solo l'ultimo numero di messaggi. Quando vengono aggiunti nuovi messaggi, "
+"quelli più vecchi vengono rimossi dall'elenco dei messaggi. Questa opzione "
+"non cancella il database."
 
 #: lib/psource_chat_admin_panels_help.php:91
+#, fuzzy
 msgid ""
 "Wenn Du einen Chat über mehrere Stunden hostest, hilft diese Option, die "
 "ältere Nachrichten zu löschen, um Serverlast zu vermeiden"
 msgstr ""
+"Se si ospita una chat per diverse ore, questa opzione consente di eliminare "
+"i messaggi più vecchi per evitare il carico del server"
 
 #: lib/psource_chat_admin_panels_help.php:95
+#, fuzzy
 msgid ""
 "Dies ist eine Nachricht, die Benutzern angezeigt wird, wenn die Chat-Sitzung "
 "vom Moderator geschlossen wurde."
 msgstr ""
+"È un messaggio che viene visualizzato agli utenti quando la sessione di chat "
+"è stata chiusa dal moderatore."
 
 #: lib/psource_chat_admin_panels_help.php:99
+#, fuzzy
 msgid ""
 "Diese Nachricht wird kurz angezeigt, wenn der Moderator die aktuellen "
 "Sitzungsnachrichten archiviert oder löscht."
 msgstr ""
+"Questo messaggio viene visualizzato brevemente quando il moderatore archivia "
+"o cancella i messaggi della sessione corrente."
 
 #: lib/psource_chat_admin_panels_help.php:107
+#, fuzzy
 msgid "Horizontale Position des Seiten und des privaten Chats"
-msgstr ""
+msgstr "Posizione orizzontale della pagina e della chat privata"
 
 #: lib/psource_chat_admin_panels_help.php:112
+#, fuzzy
 msgid "Vertikale Position des Seiten und des privaten Chats."
-msgstr ""
+msgstr "Posizione verticale della pagina e della chat privata."
 
 #: lib/psource_chat_admin_panels_help.php:118
+#, fuzzy
 msgid ""
 "Diese Einstellung steuert die feste Position der Chatbox in der unteren "
 "Ecke. <br /> Die untere Ecke ist normalerweise eine feste Position. Bei der "
 "Anzeige unter dem Handy wird die Position in relativ geändert."
 msgstr ""
+"Questa impostazione controlla la posizione fissa della casella di chat "
+"nell'angolo inferiore. <br /> L'angolo inferiore è normalmente una posizione "
+"fissa. Quando viene visualizzato sotto il telefono cellulare, la posizione "
+"viene modificata in relativa."
 
 #: lib/psource_chat_admin_panels_help.php:124
+#, fuzzy
 msgid "Vertikaler Pixelversatz vom linken/rechten Rand des Browsers"
-msgstr ""
+msgstr "Spostamento verticale in pixel dal bordo sinistro/destro del browser"
 
 #: lib/psource_chat_admin_panels_help.php:125
 #: lib/psource_chat_admin_panels_help.php:131
@@ -450,72 +587,97 @@ msgstr ""
 #: lib/psource_chat_admin_panels_help.php:159
 #: lib/psource_chat_admin_panels_help.php:165
 #: lib/psource_chat_admin_panels_help.php:171
+#, fuzzy
 msgid "zB. 3px, 10px, etc."
-msgstr ""
+msgstr "ad esempio 3px, 10px, ecc."
 
 #: lib/psource_chat_admin_panels_help.php:130
+#, fuzzy
 msgid "Vertikaler Pixelversatz vom oberen/unteren Rand des Browsers."
 msgstr ""
+"Spostamento verticale in pixel dalla parte superiore/inferiore del browser."
 
 #: lib/psource_chat_admin_panels_help.php:135
 #: lib/psource_chat_admin_panels_help.php:136
+#, fuzzy
 msgid "Pixelabstand zwischen Chatboxen."
-msgstr ""
+msgstr "Spaziatura in pixel tra le caselle di chat."
 
 #: lib/psource_chat_admin_panels_help.php:137
+#, fuzzy
 msgid "Pixelabstand zwischen Chatboxen. zB. 3px, 10px, etc. "
-msgstr ""
+msgstr "Spaziatura in pixel tra le caselle di chat, ad esempio 3px, 10px, ecc."
 
 #: lib/psource_chat_admin_panels_help.php:141
+#, fuzzy
 msgid ""
 "Dieses experimentielle Feature erlaubt Deinen Benutzern die Größenänderung "
 "der Chatboxen im Frontend. Bitte deaktiviere diese Option falls es Probleme "
 "mit Deinem Theme gibt."
 msgstr ""
+"Questa funzione sperimentale consente agli utenti di ridimensionare le "
+"caselle di chat nel frontend. Disattivare questa opzione in caso di problemi "
+"con il tema."
 
 #: lib/psource_chat_admin_panels_help.php:142
+#, fuzzy
 msgid ""
 "Dieses experimentielle Feature erlaubt Deinen Benutzern die Größenänderung "
 "der Chatboxen im Frontend. Bitte deaktiviere diese Option falls es Probleme "
 "mit Deinem Theme gibt"
 msgstr ""
+"Questa funzione sperimentale consente agli utenti di ridimensionare le "
+"caselle di chat nel frontend. Disattivare questa opzione in caso di problemi "
+"con il tema"
 
 #: lib/psource_chat_admin_panels_help.php:146
+#, fuzzy
 msgid "Aktiviere Schattenwurf in den unteren und privaten Chatboxen"
-msgstr ""
+msgstr "Abilitare l'ombreggiatura nelle caselle di chat inferiori e private"
 
 #: lib/psource_chat_admin_panels_help.php:151
+#, fuzzy
 msgid "Die Position des vertikalen Schattens. Negative Werte sind zulässig"
-msgstr ""
+msgstr "Posizione dell'ombra verticale. Sono ammessi valori negativi"
 
 #: lib/psource_chat_admin_panels_help.php:157
+#, fuzzy
 msgid "Die Position des horizontalen Schattens. Negative Werte sind zulässig"
-msgstr ""
+msgstr "Posizione dell'ombra orizzontale. Sono ammessi valori negativi"
 
 #: lib/psource_chat_admin_panels_help.php:163
+#, fuzzy
 msgid "Steuert, wie scharf/weich die Schattenkante ist. Die Unschärfedistanz"
 msgstr ""
+"Controlla la nitidezza/morbidezza del bordo dell'ombra. La distanza della "
+"sfocatura"
 
 #: lib/psource_chat_admin_panels_help.php:169
+#, fuzzy
 msgid "Die Größe des Schattens"
-msgstr ""
+msgstr "La dimensione dell'ombra"
 
 #: lib/psource_chat_admin_panels_help.php:175
+#, fuzzy
 msgid "Startfarbe des Schattenwurfs"
-msgstr ""
+msgstr "Colore iniziale dell'ombra proiettata"
 
 #: lib/psource_chat_admin_panels_help.php:181
+#, fuzzy
 msgid ""
 "Der Titel der Chat-Sitzung. Wird in der Kopfzeile angezeigt. Dies "
 "unterscheidet sich vom Beitrags-/Seitentitel."
 msgstr ""
+"Il titolo della sessione di chat. Viene visualizzato nell'intestazione. È "
+"diverso dal titolo del post/pagina."
 
 #: lib/psource_chat_admin_panels_help.php:183
+#, fuzzy
 msgid "Der Titel der Chat-Sitzung"
-msgstr ""
+msgstr "Il titolo della sessione di chat"
 
 #: lib/psource_chat_admin_panels_help.php:187
-#, no-php-format
+#, fuzzy, no-php-format
 msgid ""
 "Hiermit wird die Breite der Chatbox festgelegt. Stelle dies für den Seiten-/"
 "Post-Chat auf 100% ein, um die gesamte Breite des Inhaltsbereichs zu nutzen. "
@@ -523,196 +685,272 @@ msgid ""
 "ein. <br /> Die Dropdown-Liste Für Mobil anpassen steuert, wie die "
 "Chatbreite behandelt wird, wenn der Bildschirm schmaler als das Chatfeld ist."
 msgstr ""
+"Imposta la larghezza della casella di chat. Per le chat di pagina/post, "
+"impostare questo valore a 100% eper utilizzare l'intera larghezza dell'area "
+"del contenuto. Per le chat di pagina, impostare un valore specifico, ad "
+"esempio 300 pixel. <br /> L'elenco a discesa Personalizza per dispositivi "
+"mobili controlla come viene gestita la larghezza della chat quando lo "
+"schermo è più stretto della casella di chat."
 
 #: lib/psource_chat_admin_panels_help.php:189
+#, fuzzy
 msgid "Breite der Chatbox"
-msgstr ""
+msgstr "Larghezza della chatbox"
 
 #: lib/psource_chat_admin_panels_help.php:193
+#, fuzzy
 msgid ""
 "Hiermit wird die Höhe der Chatbox festgelegt. Dies sollte ein bestimmter "
 "Wert wie 300px sein. <br /> Die Dropdown-Liste Für Mobil anpassen steuert, "
 "wie die Chat-Höhe behandelt wird, wenn der Bildschirm kürzer als das Chat-"
 "Feld ist."
 msgstr ""
+"Imposta l'altezza della casella di chat. Dovrebbe essere un valore "
+"specifico, ad esempio 300px. <br /> L'elenco a discesa Personalizza per "
+"cellulari controlla come viene gestita l'altezza della chat quando lo "
+"schermo è più corto della casella della chat."
 
 #: lib/psource_chat_admin_panels_help.php:194
+#, fuzzy
 msgid "Höhe der Chatbox"
-msgstr ""
+msgstr "Altezza della finestra di chat"
 
 #: lib/psource_chat_admin_panels_help.php:198
+#, fuzzy
 msgid ""
 "Schriftfamilie für die Nachrichteneingabe. Wähle Erben, um die "
 "Standardschriftart Deines Themes zu verwenden"
 msgstr ""
+"Famiglia di caratteri per l'inserimento dei messaggi. Selezionare Eredita "
+"per utilizzare il carattere predefinito del tema"
 
 #: lib/psource_chat_admin_panels_help.php:202
 #: lib/psource_chat_admin_panels_help.php:282
 #: lib/psource_chat_admin_panels_help.php:336
+#, fuzzy
 msgid "Schriftgröße für die Nachrichteneingabe."
-msgstr ""
+msgstr "Dimensione dei caratteri per l'inserimento dei messaggi."
 
 #: lib/psource_chat_admin_panels_help.php:203
 #: lib/psource_chat_admin_panels_help.php:283
 #: lib/psource_chat_admin_panels_help.php:337
 #: lib/psource_chat_admin_panels_help.php:500
 #: lib/psource_chat_admin_panels_help.php:522
+#, fuzzy
 msgid "12px, 0.9em oder leer lassen, um vom Theme zu erben"
-msgstr ""
+msgstr "12px, 0.9em o lasciare vuoto per ereditare dal tema"
 
 #: lib/psource_chat_admin_panels_help.php:207
+#, fuzzy
 msgid ""
 "Textfarbe im Chatfeld. Dies entspricht nicht der Textfarbe der "
 "Nachrichtenzeile"
 msgstr ""
+"Colore del testo nella casella di chat. Non corrisponde al colore del testo "
+"della riga del messaggio"
 
 #: lib/psource_chat_admin_panels_help.php:211
+#, fuzzy
 msgid ""
 "Hintergrundfarbe des Chatbox-Bereichs. Dies ist nicht die Farbe des "
 "Nachrichtenbereichs."
 msgstr ""
+"Colore di sfondo dell'area della casella di chat. Non è il colore dell'area "
+"dei messaggi."
 
 #: lib/psource_chat_admin_panels_help.php:215
+#, fuzzy
 msgid ""
 "Rahmenfarbe für Chat-Elemente wie Nachrichtenbereich, Benutzerliste usw.. "
 msgstr ""
+"Colore della cornice per gli elementi della chat, come l'area dei messaggi, "
+"l'elenco degli utenti, ecc."
 
 #: lib/psource_chat_admin_panels_help.php:219
+#, fuzzy
 msgid "Rahmenbreite für äußere Chatbox."
-msgstr ""
+msgstr "Larghezza della cornice per la casella di chat esterna."
 
 #: lib/psource_chat_admin_panels_help.php:220
+#, fuzzy
 msgid "Rahmenbreite 1px, 3px usw.."
-msgstr ""
+msgstr "Larghezza della cornice 1px, 3px ecc."
 
 #: lib/psource_chat_admin_panels_help.php:224
+#, fuzzy
 msgid ""
 "Der Abstand zwischen dem äußeren Containerrand und den Chat-Elementen wie "
 "Nachrichtenliste, Nachrichtenbereich usw."
 msgstr ""
+"La distanza tra il bordo esterno del contenitore e gli elementi della chat, "
+"come l'elenco dei messaggi, l'area dei messaggi, ecc."
 
 #: lib/psource_chat_admin_panels_help.php:225
+#, fuzzy
 msgid "Padding 1px, 3px, etc."
-msgstr ""
+msgstr "Imbottitura 1px, 3px, ecc."
 
 #: lib/psource_chat_admin_panels_help.php:229
+#, fuzzy
 msgid ""
 "Ermöglicht die Wiedergabe von Ton, wenn eine neue Nachricht empfangen wird. "
 "Benutzer können dies ein- und ausschalten."
 msgstr ""
+"Consente la riproduzione di un suono quando si riceve un nuovo messaggio. "
+"Gli utenti possono attivare e disattivare questa funzione."
 
 #: lib/psource_chat_admin_panels_help.php:233
+#, fuzzy
 msgid ""
 "Ermöglicht Benutzern das Popout der Chat-Sitzung in einem neuen Fenster."
 msgstr ""
+"Consente agli utenti di visualizzare la sessione di chat in una nuova "
+"finestra."
 
 #: lib/psource_chat_admin_panels_help.php:236
+#, fuzzy
 msgid ""
 "Aktiviert die Sichtbarkeit der Fußzeilenoptionen für Moderatoren, die in "
 "jeder Chatnachricht angezeigt werden."
 msgstr ""
+"Attiva la visibilità delle opzioni a piè di pagina per i moderatori, che "
+"vengono visualizzate in ogni messaggio di chat."
 
 #: lib/psource_chat_admin_panels_help.php:241
+#, fuzzy
 msgid "Zeige Emoticons in der Chat-Sitzung an."
-msgstr ""
+msgstr "Visualizza le emoticon nella sessione di chat."
 
 #: lib/psource_chat_admin_panels_help.php:245
+#, fuzzy
 msgid "Textfarbe für Elemente der äußeren Chatbox."
-msgstr ""
+msgstr "Colore del testo per gli elementi della casella di chat esterna."
 
 #: lib/psource_chat_admin_panels_help.php:249
+#, fuzzy
 msgid "Schaltflächenleiste über dem Nachrichteneintrag anzeigen"
-msgstr ""
+msgstr "Mostra la barra dei pulsanti sopra la voce del messaggio"
 
 #: lib/psource_chat_admin_panels_help.php:253
+#, fuzzy
 msgid "Hintergrundfarbe des Nachrichtenbereichs"
-msgstr ""
+msgstr "Colore di sfondo dell'area dei messaggi"
 
 #: lib/psource_chat_admin_panels_help.php:257
+#, fuzzy
 msgid "Hintergrundfarbe der Nachrichtenzeilenelemente"
-msgstr ""
+msgstr "Colore di sfondo degli elementi della riga del messaggio"
 
 #: lib/psource_chat_admin_panels_help.php:261
+#, fuzzy
 msgid "Abstand zwischen Zeilenelementen"
-msgstr ""
+msgstr "Distanza tra gli elementi della linea"
 
 #: lib/psource_chat_admin_panels_help.php:265
+#, fuzzy
 msgid "Rahmenfarbe der Nachrichtenzeilenelemente. Nur obere und untere Ränder."
 msgstr ""
+"Colore della cornice degli elementi della linea di messaggio. Solo i bordi "
+"superiore e inferiore."
 
 #: lib/psource_chat_admin_panels_help.php:269
+#, fuzzy
 msgid "Rahmenbreite der Nachrichtenzeilenelemente"
-msgstr ""
+msgstr "Larghezza della cornice degli elementi della riga del messaggio"
 
 #: lib/psource_chat_admin_panels_help.php:273
+#, fuzzy
 msgid "Hintergrundfarbe der Chatbox, wenn eine neue Nachricht vorliegt"
-msgstr ""
+msgstr "Colore di sfondo della casella di chat quando c'è un nuovo messaggio"
 
 #: lib/psource_chat_admin_panels_help.php:278
+#, fuzzy
 msgid ""
 "Schriftfamilie für die Nachrichteneingabe. Wähle Erben, um die "
 "Standardseitenfront Deines Themas zu verwenden"
 msgstr ""
+"Famiglia di caratteri per l'inserimento dei messaggi. Selezionare Eredita "
+"per utilizzare il fronte di pagina predefinito del tema"
 
 #: lib/psource_chat_admin_panels_help.php:287
+#, fuzzy
 msgid "Textfarbe der Chat-Nachrichtenzeile"
-msgstr ""
+msgstr "Colore del testo della riga del messaggio di chat"
 
 #: lib/psource_chat_admin_panels_help.php:291
+#, fuzzy
 msgid "Zeigen Sie den Avatar des Benutzers mit der Nachricht an"
-msgstr ""
+msgstr "Visualizza l'avatar dell'utente con il messaggio"
 
 #: lib/psource_chat_admin_panels_help.php:295
+#, fuzzy
 msgid "Hintergrundfarbe des Benutzernamens"
-msgstr ""
+msgstr "Colore di sfondo del nome utente"
 
 #: lib/psource_chat_admin_panels_help.php:299
+#, fuzzy
 msgid "Hintergrundfarbe des Moderatornamens"
-msgstr ""
+msgstr "Colore di sfondo del nome del moderatore"
 
 #: lib/psource_chat_admin_panels_help.php:303
+#, fuzzy
 msgid ""
 "Der Avatar ist eine quadratische Grafik und repräsentiert den Benutzer. Gib "
 "einen Wert für die maximale Breite/Höhe der Grafik ein"
 msgstr ""
+"L'avatar è una grafica quadrata che rappresenta l'utente. Immettere un "
+"valore per la larghezza/altezza massima della grafica"
 
 #: lib/psource_chat_admin_panels_help.php:308
 #: lib/psource_chat_admin_panels_help.php:312
+#, fuzzy
 msgid "Zeige das Datum an, an dem die Nachricht gesendet wurde"
-msgstr ""
+msgstr "Mostra la data di invio del messaggio"
 
 #: lib/psource_chat_admin_panels_help.php:316
+#, fuzzy
 msgid "Datums-/Uhrzeitfarbe"
-msgstr ""
+msgstr "Colore data/ora"
 
 #: lib/psource_chat_admin_panels_help.php:320
+#, fuzzy
 msgid "Datum/Uhrzeit Hintergrundfarbe"
-msgstr ""
+msgstr "Data/Ora Colore di sfondo"
 
 #: lib/psource_chat_admin_panels_help.php:324
+#, fuzzy
 msgid "Textfarbe für Quellcode"
-msgstr ""
+msgstr "Colore del testo per il codice sorgente"
 
 #: lib/psource_chat_admin_panels_help.php:328
+#, fuzzy
 msgid ""
 "Steuert die Position der Chat-Nachrichteneingabe. Wenn der Chat-"
 "Nachrichtenverlauf oben eingestellt ist, wird er oben am neuesten sortiert. "
 "Bei der Einstellung Unten wird der Verlauf der Chat-Nachricht unten als "
 "neueste Reihenfolge sortiert"
 msgstr ""
+"Controlla la posizione dell'input dei messaggi di chat. Se impostata su Top, "
+"la cronologia dei messaggi di chat è ordinata in alto come i più recenti. Se "
+"impostata su In basso, la cronologia dei messaggi di chat viene ordinata in "
+"basso come l'ordine più recente"
 
 #: lib/psource_chat_admin_panels_help.php:332
+#, fuzzy
 msgid ""
 "Schriftfamilie für die Nachrichteneingabe. Wähle Erben, um die "
 "Standardseitenfront Deines Themes zu verwenden"
 msgstr ""
+"Famiglia di caratteri per l'inserimento dei messaggi. Selezionare Eredita "
+"per utilizzare il fronte di pagina predefinito del tema"
 
 #: lib/psource_chat_admin_panels_help.php:341
+#, fuzzy
 msgid "Höhe des Nachrichteneingabebereichs"
-msgstr ""
+msgstr "Altezza dell'area di immissione dei messaggi"
 
 #: lib/psource_chat_admin_panels_help.php:346
-#, no-php-format
+#, fuzzy, no-php-format
 msgid ""
 "Steuere die Höhe der Textbereichseingabe. Ermögliche Benutzern, die Größe "
 "der Eingabe zu ändern oder sie zu sperren, um eine Größenänderung zu "
@@ -720,130 +958,190 @@ msgid ""
 "beträgt. <br /> <br /> Diese Option wird nicht von allen modernen Browsern "
 "unterstützt."
 msgstr ""
+"Controllare l'altezza dell'input dell'area di testo. Consentire agli utenti "
+"di ridimensionare l'input o bloccarlo per impedirne il ridimensionamento. Si "
+"noti che l'area di testo è sempre pari a 100% dla larghezza della casella di "
+"chat. <br /> <br /> Questa opzione non è supportata da tutti i browser "
+"moderni."
 
 #: lib/psource_chat_admin_panels_help.php:351
+#, fuzzy
 msgid ""
 "Maximale Anzahl von Zeichen, die ein Benutzer eingeben kann. Lasse das Feld "
 "für unbegrenzt leer."
 msgstr ""
+"Numero massimo di caratteri che un utente può inserire. Lasciare vuoto il "
+"campo per illimitato."
 
 #: lib/psource_chat_admin_panels_help.php:356
+#, fuzzy
 msgid "Textfarbe für die Nachrichteneingabe"
-msgstr ""
+msgstr "Colore del testo per l'inserimento dei messaggi"
 
 #: lib/psource_chat_admin_panels_help.php:360
+#, fuzzy
 msgid "Hintergrundfarbe für den Nachrichteneingabebereich"
-msgstr ""
+msgstr "Colore di sfondo per l'area di inserimento dei messaggi"
 
 #: lib/psource_chat_admin_panels_help.php:365
+#, fuzzy
 msgid "Zeige eine Senden-Schaltfläche zum Senden von Chat-Nachrichten an."
-msgstr ""
+msgstr "Visualizzare un pulsante di invio per inviare messaggi di chat."
 
 #: lib/psource_chat_admin_panels_help.php:368
+#, fuzzy
 msgid "Steuert die Anzeigeposition der Sendetaste."
-msgstr ""
+msgstr "Controlla la posizione di visualizzazione del tasto di trasmissione."
 
 #: lib/psource_chat_admin_panels_help.php:373
+#, fuzzy
 msgid ""
 "Steuert, wie oft (Sekunden) nach neuen Nachrichten von anderen Chat-"
 "Teilnehmern gesucht werden soll. Der Wert kann Teilsekunden wie 1,5, 2,75 "
 "sein. etc."
 msgstr ""
+"Controlla la frequenza (secondi) con cui controllare i nuovi messaggi degli "
+"altri partecipanti alla chat. Il valore può essere parziale, ad esempio 1,5, "
+"2,75, ecc."
 
 #: lib/psource_chat_admin_panels_help.php:374
+#, fuzzy
 msgid "1, 2, 1.5, etc. "
-msgstr ""
+msgstr "1, 2, 1,5, ecc."
 
 #: lib/psource_chat_admin_panels_help.php:378
+#, fuzzy
 msgid ""
 "Steuert, wie oft (Sekunden) die Benutzerlisten für die Chat-Sitzung "
 "aktualisiert werden sollen"
 msgstr ""
+"Controlla la frequenza (secondi) di aggiornamento degli elenchi di utenti "
+"per la sessione di chat"
 
 #: lib/psource_chat_admin_panels_help.php:382
+#, fuzzy
 msgid "Steuert die Abfragequelle für neue Nachrichten und Statusänderungen"
 msgstr ""
+"Controlla la fonte di interrogazione per i nuovi messaggi e le modifiche di "
+"stato"
 
 #: lib/psource_chat_admin_panels_help.php:386
+#, fuzzy
 msgid "Speicherort für statische Abfragedateien."
-msgstr ""
+msgstr "Posizione di memorizzazione per i file delle query statiche."
 
 #: lib/psource_chat_admin_panels_help.php:390
+#, fuzzy
 msgid "Aktiviere die Filterung blockierter Wörter."
-msgstr ""
+msgstr "Attivare il filtro delle parole bloccate."
 
 #: lib/psource_chat_admin_panels_help.php:394
+#, fuzzy
 msgid "Ersetzt blockiertes Wort durch etwas anderes, zB: PIIIIEPS."
-msgstr ""
+msgstr "Sostituisce la parola bloccata con un'altra, ad es: PIIIIEPS."
 
 #: lib/psource_chat_admin_panels_help.php:398
+#, fuzzy
 msgid ""
 "Blockierte Wörter sind in Chat-Sitzungen nicht zulässig. Dies gilt global "
 "für alle Sitzungen."
 msgstr ""
+"Le parole bloccate non sono consentite nelle sessioni di chat. Questo vale "
+"globalmente per tutte le sessioni."
 
 #: lib/psource_chat_admin_panels_help.php:402
+#, fuzzy
 msgid ""
 "Blockliste wird von allen Chat-Sitzungen verwendet. Diese Option verbirgt "
 "den gesamten Chat vor bestimmten Benutzer-E-Mail-Adressen."
 msgstr ""
+"L'elenco di blocco è utilizzato da tutte le sessioni di chat. Questa opzione "
+"nasconde tutte le chat da specifici indirizzi e-mail degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:411
+#, fuzzy
 msgid ""
 "Diese Option blendet den Chat in der unteren Ecke basierend auf den "
 "angegebenen URLs aus."
 msgstr ""
+"Questa opzione nasconde la chat nell'angolo inferiore in base agli URL "
+"specificati."
 
 #: lib/psource_chat_admin_panels_help.php:419
+#, fuzzy
 msgid ""
 "Nachricht, die dem Benutzer angezeigt wird, wenn seine IP-Adresse gesperrt "
 "wurde."
 msgstr ""
+"Messaggio visualizzato all'utente quando il suo indirizzo IP è stato "
+"bloccato."
 
 #: lib/psource_chat_admin_panels_help.php:423
+#, fuzzy
 msgid ""
 "Liste der blockierten IP-Adressen. Jede IP-Adresse sollte als gepunktetes "
 "Dezimalformat eingegeben werden. Beispiel: 123.123.123.123, 10.0.1.168"
 msgstr ""
+"Elenco degli indirizzi IP bloccati. Ogni indirizzo IP deve essere inserito "
+"in formato decimale punteggiato. Esempio: 123.123.123.123, 10.0.1.168"
 
 #: lib/psource_chat_admin_panels_help.php:431
+#, fuzzy
 msgid ""
 "Der Seitenkanten-Chat ist ein globales Gruppen-Chat-Feld, das auf ALLEN "
 "Seiten Ihrer Website angezeigt wird."
 msgstr ""
+"Page Edge Chat è una chat di gruppo globale che viene visualizzata su TUTTE "
+"le pagine del vostro sito web."
 
 #: lib/psource_chat_admin_panels_help.php:434
+#, fuzzy
 msgid ""
 "Steuert den Anfangsstatus des Chats in der unteren Ecke für neue Benutzer."
 msgstr ""
+"Controlla lo stato iniziale della chat nell'angolo inferiore per i nuovi "
+"utenti."
 
 #: lib/psource_chat_admin_panels_help.php:437
+#, fuzzy
 msgid ""
 "Wenn der Seitenkanten-Chat minimiert ist, wird gesteuert, ob der Server noch "
 "nach neuen Nachrichten abgefragt wird."
 msgstr ""
+"Quando la pagina edge chat è ridotta a icona, controlla se il server "
+"continua a essere interrogato per i nuovi messaggi."
 
 #: lib/psource_chat_admin_panels_help.php:440
+#, fuzzy
 msgid "Zeige den Chat in der unteren Ecke in WP Admin an."
-msgstr ""
+msgstr "Mostra la chat nell'angolo inferiore dell'amministrazione di WP."
 
 #: lib/psource_chat_admin_panels_help.php:444
+#, fuzzy
 msgid ""
 "Wenn ein Benutzer einen privaten Chat beendet, können andere Benutzer, die "
 "noch verbunden sind, eine Nachricht posten, um die Chat-Konversation "
 "fortzusetzen. Diese Option steuert, ob dem Benutzer, der die Konversation "
 "verlassen hat, das Chat-Popup erneut angezeigt wird."
 msgstr ""
+"Quando un utente esce da una chat privata, gli altri utenti ancora connessi "
+"possono inviare un messaggio per continuare la conversazione. Questa opzione "
+"controlla se il pop-up della chat viene visualizzato nuovamente dall'utente "
+"che ha lasciato la conversazione."
 
 #: lib/psource_chat_admin_panels_help.php:449
+#, fuzzy
 msgid "Steuert die Position der teilnehmenden Benutzer in der Chat-Sitzung"
-msgstr ""
+msgstr "Controlla la posizione degli utenti partecipanti alla sessione di chat"
 
 #: lib/psource_chat_admin_panels_help.php:453
+#, fuzzy
 msgid "Liste der Benutzer anzeigen, die an der Chat-Sitzung teilnehmen."
 msgstr ""
+"Visualizza l'elenco degli utenti che partecipano alla sessione di chat."
 
 #: lib/psource_chat_admin_panels_help.php:457
+#, fuzzy
 msgid ""
 "Listenmoderatoren und Benutzer in separaten Listen anzeigen oder kombinieren."
 "<br /><br />Bei Verwendung von Split und Oben/Unten befinden sich die "
@@ -851,210 +1149,316 @@ msgid ""
 "Links/Rechts werden Moderatoren zuerst und dann Benutzer in einer neuen "
 "Zeile angezeigt."
 msgstr ""
+"Visualizzare o combinare i moderatori e gli utenti in elenchi separati.<br /"
+"><br />Quando si usa la divisione e l'alto/basso, i moderatori sono a "
+"sinistra e gli utenti a destra. Quando si usa Dividi e Sinistra/Destra, "
+"vengono visualizzati prima i moderatori e poi gli utenti in una nuova riga."
 
 #: lib/psource_chat_admin_panels_help.php:462
-#, no-php-format
+#, fuzzy, no-php-format
 msgid ""
 "Breite/Höhe des Benutzerlistenbereichs. Das kann eine feste Größe 250px oder "
 "ein Prozentsatz von 25% sein. Der Benutzerlistenbereich wird bei Bedarf auf "
 "automatisches Scrollen (CSS: Überlauf) eingestellt, um alle Benutzer "
 "anzuzeigen."
 msgstr ""
+"Larghezza/altezza dell'area dell'elenco utenti. Può essere una dimensione "
+"fissa di 250px o una percentuale di 25% suno. L'area dell'elenco utenti è "
+"impostata per scorrere automaticamente (CSS: overflow), se necessario, per "
+"mostrare tutti gli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:463
+#, fuzzy
 msgid "Die Breite des Nachrichtenbereichs wird automatisch angepasst"
-msgstr ""
+msgstr "La larghezza dell'area del messaggio viene regolata automaticamente"
 
 #: lib/psource_chat_admin_panels_help.php:467
+#, fuzzy
 msgid "Größe der im Benutzerlistenbereich angezeigten Benutzeravatare."
 msgstr ""
+"Dimensione degli avatar degli utenti visualizzati nell'area dell'elenco "
+"utenti."
 
 #: lib/psource_chat_admin_panels_help.php:468
+#, fuzzy
 msgid "30px, 40px usw. Muss eine feste Größe haben. "
-msgstr ""
+msgstr "30px, 40px ecc. Deve avere una dimensione fissa."
 
 #: lib/psource_chat_admin_panels_help.php:472
+#, fuzzy
 msgid ""
 "Wenn ein Benutzer den Chat verlässt, indem er zu einer anderen Stelle der "
 "Seite navigiert oder den Browser schließt, wird er nach diesem Schwellenwert "
 "von Sekunden entfernt. Mindestens 20 Sekunden."
 msgstr ""
+"Se un utente abbandona la chat navigando in un'altra parte della pagina o "
+"chiudendo il browser, verrà rimosso dopo questa soglia di secondi. Almeno 20 "
+"secondi."
 
 #: lib/psource_chat_admin_panels_help.php:473
+#, fuzzy
 msgid ""
 "Sekunden Verzögerung, wenn der Benutzer aus der Liste entfernt wird. "
 "Mindestens 20 Sekunden."
 msgstr ""
+"Ritardo di pochi secondi quando l'utente viene rimosso dall'elenco. Almeno "
+"20 secondi."
 
 #: lib/psource_chat_admin_panels_help.php:478
+#, fuzzy
 msgid "Hintergrundfarbe des Benutzerlistenbereichs."
-msgstr ""
+msgstr "Colore di sfondo dell'area dell'elenco utenti."
 
 #: lib/psource_chat_admin_panels_help.php:489
+#, fuzzy
 msgid ""
 "Farbe des Benutzerlisten-Headers. Nicht verwendet wird die Anzeige von "
 "Avataren."
 msgstr ""
+"Colore dell'intestazione dell'elenco utenti. Non viene utilizzato per la "
+"visualizzazione degli avatar."
 
 #: lib/psource_chat_admin_panels_help.php:494
+#, fuzzy
 msgid "Schriftfamilie für die Elemente der Benutzernamenliste."
 msgstr ""
+"Famiglia di caratteri per gli elementi dell'elenco dei nomi degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:499
+#, fuzzy
 msgid "Schriftgröße für die Elemente der Benutzernamenliste."
 msgstr ""
+"Dimensione dei caratteri per gli elementi dell'elenco dei nomi degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:504
+#, fuzzy
 msgid "Farbe für den oben gezeigten Kopfzeilentext Avatare/Namen."
-msgstr ""
+msgstr "Colore per il testo dell'intestazione Avatar/Nomi mostrato sopra."
 
 #: lib/psource_chat_admin_panels_help.php:508
+#, fuzzy
 msgid ""
 "Header werden über den Benutzerlisten angezeigt. Lasse das Feld leer, um die "
 "Kopfzeile nicht anzuzeigen. "
 msgstr ""
+"Le intestazioni vengono visualizzate sopra gli elenchi degli utenti. "
+"Lasciare il campo vuoto per non visualizzare l'intestazione."
 
 #: lib/psource_chat_admin_panels_help.php:512
+#, fuzzy
 msgid "Farbe für Moderatornamen in der Benutzerliste."
-msgstr ""
+msgstr "Colore per i nomi dei moderatori nell'elenco degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:515
+#, fuzzy
 msgid "Farbe für Benutzernamen in der Benutzerliste."
-msgstr ""
+msgstr "Colore per i nomi degli utenti nell'elenco degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:518
+#, fuzzy
 msgid "Schriftfamilie für Moderator-/Benutzernamen in der Benutzerliste."
 msgstr ""
+"Famiglia di caratteri per i nomi dei moderatori/utenti nell'elenco degli "
+"utenti."
 
 #: lib/psource_chat_admin_panels_help.php:521
+#, fuzzy
 msgid "Schriftgröße für Moderator-/Benutzernamen in der Benutzerliste."
 msgstr ""
+"Dimensione dei caratteri per i nomi dei moderatori/utenti nell'elenco degli "
+"utenti."
 
 #: lib/psource_chat_admin_panels_help.php:526
+#, fuzzy
 msgid "Rahmenbreite für Moderator-/Benutzeravatare in der Benutzerliste."
 msgstr ""
+"Larghezza della cornice per gli avatar dei moderatori/utenti nell'elenco "
+"degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:529
+#, fuzzy
 msgid "Rahmenfarbe für Moderator-Avatare in der Benutzerliste."
 msgstr ""
+"Colore della cornice per gli avatar dei moderatori nell'elenco degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:533
+#, fuzzy
 msgid "Rahmenfarbe für Benutzeravatare in der Benutzerliste."
 msgstr ""
+"Colore della cornice per gli avatar degli utenti nell'elenco degli utenti."
 
 #: lib/psource_chat_admin_panels_help.php:538
+#, fuzzy
 msgid ""
 "Zeigt eine kurze Nachricht an, wenn ein Benutzer die Chat-Sitzung betritt/"
 "verlässt"
 msgstr ""
+"Visualizza un breve messaggio quando un utente entra o esce dalla sessione "
+"di chat"
 
 #: lib/psource_chat_admin_panels_help.php:542
+#, fuzzy
 msgid ""
 "Steuert, wie lange der Hinweis auf dem Bildschirm angezeigt wird, wenn ein "
 "Benutzer den Chat betritt/verlässt."
 msgstr ""
+"Controlla la durata della visualizzazione dell'avviso sullo schermo quando "
+"un utente entra o esce dalla chat."
 
 #: lib/psource_chat_admin_panels_help.php:547
+#, fuzzy
 msgid "Welche Benutzeranmeldeoptionen sind für die Chat-Sitzungen zulässig?"
 msgstr ""
+"Quali opzioni di accesso utente sono consentite per le sessioni di chat?"
 
 #: lib/psource_chat_admin_panels_help.php:551
+#, fuzzy
 msgid ""
 "Steuert, was der Benutzer sehen darf, wenn er sich nicht im Chat angemeldet "
 "hat."
-msgstr ""
+msgstr "Controlla ciò che l'utente può vedere quando non è connesso alla chat."
 
 #: lib/psource_chat_admin_panels_help.php:555
+#, fuzzy
 msgid ""
 "Dies ist die Eingabeaufforderung, die dem Benutzer mitteilt, dass er sich "
 "anmelden muss, bevor er Chat-Nachrichten veröffentlicht."
 msgstr ""
+"È la richiesta che indica all'utente di effettuare il login prima di inviare "
+"messaggi di chat."
 
 #: lib/psource_chat_admin_panels_help.php:559
+#, fuzzy
 msgid "Die Anmeldemeldung wird über dem Anmeldeformular angezeigt. "
 msgstr ""
+"Il messaggio di registrazione viene visualizzato sopra il modulo di "
+"registrazione."
 
 #: lib/psource_chat_admin_panels_help.php:563
+#, fuzzy
 msgid ""
 "Steuert, welche Benutzer Nachrichten und andere Benutzer während der Chat-"
 "Sitzung moderieren können."
 msgstr ""
+"Controlla quali utenti possono moderare i messaggi e gli altri utenti "
+"durante la sessione di chat."
 
 #: lib/psource_chat_admin_panels_help.php:567
+#, fuzzy
 msgid ""
 "Steuert, welche WordPress-Benutzerrollen die Symbolleistenschaltfläche Chat "
 "WYSIWYG sehen."
 msgstr ""
+"Controlla quali ruoli utente di WordPress vedono il pulsante della barra "
+"degli strumenti Chat WYSIWYG."
 
 #: lib/psource_chat_admin_panels_help.php:571
+#, fuzzy
 msgid ""
 "Steuert, für welche Beitragstypen die Symbolleistenschaltfläche Chat WYSIWYG "
 "aktiviert ist"
 msgstr ""
+"Controlla per quali tipi di post è abilitato il pulsante della barra degli "
+"strumenti Chat WYSIWYG"
 
 #: lib/psource_chat_admin_panels_help.php:575
+#, fuzzy
 msgid ""
 "Ermöglicht das Blockieren des Ladens von Chat auf bestimmten WordPress-Admin-"
 "Seiten."
 msgstr ""
+"Permette di bloccare il caricamento della chat su alcune pagine di "
+"amministrazione di WordPress."
 
 #: lib/psource_chat_admin_panels_help.php:579
+#, fuzzy
 msgid ""
 "Ausblenden/Anzeigen des Widgets auf Beiträgen/Seiten, die den Chat-Shortcode "
 "enthalten."
 msgstr ""
+"Nascondere/mostrare il widget sui post/pagine che contengono lo shortcode "
+"della chat."
 
 #: lib/psource_chat_admin_panels_help.php:583
+#, fuzzy
 msgid ""
 "Der Titel der Registerkarte im BuddyPress-Gruppenabschnitt für den Zugriff "
 "auf den Chat"
 msgstr ""
+"Il titolo della scheda nella sezione del gruppo BuddyPress per l'accesso "
+"alla chat"
 
 #: lib/psource_chat_admin_panels_help.php:587
+#, fuzzy
 msgid ""
 "Der Titel der Registerkarte im BuddyPress-Gruppenabschnitt für den Zugriff "
 "auf den Chat."
 msgstr ""
+"Il titolo della scheda della sezione del gruppo BuddyPress per accedere alla "
+"chat."
 
 #: lib/psource_chat_admin_panels_help.php:591
+#, fuzzy
 msgid ""
 "Der Titel der Kontakte im BuddyPress-Gruppenabschnitt für den Zugriff auf "
 "den Chat"
 msgstr ""
+"Il titolo dei contatti nella sezione del gruppo BuddyPress per l'accesso "
+"alla chat"
 
 #: lib/psource_chat_admin_panels_help.php:595
+#, fuzzy
 msgid ""
 "Steuert die Anzeige von Chats in der unteren Ecke im BuddyPress Group Admin-"
 "Bereich"
 msgstr ""
+"Controlla la visualizzazione delle chat nell'angolo inferiore dell'area di "
+"amministrazione del gruppo BuddyPress"
 
 #: lib/psource_chat_admin_panels_help.php:599
+#, fuzzy
 msgid "Steuert die Anzeige von Widget-Chats im Bereich BuddyPress Gruppen"
 msgstr ""
+"Controlla la visualizzazione delle chat del widget nella sezione Gruppi di "
+"BuddyPress"
 
 #: lib/psource_chat_admin_panels_help.php:603
+#, fuzzy
 msgid ""
 "Steuert die Anzeige des unteren Widgets im Bereich BuddyPress Gruppen Admin"
 msgstr ""
+"Controlla la visualizzazione del widget inferiore nell'area di "
+"amministrazione dei gruppi BuddyPress"
 
 #: lib/psource_chat_admin_panels_help.php:607
+#, fuzzy
 msgid "Steuert die Hintergrundfarbe im BuddyPress Gruppen Admin Chat-Formular."
 msgstr ""
+"Controlla il colore di sfondo del modulo Chat dell'amministratore del gruppo "
+"BuddyPress."
 
 #: lib/psource_chat_admin_panels_help.php:611
+#, fuzzy
 msgid ""
 "Steuert die Textfarbe für Beschriftungen im BuddyPress Gruppen Admin Chat-"
 "Formular."
 msgstr ""
+"Controlla il colore del testo delle etichette nel modulo di chat "
+"dell'amministratore del gruppo BuddyPress."
 
 #: lib/psource_chat_admin_panels_help.php:616
+#, fuzzy
 msgid ""
 "Der globale Chat in der unteren Ecke bedeutet, dass die Chat-Nachricht von "
 "allen Sites innerhalb des Multisite-Systems stammt. Beim Wechseln zwischen "
 "Standorten bleiben die Nachrichten erhalten."
 msgstr ""
+"La chat globale nell'angolo in basso significa che il messaggio di chat "
+"proviene da tutti i siti del sistema multisito. Quando si passa da un sito "
+"all'altro, i messaggi vengono mantenuti."
 
 #: lib/psource_chat_admin_panels_help.php:620
+#, fuzzy
 msgid ""
 "Diese Benutzeroption steuert den öffentlichen Chat-Status für andere "
 "Benutzer in Deinem Netzwerk. Auf diese Weise kannst Du steuern, wann andere "
@@ -1062,317 +1466,368 @@ msgid ""
 "Chats während bestehender Chat-Sitzungen, an denen man teilnehmen, nicht "
 "verhindern."
 msgstr ""
+"Questa opzione utente controlla lo stato della chat pubblica per gli altri "
+"utenti della rete. Ciò consente di controllare quando gli altri utenti "
+"possono avviare sessioni di chat private. Si noti che questo non impedisce "
+"le chat private durante le sessioni di chat esistenti a cui si sta "
+"partecipando."
 
 #: lib/psource_chat_admin_panels_help.php:627
 #: lib/psource_chat_form_sections.php:2761
+#, fuzzy
 msgid ""
 "Dadurch werden alle Chat-Funktionen einschließlich des WordPress-"
 "Symbolleistenmenüs deaktiviert"
 msgstr ""
+"Questo disabilita tutte le funzioni della chat, compreso il menu della barra "
+"degli strumenti di WordPress"
 
 #: lib/psource_chat_admin_session_logs.php:35
 #: lib/psource_chat_admin_session_messages.php:43
 msgid "Ausblenden"
-msgstr ""
+msgstr "Nascondi"
 
 #: lib/psource_chat_admin_session_logs.php:36
 #: lib/psource_chat_admin_session_messages.php:44
+#, fuzzy
 msgid "Einblenden"
-msgstr ""
+msgstr "Dissolvenza"
 
 #: lib/psource_chat_admin_session_logs.php:37
 #: lib/psource_chat_admin_session_messages.php:48
 msgid "Löschen"
-msgstr ""
+msgstr "Cancellare"
 
 #: lib/psource_chat_admin_session_logs.php:139
 msgid "Alle anzeigen"
-msgstr ""
+msgstr "Mostra tutti"
 
 #: lib/psource_chat_admin_session_logs.php:143
 #: lib/psource_chat_admin_session_logs.php:334
 #: lib/psource_chat_admin_session_messages.php:390 psource-chat.php:4607
+#, fuzzy
 msgid "Offen"
-msgstr ""
+msgstr "Aperto"
 
 #: lib/psource_chat_admin_session_logs.php:147
 #: lib/psource_chat_admin_session_logs.php:331
 #: lib/psource_chat_admin_session_messages.php:176
 #: lib/psource_chat_admin_session_messages.php:387
+#, fuzzy
 msgid "Archiviert"
-msgstr ""
+msgstr "Archiviato"
 
 #: lib/psource_chat_admin_session_logs.php:151
 #: lib/psource_chat_admin_session_logs.php:329
 #: lib/psource_chat_admin_session_messages.php:180
 #: lib/psource_chat_admin_session_messages.php:385
+#, fuzzy
 msgid "Versteckt"
-msgstr ""
+msgstr "Nascosto"
 
 #: lib/psource_chat_admin_session_logs.php:177
+#, fuzzy
 msgid "Alle Chats anzeigen"
-msgstr ""
+msgstr "Mostra tutte le chat"
 
 #: lib/psource_chat_admin_session_logs.php:209
+#, fuzzy
 msgid "Alle Typen anzeigen"
-msgstr ""
+msgstr "Mostra tutti i tipi"
 
 #: lib/psource_chat_admin_session_logs.php:231
 msgid "Anfangsdatum"
-msgstr ""
+msgstr "Start date"
 
 #: lib/psource_chat_admin_session_logs.php:233
 msgid "Enddatum"
-msgstr ""
+msgstr "Data di fine"
 
 #: lib/psource_chat_admin_session_logs.php:296
 #: lib/psource_chat_admin_session_messages.php:291
 msgid "Zeit"
-msgstr ""
+msgstr "Ora"
 
 #: lib/psource_chat_admin_session_logs.php:301
+#, fuzzy
 msgid "Sitzung"
-msgstr ""
+msgstr "Sessione"
 
 #: lib/psource_chat_admin_session_logs.php:302
 #: lib/psource_chat_admin_session_messages.php:292
 msgid "Status"
-msgstr ""
+msgstr "Stato"
 
 #: lib/psource_chat_admin_session_logs.php:303
 msgid "Typ"
-msgstr ""
+msgstr "tipo"
 
 #: lib/psource_chat_admin_session_logs.php:304
+#, fuzzy
 msgid "Moderatoren"
-msgstr ""
+msgstr "Moderatori"
 
 #: lib/psource_chat_admin_session_logs.php:305
 #: lib/psource_chat_admin_session_messages.php:293
 msgid "Benutzer"
-msgstr ""
+msgstr "User"
 
 #: lib/psource_chat_admin_session_logs.php:306
 msgid "Nachrichten"
-msgstr ""
+msgstr "Messaggi"
 
 #: lib/psource_chat_admin_session_logs.php:315 psource-chat.php:3176
 msgid "Privat"
-msgstr ""
+msgstr "Privato"
 
 #: lib/psource_chat_admin_session_logs.php:343
 #: lib/psource_chat_buddypress.php:127 lib/psource_chat_cpcommunitie.php:122
 #: lib/psource_chat_widget.php:841 lib/psource_chat_widget.php:871
 #: lib/psource_chat_wpadminbar.php:111 lib/psource_chat_wpadminbar.php:145
 #: psource-chat.php:1000
+#, fuzzy
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: lib/psource_chat_admin_session_logs.php:388
 msgid "Details"
-msgstr ""
+msgstr "Dettagli"
 
 #: lib/psource_chat_admin_session_logs.php:389
+#, fuzzy
 msgid "Details zu dieser Chat-Sitzung anzeigen"
-msgstr ""
+msgstr "Mostra i dettagli di questa sessione di chat"
 
 #: lib/psource_chat_admin_session_logs.php:403 psource-chat.php:1174
 #: psource-chat.php:4853
+#, fuzzy
 msgid "ausblenden"
-msgstr ""
+msgstr "nascondersi"
 
 #: lib/psource_chat_admin_session_logs.php:404
+#, fuzzy
 msgid ""
 "Blende die gesamte Chat-Sitzung aus, um die öffentliche Ansicht zu blockieren"
-msgstr ""
+msgstr "Nascondere l'intera sessione di chat per bloccare la vista pubblica"
 
 #: lib/psource_chat_admin_session_logs.php:410 psource-chat.php:1175
 #: psource-chat.php:4854
+#, fuzzy
 msgid "einblenden"
-msgstr ""
+msgstr "dissolvenza"
 
 #: lib/psource_chat_admin_session_logs.php:411
+#, fuzzy
 msgid ""
 "Blende die gesamte Chat-Sitzung ein, um die öffentliche Ansicht zu "
 "ermöglichen"
 msgstr ""
+"Nascondere l'intera sessione di chat per consentire la visualizzazione "
+"pubblica"
 
 #: lib/psource_chat_admin_session_logs.php:418
 msgid "löschen"
-msgstr ""
+msgstr "delete"
 
 #: lib/psource_chat_admin_session_logs.php:419
+#, fuzzy
 msgid "Lösche die gesamte Chat-Sitzung dauerhaft"
-msgstr ""
+msgstr "Cancellare definitivamente l'intera sessione di chat"
 
 #: lib/psource_chat_admin_session_logs.php:433
+#, fuzzy
 msgid "Chat anzeigen"
-msgstr ""
+msgstr "Mostra la chat"
 
 #: lib/psource_chat_admin_session_logs.php:434
+#, fuzzy
 msgid "Live-Chat-Sitzung anzeigen"
-msgstr ""
+msgstr "Visualizza la sessione di chat dal vivo"
 
 #: lib/psource_chat_admin_session_logs.php:564
-#, php-format
+#, fuzzy, php-format
 msgid " (%s Sekunde zuvor)"
 msgid_plural " (%s Sekunden zuvor)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " (%s secondo prima)"
+msgstr[1] " (%s secondi prima)"
 
 #: lib/psource_chat_admin_session_logs.php:601
-#, php-format
+#, fuzzy, php-format
 msgid "%s Sekunde"
 msgid_plural "%s Sekunden"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s secondo"
+msgstr[1] "%s secondi"
 
 #. translators: min=minute
 #: lib/psource_chat_admin_session_logs.php:608
-#, php-format
+#, fuzzy, php-format
 msgid "%s Minute"
 msgid_plural "%s Minuten"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Minuto"
+msgstr[1] "%s minuti"
 
 #: lib/psource_chat_admin_session_logs.php:614
-#, php-format
+#, fuzzy, php-format
 msgid "%s Stunde"
 msgid_plural "%s Stunden"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Ora"
+msgstr[1] "%s ore"
 
 #: lib/psource_chat_admin_session_logs.php:620
-#, php-format
+#, fuzzy, php-format
 msgid "%s Tag"
 msgid_plural "%s Tage"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Tag"
+msgstr[1] "%s giorni"
 
 #: lib/psource_chat_admin_session_logs.php:626
-#, php-format
+#, fuzzy, php-format
 msgid "%s Woche"
 msgid_plural "%s Wochen"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s settimana"
+msgstr[1] "%s settimane"
 
 #: lib/psource_chat_admin_session_logs.php:632
-#, php-format
+#, fuzzy, php-format
 msgid "%s Monat"
 msgid_plural "%s Monate"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mese"
+msgstr[1] "%s mesi"
 
 #: lib/psource_chat_admin_session_logs.php:638
-#, php-format
+#, fuzzy, php-format
 msgid "%s Jahr"
 msgid_plural "%s Jahre"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Anno"
+msgstr[1] "%s anni"
 
 #: lib/psource_chat_admin_session_messages.php:172
+#, fuzzy
 msgid "Zeige jeden Status"
-msgstr ""
+msgstr "Mostra ogni stato"
 
 #: lib/psource_chat_admin_session_messages.php:191
+#, fuzzy
 msgid "Alle Moderatoren anzeigen"
-msgstr ""
+msgstr "Mostra tutti i moderatori"
 
 #: lib/psource_chat_admin_session_messages.php:193
+#, fuzzy
 msgid "Keine Moderatoren anzeigen"
-msgstr ""
+msgstr "Non mostrare i moderatori"
 
 #: lib/psource_chat_admin_session_messages.php:213
+#, fuzzy
 msgid "Alle Benutzer anzeigen"
-msgstr ""
+msgstr "Mostra tutti gli utenti"
 
 #: lib/psource_chat_admin_session_messages.php:215
+#, fuzzy
 msgid "Keine Benutzer anzeigen"
-msgstr ""
+msgstr "Non mostrare agli utenti"
 
 #: lib/psource_chat_admin_session_messages.php:294
 msgid "Nachricht"
-msgstr ""
+msgstr "Messaggio"
 
 #: lib/psource_chat_admin_session_messages.php:334
+#, fuzzy
 msgid "hide"
-msgstr ""
+msgstr "nascondersi"
 
 #: lib/psource_chat_admin_session_messages.php:335
+#, fuzzy
 msgid "Blende diese Chat-Nachricht aus der Öffentlichkeit aus"
-msgstr ""
+msgstr "Nascondere questo messaggio di chat dalla vista pubblica"
 
 #: lib/psource_chat_admin_session_messages.php:341
+#, fuzzy
 msgid "unhide"
-msgstr ""
+msgstr "nascondere"
 
 #: lib/psource_chat_admin_session_messages.php:342
+#, fuzzy
 msgid ""
 "Blende diese Chat-Nachricht ein, um die öffentliche Ansicht zu ermöglichen"
 msgstr ""
+"Mostra questo messaggio di chat per abilitare la visualizzazione pubblica"
 
 #: lib/psource_chat_admin_session_messages.php:350
 msgid "delete"
-msgstr ""
+msgstr "elimina"
 
 #: lib/psource_chat_admin_session_messages.php:351
+#, fuzzy
 msgid "Lösche diese Chat-Nachricht dauerhaft"
-msgstr ""
+msgstr "Cancellare definitivamente questo messaggio di chat"
 
 #: lib/psource_chat_admin_tinymce.php:183 lib/psource_chat_widget.php:965
 #: lib/psource_chat_widget.php:983
+#, fuzzy
 msgid "WordPress Chat"
-msgstr ""
+msgstr "Chat di WordPress"
 
 #: lib/psource_chat_admin_tinymce.php:192
+#, fuzzy
 msgid "Box Darstellung"
-msgstr ""
+msgstr "Rappresentazione della scatola"
 
 #: lib/psource_chat_admin_tinymce.php:197
+#, fuzzy
 msgid "Nachricht Darstellung"
-msgstr ""
+msgstr "Rappresentazione del messaggio"
 
 #: lib/psource_chat_admin_tinymce.php:217
+#, fuzzy
 msgid "Fortgeschritten"
-msgstr ""
+msgstr "Avanzato"
 
 #: lib/psource_chat_admin_tinymce.php:261 psource-chat.php:4937
 msgid "Abbrechen"
-msgstr ""
+msgstr "Cancella"
 
 #: lib/psource_chat_admin_tinymce.php:262
+#, fuzzy
 msgid "Änderung abbrechen und Popup schließen"
-msgstr ""
+msgstr "Annullamento della modifica e chiusura del pop-up"
 
 #: lib/psource_chat_admin_tinymce.php:268
+#, fuzzy
 msgid "Standards"
-msgstr ""
+msgstr "Standard"
 
 #: lib/psource_chat_admin_tinymce.php:269
+#, fuzzy
 msgid "Setze den Shortcode auf die Standardwerte zurück"
-msgstr ""
+msgstr "Ripristinare i valori predefiniti dello shortcode"
 
 #: lib/psource_chat_admin_tinymce.php:271
 msgid "Einfügen"
-msgstr ""
+msgstr "Inserisci"
 
 #: lib/psource_chat_admin_tinymce.php:272
+#, fuzzy
 msgid "Speichere die Einstellungen und füge den Shortcode am Cursor ein"
 msgstr ""
+"Salvare le impostazioni e inserire lo shortcode in corrispondenza del cursore"
 
 #: lib/psource_chat_buddypress.php:166 lib/psource_chat_cpcommunitie.php:161
+#, fuzzy
 msgid "Einstellungen gespeichert."
-msgstr ""
+msgstr "Impostazioni salvate."
 
 #: lib/psource_chat_buddypress.php:179 lib/psource_chat_cpcommunitie.php:174
+#, fuzzy
 msgid "Chat Einstellungen"
-msgstr ""
+msgstr "Impostazioni della chat"
 
 #: lib/psource_chat_buddypress.php:200 lib/psource_chat_cpcommunitie.php:195
+#, fuzzy
 msgid "Chat-Status festlegen"
-msgstr ""
+msgstr "Impostare lo stato della chat"
 
 #: lib/psource_chat_buddypress.php:202 lib/psource_chat_cpcommunitie.php:197
+#, fuzzy
 msgid ""
 "Diese Benutzeroption steuert Deinen öffentlichen Chat-Status für andere "
 "Benutzer in Deinem Netzwerk. Auf diese Weise kannst Du steuern, wann andere "
@@ -1380,31 +1835,43 @@ msgid ""
 "private Chats während bestehender Chat-Sitzungen, an denen Du teilnimmst, "
 "nicht verhindert."
 msgstr ""
+"Questa opzione utente controlla il vostro stato di chat pubblica per gli "
+"altri utenti della vostra rete. Ciò consente di controllare quando gli altri "
+"utenti possono avviare sessioni di chat private con voi. Si noti che questo "
+"non impedisce le chat private durante le sessioni di chat esistenti a cui si "
+"sta partecipando."
 
 #: lib/psource_chat_buddypress.php:223 lib/psource_chat_cpcommunitie.php:218
+#, fuzzy
 msgid "In Chat-Sitzungen wird der Name als angezeigt"
-msgstr ""
+msgstr "Nelle sessioni di chat, il nome viene visualizzato come"
 
 #: lib/psource_chat_buddypress.php:225 lib/psource_chat_cpcommunitie.php:220
+#, fuzzy
 msgid ""
 "Während Chat-Sitzungen, an denen Du teilnimmst, wird festgelegt, wie Du "
 "anderen Benutzern angezeigt wirst. Standard ist der Anzeigename."
 msgstr ""
+"Durante le sessioni di chat a cui si partecipa, viene determinato il modo in "
+"cui si viene visualizzati dagli altri utenti. L'impostazione predefinita è "
+"il nome visualizzato."
 
 #: lib/psource_chat_buddypress.php:229 lib/psource_chat_cpcommunitie.php:224
 #: lib/psource_chat_form_sections.php:2737 psource-chat.php:2733
+#, fuzzy
 msgid "Anzeigename"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #: lib/psource_chat_buddypress.php:232 lib/psource_chat_cpcommunitie.php:227
 #: lib/psource_chat_form_sections.php:2740
 msgid "Benutzername"
-msgstr ""
+msgstr "Nome utente"
 
 #: lib/psource_chat_buddypress.php:238 lib/psource_chat_cpcommunitie.php:233
 #: psource-chat.php:2789
+#, fuzzy
 msgid "Chat WordPress Symbolleistenmenü anzeigen?"
-msgstr ""
+msgstr "Mostrare il menu della barra degli strumenti di Chat WordPress?"
 
 #: lib/psource_chat_buddypress.php:243 lib/psource_chat_cpcommunitie.php:238
 #: lib/psource_chat_form_sections.php:16 lib/psource_chat_form_sections.php:318
@@ -1450,7 +1917,7 @@ msgstr ""
 #: psource-chat.php:2829 psource-chat.php:2869 psource-chat.php:2927
 #: psource-chat.php:2971
 msgid "Aktiviert"
-msgstr ""
+msgstr "Attivo"
 
 #: lib/psource_chat_buddypress.php:247 lib/psource_chat_cpcommunitie.php:242
 #: lib/psource_chat_form_sections.php:29 lib/psource_chat_form_sections.php:319
@@ -1492,149 +1959,183 @@ msgstr ""
 #: psource-chat.php:2800 psource-chat.php:2817 psource-chat.php:2833
 #: psource-chat.php:2873 psource-chat.php:2931 psource-chat.php:2975
 msgid "Deaktiviert"
-msgstr ""
+msgstr "Disattivato"
 
 #: lib/psource_chat_buddypress.php:252 lib/psource_chat_cpcommunitie.php:247
+#, fuzzy
 msgid "Einstellungen speichern"
-msgstr ""
+msgstr "Salva le impostazioni"
 
 #: lib/psource_chat_form_sections.php:7
+#, fuzzy
 msgid "Chatprotokolle"
-msgstr ""
+msgstr "Trascrizioni della chat"
 
 #: lib/psource_chat_form_sections.php:12
+#, fuzzy
 msgid "Protokollerstellung"
-msgstr ""
+msgstr "Creazione del protocollo"
 
 #: lib/psource_chat_form_sections.php:17
 #: lib/psource_chat_form_sections.php:1290
 #: lib/psource_chat_form_sections.php:2758
 #: lib/psource_chat_form_sections.php:2778
 #: lib/psource_chat_form_sections.php:2836 lib/psource_chat_widget.php:126
+#, fuzzy
 msgid "Deaktivert"
-msgstr ""
+msgstr "Disabili"
 
 #: lib/psource_chat_form_sections.php:25
+#, fuzzy
 msgid "Protokollanzeige"
-msgstr ""
+msgstr "Visualizzazione del registro"
 
 #: lib/psource_chat_form_sections.php:30
+#, fuzzy
 msgid "Link zur Protokollseite."
-msgstr ""
+msgstr "Link alla pagina dei verbali."
 
 #: lib/psource_chat_form_sections.php:31 lib/psource_chat_form_sections.php:35
+#, fuzzy
 msgid "Aktiviert - Auflistung über dem Chat"
-msgstr ""
+msgstr "Abilitato - Elenco sopra la chat"
 
 #: lib/psource_chat_form_sections.php:32 lib/psource_chat_form_sections.php:36
+#, fuzzy
 msgid "Aktiviert - Auflistung unter dem Chat"
-msgstr ""
+msgstr "Abilitato - Elenco sotto la chat"
 
 #: lib/psource_chat_form_sections.php:34
+#, fuzzy
 msgid "Links shown on chat page"
-msgstr ""
+msgstr "Link visualizzati nella pagina della chat"
 
 #: lib/psource_chat_form_sections.php:44
+#, fuzzy
 msgid "Chatprotokoll Label"
-msgstr ""
+msgstr "Etichetta del registro di chat"
 
 #: lib/psource_chat_form_sections.php:54
+#, fuzzy
 msgid "Anzahl der Archiveinträge, die in der Liste angezeigt werden sollen"
-msgstr ""
+msgstr "Numero di voci dell'archivio da visualizzare nell'elenco"
 
 #: lib/psource_chat_form_sections.php:64
+#, fuzzy
 msgid "Beim Anzeigen von Archivdetails. Hauptchat ein-/ausblenden?"
 msgstr ""
+"Quando si visualizzano i dettagli dell'archivio. Mostrare/nascondere la chat "
+"principale?"
 
 #: lib/psource_chat_form_sections.php:68
+#, fuzzy
 msgid "Zeigen"
-msgstr ""
+msgstr "Mostra"
 
 #: lib/psource_chat_form_sections.php:69
+#, fuzzy
 msgid "Verbergen"
-msgstr ""
+msgstr "Nascondere"
 
 #: lib/psource_chat_form_sections.php:78
 msgid "Gruppenmitglieder"
-msgstr ""
+msgstr "Group members"
 
 #: lib/psource_chat_form_sections.php:79
+#, fuzzy
 msgid "Gruppenmods und Admins"
-msgstr ""
+msgstr "Mod e amministratori di gruppo"
 
 #: lib/psource_chat_form_sections.php:80
+#, fuzzy
 msgid "Nur Gruppenadmins"
-msgstr ""
+msgstr "Solo gli amministratori del gruppo"
 
 #: lib/psource_chat_form_sections.php:86
+#, fuzzy
 msgid "Beschränke die Anzeige nach Gruppenmitgliedsebene"
-msgstr ""
+msgstr "Limitare la visualizzazione per livello di membro del gruppo"
 
 #: lib/psource_chat_form_sections.php:128
+#, fuzzy
 msgid "Beschränke die Anzeige nach Benutzerrollenebene"
-msgstr ""
+msgstr "Limitare la visualizzazione in base al livello di ruolo dell'utente"
 
 #: lib/psource_chat_form_sections.php:132
+#, fuzzy
 msgid "WordPress-Benutzerrollenebenen"
-msgstr ""
+msgstr "Livelli di ruolo degli utenti di WordPress"
 
 #: lib/psource_chat_form_sections.php:146
+#, fuzzy
 msgid "Öffentlich, Facebook, Twitter, Google"
-msgstr ""
+msgstr "Pubblico, Facebook, Twitter, Google"
 
 #: lib/psource_chat_form_sections.php:168
+#, fuzzy
 msgid "Nachrichten Anzeigelimit"
-msgstr ""
+msgstr "Limite di visualizzazione dei messaggi"
 
 #: lib/psource_chat_form_sections.php:172
+#, fuzzy
 msgid "Begrenzt Nachrichten anzeigen"
-msgstr ""
+msgstr "Mostra messaggi limitati"
 
 #: lib/psource_chat_form_sections.php:177
+#, fuzzy
 msgid "Standard 100. Für alle leer lassen."
-msgstr ""
+msgstr "Standard 100. Lasciare in bianco per tutti."
 
 #: lib/psource_chat_form_sections.php:191
+#, fuzzy
 msgid "Sitzungsnachricht"
-msgstr ""
+msgstr "Messaggio della sessione"
 
 #: lib/psource_chat_form_sections.php:195
+#, fuzzy
 msgid "Sitzung geschlossen Nachricht"
-msgstr ""
+msgstr "Sessione chiusa Messaggio"
 
 #: lib/psource_chat_form_sections.php:205
+#, fuzzy
 msgid "Sitzung gelöscht Nachricht"
-msgstr ""
+msgstr "Sessione cancellata Messaggio"
 
 #: lib/psource_chat_form_sections.php:217
+#, fuzzy
 msgid "Wird automatisch geschlossen, wenn kein Moderator anwesend ist."
-msgstr ""
+msgstr "Chiuso automaticamente se non è presente un moderatore."
 
 #: lib/psource_chat_form_sections.php:221
 #: lib/psource_chat_form_sections.php:1589
+#, fuzzy
 msgid "JA"
-msgstr ""
+msgstr "SÌ"
 
 #: lib/psource_chat_form_sections.php:222
 #: lib/psource_chat_form_sections.php:1592
+#, fuzzy
 msgid "NEIN"
-msgstr ""
+msgstr "NO"
 
 #: lib/psource_chat_form_sections.php:240
+#, fuzzy
 msgid "Schriften"
-msgstr ""
+msgstr "Caratteri"
 
 #: lib/psource_chat_form_sections.php:246
 #: lib/psource_chat_form_sections.php:650
 #: lib/psource_chat_form_sections.php:879
 #: lib/psource_chat_form_sections.php:1094
+#, fuzzy
 msgid "Schrift"
-msgstr ""
+msgstr "Carattere"
 
 #: lib/psource_chat_form_sections.php:249
 #: lib/psource_chat_form_sections.php:654
+#, fuzzy
 msgid "-- Vererbt vom Thema --"
-msgstr ""
+msgstr "-- Ereditato dal soggetto --"
 
 #: lib/psource_chat_form_sections.php:260
 #: lib/psource_chat_form_sections.php:665
@@ -1642,52 +2143,62 @@ msgstr ""
 #: lib/psource_chat_form_sections.php:1109
 #: lib/psource_chat_form_sections.php:2416
 msgid "Schriftgröße"
-msgstr ""
+msgstr "Dimensione del carattere"
 
 #: lib/psource_chat_form_sections.php:281
+#, fuzzy
 msgid "Chat Box Position"
-msgstr ""
+msgstr "Posizione della Chat Box"
 
 #: lib/psource_chat_form_sections.php:282
+#, fuzzy
 msgid ""
 "Steuert die Position der Seiten-Chat-Felder. Diese Felder enthalten den Chat "
 "in der unteren Ecke sowie private Chats. Wenn Du rechts auswählst, werden "
 "die einzelnen Chat-Felder von rechts nach links angezeigt."
 msgstr ""
+"Controlla la posizione dei campi di chat della pagina. Questi campi "
+"contengono la chat nell'angolo inferiore e le chat private. Se si seleziona "
+"destra, i singoli campi della chat vengono visualizzati da destra a sinistra."
 
 #: lib/psource_chat_form_sections.php:286
+#, fuzzy
 msgid "Position Horizontal"
-msgstr ""
+msgstr "Posizione Orizzontale"
 
 #: lib/psource_chat_form_sections.php:291
 msgid "Rechts"
-msgstr ""
+msgstr "A destra"
 
 #: lib/psource_chat_form_sections.php:293
 msgid "Links"
-msgstr ""
+msgstr "Link"
 
 #: lib/psource_chat_form_sections.php:300
+#, fuzzy
 msgid "Position Vertikal"
-msgstr ""
+msgstr "Posizione verticale"
 
 #: lib/psource_chat_form_sections.php:305
 msgid "Oben"
-msgstr ""
+msgstr "Top"
 
 #: lib/psource_chat_form_sections.php:307
 msgid "Unten"
-msgstr ""
+msgstr "Sotto"
 
 #: lib/psource_chat_form_sections.php:314
+#, fuzzy
 msgid "Position für Mobile Endgeräte"
-msgstr ""
+msgstr "Posizione per i dispositivi mobili"
 
 #: lib/psource_chat_form_sections.php:328
+#, fuzzy
 msgid "Positionsversatz der Chatbox"
-msgstr ""
+msgstr "Spostamento della posizione della casella di chat"
 
 #: lib/psource_chat_form_sections.php:329
+#, fuzzy
 msgid ""
 "Ermöglicht das Bereitstellen von Offsets, um die Chat-Boxen vom Standardrand "
 "des Bildschirms zu entfernen. Wenn Du beispielsweise die Position oben nach "
@@ -1696,114 +2207,151 @@ msgid ""
 "Pixel oder einen bestimmten Wert einstellen, um zu verhindern, dass andere "
 "feste Elemente ausgeblendet werden. "
 msgstr ""
+"Consente di fornire degli offset per allontanare le caselle di chat dal "
+"bordo predefinito dello schermo. Ad esempio, se si imposta la posizione in "
+"alto in basso a destra, questa potrebbe entrare in conflitto con altre barre "
+"di piè di pagina a posizione fissa. È quindi possibile impostare l'offset "
+"verticale in basso a 20 pixel o a un determinato valore per evitare che "
+"altri elementi fissi vengano nascosti."
 
 #: lib/psource_chat_form_sections.php:333
+#, fuzzy
 msgid "Position für linke oder rechte Ecke"
-msgstr ""
+msgstr "Posizione per l'angolo sinistro o destro"
 
 #: lib/psource_chat_form_sections.php:344
+#, fuzzy
 msgid "Position zu der Ober-/Unterkante"
-msgstr ""
+msgstr "Posizione rispetto al bordo superiore/inferiore"
 
 #: lib/psource_chat_form_sections.php:358
+#, fuzzy
 msgid "Chat Box Abstand"
-msgstr ""
+msgstr "Chat Box Distanza"
 
 #: lib/psource_chat_form_sections.php:359
 #: lib/psource_chat_form_sections.php:399
+#, fuzzy
 msgid "Steuert den horizontalen Abstand zwischen mehreren Chat-Feldern"
-msgstr ""
+msgstr "Controlla la spaziatura orizzontale tra più campi di chat"
 
 #: lib/psource_chat_form_sections.php:363
+#, fuzzy
 msgid "Abstand"
-msgstr ""
+msgstr "Distanza"
 
 #: lib/psource_chat_form_sections.php:376
+#, fuzzy
 msgid "Chat Box Größe veränderbar"
-msgstr ""
+msgstr "Dimensione della casella di chat modificabile"
 
 #: lib/psource_chat_form_sections.php:377
+#, fuzzy
 msgid ""
 "Ermöglicht Benutzern das Ändern der Größe der Seiten-Chat-Felder. Dadurch "
 "werden die JavaScript-Bibliotheken der jQuery-Benutzeroberfläche geladen, "
 "was sich auf die Ladezeit der Seite und/oder auf Konflikte mit Deinem Theme "
 "auswirken kann."
 msgstr ""
+"Consente agli utenti di ridimensionare i campi di chat della pagina. Questa "
+"operazione carica le librerie JavaScript di jQuery UI, che possono influire "
+"sul tempo di caricamento della pagina e/o entrare in conflitto con il tema."
 
 #: lib/psource_chat_form_sections.php:381
+#, fuzzy
 msgid "Die Größe des Chat-Fensters kann geändert werden"
-msgstr ""
+msgstr "Le dimensioni della finestra di chat possono essere modificate"
 
 #: lib/psource_chat_form_sections.php:398
+#, fuzzy
 msgid "Chat Box Schatten"
-msgstr ""
+msgstr "Chat Box Shadow"
 
 #: lib/psource_chat_form_sections.php:403
+#, fuzzy
 msgid "Anzeige Box Schatten"
-msgstr ""
+msgstr "Scatola espositiva Shadow"
 
 #: lib/psource_chat_form_sections.php:417
+#, fuzzy
 msgid "Vertikale rechte Ecke"
-msgstr ""
+msgstr "Angolo verticale destro"
 
 #: lib/psource_chat_form_sections.php:428
+#, fuzzy
 msgid "Horizontale Unterkante"
-msgstr ""
+msgstr "Bordo inferiore orizzontale"
 
 #: lib/psource_chat_form_sections.php:439
+#, fuzzy
 msgid "Schattenschärfe"
-msgstr ""
+msgstr "Nitidezza delle ombre"
 
 #: lib/psource_chat_form_sections.php:450
+#, fuzzy
 msgid "Schattenausbreitung"
-msgstr ""
+msgstr "Diffusione dell'ombra"
 
 #: lib/psource_chat_form_sections.php:461
 msgid "Schattenfarbe"
-msgstr ""
+msgstr "Colore dell'ombra"
 
 #: lib/psource_chat_form_sections.php:481
+#, fuzzy
 msgid "Anmeldeoptionen"
-msgstr ""
+msgstr "Opzioni di registrazione"
 
 #: lib/psource_chat_form_sections.php:482
+#, fuzzy
 msgid "Authentifizierungsmethoden, die Benutzer verwenden können"
-msgstr ""
+msgstr "Metodi di autenticazione che gli utenti possono utilizzare"
 
 #: lib/psource_chat_form_sections.php:488
+#, fuzzy
 msgid ""
 "Für WordPress-Benutzer anzeigen. Schließt automatisch Admin- und SuperAdmin-"
 "Benutzer ein. Der Benutzer muss bereits authentifiziert sein."
 msgstr ""
+"Mostra per gli utenti di WordPress. Include automaticamente gli utenti Admin "
+"e SuperAdmin. L'utente deve essere già autenticato."
 
 #: lib/psource_chat_form_sections.php:522
+#, fuzzy
 msgid ""
 "Für Netzwerkbenutzer anzeigen. Wenn das Kontrollkästchen deaktiviert ist, "
 "können nur WordPress-Benutzer mit Zugriff auf den aktuellen Blog die Chat-"
 "Sitzung sehen."
 msgstr ""
+"Mostra per gli utenti della rete. Se la casella di controllo è "
+"deselezionata, solo gli utenti di WordPress con accesso al blog corrente "
+"possono vedere la sessione di chat."
 
 #: lib/psource_chat_form_sections.php:529
+#, fuzzy
 msgid "Netzwerkbenutzer"
-msgstr ""
+msgstr "Utente della rete"
 
 #: lib/psource_chat_form_sections.php:536
+#, fuzzy
 msgid "Andere Anmeldeoptionen:"
-msgstr ""
+msgstr "Altre opzioni di registrazione:"
 
 #: lib/psource_chat_form_sections.php:543
+#, fuzzy
 msgid "Öffentliche Benutzer"
-msgstr ""
+msgstr "Utenti pubblici"
 
 #: lib/psource_chat_form_sections.php:553
 #: lib/psource_chat_form_sections.php:561
 #: lib/psource_chat_form_sections.php:569
+#, fuzzy
 msgid "Setup"
-msgstr ""
+msgstr "Impostazione"
 
 #: lib/psource_chat_form_sections.php:586
+#, fuzzy
 msgid "Chat Box Information"
-msgstr ""
+msgstr "Informazioni sulla Chat Box"
 
 #: lib/psource_chat_form_sections.php:590
 #: lib/psource_chat_form_sections.php:2041
@@ -1811,364 +2359,454 @@ msgstr ""
 #: lib/psource_chat_form_sections.php:3016
 #: lib/psource_chat_form_sections.php:3052
 msgid "Titel"
-msgstr ""
+msgstr "Titolo"
 
 #: lib/psource_chat_form_sections.php:608
+#, fuzzy
 msgid "Chat Box Container"
-msgstr ""
+msgstr "Contenitore della Chat Box"
 
 #: lib/psource_chat_form_sections.php:612
 msgid "Breite"
-msgstr ""
+msgstr "larghezza"
 
 #: lib/psource_chat_form_sections.php:620
 #: lib/psource_chat_form_sections.php:638
+#, fuzzy
 msgid "-- Anpassen für Mobile Endgeräte --"
-msgstr ""
+msgstr "-- Adattarsi ai dispositivi mobili --"
 
 #: lib/psource_chat_form_sections.php:621
+#, fuzzy
 msgid "Fensterbreite"
-msgstr ""
+msgstr "Larghezza della finestra"
 
 #: lib/psource_chat_form_sections.php:622
+#, fuzzy
 msgid "Gesamtbreite"
-msgstr ""
+msgstr "Larghezza totale"
 
 #: lib/psource_chat_form_sections.php:630
 #: lib/psource_chat_form_sections.php:2979
 #: lib/psource_chat_form_sections.php:3061
 msgid "Höhe"
-msgstr ""
+msgstr "altezza"
 
 #: lib/psource_chat_form_sections.php:639
+#, fuzzy
 msgid "Fensterhöhe"
-msgstr ""
+msgstr "Altezza della finestra"
 
 #: lib/psource_chat_form_sections.php:640
+#, fuzzy
 msgid "Volle Höhe"
-msgstr ""
+msgstr "A tutta altezza"
 
 #: lib/psource_chat_form_sections.php:678
 msgid "Text"
-msgstr ""
+msgstr "Testo"
 
 #: lib/psource_chat_form_sections.php:689
 msgid "Hintergrund"
-msgstr ""
+msgstr "Background"
 
 #: lib/psource_chat_form_sections.php:700
 msgid "Rahmenfarbe"
-msgstr ""
+msgstr "Colore del telaio"
 
 #: lib/psource_chat_form_sections.php:710
+#, fuzzy
 msgid "Rahmenbreite"
-msgstr ""
+msgstr "Larghezza del telaio"
 
 #: lib/psource_chat_form_sections.php:734
+#, fuzzy
 msgid "Sound"
-msgstr ""
+msgstr "Suono"
 
 #: lib/psource_chat_form_sections.php:748
+#, fuzzy
 msgid "Erlaube Chat Pop out/in"
-msgstr ""
+msgstr "Consentire il pop out e il pop out della chat"
 
 #: lib/psource_chat_form_sections.php:762
+#, fuzzy
 msgid "Moderator-Nachricht in der Fußzeile anzeigen"
-msgstr ""
+msgstr "Mostra il messaggio del moderatore nel piè di pagina"
 
 #: lib/psource_chat_form_sections.php:797
+#, fuzzy
 msgid "Chatfenster Darstellung"
-msgstr ""
+msgstr "Visualizzazione della finestra di chat"
 
 #: lib/psource_chat_form_sections.php:802
+#, fuzzy
 msgid "Chatfenster Hintergrund"
-msgstr ""
+msgstr "Sfondo della finestra di chat"
 
 #: lib/psource_chat_form_sections.php:812
+#, fuzzy
 msgid "Nachrichten Hintergrund"
-msgstr ""
+msgstr "Notizie di base"
 
 #: lib/psource_chat_form_sections.php:823
+#, fuzzy
 msgid "Abstand zwischen Nachrichten"
-msgstr ""
+msgstr "Distanza tra i messaggi"
 
 #: lib/psource_chat_form_sections.php:833
+#, fuzzy
 msgid "Farbe des Nachrichtenrahmens"
-msgstr ""
+msgstr "Colore della cornice del messaggio"
 
 #: lib/psource_chat_form_sections.php:844
+#, fuzzy
 msgid "Breite des Nachrichtenrahmens"
-msgstr ""
+msgstr "Larghezza della cornice del messaggio"
 
 #: lib/psource_chat_form_sections.php:874
+#, fuzzy
 msgid "Chat-Nachrichtenelemente"
-msgstr ""
+msgstr "Elementi dei messaggi di chat"
 
 #: lib/psource_chat_form_sections.php:883
+#, fuzzy
 msgid "-- Vererbt vom Theme --"
-msgstr ""
+msgstr "-- Ereditato dal tema --"
 
 #: lib/psource_chat_form_sections.php:908
+#, fuzzy
 msgid "Nachrichtentextfarbe"
-msgstr ""
+msgstr "Colore del testo del messaggio"
 
 #: lib/psource_chat_form_sections.php:920 lib/psource_chat_widget.php:97
+#, fuzzy
 msgid "Zeige Avatar/Name"
-msgstr ""
+msgstr "Mostra Avatar/Nome"
 
 #: lib/psource_chat_form_sections.php:925 lib/psource_chat_widget.php:100
 #: lib/psource_chat_widget.php:292
 msgid "Avatar"
-msgstr ""
+msgstr "Profilo dell’acquirente"
 
 #: lib/psource_chat_form_sections.php:927 lib/psource_chat_widget.php:102
 #: lib/psource_chat_widget.php:294 psource-chat.php:4934
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: lib/psource_chat_form_sections.php:929 lib/psource_chat_widget.php:104
 #: lib/psource_chat_widget.php:296
+#, fuzzy
 msgid "Avatar und Name"
-msgstr ""
+msgstr "Avatar e nome"
 
 #: lib/psource_chat_form_sections.php:931 lib/psource_chat_widget.php:106
 msgid "Nichts"
-msgstr ""
+msgstr "Niente"
 
 #: lib/psource_chat_form_sections.php:940
 #: lib/psource_chat_form_sections.php:2387
+#, fuzzy
 msgid "Benutzername Farbe"
-msgstr ""
+msgstr "Nome utente Colore"
 
 #: lib/psource_chat_form_sections.php:953
 #: lib/psource_chat_form_sections.php:2374
+#, fuzzy
 msgid "Moderator Name Farbe"
-msgstr ""
+msgstr "Nome del moderatore Colore"
 
 #: lib/psource_chat_form_sections.php:965
 #: lib/psource_chat_form_sections.php:2322
+#, fuzzy
 msgid "Benutzer-Avatar-Breite"
-msgstr ""
+msgstr "Larghezza avatar utente"
 
 #: lib/psource_chat_form_sections.php:975
+#, fuzzy
 msgid "Datum anzeigen"
-msgstr ""
+msgstr "Data dello spettacolo"
 
 #: lib/psource_chat_form_sections.php:988
+#, fuzzy
 msgid "Zeitstempel anzeigen"
-msgstr ""
+msgstr "Mostra il timestamp"
 
 #: lib/psource_chat_form_sections.php:1002
+#, fuzzy
 msgid "Datum/Uhrzeit Textfarbe"
-msgstr ""
+msgstr "Colore del testo della data/ora"
 
 #: lib/psource_chat_form_sections.php:1013
+#, fuzzy
 msgid "Datum/Uhrzeit Text Hintergrund"
-msgstr ""
+msgstr "Sfondo del testo data/ora"
 
 #: lib/psource_chat_form_sections.php:1024
+#, fuzzy
 msgid "CODE Text Farbe"
-msgstr ""
+msgstr "CODICE Colore del testo"
 
 #: lib/psource_chat_form_sections.php:1044
+#, fuzzy
 msgid "Chat-Nachrichteneingabe"
-msgstr ""
+msgstr "Inserimento dei messaggi di chat"
 
 #: lib/psource_chat_form_sections.php:1048
+#, fuzzy
 msgid "Platzierung der Nachrichteneingabe"
-msgstr ""
+msgstr "Posizionamento dell'ingresso del messaggio"
 
 #: lib/psource_chat_form_sections.php:1053
+#, fuzzy
 msgid "Oben - Neueste Nachrichten oben"
-msgstr ""
+msgstr "Top - Ultime notizie top"
 
 #: lib/psource_chat_form_sections.php:1055
+#, fuzzy
 msgid "Unten - Neueste Nachrichten unten"
-msgstr ""
+msgstr "Sotto - Ultime notizie Sotto"
 
 #: lib/psource_chat_form_sections.php:1062
+#, fuzzy
 msgid "Eingabefenster Höhe"
-msgstr ""
+msgstr "Finestra di immissione dell'altezza"
 
 #: lib/psource_chat_form_sections.php:1072
+#, fuzzy
 msgid "Verhindere dass Benutzer die Höhe ändern"
-msgstr ""
+msgstr "Impedire agli utenti di modificare l'altezza"
 
 #: lib/psource_chat_form_sections.php:1076
+#, fuzzy
 msgid ""
 "Vertikal - Ermöglicht dem Benutzer, nur die Höhe des Textbereichs zu ändern"
 msgstr ""
+"Verticale - Consente all'utente di modificare solo l'altezza dell'area di "
+"testo"
 
 #: lib/psource_chat_form_sections.php:1077
+#, fuzzy
 msgid "Keine - Höhe der Textbereichseingabe sperren"
-msgstr ""
+msgstr "Nessuno - Blocca l'altezza dell'input dell'area di testo"
 
 #: lib/psource_chat_form_sections.php:1084
+#, fuzzy
 msgid "Max Zeichen"
-msgstr ""
+msgstr "Caratteri massimi"
 
 #: lib/psource_chat_form_sections.php:1098
 #: lib/psource_chat_form_sections.php:2267
 #: lib/psource_chat_form_sections.php:2404
+#, fuzzy
 msgid "-- vererbt vom Theme --"
-msgstr ""
+msgstr "-- ereditato dal tema --"
 
 #: lib/psource_chat_form_sections.php:1119
 msgid "Textfarbe"
-msgstr ""
+msgstr "Colore del testo"
 
 #: lib/psource_chat_form_sections.php:1130
 #: lib/psource_chat_form_sections.php:2229
 #: lib/psource_chat_form_sections.php:2670
 msgid "Hintergrundfarbe"
-msgstr ""
+msgstr "Colore di sfondo"
 
 #: lib/psource_chat_form_sections.php:1141
+#, fuzzy
 msgid "Emoticons"
-msgstr ""
+msgstr "Emoticons"
 
 #: lib/psource_chat_form_sections.php:1146 psource-chat.php:2774
+#, fuzzy
 msgid "Aktviert"
-msgstr ""
+msgstr "Attiva"
 
 #: lib/psource_chat_form_sections.php:1157
+#, fuzzy
 msgid "Buttonleiste"
-msgstr ""
+msgstr "Barra dei pulsanti"
 
 #: lib/psource_chat_form_sections.php:1182
+#, fuzzy
 msgid "Nachricht Sendenschaltfläche"
-msgstr ""
+msgstr "Pulsante di invio del messaggio"
 
 #: lib/psource_chat_form_sections.php:1186
+#, fuzzy
 msgid "Sendenschaltfläche anzeigen"
-msgstr ""
+msgstr "Mostra il pulsante di invio"
 
 #: lib/psource_chat_form_sections.php:1195
+#, fuzzy
 msgid "Nur mobile Endgeräte"
-msgstr ""
+msgstr "Solo dispositivi mobili"
 
 #: lib/psource_chat_form_sections.php:1202
+#, fuzzy
 msgid "Sendenschaltfläche Position"
-msgstr ""
+msgstr "Pulsante di invio Posizione"
 
 #: lib/psource_chat_form_sections.php:1207
+#, fuzzy
 msgid "Keine - Vom Theme erben"
-msgstr ""
+msgstr "Nessuno - Eredita dal tema"
 
 #: lib/psource_chat_form_sections.php:1209
+#, fuzzy
 msgid ""
 "Rechts - Die Schaltfläche befindet sich rechts neben der Nachrichteneingabe."
-msgstr ""
+msgstr "Destra - Il pulsante si trova a destra dell'immissione del messaggio."
 
 #: lib/psource_chat_form_sections.php:1211
+#, fuzzy
 msgid "Unten - Die Schaltfläche befindet sich unterhalb der Nachrichteneingabe"
-msgstr ""
+msgstr "In basso - Il pulsante si trova sotto la voce del messaggio"
 
 #: lib/psource_chat_form_sections.php:1218
+#, fuzzy
 msgid "Sendenschaltfläche Beschriftung"
-msgstr ""
+msgstr "Pulsante di invio Etichettatura"
 
 #: lib/psource_chat_form_sections.php:1238
+#, fuzzy
 msgid "Moderatoren Rollen"
-msgstr ""
+msgstr "Ruolo dei moderatori"
 
 #: lib/psource_chat_form_sections.php:1239
+#, fuzzy
 msgid "Wähle aus, welche Rollen Moderatoren sind"
-msgstr ""
+msgstr "Selezionare i ruoli di moderatore"
 
 #: lib/psource_chat_form_sections.php:1246
+#, fuzzy
 msgid "Schließt automatisch Admin- und SuperAdmin-Benutzer ein"
-msgstr ""
+msgstr "Include automaticamente gli utenti Admin e SuperAdmin"
 
 #: lib/psource_chat_form_sections.php:1284
+#, fuzzy
 msgid "Nachrichteneingabe ausblenden, wenn kein Moderator vorhanden ist"
-msgstr ""
+msgstr "Nascondere l'input del messaggio se non è presente un moderatore"
 
 #: lib/psource_chat_form_sections.php:1300
+#, fuzzy
 msgid ""
 "Nachricht welche Benutzern angezeigt wird, wenn kein Moderator anwesend ist"
-msgstr ""
+msgstr "Messaggio visualizzato agli utenti quando non è presente un moderatore"
 
 #: lib/psource_chat_form_sections.php:1320
+#, fuzzy
 msgid "Standard - Chat-Nachrichten und Benutzerlisten."
-msgstr ""
+msgstr "Standard - Messaggi di chat ed elenchi di utenti."
 
 #: lib/psource_chat_form_sections.php:1321
+#, fuzzy
 msgid "Anmeldeformular - Nur Chat-Anmeldeformular"
-msgstr ""
+msgstr "Modulo di registrazione - Solo modulo di registrazione alla chat"
 
 #: lib/psource_chat_form_sections.php:1322
+#, fuzzy
 msgid "Keine Anmeldung - Chat-Nachricht anzeigen, aber keine Anmeldeoption"
 msgstr ""
+"Nessun accesso: mostra il messaggio di chat ma non l'opzione di accesso"
 
 #: lib/psource_chat_form_sections.php:1327
+#, fuzzy
 msgid "Was wird nicht authentifizierten Benutzern angezeigt?"
-msgstr ""
+msgstr "Cosa viene visualizzato agli utenti non autenticati?"
 
 #: lib/psource_chat_form_sections.php:1346
+#, fuzzy
 msgid ""
 "Im Hauptchatbereich angezeigte Nachricht zur Aufforderung zur "
 "Benutzeranmeldung"
 msgstr ""
+"Messaggio visualizzato nell'area principale della chat che richiede "
+"l'accesso dell'utente"
 
 #: lib/psource_chat_form_sections.php:1357
+#, fuzzy
 msgid ""
 "Anmeldeformular Nachricht wird über den Anmeldefeldern und der Facebook-"
 "Schaltfläche angezeigt"
 msgstr ""
+"Modulo di registrazione Il messaggio viene visualizzato sopra i campi di "
+"registrazione e il pulsante di Facebook"
 
 #: lib/psource_chat_form_sections.php:1382
+#, fuzzy
 msgid "Consumer Key"
-msgstr ""
+msgstr "Chiave del consumatore"
 
 #: lib/psource_chat_form_sections.php:1386
+#, fuzzy
 msgid "Consumer Secret"
-msgstr ""
+msgstr "Segreto del consumatore"
 
 #: lib/psource_chat_form_sections.php:1398
+#, fuzzy
 msgid "Fill in the form with values for your website:"
-msgstr ""
+msgstr "Compilate il modulo con i valori del vostro sito web:"
 
 #: lib/psource_chat_form_sections.php:1400
+#, fuzzy
 msgid "<strong>Name</strong>: Sollte der Name Deiner Webseite sein."
-msgstr ""
+msgstr "<strong>Nome</strong>: deve essere il nome del vostro sito web."
 
 #: lib/psource_chat_form_sections.php:1401
+#, fuzzy
 msgid ""
 "<strong>Description</strong>: Sollte eine kurze Beschreibung Deiner Webseite "
 "sein."
 msgstr ""
+"<strong>Descrizione</strong>: dovrebbe essere una breve descrizione del "
+"vostro sito web."
 
 #: lib/psource_chat_form_sections.php:1402
+#, fuzzy
 msgid ""
 "<strong>Website</strong>: Should be the home URL of your website. "
 "<strong>Not the page where Chat is displayed</strong>"
 msgstr ""
+"<strong>Sito web</strong>: Dovrebbe essere l'URL iniziale del vostro sito "
+"web. <strong>Non la pagina in cui viene visualizzata la chat</strong>"
 
 #: lib/psource_chat_form_sections.php:1403
+#, fuzzy
 msgid "<strong>Callback URL</strong>: Sollte die Home-URL Deiner Website sein"
-msgstr ""
+msgstr "<strong>URL di richiamo</strong>: Dovrebbe essere l'URL del sito web"
 
 #: lib/psource_chat_form_sections.php:1407
+#, fuzzy
 msgid ""
 "Nachdem Du das App-Formular gesendet hast, werden auf der nächsten Seite die "
 "Details für Deine neue Twitter-App angezeigt. Kopiere die Werte für den "
 "<strong>Verbraucherschlüssel</strong> und das <strong>Verbrauchergeheimnis</"
 "strong> in die Formularfelder auf dieser Seite."
 msgstr ""
+"Dopo aver inviato il modulo dell'app, nella pagina successiva verranno "
+"visualizzati i dettagli della nuova app di Twitter. Copiate i valori della "
+"<strong>consumer key</strong> e del <strong>consumer secret</strong> nei "
+"campi del modulo in questa pagina."
 
 #: lib/psource_chat_form_sections.php:1421
+#, fuzzy
 msgid "Abfrageintervall für Chat-Sitzungen"
-msgstr ""
+msgstr "Intervallo di polling per le sessioni di chat"
 
 #: lib/psource_chat_form_sections.php:1422
+#, fuzzy
 msgid ""
 "Jedes Chat-Feld (Seite, untere Ecke) ruft über AJAX zum Server zurück, um "
 "nach neuen Nachrichten und Statusänderungen zu suchen. Die folgenden "
 "Optionen steuern Optionen für diese AJAX-Abfrage"
 msgstr ""
+"Ogni campo della chat (pagina, angolo inferiore) richiama il server tramite "
+"AJAX per verificare la presenza di nuovi messaggi e cambiamenti di stato. Le "
+"seguenti opzioni controllano le opzioni per questa query AJAX"
 
 #: lib/psource_chat_form_sections.php:1425
+#, fuzzy
 msgid ""
 "Vorschlag: Die Abfrage neuer Nachrichten ist die Hauptschleife. Die "
 "Abfragewerte für Invites und Meta sollten ein Vielfaches des Werts für neue "
@@ -2176,591 +2814,814 @@ msgid ""
 "Sekunden beträgt. Peile einen Einladungswert von 4 Sekunden und Metawert von "
 "6 Sekunden an."
 msgstr ""
+"Suggerimento: La query per i nuovi messaggi è il ciclo principale. I valori "
+"della query per gli inviti e i meta dovrebbero essere un multiplo del valore "
+"dei nuovi messaggi. Ad esempio, se il polling dei nuovi messaggi è di 2 "
+"secondi. Puntate a un valore di invito di 4 secondi e di meta di 6 secondi."
 
 #: lib/psource_chat_form_sections.php:1431
+#, fuzzy
 msgid "Wie oft nach neuen Nachrichten gefragt werden soll"
-msgstr ""
+msgstr "Con quale frequenza chiedere nuovi messaggi"
 
 #: lib/psource_chat_form_sections.php:1437
+#, fuzzy
 msgid ""
 "<strong>Empfohlen 1 oder 2 Sekunden</strong>. Nachrichtenlisten sind "
 "Hauptelemente des Chats und sollten so oft wie möglich aktualisiert werden. "
 "Sekundenbruchteile sind z.B: 1.02, 0.5, 5.35."
 msgstr ""
+"<strong>Consigliati 1 o 2 secondi</strong>. Gli elenchi di messaggi sono "
+"elementi principali della chat e devono essere aggiornati il più spesso "
+"possibile. Le frazioni di secondo sono ad esempio: 1,02, 0,5, 5,35."
 
 #: lib/psource_chat_form_sections.php:1443
+#, fuzzy
 msgid "Wie oft nach Einladungen fragen"
-msgstr ""
+msgstr "Con quale frequenza chiedere gli inviti"
 
 #: lib/psource_chat_form_sections.php:1449
+#, fuzzy
 msgid ""
 "<strong>Empfohlen 3 Sekunden</strong>. Chat-Einladungen sind Einladungen "
 "anderer Benutzer, an privaten Chats teilzunehmen. Sekundenbruchteile sind z."
 "B: 1.02, 0.5, 5.35"
 msgstr ""
+"<strong>Consigliati 3 secondi</strong>. Gli inviti alla chat sono inviti di "
+"altri utenti a partecipare a chat private. Le frazioni di secondo sono ad "
+"esempio: 1,02, 0,5, 5,35"
 
 #: lib/psource_chat_form_sections.php:1456
+#, fuzzy
 msgid "Wie oft müssen Metadaten aktualisiert werden?"
-msgstr ""
+msgstr "Con quale frequenza è necessario aggiornare i metadati?"
 
 #: lib/psource_chat_form_sections.php:1462
+#, fuzzy
 msgid ""
 "<strong>Empfohlen 5 Sekunden</strong>. Metalisten sind sekundäre Elemente "
 "des Chats, einschließlich der aktiven Benutzerlisten für alle offenen Chats, "
 "Chatstatus und blockierten Benutzer. Sekundenbruchteile sind z.B: 1.02, 0.5, "
 "5.35"
 msgstr ""
+"<strong>Consigliati 5 secondi</strong>. I metalisti sono elementi secondari "
+"della chat, tra cui gli elenchi di utenti attivi per tutte le chat aperte, "
+"gli stati della chat e gli utenti bloccati. Le frazioni di secondo sono ad "
+"esempio: 1,02, 0,5, 5,35"
 
 #: lib/psource_chat_form_sections.php:1483
+#, fuzzy
 msgid "Abfrageinhalt von Chat-Sitzungen"
-msgstr ""
+msgstr "Interrogare il contenuto delle sessioni di chat"
 
 #: lib/psource_chat_form_sections.php:1484
+#, fuzzy
 msgid ""
 "Standardmäßig rufen die Chat-Sitzungen eine spezielle AJAX-Datei ab, die "
 "sich im Plugin-Verzeichnis befindet (psource-chat-ajax.php). Manchmal ist "
 "dies aus Sicherheitsgründen auf dem Server nicht zulässig. In diesen Fällen "
 "setze den Abfragetyp auf System-Ajax."
 msgstr ""
+"Per impostazione predefinita, le sessioni di chat recuperano uno speciale "
+"file AJAX situato nella directory del plugin (psource-chat-ajax.php). A "
+"volte questo non è consentito sul server per motivi di sicurezza. In questi "
+"casi, impostare il tipo di query su system ajax."
 
 #: lib/psource_chat_form_sections.php:1486
+#, fuzzy
 msgid ""
 "<strong>Das System AJAX ist viel langsamer und verwendet mehr "
 "Serverressourcen als das Plugin AJAX.</strong>"
 msgstr ""
+"<strong>Il sistema AJAX è molto più lento e utilizza più risorse del server "
+"rispetto al plugin AJAX.</strong>"
 
 #: lib/psource_chat_form_sections.php:1490
+#, fuzzy
 msgid ""
 "Das Chat-Plugin-Verzeichnis muss während der Aktivierung beschreibbar sein, "
 "um die schnellere Option 'Plugin AJAX' verwenden zu können."
 msgstr ""
+"La directory del plugin della chat deve essere scrivibile durante "
+"l'attivazione per poter utilizzare l'opzione più veloce \"Plugin AJAX\"."
 
 #: lib/psource_chat_form_sections.php:1496
+#, fuzzy
 msgid "Wählen für die Abfrage verwendete AJAX-Variante (System AJAX empfohlen)"
 msgstr ""
+"Selezionare la variante AJAX utilizzata per la query (si consiglia System "
+"AJAX)"
 
 #: lib/psource_chat_form_sections.php:1501
+#, fuzzy
 msgid "System AJAX"
-msgstr ""
+msgstr "Sistema AJAX"
 
 #: lib/psource_chat_form_sections.php:1503
+#, fuzzy
 msgid "PS-Chat AJAX"
-msgstr ""
+msgstr "PS Chat AJAX"
 
 #: lib/psource_chat_form_sections.php:1533
+#, fuzzy
 msgid "Chat Performance/Debug Information"
-msgstr ""
+msgstr "Informazioni sulle prestazioni/debug della chat"
 
 #: lib/psource_chat_form_sections.php:1534
+#, fuzzy
 msgid ""
 "Wird diese Option aktiviert, wird ein statischer Fußzeilenabschnitt "
 "angezeigt, in dem Metriken für die AJAX-Abfrage angezeigt werden. Zu den "
 "Metriken gehören die Anzahl der Abfragen, der verwendete Speicher und die "
 "Ausführungszeit."
 msgstr ""
+"Se questa opzione è attivata, viene visualizzata una sezione statica a piè "
+"di pagina che mostra le metriche della query AJAX. Le metriche includono il "
+"numero di query, la memoria utilizzata e il tempo di esecuzione."
 
 #: lib/psource_chat_form_sections.php:1538
+#, fuzzy
 msgid "Aktiviere Performace/Debug Anzeige"
-msgstr ""
+msgstr "Abilitazione della visualizzazione delle prestazioni/del debug"
 
 #: lib/psource_chat_form_sections.php:1577
+#, fuzzy
 msgid "App ID"
-msgstr ""
+msgstr "ID applicazione"
 
 #: lib/psource_chat_form_sections.php:1581
+#, fuzzy
 msgid "App Geheimnis"
-msgstr ""
+msgstr "Segreto dell'app"
 
 #: lib/psource_chat_form_sections.php:1586
+#, fuzzy
 msgid "Lade Facebook JavaScript ( all.js ) Bibliothek?"
-msgstr ""
+msgstr "Caricare la libreria Facebook JavaScript ( all.js )?"
 
 #: lib/psource_chat_form_sections.php:1594
+#, fuzzy
 msgid "Wähle NEIN, wenn Du bereits andere Facebook-Plugins ausführst."
-msgstr ""
+msgstr "Selezionate NO se state già utilizzando altri plugin di Facebook."
 
 #: lib/psource_chat_form_sections.php:1600
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Registriere diese Seite als Anwendung auf Facebook <a target=\"_blank\" "
 "href=\"%s\">App-Registrierungsseite</a>"
 msgstr ""
+"Registrate questa pagina come applicazione sulla <a target=\"_blank\" "
+"href=\"%s\">pagina di registrazione delle applicazioni</a> di Facebook"
 
 #: lib/psource_chat_form_sections.php:1601
+#, fuzzy
 msgid ""
 "Wenn Du nicht angemeldet bist, kannst Du Deinen Facebook-Benutzernamen und "
 "Passwort verwenden"
 msgstr ""
+"Se non avete effettuato il login, potete utilizzare il vostro nome utente e "
+"la vostra password di Facebook"
 
 #: lib/psource_chat_form_sections.php:1602
+#, fuzzy
 msgid "Die Seiten-URL sollte sein"
-msgstr ""
+msgstr "L'URL della pagina deve essere"
 
 #: lib/psource_chat_form_sections.php:1604
+#, fuzzy
 msgid ""
 "Sobald Du Deine Website als Anwendung registriert hast, erhältst Du eine App-"
 "ID und ein App-Geheimnis."
 msgstr ""
+"Una volta registrato il vostro sito web come app, riceverete un App ID e un "
+"App Secret."
 
 #: lib/psource_chat_form_sections.php:1605
+#, fuzzy
 msgid "Kopiere sie und füge sie in die Felder links ein"
-msgstr ""
+msgstr "Copiateli e incollateli nei riquadri a sinistra"
 
 #: lib/psource_chat_form_sections.php:1618
+#, fuzzy
 msgid "Google"
-msgstr ""
+msgstr "Google"
 
 #: lib/psource_chat_form_sections.php:1619
+#, fuzzy
 msgid ""
 "Um eine Client-ID und ein Client-Geheimnis zu erstellen, erstelle ein Google "
 "Developers Console-Projekt, aktiviere die Google API, erstelle eine OAuth "
 "2.0-Client-ID und registriere Deine JavaScript-Ursprünge"
 msgstr ""
+"Per creare un ID cliente e un segreto cliente, creare un progetto Google "
+"Developers Console, abilitare l'API di Google, creare un ID cliente OAuth "
+"2.0 e registrare le proprie origini JavaScript"
 
 #: lib/psource_chat_form_sections.php:1623
+#, fuzzy
 msgid "Client ID"
-msgstr ""
+msgstr "ID cliente"
 
 #: lib/psource_chat_form_sections.php:1629
+#, fuzzy
 msgid "Melde Dich zuerst in Deinem Google Konto an"
-msgstr ""
+msgstr "Accedere prima al proprio account Google"
 
 #: lib/psource_chat_form_sections.php:1630
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "In der <a target=\"_blank\" href=\"%s\">Google Developers Console</a>, "
 "klicke auf <strong>Create Project</strong>, und gib einen Projektnamen ein "
 "(wie \"Seitenname Chat\")."
 msgstr ""
+"Nella <a target=\"_blank\" href=\"%s\">Google Developers Console</a>, fare "
+"clic su <strong>Crea progetto</strong> e inserire un nome per il progetto "
+"(ad esempio \"Nome pagina Chat\")."
 
 #: lib/psource_chat_form_sections.php:1632
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Nach der Projekterstellung wirst Du zum Projekt-Dashboard weitergeleitet. "
 "Gehe zu <a target=\"_blank\" href=\"%s\">Enable and Manage APIs</a>, "
 "aktiviere <strong>Google API</strong>."
 msgstr ""
+"Dopo aver creato il progetto, si verrà reindirizzati alla dashboard del "
+"progetto. Andare su <a target=\"_blank\" href=\"%s\">Abilita e gestisci API</"
+"a>, attivare <strong>Google API</strong>."
 
 #: lib/psource_chat_form_sections.php:1634
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Gehe zu <a target=\"_blank\" href=\"%s\">Credentials</a> Tab zur linken, "
 "klicke auf New Credentials und wähle <strong>OAuth client ID</strong>. Du "
 "wirst aufgefordert, zuerst den Einwilligungsbildschirm zu konfigurieren."
 msgstr ""
+"Andare alla scheda <a target=\"_blank\" href=\"%s\">Credenziali</a> a "
+"sinistra, fare clic su Nuove credenziali e selezionare <strong>ID client "
+"OAuth</strong>. Verrà richiesto di configurare prima la schermata di "
+"consenso."
 
 #: lib/psource_chat_form_sections.php:1636
+#, fuzzy
 msgid ""
 "In das <strong>Produkt Name</strong> Feld, gibst Du einen Namen für Deine "
 "Anwendung ein (z. B. \"Wordpress Chat\"). Alle anderen Felder sind optional. "
 "Klicke auf <strong>Speichern</strong>."
 msgstr ""
+"Nel campo <strong>Nome prodotto</strong>, inserite un nome per la vostra "
+"applicazione (ad esempio, \"Wordpress Chat\"). Tutti gli altri campi sono "
+"facoltativi. Fare clic su <strong>Salva</strong>."
 
 #: lib/psource_chat_form_sections.php:1637
+#, fuzzy
 msgid "Gehe im Abschnitt Client-ID-Einstellungen wie folgt vor:\t"
-msgstr ""
+msgstr "Nella sezione Impostazioni ID client, procedere come segue:"
 
 #: lib/psource_chat_form_sections.php:1639
+#, fuzzy
 msgid "Wähle <em>Webanwendung</em> als <strong>Anwendungstyp</strong> aus."
 msgstr ""
+"Selezionare <em>Applicazione Web</em> come <strong>tipo di applicazione</"
+"strong>."
 
 #: lib/psource_chat_form_sections.php:1640
+#, fuzzy
 msgid ""
 "Gib einen Namen für die Anmeldeinformationen an und unterscheide ihn vom "
 "Projektnamen."
 msgstr ""
+"Specificare un nome per le credenziali e distinguerlo dal nome del progetto."
 
 #: lib/psource_chat_form_sections.php:1641
+#, fuzzy
 msgid ""
 "Gib die vollständige Domain Deiner Seite in die <strong>autorisierten "
 "JavaScript-Ursprünge</strong> und <strong>autorisierte Weiterleitungs-URIs</"
 "strong> ein."
 msgstr ""
+"Inserire il dominio completo della pagina nelle <strong>origini JavaScript "
+"autorizzate</strong> e negli <strong>URI di reindirizzamento autorizzati</"
+"strong>."
 
 #: lib/psource_chat_form_sections.php:1643
+#, fuzzy
 msgid "Klicke abschließend auf die Schaltfläche <strong>Erstellen</strong>."
-msgstr ""
+msgstr "Infine, fare clic sul pulsante <strong>Crea</strong>."
 
 #: lib/psource_chat_form_sections.php:1648
+#, fuzzy
 msgid ""
 "Auf der nächsten Seite findest Du den Abschnitt <strong>Client-ID für "
 "Webanwendungen</strong>."
 msgstr ""
+"Nella pagina successiva si trova la sezione <strong>ID cliente per le "
+"applicazioni web</strong>."
 
 #: lib/psource_chat_form_sections.php:1650
+#, fuzzy
 msgid ""
 "Vergewissere Dich, dass die <em>JavaScript-Ursprünge</em> mit der URL Deiner "
 "Website übereinstimmen."
 msgstr ""
+"Assicuratevi che le <em>origini di JavaScript</em> corrispondano all'URL del "
+"vostro sito web."
 
 #: lib/psource_chat_form_sections.php:1651
+#, fuzzy
 msgid "Kopiere den Wert <strong>Client ID</strong> in das Feld links."
 msgstr ""
+"Copiare il valore dell'<strong>ID cliente</strong> nel campo a sinistra."
 
 #: lib/psource_chat_form_sections.php:1668
+#, fuzzy
 msgid "Filterung verbotener Wörter"
-msgstr ""
+msgstr "Filtro delle parole proibite"
 
 #: lib/psource_chat_form_sections.php:1669
+#, fuzzy
 msgid ""
 "Steuert den Filter für gesperrte Wörter, der für ALLE Chat-Sitzungen "
 "verwendet wird. Nach der Aktivierung kannst Du einzelne Chat-Sitzungen über "
 "die Registerkarte Erweitert steuern."
 msgstr ""
+"Controlla il filtro delle parole bloccate utilizzato per TUTTE le sessioni "
+"di chat. Una volta attivato, è possibile controllare le singole sessioni di "
+"chat tramite la scheda Avanzate."
 
 #: lib/psource_chat_form_sections.php:1673
+#, fuzzy
 msgid "Ersetze blockierte Wörter durch"
-msgstr ""
+msgstr "Sostituire le parole bloccate con"
 
 #: lib/psource_chat_form_sections.php:1678
+#, fuzzy
 msgid "Zum Entfernen leer lassen"
-msgstr ""
+msgstr "Lasciare vuoto per rimuovere"
 
 #: lib/psource_chat_form_sections.php:1686
+#, fuzzy
 msgid "Ein Wort pro Zeile. Teilwortübereinstimmungen werden eingeschlossen."
 msgstr ""
+"Una parola per riga. Sono incluse le corrispondenze parziali delle parole."
 
 #: lib/psource_chat_form_sections.php:1710
+#, fuzzy
 msgid "Blockierte Wörter in dieser Sitzung filtern"
-msgstr ""
+msgstr "Filtrare le parole bloccate in questa sessione"
 
 #: lib/psource_chat_form_sections.php:1714
 #: lib/psource_chat_form_sections.php:1965
+#, fuzzy
 msgid "Aktiv für diese Chat-Sitzung?"
-msgstr ""
+msgstr "Attivo per questa sessione di chat?"
 
 #: lib/psource_chat_form_sections.php:1737
+#, fuzzy
 msgid "Blockierte Benutzer nach E-Mail-Adresse"
-msgstr ""
+msgstr "Utenti bloccati per indirizzo e-mail"
 
 #: lib/psource_chat_form_sections.php:1741
+#, fuzzy
 msgid "Benutzer (nur E-Mail-Adresse)"
-msgstr ""
+msgstr "Utente (solo indirizzo e-mail)"
 
 #: lib/psource_chat_form_sections.php:1743
+#, fuzzy
 msgid ""
 "Eine Benutzer-E-Mail pro Zeile. Muster oder Bereiche werden nicht "
 "unterstützt. Wirkt sich nur auf öffentliche Benutzer aus. Unterstützt nicht "
 "das Blockieren von Facebook- oder Twitter Nutzern."
 msgstr ""
+"Un'e-mail dell'utente per riga. Non sono supportati modelli o intervalli. "
+"Interessa solo gli utenti pubblici. Non supporta il blocco degli utenti di "
+"Facebook o Twitter."
 
 #: lib/psource_chat_form_sections.php:1776
+#, fuzzy
 msgid "Den Seitenrand Chat auf URLs ausblenden"
-msgstr ""
+msgstr "Nascondere il bordo della pagina Chat sugli URL"
 
 #: lib/psource_chat_form_sections.php:1778
+#, fuzzy
 msgid ""
 "Diese Einstellung steuert, wo der Chat in der unteren Ecke auf Deiner Site "
 "angezeigt wird. Diese Einstellungen wirken sich nicht auf das Chat-Menü der "
 "WP-Symbolleiste, den Seiten-Chat, private Chats oder Widget-Chats aus."
 msgstr ""
+"Questa impostazione controlla la visualizzazione della chat nell'angolo "
+"inferiore del sito. Queste impostazioni non influiscono sul menu della chat "
+"della barra degli strumenti di WP, sulla chat della pagina, sulla chat "
+"privata o sulla chat del widget."
 
 #: lib/psource_chat_form_sections.php:1783
 #: lib/psource_chat_form_sections.php:1850
+#, fuzzy
 msgid "Blockiere URLs mit Shortcode"
-msgstr ""
+msgstr "Bloccare gli URL con lo shortcode"
 
 #: lib/psource_chat_form_sections.php:1797
+#, fuzzy
 msgid ""
 "Darüber hinaus kannst Du den Seitenrand-Chat für bestimmte URLs mithilfe der "
 "folgenden Optionen ausschließen/einschließen. Die URLs können Front- oder "
 "Dashboard-URLs sein."
 msgstr ""
+"Inoltre, è possibile escludere/includere la chat della barra laterale per "
+"URL specifici utilizzando le seguenti opzioni. Gli URL possono essere quelli "
+"della parte anteriore o del cruscotto."
 
 #: lib/psource_chat_form_sections.php:1803
 #: lib/psource_chat_form_sections.php:1870
 #: lib/psource_chat_form_sections.php:2450
 #: lib/psource_chat_form_sections.php:2516
 msgid "Aktion auswählen"
-msgstr ""
+msgstr "Select action"
 
 #: lib/psource_chat_form_sections.php:1807
 #: lib/psource_chat_form_sections.php:1874
+#, fuzzy
 msgid "NUR auf URLs anzeigen"
-msgstr ""
+msgstr "Mostra SOLO sugli URL"
 
 #: lib/psource_chat_form_sections.php:1808
+#, fuzzy
 msgid "Blende auf URLs aus"
-msgstr ""
+msgstr "Dissolvenza sugli URL"
 
 #: lib/psource_chat_form_sections.php:1815
 #: lib/psource_chat_form_sections.php:1882
+#, fuzzy
 msgid "URLs"
-msgstr ""
+msgstr "URL"
 
 #: lib/psource_chat_form_sections.php:1817
 #: lib/psource_chat_form_sections.php:1884
 #: lib/psource_chat_form_sections.php:2464
 #: lib/psource_chat_form_sections.php:2532
+#, fuzzy
 msgid ""
 "Eine URL pro Zeile. <br /> URL kann relativ oder absolut sein und Parameter "
 "enthalten"
 msgstr ""
+"Un URL per riga. <br /> L'URL può essere relativo o assoluto e contenere "
+"parametri"
 
 #: lib/psource_chat_form_sections.php:1843
+#, fuzzy
 msgid "Widget-Chat auf URLs ausblenden"
-msgstr ""
+msgstr "Nascondere il widget Chat negli URL"
 
 #: lib/psource_chat_form_sections.php:1845
+#, fuzzy
 msgid ""
 "Diese Einstellung steuert, wo Widget-Chats auf Deiner Site angezeigt werden. "
 "Diese Einstellungen wirken sich nicht auf das Chat-Menü der WP-Symbolleiste, "
 "den Seiten-Chat, die privaten Chats oder den Chat in der unteren Ecke aus."
 msgstr ""
+"Questa impostazione controlla la visualizzazione delle chat del widget sul "
+"sito. Queste impostazioni non influiscono sul menu della chat della barra "
+"degli strumenti di WP, sulla chat della pagina, sulle chat private o sulla "
+"chat nell'angolo inferiore."
 
 #: lib/psource_chat_form_sections.php:1864
+#, fuzzy
 msgid ""
 "Darüber hinaus kannst Du Widget-Chats für bestimmte URLs mithilfe der "
 "folgenden Optionen ausschließen/einschließen"
 msgstr ""
+"Inoltre, è possibile escludere/includere le chat del widget per URL "
+"specifici utilizzando le seguenti opzioni"
 
 #: lib/psource_chat_form_sections.php:1875
+#, fuzzy
 msgid "Auf URLs ausblenden"
-msgstr ""
+msgstr "Nascondere gli URL"
 
 #: lib/psource_chat_form_sections.php:1902
 #: lib/psource_chat_form_sections.php:1934
 #: lib/psource_chat_form_sections.php:1961
+#, fuzzy
 msgid "Blockierte IP Addressen"
-msgstr ""
+msgstr "Indirizzi IP bloccati"
 
 #: lib/psource_chat_form_sections.php:1906
+#, fuzzy
 msgid "Aktiv für ALLE Chat-Sitzungen?"
-msgstr ""
+msgstr "Attivo per TUTTE le sessioni di chat?"
 
 #: lib/psource_chat_form_sections.php:1920
+#, fuzzy
 msgid "Dem Benutzer angezeigte Nachricht"
-msgstr ""
+msgstr "Messaggio visualizzato all'utente"
 
 #: lib/psource_chat_form_sections.php:1923
+#, fuzzy
 msgid ""
 "Wenn der Benutzer gesperrt ist, wird diese Nachricht anstelle aller anderen "
 "Chat-Nachrichten und Informationen angezeigt"
 msgstr ""
+"Se l'utente è bloccato, questo messaggio viene visualizzato al posto di "
+"tutti gli altri messaggi e informazioni della chat"
 
 #: lib/psource_chat_form_sections.php:1937
+#, fuzzy
 msgid ""
 "Eine IP-Adresse pro Zeile. Muster oder Bereiche werden nicht unterstützt"
 msgstr ""
+"Un indirizzo IP per riga. Gli schemi o gli intervalli non sono supportati"
 
 #: lib/psource_chat_form_sections.php:1989
 #: lib/psource_chat_form_sections.php:2891
+#, fuzzy
 msgid "Seitenkanten Chat"
-msgstr ""
+msgstr "Bordi laterali Chat"
 
 #: lib/psource_chat_form_sections.php:1991
+#, fuzzy
 msgid ""
 "Der Seitenkanten Chat ist ein Gruppenchat, der auf allen Seiten der Website "
 "angezeigt wird. Mit den folgenden Einstellungen kannst Du die Anzeige und "
 "Funktionalität fein einstellen."
 msgstr ""
+"La chat dei bordi della pagina è una chat di gruppo che viene visualizzata "
+"su tutte le pagine del sito web. È possibile regolare la visualizzazione e "
+"la funzionalità con le seguenti impostazioni."
 
 #: lib/psource_chat_form_sections.php:1998
+#, fuzzy
 msgid ""
 "Der Seitenkanten Chat wurde vom Super Admin netzwerkaktiviert. Dies "
 "bedeutet, dass die Sichtbarkeit des Seitenkanten Chats Deiner lokalen Seite "
 "ausgeschlossen ist."
 msgstr ""
+"La chat dei bordi di pagina è stata attivata in rete dal Super Admin. Ciò "
+"significa che la visibilità della chat dei bordi di pagina della propria "
+"pagina locale è esclusa."
 
 #: lib/psource_chat_form_sections.php:2005
+#, fuzzy
 msgid ""
 "Der Dashboard-Chat in der unteren Ecke wurde vom Superadministrator für das "
 "Netzwerk aktiviert. Dies bedeutet, dass die Dashboard-Chat-Sichtbarkeit "
 "Deiner lokalen Seite ausgeschlossen wird."
 msgstr ""
+"La chat della dashboard nell'angolo inferiore è stata abilitata per la rete "
+"dal super amministratore. Ciò significa che la visibilità della chat della "
+"dashboard della vostra pagina locale è esclusa."
 
 #: lib/psource_chat_form_sections.php:2013
+#, fuzzy
 msgid "Zeige Seitenkanten Chat im Frontend?"
-msgstr ""
+msgstr "Mostrare la pagina bordi chat nel frontend?"
 
 #: lib/psource_chat_form_sections.php:2027
+#, fuzzy
 msgid "Seitenkanten Chat im Dashboard anzeigen?"
-msgstr ""
+msgstr "Mostrare la chat dei bordi della pagina nella dashboard?"
 
 #: lib/psource_chat_form_sections.php:2052
+#, fuzzy
 msgid "Seitenkantenchat Initialansicht"
-msgstr ""
+msgstr "Bordo laterale chat Vista iniziale"
 
 #: lib/psource_chat_form_sections.php:2058
+#, fuzzy
 msgid "Maximiert"
-msgstr ""
+msgstr "Massimizza"
 
 #: lib/psource_chat_form_sections.php:2061
+#, fuzzy
 msgid "Minimiert"
-msgstr ""
+msgstr "Minimizza"
 
 #: lib/psource_chat_form_sections.php:2068
+#, fuzzy
 msgid "Wenn Minimiert benachrichtige für neue Nachrichten?"
-msgstr ""
+msgstr "Quando è ridotto a icona, notifica la presenza di nuovi messaggi?"
 
 #: lib/psource_chat_form_sections.php:2087
+#, fuzzy
 msgid "Privater Chat"
-msgstr ""
+msgstr "Chat privata"
 
 #: lib/psource_chat_form_sections.php:2089
+#, fuzzy
 msgid ""
 "Die privaten Chats funktionieren ähnlich wie die Chat-Sitzung in der unteren "
 "Ecke. Ein privater Chat ist eine Eins-zu-Eins-Chat-Sitzung zwischen zwei "
 "Benutzern. Mit den folgenden Einstellungen können Sie die Optionen für "
 "Private und deren Auswirkungen auf Benutzer steuern."
 msgstr ""
+"Le chat private funzionano in modo simile alla sessione di chat nell'angolo "
+"in basso. Una chat privata è una sessione di chat individuale tra due "
+"utenti. Le seguenti impostazioni consentono di controllare le opzioni di "
+"Privata e il loro effetto sugli utenti."
 
 #: lib/psource_chat_form_sections.php:2093
+#, fuzzy
 msgid "Privates Chat-Popup nach dem Vorhandensein wieder öffnen lassen?"
-msgstr ""
+msgstr "Il pop-up della chat privata si è riaperto dopo essere stato presente?"
 
 #: lib/psource_chat_form_sections.php:2118
+#, fuzzy
 msgid "WYSIWYG Chat-Schaltfläche Benutzerrollen"
-msgstr ""
+msgstr "Pulsante di chat WYSIWYG Ruoli utente"
 
 #: lib/psource_chat_form_sections.php:2120
+#, fuzzy
 msgid ""
 "Wähle mit der Schaltfläche Rollen aus welche die Chat WYSIWYG Schaltfläche, "
 "verwenden dürfen. Beachte, dass der Benutzer auch über "
 "Bearbeitungsfunktionen für den Beitragstyp verfügen muss."
 msgstr ""
+"Utilizzare il pulsante per selezionare i ruoli autorizzati a utilizzare il "
+"pulsante Chat WYSIWYG. Si noti che l'utente deve avere anche capacità di "
+"modifica per il tipo di post."
 
 #: lib/psource_chat_form_sections.php:2144
+#, fuzzy
 msgid "WYSIWYG Chat Button Beitragstypen"
-msgstr ""
+msgstr "Tipi di post con pulsanti di chat WYSIWYG"
 
 #: lib/psource_chat_form_sections.php:2145
+#, fuzzy
 msgid ""
 "Wähle aus, für welche Beitragstypen die Schaltfläche Chat WYSIWYG verfügbar "
 "sein soll."
 msgstr ""
+"Selezionare per quali tipi di post deve essere disponibile il pulsante Chat "
+"WYSIWYG."
 
 #: lib/psource_chat_form_sections.php:2176
+#, fuzzy
 msgid "Liste der Chat-Benutzer anzeigen"
-msgstr ""
+msgstr "Mostra l'elenco degli utenti della chat"
 
 #: lib/psource_chat_form_sections.php:2177
+#, fuzzy
 msgid ""
 "Mit dieser Option kannst Du eine Liste der Benutzer anzeigen, die an der "
 "Chat-Sitzung teilnehmen. Du kannst die Benutzerliste auf beiden Seiten des "
 "Chat-Fensters positionieren. Du kannst auch den Benutzer-Avatar oder -Namen "
 "anzeigen."
 msgstr ""
+"Questa opzione consente di visualizzare un elenco di utenti che partecipano "
+"alla sessione di chat. È possibile posizionare l'elenco degli utenti su "
+"entrambi i lati della finestra di chat. È inoltre possibile visualizzare "
+"l'avatar o il nome dell'utente."
 
 #: lib/psource_chat_form_sections.php:2179
+#, fuzzy
 msgid ""
 "Für Positionen von links nach rechts funktioniert die Avatar-Option am "
 "besten. Für Positionen über oder unter funktioniert das Namensformat am "
 "besten."
 msgstr ""
+"Per le posizioni da sinistra a destra, l'opzione avatar è la migliore. Per "
+"le posizioni superiori o inferiori, è preferibile il formato del nome."
 
 #: lib/psource_chat_form_sections.php:2184
+#, fuzzy
 msgid "Position der Benutzerliste anzeigen"
-msgstr ""
+msgstr "Mostra la posizione dell'elenco utenti"
 
 #: lib/psource_chat_form_sections.php:2189
+#, fuzzy
 msgid "Benutzerliste nicht anzeigen"
-msgstr ""
+msgstr "Non mostrare l'elenco degli utenti"
 
 #: lib/psource_chat_form_sections.php:2191
+#, fuzzy
 msgid "Rechts von der Nachrichtenliste"
-msgstr ""
+msgstr "A destra dell'elenco dei messaggi"
 
 #: lib/psource_chat_form_sections.php:2193
+#, fuzzy
 msgid "Links von der Nachrichtenliste"
-msgstr ""
+msgstr "Collegamenti dalla lista dei messaggi"
 
 #: lib/psource_chat_form_sections.php:2195
+#, fuzzy
 msgid "Oben in der Nachrichtenliste"
-msgstr ""
+msgstr "In cima all'elenco dei messaggi"
 
 #: lib/psource_chat_form_sections.php:2197
+#, fuzzy
 msgid "Unterhalb der Nachrichtenliste"
-msgstr ""
+msgstr "Sotto l'elenco dei messaggi"
 
 #: lib/psource_chat_form_sections.php:2204
+#, fuzzy
 msgid "Moderatoren und Benutzer anzeigen"
-msgstr ""
+msgstr "Mostra i moderatori e gli utenti"
 
 #: lib/psource_chat_form_sections.php:2209
+#, fuzzy
 msgid "Teilen - Moderator und Benutzer als separate Listen anzeigen. "
-msgstr ""
+msgstr "Condividi - Mostra il moderatore e l'utente come elenchi separati."
 
 #: lib/psource_chat_form_sections.php:2211
+#, fuzzy
 msgid "Kombiniert - Zeigt zuerst Moderatoren und dann Benutzer an."
-msgstr ""
+msgstr "Combinato - Visualizza prima i moderatori e poi gli utenti."
 
 #: lib/psource_chat_form_sections.php:2218
+#, fuzzy
 msgid "Listenbreite/-höhe"
-msgstr ""
+msgstr "Larghezza/altezza dell'elenco"
 
 #: lib/psource_chat_form_sections.php:2240
+#, fuzzy
 msgid "Inaktiven Benutzer entfernen nach (Sekunden)"
-msgstr ""
+msgstr "Rimuovere l'utente inattivo dopo (secondi)"
 
 #: lib/psource_chat_form_sections.php:2252
+#, fuzzy
 msgid "Kopfzeile über Listen"
-msgstr ""
+msgstr "Intestazione sugli elenchi"
 
 #: lib/psource_chat_form_sections.php:2263
+#, fuzzy
 msgid "Kopfzeile-Schriftart"
-msgstr ""
+msgstr "Font dell'intestazione"
 
 #: lib/psource_chat_form_sections.php:2278
+#, fuzzy
 msgid "Schriftgröße der Kopfzeile"
-msgstr ""
+msgstr "Dimensione del carattere dell'intestazione"
 
 #: lib/psource_chat_form_sections.php:2292
+#, fuzzy
 msgid "Kopfzeilentextfarbe"
-msgstr ""
+msgstr "Colore del testo dell'intestazione"
 
 #: lib/psource_chat_form_sections.php:2306
+#, fuzzy
 msgid "Benutzerliste anzeigen"
-msgstr ""
+msgstr "Mostra elenco utenti"
 
 #: lib/psource_chat_form_sections.php:2311
+#, fuzzy
 msgid "Avatare"
-msgstr ""
+msgstr "Avatar"
 
 #: lib/psource_chat_form_sections.php:2313
+#, fuzzy
 msgid "Namen"
-msgstr ""
+msgstr "Nomi"
 
 #: lib/psource_chat_form_sections.php:2335
+#, fuzzy
 msgid "Benutzer-Avatar-Rahmenbreite"
-msgstr ""
+msgstr "Larghezza della cornice dell'avatar dell'utente"
 
 #: lib/psource_chat_form_sections.php:2348
+#, fuzzy
 msgid "Moderator-Avatar-Rahmenfarbe"
-msgstr ""
+msgstr "Colore della cornice dell'avatar del moderatore"
 
 #: lib/psource_chat_form_sections.php:2360
+#, fuzzy
 msgid "Benutzer-Avatar-Rahmenfarbe"
-msgstr ""
+msgstr "Colore della cornice dell'avatar dell'utente"
 
 #: lib/psource_chat_form_sections.php:2400
 msgid "Schriftart"
-msgstr ""
+msgstr "Font"
 
 #: lib/psource_chat_form_sections.php:2445
+#, fuzzy
 msgid "Chat auf WP Admin-URLs ausblenden"
-msgstr ""
+msgstr "Nascondere la chat negli URL dell'amministrazione di WP"
 
 #: lib/psource_chat_form_sections.php:2446
+#, fuzzy
 msgid ""
 "Dieser Abschnitt steuert, wie der Chat im WordPress-Administrationsbereich "
 "funktioniert. Dies sind globale Einstellungen, die sich auf alle Benutzer "
 "auswirken"
 msgstr ""
+"Questa sezione controlla il funzionamento della chat nell'area di "
+"amministrazione di WordPress. Si tratta di impostazioni globali che "
+"riguardano tutti gli utenti"
 
 #: lib/psource_chat_form_sections.php:2454
+#, fuzzy
 msgid "NUR auf Admin-URLs anzeigen"
-msgstr ""
+msgstr "Mostra solo sugli URL dell'amministrazione"
 
 #: lib/psource_chat_form_sections.php:2455
+#, fuzzy
 msgid "Auf Admin-URLs ausblenden"
-msgstr ""
+msgstr "Nascondere gli URL dell'amministratore"
 
 #: lib/psource_chat_form_sections.php:2462
+#, fuzzy
 msgid "WP Admin URLs"
-msgstr ""
+msgstr "URL dell'amministrazione di WP"
 
 #: lib/psource_chat_form_sections.php:2491
+#, fuzzy
 msgid ""
 "Standardmäßig lädt PS-Chat das erforderliche JS/CSS auf alle Front-URLs. "
 "Dies dient dazu, private Chat-Einladungen sowie Interaktionen mit dem Chat-"
@@ -2768,171 +3629,227 @@ msgid ""
 "CSS-Dateien nicht geladen. Auch das Chat-Menü der WP-Symbolleiste sowie "
 "private Chats werden nicht angezeigt."
 msgstr ""
+"Per impostazione predefinita, PS-Chat carica il JS/CSS richiesto su tutti "
+"gli URL frontali. Questo per facilitare gli inviti alla chat privata e le "
+"interazioni con la sezione chat della barra degli strumenti di WP. Se "
+"disattivato, i file JS/CSS non verranno caricati. Anche il menu della chat "
+"della barra degli strumenti di WP e le chat private non saranno visualizzate."
 
 #: lib/psource_chat_form_sections.php:2493
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Beachte dass dies NUR URLs betrifft, bei denen der Seiten-Chat (Shortcode), "
 "der Widget-Chat oder der Bottom Corner-Chat noch nicht angezeigt werden. Du "
 "kannst den Chat %s und %s im Abschnitt Einstellungen deaktivieren."
 msgstr ""
+"Si noti che ciò riguarda SOLO gli URL in cui la chat della pagina "
+"(shortcode), la chat del widget o la chat dell'angolo inferiore non sono "
+"ancora visualizzate. È possibile disattivare la chat %s e %s nella sezione "
+"delle impostazioni."
 
 #: lib/psource_chat_form_sections.php:2494
+#, fuzzy
 msgid "Seitenkanten-Chat"
-msgstr ""
+msgstr "Chat laterale"
 
 #: lib/psource_chat_form_sections.php:2495
+#, fuzzy
 msgid "Widget"
-msgstr ""
+msgstr "Widget"
 
 #: lib/psource_chat_form_sections.php:2498
+#, fuzzy
 msgid "Chat auf WP Front-URLs ausblenden"
-msgstr ""
+msgstr "Nascondere la chat sugli URL di WP Front"
 
 #: lib/psource_chat_form_sections.php:2502
+#, fuzzy
 msgid "Lade JS/CSS auf ALLEN URLs"
-msgstr ""
+msgstr "Carica JS/CSS su TUTTI gli URL"
 
 #: lib/psource_chat_form_sections.php:2506
+#, fuzzy
 msgid "Ja, alle URLs"
-msgstr ""
+msgstr "Sì, tutti gli URL"
 
 #: lib/psource_chat_form_sections.php:2507
+#, fuzzy
 msgid "Nein, nur URLs, die für Shortcode, Widgets usw. benötigt werden."
-msgstr ""
+msgstr "No, solo gli URL necessari per shortcode, widget, ecc."
 
 #: lib/psource_chat_form_sections.php:2520
+#, fuzzy
 msgid "NUR auf Front-URLs anzeigen"
-msgstr ""
+msgstr "Mostra SOLO sugli URL frontali"
 
 #: lib/psource_chat_form_sections.php:2521
+#, fuzzy
 msgid "Auf Front-URLs ausblenden"
-msgstr ""
+msgstr "Nascondere gli URL frontali"
 
 #: lib/psource_chat_form_sections.php:2530
+#, fuzzy
 msgid "WP Front URLs"
-msgstr ""
+msgstr "URL frontali di WP"
 
 #: lib/psource_chat_form_sections.php:2550
+#, fuzzy
 msgid "Gruppen Information"
-msgstr ""
+msgstr "Informazioni sul gruppo"
 
 #: lib/psource_chat_form_sections.php:2551
+#, fuzzy
 msgid ""
 "Steuert die Gruppenmenübezeichnung und den URL-Slug auf den BuddyPress "
 "Gruppen-Seiten."
 msgstr ""
+"Controlla l'etichetta del menu del gruppo e lo slug dell'URL sulle pagine "
+"dei gruppi BuddyPress."
 
 #: lib/psource_chat_form_sections.php:2555
+#, fuzzy
 msgid "Menü Label"
-msgstr ""
+msgstr "Menu etichetta"
 
 #: lib/psource_chat_form_sections.php:2566
+#, fuzzy
 msgid "Seitenslug"
-msgstr ""
+msgstr "Seitenslug"
 
 #: lib/psource_chat_form_sections.php:2585
+#, fuzzy
 msgid "Verberge Seitenkanten Chats"
-msgstr ""
+msgstr "Nascondi i bordi laterali Chat"
 
 #: lib/psource_chat_form_sections.php:2586
+#, fuzzy
 msgid ""
 "Steuert die Anzeige des Chats in der unteren Ecke auf den Seiten der "
 "BuddyPress-Gruppe. Diese Einstellung überschreibt die blockierten URLs, die "
 "auf der Registerkarte \"Einstellungssite\" festgelegt wurden."
 msgstr ""
+"Controlla la visualizzazione della chat nell'angolo inferiore delle pagine "
+"dei gruppi BuddyPress. Questa impostazione sostituisce gli URL bloccati "
+"impostati nella scheda Impostazioni del sito."
 
 #: lib/psource_chat_form_sections.php:2591
 #: lib/psource_chat_form_sections.php:2631
+#, fuzzy
 msgid "Auf Gruppenseiten anzeigen"
-msgstr ""
+msgstr "Mostra sulle pagine dei gruppi"
 
 #: lib/psource_chat_form_sections.php:2605
 #: lib/psource_chat_form_sections.php:2645
+#, fuzzy
 msgid "Auf Gruppen-Administrationsseiten anzeigen"
-msgstr ""
+msgstr "Mostra nelle pagine di amministrazione del gruppo"
 
 #: lib/psource_chat_form_sections.php:2626
+#, fuzzy
 msgid "Verberge Widget Chats"
-msgstr ""
+msgstr "Nascondi le chat del widget"
 
 #: lib/psource_chat_form_sections.php:2627
+#, fuzzy
 msgid ""
 "Steuert die Anzeige des Widget-Chats auf den Seiten der BuddyPress-Gruppe. "
 "Diese Einstellung überschreibt die blockierten URLs, die auf der "
 "Registerkarte \"Widget\" festgelegt wurden."
 msgstr ""
+"Controlla la visualizzazione del widget chat sulle pagine dei gruppi "
+"BuddyPress. Questa impostazione sostituisce gli URL bloccati impostati nella "
+"scheda Widget."
 
 #: lib/psource_chat_form_sections.php:2666
+#, fuzzy
 msgid "Farben für das BuddyPress Gruppen Admin Chat-Formular"
-msgstr ""
+msgstr "Colori per il modulo di chat dell'amministratore del gruppo BuddyPress"
 
 #: lib/psource_chat_form_sections.php:2681
+#, fuzzy
 msgid "Etikettenfarbe"
-msgstr ""
+msgstr "Colore dell'etichetta"
 
 #: lib/psource_chat_form_sections.php:2703
+#, fuzzy
 msgid "Die Standardeinstellungen für das Benutzerprofil"
-msgstr ""
+msgstr "Le impostazioni predefinite per il profilo utente"
 
 #: lib/psource_chat_form_sections.php:2704
+#, fuzzy
 msgid ""
 "Mit den folgenden Optionen kannst Du Standardeinstellungen für Benutzer auf "
 "Deiner Seite definieren. Diese Einstellungen sind nur Standardeinstellungen, "
 "wenn der Benutzer noch keine eigenen Werte über sein Profil gespeichert hat."
 msgstr ""
+"Con le seguenti opzioni è possibile definire le impostazioni predefinite per "
+"gli utenti della propria pagina. Queste impostazioni sono predefinite solo "
+"se l'utente non ha ancora salvato i propri valori tramite il suo profilo."
 
 #: lib/psource_chat_form_sections.php:2709
+#, fuzzy
 msgid "Benutzer-Chat-Status"
-msgstr ""
+msgstr "Stato della chat dell'utente"
 
 #: lib/psource_chat_form_sections.php:2731
+#, fuzzy
 msgid "In Chat Sessions zeige Name als\t"
-msgstr ""
+msgstr "Nelle sessioni di chat, mostra il nome come"
 
 #: lib/psource_chat_form_sections.php:2747 psource-chat.php:2767
+#, fuzzy
 msgid "Chats im Dashboard anzeigen\t"
-msgstr ""
+msgstr "Mostra le chat nella dashboard"
 
 #: lib/psource_chat_form_sections.php:2767
+#, fuzzy
 msgid "Chat Adminleistenmenü anzeigen?"
-msgstr ""
+msgstr "Mostrare il menu della barra di amministrazione della chat?"
 
 #: lib/psource_chat_form_sections.php:2785
+#, fuzzy
 msgid "Chat-Statusspalte in der Liste Benutzer> Alle Benutzer anzeigen?"
-msgstr ""
+msgstr "Colonna Stato della chat nell'elenco Utenti> Mostra tutti gli utenti?"
 
 #: lib/psource_chat_form_sections.php:2799
+#, fuzzy
 msgid ""
 "Der Benutzer muss über die Rollenfunktion <strong>list_users</strong> "
 "verfügen"
-msgstr ""
+msgstr "L'utente deve avere il ruolo funzione <strong>list_users</strong> "
 
 #: lib/psource_chat_form_sections.php:2806 psource-chat.php:2855
+#, fuzzy
 msgid "Chat-Widget im Dashboard anzeigen"
-msgstr ""
+msgstr "Mostra il widget della chat nella dashboard"
 
 #: lib/psource_chat_form_sections.php:2825 psource-chat.php:2913
+#, fuzzy
 msgid "Chat-Status-Widget im Dashboard anzeigen"
-msgstr ""
+msgstr "Mostra il widget dello stato della chat nella dashboard"
 
 #: lib/psource_chat_form_sections.php:2843 psource-chat.php:2956
+#, fuzzy
 msgid "Chat-Freunde-Widget im Dashboard anzeigen"
-msgstr ""
+msgstr "Mostra il widget degli amici della chat nella dashboard"
 
 #: lib/psource_chat_form_sections.php:2863
+#, fuzzy
 msgid "Benutzerverwaltung"
-msgstr ""
+msgstr "Amministrazione degli utenti"
 
 #: lib/psource_chat_form_sections.php:2868
+#, fuzzy
 msgid "Entferne Chat-Nachrichten, wenn der Benutzer gelöscht wird"
-msgstr ""
+msgstr "Rimuovere i messaggi di chat quando l'utente viene cancellato"
 
 #: lib/psource_chat_form_sections.php:2896
+#, fuzzy
 msgid "Aktiviere den globalen Chat in der unteren Ecke?"
-msgstr ""
+msgstr "Attivare la chat globale nell'angolo in basso?"
 
 #: lib/psource_chat_form_sections.php:2899
+#, fuzzy
 msgid ""
 "Wenn Du den globalen Chat in der unteren Ecke aktivierst, werden "
 "Nachrichten, die von einer Seite gesendet wurden, allen Sites in Deinem "
@@ -2941,381 +3858,487 @@ msgid ""
 "weiterhin verhindern, dass der Chat in der unteren Ecke auf ihrer Seite "
 "angezeigt wird."
 msgstr ""
+"Se si attiva la chat globale nell'angolo inferiore, i messaggi inviati da un "
+"sito verranno visualizzati da tutti i siti del sistema multisito. I "
+"moderatori dei siti locali possono ancora cancellare/moderare i messaggi, "
+"ecc. Gli amministratori locali possono anche impedire che la chat venga "
+"visualizzata nell'angolo inferiore del loro sito."
 
 #: lib/psource_chat_form_sections.php:2918
+#, fuzzy
 msgid "pc"
-msgstr ""
+msgstr "pc"
 
 #: lib/psource_chat_form_sections.php:2919
+#, fuzzy
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #: lib/psource_chat_form_sections.php:2920
+#, fuzzy
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: lib/psource_chat_form_sections.php:2921
+#, fuzzy
 msgid "em"
-msgstr ""
+msgstr "em"
 
 #: lib/psource_chat_form_sections.php:2922
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: lib/psource_chat_form_sections.php:2945
+#, fuzzy
 msgid "Chat Widget im Dashboard"
-msgstr ""
+msgstr "Widget di chat nella dashboard"
 
 #: lib/psource_chat_form_sections.php:2950
+#, fuzzy
 msgid "Aktiviere das Chat-Widget im Netzwerk-Dashboard?"
-msgstr ""
+msgstr "Attivare il widget della chat nella dashboard della rete?"
 
 #: lib/psource_chat_form_sections.php:2952
+#, fuzzy
 msgid "Aktiviere das Chat-Widget im Dashboard?"
-msgstr ""
+msgstr "Attivare il widget della chat nella Dashboard?"
 
 #: lib/psource_chat_form_sections.php:2963
 #: lib/psource_chat_form_sections.php:3010
 #: lib/psource_chat_form_sections.php:3046
+#, fuzzy
 msgid ""
 "Wenn diese Option aktiviert ist, können Benutzer die Sichtbarkeit über ihr "
 "Profil steuern."
 msgstr ""
+"Se questa opzione è attivata, gli utenti possono controllare la visibilità "
+"attraverso il proprio profilo."
 
 #: lib/psource_chat_form_sections.php:2992
+#, fuzzy
 msgid "Chat-Status-Widget im Dashboard"
-msgstr ""
+msgstr "Widget dello stato della chat nella dashboard"
 
 #: lib/psource_chat_form_sections.php:2997
+#, fuzzy
 msgid "Chat-Status-Widget im Netzwerk-Dashboard aktivieren?"
-msgstr ""
+msgstr "Attivare il widget dello stato della chat nella dashboard della rete?"
 
 #: lib/psource_chat_form_sections.php:2999
+#, fuzzy
 msgid "Chat-Status-Widget im Dashboard aktivieren?"
-msgstr ""
+msgstr "Attivare il widget dello stato della chat nella dashboard?"
 
 #: lib/psource_chat_form_sections.php:3027
+#, fuzzy
 msgid "Chat Freunde Widget im Dashboard"
-msgstr ""
+msgstr "Widget Amici della chat nella dashboard"
 
 #: lib/psource_chat_form_sections.php:3028
+#, fuzzy
 msgid ""
 "Erfordert entweder das PS-Buddy-Plugins oder BuddyPress mit aktivierter "
 "Freunde-Option"
-msgstr ""
+msgstr "Richiede i plugin PS Buddy o BuddyPress con l'opzione amici abilitata"
 
 #: lib/psource_chat_form_sections.php:3033
+#, fuzzy
 msgid "Widget für Chat-Freunde im Netzwerk-Dashboard aktivieren?"
 msgstr ""
+"Attivare il widget per gli amici della chat nella dashboard della rete?"
 
 #: lib/psource_chat_form_sections.php:3035
+#, fuzzy
 msgid "Chat-Freunde-Widget im Dashboard aktivieren?"
-msgstr ""
+msgstr "Attivare il widget della chat con gli amici nella dashboard?"
 
 #: lib/psource_chat_form_sections.php:3081
+#, fuzzy
 msgid "Benutzer hat Chat betreten/verlassen Hinweis"
-msgstr ""
+msgstr "L'utente è entrato/uscito dalla chat Nota"
 
 #: lib/psource_chat_form_sections.php:3085
+#, fuzzy
 msgid "Zeige betreten/verlassen Hinweis?"
-msgstr ""
+msgstr "Mostrare un avviso di entrata/uscita?"
 
 #: lib/psource_chat_form_sections.php:3099
+#, fuzzy
 msgid "Benachrichtigungszeit anzeigen <br /> <em>(Sekunden)</em>"
-msgstr ""
+msgstr "Mostra il tempo di notifica <br /> <em>(secondi)</em>"
 
 #: lib/psource_chat_form_sections.php:3106
+#, fuzzy
 msgid "Sekundenbruchteile sind z. 1,02, 0,5, 5,35."
-msgstr ""
+msgstr "Le frazioni di secondo sono ad esempio 1,02, 0,5, 5,35."
 
 #: lib/psource_chat_widget.php:26
+#, fuzzy
 msgid "PSC-Chat Widget, fügt der Seitenleiste einen Chat hinzu."
-msgstr ""
+msgstr "PSC Chat Widget, aggiunge una chat alla barra laterale."
 
 #: lib/psource_chat_widget.php:27
+#, fuzzy
 msgid "PSC-Chat Widget"
-msgstr ""
+msgstr "Widget di chat PSC"
 
 #: lib/psource_chat_widget.php:73
+#, fuzzy
 msgid "Title:"
-msgstr ""
+msgstr "Titolo:"
 
 #: lib/psource_chat_widget.php:80
+#, fuzzy
 msgid "Höhe des Widgets:"
-msgstr ""
+msgstr "Altezza del widget:"
 
 #: lib/psource_chat_widget.php:84
-#, no-php-format
+#, fuzzy, no-php-format
 msgid "Die Breite beträgt 100% des Widget-Bereichs"
-msgstr ""
+msgstr "La larghezza è 100% des area widget"
 
 #: lib/psource_chat_widget.php:88
+#, fuzzy
 msgid "Aktiviere Sound"
-msgstr ""
+msgstr "Attivare il suono"
 
 #: lib/psource_chat_widget.php:111
+#, fuzzy
 msgid "Zeige Emoticons"
-msgstr ""
+msgstr "Mostra emoticon"
 
 #: lib/psource_chat_widget.php:121
+#, fuzzy
 msgid "Zeige Datum"
-msgstr ""
+msgstr "Data dello spettacolo"
 
 #: lib/psource_chat_widget.php:131
+#, fuzzy
 msgid "Zeige Uhrzeit"
-msgstr ""
+msgstr "Orario dello spettacolo"
 
 #: lib/psource_chat_widget.php:139
+#, fuzzy
 msgid "Mehr Kontrolle über Widgets-Optionen über"
-msgstr ""
+msgstr "Maggiore controllo sulle opzioni dei widget tramite"
 
 #: lib/psource_chat_widget.php:140
+#, fuzzy
 msgid "Widget Einstellungen"
-msgstr ""
+msgstr "Impostazioni del widget"
 
 #: lib/psource_chat_widget.php:250
+#, fuzzy
 msgid ""
 "Für dieses Widget sind entweder BuddyPress Friends aktiviert oder PS Freunde "
 "Plugin."
 msgstr ""
+"Per questo widget è necessario attivare il plugin BuddyPress Friends o PS "
+"Friends."
 
 #: lib/psource_chat_widget.php:254
+#, fuzzy
 msgid "Zeigt Chat-Freunde und Status an. (PS Freunde Plugin erforderlich)"
 msgstr ""
+"Visualizza gli amici della chat e il loro stato. (È necessario il plugin PS "
+"Friends)"
 
 #: lib/psource_chat_widget.php:255
+#, fuzzy
 msgid "PSC-Chat Freunde"
-msgstr ""
+msgstr "Amici della chat PSC"
 
 #: lib/psource_chat_widget.php:272 lib/psource_chat_widget.php:716
+#, fuzzy
 msgid ""
 "Dieses Widget zeigt Informationen an, die für den von WordPress "
 "authentifizierten Benutzer spezifisch sind. Wenn der Benutzer nicht "
 "authentifiziert ist, gibt das Widget nichts aus."
 msgstr ""
+"Questo widget visualizza informazioni specifiche per l'utente autenticato da "
+"WordPress. Se l'utente non è autenticato, il widget non visualizzerà nulla."
 
 #: lib/psource_chat_widget.php:276
+#, fuzzy
 msgid "widgettitel:"
-msgstr ""
+msgstr "widgettitle:"
 
 #: lib/psource_chat_widget.php:282
+#, fuzzy
 msgid "Höhe für Widget:"
-msgstr ""
+msgstr "Altezza del widget:"
 
 #: lib/psource_chat_widget.php:286 lib/psource_chat_widget.php:505
+#, fuzzy
 msgid "Das Widget scrollt bei Bedarf durch die Ausgabe."
-msgstr ""
+msgstr "Il widget scorre l'output secondo le necessità."
 
 #: lib/psource_chat_widget.php:289
+#, fuzzy
 msgid "Avatar/Name anzeigen"
-msgstr ""
+msgstr "Mostra Avatar/Nome"
 
 #: lib/psource_chat_widget.php:301
+#, fuzzy
 msgid "Avatar Breite/Höhe:"
-msgstr ""
+msgstr "Larghezza/altezza dell'avatar:"
 
 #: lib/psource_chat_widget.php:389
+#, fuzzy
 msgid "Klicken, um Chat-Sitzung zu starten"
-msgstr ""
+msgstr "Fare clic per avviare la sessione di chat"
 
 #: lib/psource_chat_widget.php:420 lib/psource_chat_widget.php:1174
+#, fuzzy
 msgid "Keine Freunde online."
-msgstr ""
+msgstr "Nessun amico online."
 
 #: lib/psource_chat_widget.php:449
+#, fuzzy
 msgid "Chat-Räume"
-msgstr ""
+msgstr "Sale chat"
 
 #: lib/psource_chat_widget.php:457
 msgid "Seite"
-msgstr ""
+msgstr "Pagina"
 
 #: lib/psource_chat_widget.php:463
+#, fuzzy
 msgid "BuddyPress Gruppe"
-msgstr ""
+msgstr "Gruppo BuddyPress"
 
 #: lib/psource_chat_widget.php:467
+#, fuzzy
 msgid ""
 "Für dieses Widget sind entweder BuddyPress Friends aktiviert oder Friends "
 "Plugins."
-msgstr ""
+msgstr "Per questo widget sono attivati i plugin BuddyPress Friends o Friends."
 
 #: lib/psource_chat_widget.php:471
+#, fuzzy
 msgid "Zeigt aktive Chatsitzungen der gesamten Seite an."
-msgstr ""
+msgstr "Visualizza le sessioni di chat attive dell'intera pagina."
 
 #: lib/psource_chat_widget.php:472
+#, fuzzy
 msgid "PSC-Chat Räume"
-msgstr ""
+msgstr "Stanze di chat PSC"
 
 #: lib/psource_chat_widget.php:491
+#, fuzzy
 msgid "Dieses Widget zeigt alle aktiven Chat-Sitzungen auf der Webseite an."
 msgstr ""
+"Questo widget visualizza tutte le sessioni di chat attive sul sito web."
 
 #: lib/psource_chat_widget.php:495 lib/psource_chat_widget.php:721
+#, fuzzy
 msgid "Widgettitel:"
-msgstr ""
+msgstr "Titolo del widget:"
 
 #: lib/psource_chat_widget.php:501
+#, fuzzy
 msgid "Height for widget:"
-msgstr ""
+msgstr "Altezza del widget:"
 
 #: lib/psource_chat_widget.php:509
+#, fuzzy
 msgid "Anzahl aktiver Benutzer anzeigen"
-msgstr ""
+msgstr "Mostra il numero di utenti attivi"
 
 #: lib/psource_chat_widget.php:519
+#, fuzzy
 msgid "Sitzungstypen einschließen - mindestens einen auswählen"
-msgstr ""
+msgstr "Includere i tipi di sessione: selezionarne almeno uno"
 
 #: lib/psource_chat_widget.php:549
+#, fuzzy
 msgid "Link-Titel aus der Chat-Sitzung oder der Seite/Gruppe anzeigen"
 msgstr ""
+"Mostra il titolo del collegamento dalla sessione di chat o dalla pagina/"
+"gruppo"
 
 #: lib/psource_chat_widget.php:552
+#, fuzzy
 msgid "Seite/Gruppe"
-msgstr ""
+msgstr "Pagina/Gruppo"
 
 #: lib/psource_chat_widget.php:554
+#, fuzzy
 msgid "Chat-Sitzung"
-msgstr ""
+msgstr "Sessione di chat"
 
 #: lib/psource_chat_widget.php:701
+#, fuzzy
 msgid ""
 "Mit diesem Widget können Benutzer ihren Chat-Status über ein Seitenleisten-"
 "Widget festlegen."
 msgstr ""
+"Questo widget consente agli utenti di impostare lo stato della chat tramite "
+"un widget della barra laterale."
 
 #: lib/psource_chat_widget.php:702
+#, fuzzy
 msgid "PSC-Chat Status"
-msgstr ""
+msgstr "Stato della chat PSC"
 
 #: lib/psource_chat_widget.php:919
+#, fuzzy
 msgid "Aktiviert - Chat-Nachricht archivieren"
-msgstr ""
+msgstr "Attivato - Archivia il messaggio di chat"
 
 #: lib/psource_chat_widget.php:1072 lib/psource_chat_widget.php:1097
+#, fuzzy
 msgid "Chat Freunde"
-msgstr ""
+msgstr "Chat Amici"
 
 #: lib/psource_chat_wpadminbar.php:119 psource-chat.php:1003
 #: psource-chat.php:3086
+#, fuzzy
 msgid "Chat Status"
-msgstr ""
+msgstr "Stato della chat"
 
 #: lib/psource_chat_wpadminbar.php:129
+#, fuzzy
 msgid "Wechsle Chat Status auf"
-msgstr ""
+msgstr "Cambiare lo stato della chat in"
 
 #: lib/psource_chat_wpadminbar.php:202 lib/psource_chat_wpadminbar.php:240
+#, fuzzy
 msgid "Freunde Online"
-msgstr ""
+msgstr "Amici online"
 
 #: lib/psource_chat_wpadminbar.php:231 lib/psource_chat_wpadminbar.php:246
 msgid "Keine"
-msgstr ""
+msgstr "None"
 
 #: lib/psource_chat_wpadminbar.php:346
+#, fuzzy
 msgid "Einladungen"
-msgstr ""
+msgstr "Inviti"
 
 #: lib/psource_chat_wpadminbar.php:355
 msgid "Von"
-msgstr ""
+msgstr "Dal"
 
 #: lib/psource_chat_wpadminbar.php:372
+#, fuzzy
 msgid "To"
-msgstr ""
+msgstr "A"
 
 #: psource-chat.php:845
+#, fuzzy
 msgid "Der Moderator hat diese Chat-Sitzung geschlossen"
-msgstr ""
+msgstr "Il moderatore ha chiuso questa sessione di chat"
 
 #: psource-chat.php:846
+#, fuzzy
 msgid "Der Moderator hat die Chat-Nachrichten gelöscht"
-msgstr ""
+msgstr "Il moderatore ha cancellato i messaggi della chat"
 
 #: psource-chat.php:900
+#, fuzzy
 msgid "Chat Verlauf"
-msgstr ""
+msgstr "Storia della chat"
 
 #: psource-chat.php:920
+#, fuzzy
 msgid "Aktive Teilnehmer"
-msgstr ""
+msgstr "Partecipanti attivi"
 
 #: psource-chat.php:930
+#, fuzzy
 msgid "Gib einfach Deine E-Mail-Adresse und den gewünschten Benutzernamen ein:"
 msgstr ""
+"È sufficiente inserire il proprio indirizzo e-mail e il nome utente "
+"desiderato:"
 
 #: psource-chat.php:931
+#, fuzzy
 msgid "Du musst Dich anmelden, um am Chat teilnehmen zu können"
-msgstr ""
+msgstr "Per partecipare alla chat è necessario effettuare il login"
 
 #: psource-chat.php:933
+#, fuzzy
 msgid "Warte auf Moderator"
-msgstr ""
+msgstr "In attesa del moderatore"
 
 #: psource-chat.php:1006
+#, fuzzy
 msgid "Chat Friends"
-msgstr ""
+msgstr "Chat Amici"
 
 #: psource-chat.php:1035
+#, fuzzy
 msgid "Online"
-msgstr ""
+msgstr "In linea"
 
 #: psource-chat.php:1036
+#, fuzzy
 msgid "Abwesend"
-msgstr ""
+msgstr "Assente"
 
 #: psource-chat.php:1037
+#, fuzzy
 msgid "Offline"
-msgstr ""
+msgstr "Non in linea"
 
 #: psource-chat.php:1062
+#, fuzzy
 msgid ""
 "Dein Konto wurde von der Teilnahme an dieser Chat-Sitzung ausgeschlossen. "
 "Bitte wende Dich an den Site-Administrator, um weitere Informationen zu "
 "diesem Verbot zu erhalten."
 msgstr ""
+"Il tuo account è stato bandito dalla partecipazione a questa sessione di "
+"chat. Si prega di contattare l'amministratore del sito per ulteriori "
+"informazioni su questo divieto."
 
 #: psource-chat.php:1063
+#, fuzzy
 msgid "Gruppen Chat"
-msgstr ""
+msgstr "Gruppi Chat"
 
 #: psource-chat.php:1169
+#, fuzzy
 msgid "Google abmelden"
-msgstr ""
+msgstr "Uscire da Google"
 
 #: psource-chat.php:1170
+#, fuzzy
 msgid "Facebook abmelden"
-msgstr ""
+msgstr "Uscire da Facebook"
 
 #: psource-chat.php:1171
+#, fuzzy
 msgid "Twitter abmelden"
-msgstr ""
+msgstr "Uscire da Twitter"
 
 #: psource-chat.php:1173
+#, fuzzy
 msgid "Bitte warte..."
-msgstr ""
+msgstr "Attendere prego..."
 
 #: psource-chat.php:1177
+#, fuzzy
 msgid "Chat betreten"
-msgstr ""
+msgstr "Entrare in chat"
 
 #: psource-chat.php:1178 psource-chat.php:4669
+#, fuzzy
 msgid "Chat verlassen"
-msgstr ""
+msgstr "Lasciare la chat"
 
 #: psource-chat.php:1179
+#, fuzzy
 msgid "Ausstehend"
-msgstr ""
+msgstr "Eccezionale"
 
 #: psource-chat.php:1180
 msgid "Abgelehnt"
-msgstr ""
+msgstr "Rifiutato"
 
 #: psource-chat.php:1855
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Du hast das PS-Chat Plugin installiert. <strong>Bitte überprüfe die <a "
 "href=\"%s\">Abfrageintervall</a> Einstellungen bevor Du den Chat benutzt</"
@@ -3325,9 +4348,16 @@ msgid ""
 "Nachdem Du die Chat-Einstellungen überprüft und gespeichert hast, wird diese "
 "Meldung nicht mehr angezeigt."
 msgstr ""
+"È stato installato il plugin PS-Chat. <strong>Controllare le impostazioni "
+"dell'<a href=\"%s\">intervallo di polling</a> prima di utilizzare la chat</"
+"strong>. Nella maggior parte dei casi, le opzioni predefinite per la "
+"configurazione dell'host funzionano. Tuttavia, in alcuni casi l'intervallo "
+"di polling è troppo frequente e potrebbe causare la chiusura dell'account da "
+"parte dell'hosting. Dopo aver controllato e salvato le impostazioni della "
+"chat, questo messaggio non verrà più visualizzato."
 
 #: psource-chat.php:1860
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Das PS-Chat Plugin wurde auf Deiner Webseite aktualisiert. <strong>Bitte "
 "überprüfe vor der Verwendung die Einstellungen für das <a "
@@ -3337,463 +4367,580 @@ msgid ""
 "dass Dein Hosting Dein Konto schließt. Nachdem Du die Chat-Einstellungen "
 "überprüft und gespeichert hast, wird diese Meldung nicht mehr angezeigt."
 msgstr ""
+"Il plugin PS Chat è stato aggiornato sul vostro sito web. <strong>Prima di "
+"utilizzarlo, verificare le impostazioni</strong> dell'<strong> <a "
+"href=\"%s\">intervallo di polling</a></strong>. Nella maggior parte dei "
+"casi, le opzioni predefinite per la configurazione del vostro host "
+"funzioneranno. Tuttavia, in alcuni casi specifici l'intervallo di polling è "
+"troppo frequente e potrebbe causare la chiusura dell'account da parte "
+"dell'hosting. Dopo aver controllato e salvato le impostazioni della chat, "
+"questo messaggio non verrà più visualizzato."
 
 #: psource-chat.php:1917 psource-chat.php:4703
+#, fuzzy
 msgid "Autoscroll aus"
-msgstr ""
+msgstr "Scorrimento automatico disattivato"
 
 #: psource-chat.php:1918
+#, fuzzy
 msgid "Autoscroll an"
-msgstr ""
+msgstr "Scorrimento automatico su"
 
 #: psource-chat.php:1957
+#, fuzzy
 msgctxt "page label"
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: psource-chat.php:1958
+#, fuzzy
 msgctxt "menu label"
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: psource-chat.php:1967 psource-chat.php:2051
+#, fuzzy
 msgctxt "page label"
 msgid "Frontendchat"
-msgstr ""
+msgstr "Chat front-end"
 
 #: psource-chat.php:1968 psource-chat.php:2052
+#, fuzzy
 msgctxt "menu label"
 msgid "Frontendchat"
-msgstr ""
+msgstr "Chat front-end"
 
 #: psource-chat.php:1974 psource-chat.php:2068
+#, fuzzy
 msgctxt "page label"
 msgid "Dashboardchat"
-msgstr ""
+msgstr "Chat del cruscotto"
 
 #: psource-chat.php:1975 psource-chat.php:2069
+#, fuzzy
 msgctxt "menu label"
 msgid "Dashboardchat"
-msgstr ""
+msgstr "Chat del cruscotto"
 
 #: psource-chat.php:1982 psource-chat.php:2076
+#, fuzzy
 msgctxt "page label"
 msgid "Basiseinstellungen"
-msgstr ""
+msgstr "Impostazioni di base"
 
 #: psource-chat.php:1983 psource-chat.php:2077
+#, fuzzy
 msgctxt "menu label"
 msgid "Basiseinstellungen"
-msgstr ""
+msgstr "Impostazioni di base"
 
 #: psource-chat.php:1990 psource-chat.php:2084
+#, fuzzy
 msgctxt "page label"
 msgid "Session Logs"
-msgstr ""
+msgstr "Registri di sessione"
 
 #: psource-chat.php:1991 psource-chat.php:2085
+#, fuzzy
 msgctxt "menu label"
 msgid "Session Logs"
-msgstr ""
+msgstr "Registri di sessione"
 
 #: psource-chat.php:2031
+#, fuzzy
 msgctxt "page label"
 msgid "PS-Chat"
-msgstr ""
+msgstr "Chat PS"
 
 #: psource-chat.php:2032
+#, fuzzy
 msgctxt "menu label"
 msgid "PS-Chat"
-msgstr ""
+msgstr "Chat PS"
 
 #: psource-chat.php:2041
+#, fuzzy
 msgctxt "page label"
 msgid "Beitragschat"
-msgstr ""
+msgstr "Contributo chat"
 
 #: psource-chat.php:2042
+#, fuzzy
 msgctxt "menu label"
 msgid "Beitragschat"
-msgstr ""
+msgstr "Contributo chat"
 
 #: psource-chat.php:2060
+#, fuzzy
 msgctxt "page label"
 msgid "Widgetchat"
-msgstr ""
+msgstr "Widgetchat"
 
 #: psource-chat.php:2061
+#, fuzzy
 msgctxt "menu label"
 msgid "Widgetchat"
-msgstr ""
+msgstr "Widgetchat"
 
 #: psource-chat.php:2117
+#, fuzzy
 msgid "Die Einstellungen wurden aktualisiert."
-msgstr ""
+msgstr "Le impostazioni sono state aggiornate."
 
 #: psource-chat.php:2119
+#, fuzzy
 msgid "Das Chat-Sitzungsprotokoll wurde gelöscht."
-msgstr ""
+msgstr "Il registro della sessione di chat è stato eliminato."
 
 #: psource-chat.php:2120
+#, fuzzy
 msgid "Chat-Sitzungsprotokolle wurden gelöscht."
-msgstr ""
+msgstr "I registri delle sessioni di chat sono stati eliminati."
 
 #: psource-chat.php:2121
+#, fuzzy
 msgid "Das Chat-Sitzungsprotokoll wurde ausgeblendet."
-msgstr ""
+msgstr "Il registro della sessione di chat è stato nascosto."
 
 #: psource-chat.php:2122
+#, fuzzy
 msgid "Chat-Sitzungsprotokolle wurden ausgeblendet."
-msgstr ""
+msgstr "Le trascrizioni delle sessioni di chat sono state nascoste."
 
 #: psource-chat.php:2123
+#, fuzzy
 msgid "Das Chat-Sitzungsprotokoll wurde nicht ausgeblendet."
-msgstr ""
+msgstr "Il registro della sessione di chat non è stato nascosto."
 
 #: psource-chat.php:2124
+#, fuzzy
 msgid "Chat-Sitzungsprotokolle wurden nicht ausgeblendet."
-msgstr ""
+msgstr "Le trascrizioni delle sessioni di chat non sono state nascoste."
 
 #: psource-chat.php:2126
+#, fuzzy
 msgid "Chat Session Log Message wurde gelöscht."
-msgstr ""
+msgstr "Il messaggio di registro della sessione di chat è stato eliminato."
 
 #: psource-chat.php:2127
+#, fuzzy
 msgid "Chat-Sitzungsprotokollnachrichten wurden gelöscht."
-msgstr ""
+msgstr "I messaggi di registro della sessione di chat sono stati eliminati."
 
 #: psource-chat.php:2128
+#, fuzzy
 msgid "Die Chat-Sitzungsprotokollnachricht wurde ausgeblendet."
-msgstr ""
+msgstr "Il messaggio di log della sessione di chat è stato nascosto."
 
 #: psource-chat.php:2129
+#, fuzzy
 msgid "Chat-Sitzungsprotokollnachrichten wurden ausgeblendet."
-msgstr ""
+msgstr "I messaggi di log delle sessioni di chat erano nascosti."
 
 #: psource-chat.php:2130
+#, fuzzy
 msgid "Die Chat-Sitzungsprotokollnachricht wurde nicht ausgeblendet."
-msgstr ""
+msgstr "Il messaggio di log della sessione di chat non è stato nascosto."
 
 #: psource-chat.php:2131
+#, fuzzy
 msgid "Chat-Sitzungsprotokollnachrichten wurden nicht ausgeblendet."
-msgstr ""
+msgstr "I messaggi di log delle sessioni di chat non sono stati nascosti."
 
 #: psource-chat.php:2257 psource-chat.php:2393
+#, fuzzy
 msgid "per Page"
-msgstr ""
+msgstr "per pagina"
 
 #: psource-chat.php:2693
+#, fuzzy
 msgid "Chat Settings"
-msgstr ""
+msgstr "Impostazioni della chat"
 
 #: psource-chat.php:2699
+#, fuzzy
 msgid "Set Chat status"
-msgstr ""
+msgstr "Impostare lo stato della chat"
 
 #: psource-chat.php:2726
+#, fuzzy
 msgid "In Chat-Sitzungen wird der Name angezeigt als"
-msgstr ""
+msgstr "Nelle sessioni di chat, il nome viene visualizzato come"
 
 #: psource-chat.php:2736
+#, fuzzy
 msgid "Benutzer-Anmeldung"
-msgstr ""
+msgstr "Accesso utente"
 
 #: psource-chat.php:2746
+#, fuzzy
 msgid ""
 "Spalte \"Chat-Status anzeigen\" in der Liste <br />\"Benutzer > Alle "
 "Benutzer\"?"
 msgstr ""
+"Mostrare la colonna \"Stato della chat\" nell'elenco <br />\"Utenti &gt; "
+"Tutti gli utenti\"?"
 
 #: psource-chat.php:2781
+#, fuzzy
 msgid ""
 "Dadurch werden alle Chat-Funktionen deaktiviert, einschließlich des "
 "WordPress-Symbolleistenmenüs, der Dashboard-Widgets usw."
 msgstr ""
+"Questo disabilita tutte le funzioni della chat, compreso il menu della barra "
+"degli strumenti di WordPress, i widget della dashboard, ecc."
 
 #: psource-chat.php:2820
+#, fuzzy
 msgid "Zeige Deinen Chat-Status im WordPress-Symbolleistenmenü an?"
 msgstr ""
+"Mostrare lo stato della chat nel menu della barra degli strumenti di "
+"WordPress?"
 
 #: psource-chat.php:2836
+#, fuzzy
 msgid "Zeige Deine Chat-Freunde im WordPress-Symbolleistenmenü?"
 msgstr ""
+"Mostrare gli amici della chat nel menu della barra degli strumenti di "
+"WordPress?"
 
 #: psource-chat.php:2890
+#, fuzzy
 msgid "Höhe des Chat-Widgets"
-msgstr ""
+msgstr "Altezza del widget della chat"
 
 #: psource-chat.php:2893 psource-chat.php:2995
+#, fuzzy
 msgid "Standard ist"
-msgstr ""
+msgstr "Lo standard è"
 
 #: psource-chat.php:2992
+#, fuzzy
 msgid "Min. Höhe des Chat-Freunde-Widgets"
-msgstr ""
+msgstr "Altezza minima del widget degli amici della chat"
 
 #: psource-chat.php:3185
+#, fuzzy
 msgid "Netzwerk"
-msgstr ""
+msgstr "Rete"
 
 #: psource-chat.php:3659 psource-chat.php:4609
 msgid "Geschlossen"
-msgstr ""
+msgstr "Chiuso"
 
 #: psource-chat.php:3690
+#, fuzzy
 msgid "Für diese Sitzung wurden keine Chat-Protokolle gefunden"
-msgstr ""
+msgstr "Non sono stati trovati registri di chat per questa sessione"
 
 #: psource-chat.php:3716
+#, fuzzy
 msgid "Zurück zum Chat"
-msgstr ""
+msgstr "Torna alla chat"
 
 #: psource-chat.php:4102 psource-chat.php:4665
 msgid "Abmelden"
-msgstr ""
+msgstr "Disconnettersi"
 
 #: psource-chat.php:4134
+#, fuzzy
 msgid "Tippe Deine Chatnachricht hier"
-msgstr ""
+msgstr "Scrivete qui il vostro messaggio di chat"
 
 #: psource-chat.php:4154
+#, fuzzy
 msgid "Schalte Chat-Sound aus"
-msgstr ""
+msgstr "Disattivare l'audio della chat"
 
 #: psource-chat.php:4157
+#, fuzzy
 msgid "Schalte Chat-Sound ein"
-msgstr ""
+msgstr "Attivare l'audio della chat"
 
 #: psource-chat.php:4217
+#, fuzzy
 msgid "Melde Dich an mit:"
-msgstr ""
+msgstr "Iscriviti con:"
 
 #: psource-chat.php:4272
+#, fuzzy
 msgid "möchte Gespräch beginnen"
-msgstr ""
+msgstr "vorrei iniziare una conversazione"
 
 #: psource-chat.php:4273
+#, fuzzy
 msgid "Annehmen"
-msgstr ""
+msgstr "Accettare"
 
 #: psource-chat.php:4273
 msgid "Ablehnen"
-msgstr ""
+msgstr "Reject"
 
 #: psource-chat.php:4275
+#, fuzzy
 msgid "Du wurdest zu einem privaten Chat eingeladen"
-msgstr ""
+msgstr "Siete stati invitati a una chat privata"
 
 #: psource-chat.php:4568
+#, fuzzy
 msgid "Minimiere Chat"
-msgstr ""
+msgstr "Ridurre al minimo la chat"
 
 #: psource-chat.php:4569
+#, fuzzy
 msgid "Maximiere Chat"
-msgstr ""
+msgstr "Massimizzare la chat"
 
 #: psource-chat.php:4584
+#, fuzzy
 msgid "Eigenes Fenster"
-msgstr ""
+msgstr "Finestra propria"
 
 #: psource-chat.php:4588
+#, fuzzy
 msgid "Original-Chat"
-msgstr ""
+msgstr "Chat originale"
 
 #: psource-chat.php:4615
+#, fuzzy
 msgid "Privatchat"
-msgstr ""
+msgstr "Privato"
 
 #: psource-chat.php:4617
+#, fuzzy
 msgid "Gruppenchat"
-msgstr ""
+msgstr "Chat di gruppo"
 
 #: psource-chat.php:4619
+#, fuzzy
 msgid "Netzwerkgruppen-Chat"
-msgstr ""
+msgstr "Chat di gruppo in rete"
 
 #: psource-chat.php:4663
 msgid "Anmelden"
-msgstr ""
+msgstr "Accedi"
 
 #: psource-chat.php:4673
+#, fuzzy
 msgid "Chat-Sound ausschalten"
-msgstr ""
+msgstr "Disattivare l'audio della chat"
 
 #: psource-chat.php:4674
+#, fuzzy
 msgid "Sound Aus"
-msgstr ""
+msgstr "Suono spento"
 
 #: psource-chat.php:4675
+#, fuzzy
 msgid "Chat-Sound einschalten"
-msgstr ""
+msgstr "Attivare l'audio della chat"
 
 #: psource-chat.php:4676
+#, fuzzy
 msgid "Sound An"
-msgstr ""
+msgstr "Suono acceso"
 
 #: psource-chat.php:4686
+#, fuzzy
 msgid "Chat öffnen"
-msgstr ""
+msgstr "Aprire la chat"
 
 #: psource-chat.php:4687
+#, fuzzy
 msgid "Chat schliessen"
-msgstr ""
+msgstr "Chiudere la chat"
 
 #: psource-chat.php:4692
+#, fuzzy
 msgid "Chat löschen"
-msgstr ""
+msgstr "Cancellare la chat"
 
 #: psource-chat.php:4698
+#, fuzzy
 msgid "Archiviere Chat"
-msgstr ""
+msgstr "Archivio Chat"
 
 #: psource-chat.php:4859
+#, fuzzy
 msgid "Zu privaten Chat einladen:"
-msgstr ""
+msgstr "Invito alla chat privata:"
 
 #: psource-chat.php:4861
+#, fuzzy
 msgid "moderiere diese Nachricht"
-msgstr ""
+msgstr "moderare questo messaggio"
 
 #: psource-chat.php:4868
+#, fuzzy
 msgid "moderiere IP-Adresse:"
-msgstr ""
+msgstr "indirizzo IP moderato:"
 
 #: psource-chat.php:4934
+#, fuzzy
 msgid "Name eingeben"
-msgstr ""
+msgstr "Inserire il nome"
 
 #: psource-chat.php:4935
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: psource-chat.php:4935
+#, fuzzy
 msgid "Email eingeben"
-msgstr ""
+msgstr "Inserire l'e-mail"
 
 #: psource-chat.php:4937
 msgid "Login"
-msgstr ""
+msgstr "Accesso"
 
 #: psource-chat.php:5290
+#, fuzzy
 msgid "missing POST user_info"
-msgstr ""
+msgstr "manca POST user_info"
 
 #: psource-chat.php:5301 psource-chat.php:5311
+#, fuzzy
 msgid "Bitte gültigen Namen und eine gültige E-Mail-Adresse angeben."
-msgstr ""
+msgstr "Inserire un nome e un indirizzo e-mail valido."
 
 #: psource-chat.php:5321
+#, fuzzy
 msgid "Name bereits vergeben"
-msgstr ""
+msgstr "Nome già assegnato"
 
 #: psource-chat.php:5330
+#, fuzzy
 msgid "Email bereits registriert."
-msgstr ""
+msgstr "Email già registrata."
 
 #: psource-chat.php:5432
+#, fuzzy
 msgid "Der Benutzer hat die Einladung zum privaten Chat abgelehnt."
-msgstr ""
+msgstr "L'utente ha rifiutato l'invito alla chat privata."
 
 #: psource-chat.php:5514
+#, fuzzy
 msgid "Invalid auth_hash"
-msgstr ""
+msgstr "Auth_hash non valido"
 
 #: psource-chat.php:5539 psource-chat.php:5545 psource-chat.php:5553
 #: psource-chat.php:5588 psource-chat.php:5595 psource-chat.php:5603
 #: psource-chat.php:5665 psource-chat.php:5671 psource-chat.php:5680
+#, fuzzy
 msgid "Invalid chat_auth [type]"
-msgstr ""
+msgstr "Chat_auth [tipo] non valido"
 
 #: psource-chat.php:5572
+#, fuzzy
 msgid "Not moderator"
-msgstr ""
+msgstr "Non moderatore"
 
 #: psource-chat.php:5630
+#, fuzzy
 msgid "Invalid chat_session"
-msgstr ""
+msgstr "Chat_session non valida"
 
 #: psource-chat.php:5639
+#, fuzzy
 msgid "Invalid chat_id"
-msgstr ""
+msgstr "Chat_id non valido"
 
 #: psource-chat.php:5647 psource-chat.php:5656
+#, fuzzy
 msgid "Invalid chat_session_status"
-msgstr ""
+msgstr "Stato_di_chat_sessione_invalido"
 
 #: psource-chat.php:5689
+#, fuzzy
 msgid "not moderator"
-msgstr ""
+msgstr "non moderatore"
 
 #: psource-chat.php:6334
+#, fuzzy
 msgid "(P)"
-msgstr ""
+msgstr "(P)"
 
 #: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:56
+#, fuzzy
 msgid "View details"
-msgstr ""
+msgstr "Visualizza i dettagli"
 
 #: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:79
-#, php-format
+#, fuzzy, php-format
 msgid "Weitere Informationen zu %s"
-msgstr ""
+msgstr "Ulteriori informazioni su %s"
 
 #: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:130
+#, fuzzy
 msgid "Auf neuere Version prüfen"
-msgstr ""
+msgstr "Verificare la presenza di una versione più recente"
 
 #: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:217
-#, php-format
+#, fuzzy, php-format
 msgctxt "the plugin title"
 msgid "Keine neuere Version von %s im PSOURCE REPO gefunden."
-msgstr ""
+msgstr "Non è stata trovata una versione più recente di %s in PSOURCE REPO."
 
 #: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:219
-#, php-format
+#, fuzzy, php-format
 msgctxt "the plugin title"
 msgid "Im PSOURCE REPO ist eine <b>neuere Version von %s</b> verfügbar!."
-msgstr ""
+msgstr "Una <b>versione più recente di %s</b> è disponibile nel PSOURCE REPO!"
 
 #: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:221
-#, php-format
+#, fuzzy, php-format
 msgctxt "the plugin title"
 msgid ""
 "Entschuldige, es konnte nicht festgestellt werden, ob Updates für %s "
 "verfügbar sind."
 msgstr ""
+"Spiacente, non è stato possibile determinare se sono disponibili "
+"aggiornamenti per %s."
 
 #: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:227
-#, php-format
+#, fuzzy, php-format
 msgid "Unbekannter PSOURCE-UPDATTER-Status \"%s\""
-msgstr ""
+msgstr "Stato PSOURCE-UPDATTER sconosciuto \"%s\""
 
 #: psource/psource-plugin-update/Puc/v5p0/Vcs/PluginUpdateChecker.php:98
+#, fuzzy
 msgid "There is no changelog available."
-msgstr ""
+msgstr "Non è disponibile un changelog."
 
 #: templates/psource-chat-pop-twitter-auth.php:38
+#, fuzzy
 msgid "ERROR:"
-msgstr ""
+msgstr "ERRORE:"
 
 #. Plugin Name of the plugin/theme
+#, fuzzy
 msgid "PS Chat"
-msgstr ""
+msgstr "Chat PS"
 
 #. Plugin URI of the plugin/theme
+#, fuzzy
 msgid "https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/"
 msgstr ""
+"https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/"
 
 #. Description of the plugin/theme
+#, fuzzy
 msgid ""
 "Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, "
 "einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. "
 "Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten "
 "Benutzern. KEINE EXTERNEN SERVER/DIENSTE!"
 msgstr ""
+"Fornisce un'area di chat completa in un post, in una pagina, in un widget o "
+"nell'angolo inferiore del sito web. Supporta le chat di gruppo BuddyPress e "
+"le chat private tra utenti connessi. NESSUN SERVER/SERVIZIO ESTERNO!"
 
 #. Author of the plugin/theme
+#, fuzzy
 msgid "Webmasterservice N3rds@Work"
-msgstr ""
+msgstr "Webmasterservice N3rds@Work"
 
 #. Author URI of the plugin/theme
+#, fuzzy
 msgid "https://n3rds.work"
-msgstr ""
+msgstr "https://n3rds.work"

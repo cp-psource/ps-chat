@@ -1481,9 +1481,9 @@ function psource_chat_form_section_polling_content( $form_section = 'global' ) {
 	?>
 	<fieldset>
 		<legend><?php _e( 'Abfrageinhalt von Chat-Sitzungen', 'psource-chat' ); ?></legend>
-		<p class="info"><?php _e( 'Standardmäßig rufen die Chat-Sitzungen eine spezielle AJAX-Datei ab, die sich im Plugin-Verzeichnis befindet (psource-chat-ajax.php). Manchmal ist dies aus Sicherheitsgründen auf dem Server nicht zulässig. In diesen Fällen setze den Abfragetyp auf WordPress.', 'psource-chat' ); ?></p>
+		<p class="info"><?php _e( 'Standardmäßig rufen die Chat-Sitzungen eine spezielle AJAX-Datei ab, die sich im Plugin-Verzeichnis befindet (psource-chat-ajax.php). Manchmal ist dies aus Sicherheitsgründen auf dem Server nicht zulässig. In diesen Fällen setze den Abfragetyp auf System-Ajax.', 'psource-chat' ); ?></p>
 
-		<p class="info"><?php _e( '<strong>Das WordPress AJAX ist viel langsamer und verwendet mehr Serverressourcen als das Plugin AJAX.</strong>', 'psource-chat' ); ?></p>
+		<p class="info"><?php _e( '<strong>Das System AJAX ist viel langsamer und verwendet mehr Serverressourcen als das Plugin AJAX.</strong>', 'psource-chat' ); ?></p>
 		<?php
 		if ($_use_plugin_ajax !== true) {
 		?>
@@ -1493,7 +1493,7 @@ function psource_chat_form_section_polling_content( $form_section = 'global' ) {
 		<table border="0" cellpadding="4" cellspacing="0">
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_session_poll_type"><?php _e( 'Wählen für die Abfrage verwendete AJAX-Variante (WordPress AJAX empfohlen)',
+					<label for="chat_session_poll_type"><?php _e( 'Wählen für die Abfrage verwendete AJAX-Variante (System AJAX empfohlen)',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column"><?php
 					?><select id="chat_session_poll_type" name="chat[session_poll_type]">
@@ -1794,7 +1794,7 @@ function psource_chat_form_section_block_urls_site( $form_section = 'site' ) {
 			</tr>
 		</table>
 
-		<p class="info"><?php _e( 'Darüber hinaus kannst Du den Seitenrand-Chat für bestimmte URLs mithilfe der folgenden Optionen ausschließen/einschließen. Die URLs können Front- oder WPAdmin-URLs sein.',
+		<p class="info"><?php _e( 'Darüber hinaus kannst Du den Seitenrand-Chat für bestimmte URLs mithilfe der folgenden Optionen ausschließen/einschließen. Die URLs können Front- oder Dashboard-URLs sein.',
 				'psource-chat' )?></p>
 
 		<table border="0" cellpadding="4" cellspacing="0">
@@ -2002,7 +2002,7 @@ function psource_chat_form_section_bottom_corner( $form_section = 'site' ) {
 				if ( $psource_chat->get_option( 'bottom_corner_wpadmin', 'network-site' ) == 'enabled' ) {
 					?>
 					<div class="error">
-						<p class="info"><?php _e( 'Der WPAdmin-Chat in der unteren Ecke wurde vom Superadministrator für das Netzwerk aktiviert. Dies bedeutet, dass die WPAdmin-Chat-Sichtbarkeit Deiner lokalen Seite ausgeschlossen wird.', 'psource-chat' ); ?></p>
+						<p class="info"><?php _e( 'Der Dashboard-Chat in der unteren Ecke wurde vom Superadministrator für das Netzwerk aktiviert. Dies bedeutet, dass die Dashboard-Chat-Sichtbarkeit Deiner lokalen Seite ausgeschlossen wird.', 'psource-chat' ); ?></p>
 					</div>
 				<?php
 				}
@@ -2728,7 +2728,7 @@ function psource_chat_form_section_wpadmin( $form_section = 'global' ) {
 			</tr>
 			<tr>
 				<td class="chat-label-column">
-					<label for="psource_chat_name_display"><?php _e( 'In Chat Sessions Show Name as', 'psource-chat' ); ?></label>
+					<label for="psource_chat_name_display"><?php _e( 'In Chat Sessions zeige Name als	', 'psource-chat' ); ?></label>
 				</td>
 				<td class="chat-value-column">
 					<select name="chat_user_meta[chat_name_display]" id="psource_chat_name_display">
@@ -2744,7 +2744,7 @@ function psource_chat_form_section_wpadmin( $form_section = 'global' ) {
 			</tr>
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="psource_chat_wp_admin"><?php _e( 'Chats in WP Admin anzeigen', 'psource-chat' ); ?></label>
+					<label for="psource_chat_wp_admin"><?php _e( 'Chats im Dashboard anzeigen	', 'psource-chat' ); ?></label>
 				</td>
 				<td class="chat-value-column">
 					<select name="chat_user_meta[chat_wp_admin]" id="psource_chat_wp_admin">
@@ -2764,7 +2764,7 @@ function psource_chat_form_section_wpadmin( $form_section = 'global' ) {
 			</tr>
 			<tr>
 				<td class="chat-label-column">
-					<label for="psource_chat_wp_toolbar"><?php _e( 'Chat WordPress-Symbolleistenmenü anzeigen?', 'psource-chat' ); ?></label>
+					<label for="psource_chat_wp_toolbar"><?php _e( 'Chat Adminleistenmenü anzeigen?', 'psource-chat' ); ?></label>
 				</td>
 				<td class="chat-value-column">
 					<select name="chat_user_meta[chat_wp_toolbar]" id="psource_chat_wp_toolbar">
@@ -2865,7 +2865,7 @@ function psource_chat_form_section_wpadmin( $form_section = 'global' ) {
 
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_delete_user_messages"><?php _e( 'Entferne Chat-Nachrichten, wenn der WordPress-Benutzer gelöscht wird',
+					<label for="chat_delete_user_messages"><?php _e( 'Entferne Chat-Nachrichten, wenn der Benutzer gelöscht wird',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column">
 					<select id="chat_session_performance" name="chat[delete_user_messages]">

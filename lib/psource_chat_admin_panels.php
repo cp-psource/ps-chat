@@ -395,7 +395,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 								<li id="psource_chat_wp_tab"><a href="#psource_chat_blocked_urls"><span><?php
 											_e( 'Blockierte URLs', 'psource-chat' ); ?></span></a></li>
 								<li id="chat_wpadmin_tab"><a href="#chat_wpadmin_panel"><span><?php
-											_e( 'WPAdmin', 'psource-chat' ); ?></span></a></li>
+											_e( 'Dashboard', 'psource-chat' ); ?></span></a></li>
 								<?php if ( $buddypress_active ) { ?>
 									<li>
 										<a href="#psource_chat_buddypress_panel"><span><?php _e( 'BuddyPress', 'psource-chat' ); ?></span></a>

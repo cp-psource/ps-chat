@@ -2764,7 +2764,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				<tr>
 					<th>
 						<label
-							for="psource_chat_wp_admin"><?php _e( 'Chats in WP Admin anzeigen', 'psource-chat' ); ?></label>
+							for="psource_chat_wp_admin"><?php _e( 'Chats im Dashboard anzeigen	', 'psource-chat' ); ?></label>
 					</th>
 					<td>
 						<select name="psource_chat_user_settings[chat_wp_admin]" id="psource_chat_wp_admin">
