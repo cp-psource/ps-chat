@@ -47,12 +47,16 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
-= 2.4.6 = DerN3rd = 
+= 2.4.7 =
+
+* Verbesserte Smiley-Liste
+
+= 2.4.6 = 
 
 * Fix: Widget Bug mit ClassicPress 1.6
 * Fix: PHP Warning:  Undefined array
 
-= 2.4.5 = DerN3rd = 
+= 2.4.5 = 
 
 * Deprecated: Optional parameter Fix
 * Für PhP 8.1 getestet
@@ -61,18 +65,18 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Bugfix in Textstring
 * Psourceupdater 1.2
 
-= 2.4.4 = DerN3rd =
+= 2.4.4 =
 
 * Fix: Deprecated locale.php
 * Neues Options-Icon
 * Besseres Emoticons-CSS
 
-= 2.4.3 = DerN3rd =
+= 2.4.3 =
 
 * Plugin Textdomain Angepasst
 * Fix: Deprecated session.php
 
-= 2.4.2 = DerN3rd =
+= 2.4.2 =
 
 * Admin Dashicon hinzugefügt
 * PhP8 Fix Frontend-Chat
@@ -80,43 +84,43 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Leeren Tooltipbalken im Dashboard ausgeblendet
 * Widgets unter "PSC" gruppiert
 
-= 2.4.1 = DerN3rd =
+= 2.4.1 =
 
 * Fixed Profilbild bei Chatanfrage
 * Deleted Plugin Ajax 
 
-= 2.3.5 = DerN3rd =
+= 2.3.5 =
 
 * AutoUpdate Support für die automatische Plugin-Aktualisierung integriert
 
-= 2.3.3 = DerN3rd =
+= 2.3.3 =
 
 * Neue Grafische Elemente eingefügt
 * Noch mehr Code erneuert
 
 
-= 2.3.2 = DerN3rd =
+= 2.3.2 =
 
 * Added Mehr Emojis
 * Fixed Veralteten PHP Code
 * Fixed Emoji-Menü
 
-= 2.3.0 = DerN3rd =
+= 2.3.0 =
 
 * Added Verbesserungen an Texten
 * Fixed Voreinstellungen für Chatdarstellung
 * Added Moderneres CSS begonnen
 
-= 2.3.8 = DerN3rd =
+= 2.3.8 =
 
 * Added: Neue Emojis
 * Fixed CSS Emoji-Box
 
-= 2.3.3 = DerN3rd =
+= 2.3.3 =
 
 * Fixed: Hotfix für Gutenberg bei Deutscher Sprache
 
-= 2.2.0 = DerN3rd =
+= 2.2.0 =
 
 * Fixed: Probleme mit WordPress 5.0
 * Updated: Übersetzung auf Deutsch
