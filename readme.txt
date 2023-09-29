@@ -50,6 +50,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 2.4.7 =
 
 * Verbesserte Smiley-Liste
+* Chaticons durch Dashicons ersetzt
 
 = 2.4.6 = 
 

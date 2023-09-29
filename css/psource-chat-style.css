@@ -598,8 +598,10 @@ div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu
 }
 
 div.psource-chat-box ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button {
-    width: 16px;
-    display: block;
+    width: auto; /* Setzen Sie die Breite auf "auto", um den Text nicht abzuschneiden */
+    display: inline-block; /* Damit das Icon neben dem Text angezeigt wird */
+    margin-top: 3px;
+    cursor: pointer; /* Zeigen Sie den Mauszeiger als Zeigefinger an, um anzuzeigen, dass es sich um einen Link handelt */
 }
 
 div.psource-chat-box ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button img {
@@ -664,8 +666,12 @@ div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu
 
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out,
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-in {
-    font-size: 110%;
-    width: 12px;
+    font-size: 16px; /* Ändern Sie die Schriftgröße je nach Bedarf */
+    width: auto; /* Setzen Sie die Breite auf "auto", um den Text nicht abzuschneiden */
+    margin-top: 3px;
+    /*display: inline-block;*/ /* Damit die Dashicons nebeneinander angezeigt werden */
+    padding: 0; /* Entfernen Sie das Padding, um das Dashicon enger am Text auszurichten */
+    cursor: pointer; /* Zeigen Sie den Mauszeiger als Zeigefinger an, um anzuzeigen, dass es sich um einen Link handelt */
 }
 
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out {

@@ -695,7 +695,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 								</li>
 							<?php } ?>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Advanced', 'psource-chat' ); ?></span></a></li>
+										_e( 'Erweitert', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_widgets_panel" class="panel current">
 							<?php psource_chat_form_section_dashboard( $form_section ); ?>

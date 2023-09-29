@@ -4575,20 +4575,20 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_style_settings = "display:none;";
 			}
 
-			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><img src="' . plugins_url( '/images/gear_icon.png', __FILE__ ) . '" alt="' . __( 'Chat Einstellungen', 'psource-chat' ) . '" width="16" height="16" title="' . __( 'Chat Einstellungen', 'psource-chat' ) . '" /></a>' . $chat_action_menu . '</li>';
+			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><span class="dashicons dashicons-admin-tools"></span></a>' . $chat_action_menu . '</li>';
 
 			//$transient_key = "chat-session-". $chat_session['blog_id'] ."-". $chat_session['id'] .'-'. $chat_session['session_type'];
 			$transient_key = "chat-session-" . $chat_session['id'] . '-' . $chat_session['session_type'];
 
 			if ( $chat_session['box_popout'] == "enabled" ) {
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', 'psource-chat' ) . '" href="' . add_query_arg( array(
-						'psource-chat-action' => 'pop-out',
-						'psource-chat-key'    => base64_encode( $transient_key )
-					), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#10070;</a></li>';
+					'psource-chat-action' => 'pop-out',
+					'psource-chat-key'    => base64_encode( $transient_key )
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-expand"></span></a></li>';
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', 'psource-chat' ) . '" href="' . add_query_arg( array(
-						'psource-chat-action' => 'pop-in',
-						'psource-chat-id'     => base64_encode( $chat_session['id'] )
-					), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#10063;</a></li>';
+					'psource-chat-action' => 'pop-in',
+					'psource-chat-id'     => base64_encode( $chat_session['id'] )
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-contract"></span></a></li>';
 			}
 
 			$chat_header_actions .= '</ul></div>';
