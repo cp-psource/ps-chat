@@ -26,17 +26,19 @@
 		var psource_chat_wp_user_level_10_roles = [];
 		<?php
 			global $wp_roles;
-			if (count($wp_roles)) {
-				foreach ($wp_roles->roles as $role_slug => $role) {
-					if (isset($role['capabilities']['level_10'])) {
-						?>
-		psource_chat_wp_user_level_10_roles.push('<?php echo $role_slug ?>');
-		<?php
-	}
-}
-}
-?>
-		//console.log('psource_chat_wp_user_level_10_roles[%o]', psource_chat_wp_user_level_10_roles);
+				if (is_object($wp_roles) && is_array($wp_roles->roles)) {
+						$psource_chat_wp_user_level_10_roles = [];
+						foreach ($wp_roles->roles as $role_slug => $role) {
+							if (isset($role['capabilities']['level_10'])) {
+								$psource_chat_wp_user_level_10_roles[] = $role_slug;
+							}
+						}
+					} 
+				else {
+					$psource_chat_wp_user_level_10_roles = [];
+				}
+			?>
+			//console.log('psource_chat_wp_user_level_10_roles[%o]', psource_chat_wp_user_level_10_roles);
 
 		var psource_chat_default_options = {
 			<?php

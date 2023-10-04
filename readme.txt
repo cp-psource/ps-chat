@@ -51,6 +51,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 * Verbesserte Smiley-Liste
 * Chaticons durch Dashicons ersetzt
+* Fix Beitragschat Einstellungspopup
 
 = 2.4.6 = 
 
