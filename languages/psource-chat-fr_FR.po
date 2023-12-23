@@ -229,7 +229,7 @@ msgstr "Paramètres de chat Réseau général"
 
 #: lib/psource_chat_admin_panels.php:370
 #, fuzzy
-msgid "Chat Basiseinstellungen"
+msgid "Chat Einstellungen"
 msgstr "Paramètres de base du chat"
 
 #: lib/psource_chat_admin_panels.php:375
@@ -1018,7 +1018,7 @@ msgstr ""
 
 #: lib/psource_chat_admin_panels_help.php:382
 #, fuzzy
-msgid "Steuert die Abfragequelle für neue Nachrichten und Statusänderungen"
+msgid "Steuert die Abfragequelle für neue Nachrichten und Statusänderungen, verwende PS-Chat Ajax für Failsafe"
 msgstr ""
 "Contrôle la source d'interrogation pour les nouveaux messages et les "
 "changements de statut"
@@ -2829,7 +2829,7 @@ msgstr ""
 
 #: lib/psource_chat_form_sections.php:1431
 #, fuzzy
-msgid "Wie oft nach neuen Nachrichten gefragt werden soll"
+msgid "Abfrage-Intervall für neue Nachrichten"
 msgstr "La fréquence à laquelle les nouveaux messages doivent être demandés"
 
 #: lib/psource_chat_form_sections.php:1437
@@ -2845,7 +2845,7 @@ msgstr ""
 
 #: lib/psource_chat_form_sections.php:1443
 #, fuzzy
-msgid "Wie oft nach Einladungen fragen"
+msgid "Abfrage-Intervall für neue Einladungen"
 msgstr "Combien de fois demander des invitations"
 
 #: lib/psource_chat_form_sections.php:1449
@@ -2861,7 +2861,7 @@ msgstr ""
 
 #: lib/psource_chat_form_sections.php:1456
 #, fuzzy
-msgid "Wie oft müssen Metadaten aktualisiert werden?"
+msgid "Abfrage-Intervall für Meta-Daten"
 msgstr "À quelle fréquence les métadonnées doivent-elles être mises à jour ?"
 
 #: lib/psource_chat_form_sections.php:1462
@@ -2915,7 +2915,7 @@ msgstr ""
 
 #: lib/psource_chat_form_sections.php:1496
 #, fuzzy
-msgid "Wählen für die Abfrage verwendete AJAX-Variante (System AJAX empfohlen)"
+msgid "Wählen für die Abfrage verwendete AJAX-Variante (PS-Chat AJAX empfohlen)"
 msgstr ""
 "Choisir la variante AJAX utilisée pour la requête (système AJAX recommandé)"
 
@@ -4434,13 +4434,13 @@ msgstr "Chat du tableau de bord"
 #: psource-chat.php:1982 psource-chat.php:2076
 #, fuzzy
 msgctxt "page label"
-msgid "Basiseinstellungen"
+msgid "Einstellungen"
 msgstr "Réglages de base"
 
 #: psource-chat.php:1983 psource-chat.php:2077
 #, fuzzy
 msgctxt "menu label"
-msgid "Basiseinstellungen"
+msgid "Einstellungen"
 msgstr "Réglages de base"
 
 #: psource-chat.php:1990 psource-chat.php:2084

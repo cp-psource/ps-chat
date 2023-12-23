@@ -47,6 +47,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 2.4.8 =
+
+* Fix: Deprecated jQuery
+
 = 2.4.7 =
 
 * Verbesserte Smiley-Liste

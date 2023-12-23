@@ -367,7 +367,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 				<?php if ( is_network_admin() ) { ?>
 					<h2><?php _e( 'Chat-Einstellungen Netzwerk Allgemein', 'psource-chat' ); ?></h2>
 				<?php } else { ?>
-					<h2><?php _e( 'Chat Basiseinstellungen', 'psource-chat' ); ?></h2>
+					<h2><?php _e( 'Chat Einstellungen', 'psource-chat' ); ?></h2>
 				<?php } ?>
 
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">

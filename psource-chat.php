@@ -1979,8 +1979,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			);
 
 			$this->_pagehooks['chat_settings_panel_network_global'] = add_submenu_page( 'chat_settings_panel_network_site',
-				_x( 'Basiseinstellungen', 'page label', 'psource-chat' ),
-				_x( 'Basiseinstellungen', 'menu label', 'psource-chat' ),
+				_x( 'Einstellungen', 'page label', 'psource-chat' ),
+				_x( 'Einstellungen', 'menu label', 'psource-chat' ),
 				'manage_network_options',
 				'chat_settings_panel_network_global',
 				array( &$this->_admin_panels, 'chat_settings_panel_global' )
@@ -2073,8 +2073,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			);
 
 			$this->_pagehooks['chat_settings_panel_global'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Basiseinstellungen', 'page label', 'psource-chat' ),
-				_x( 'Basiseinstellungen', 'menu label', 'menu label', 'psource-chat' ),
+				_x( 'Einstellungen', 'page label', 'psource-chat' ),
+				_x( 'Einstellungen', 'menu label', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel_global',
 				array( &$this->_admin_panels, 'chat_settings_panel_global' )

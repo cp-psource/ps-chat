@@ -1428,7 +1428,7 @@ function psource_chat_form_section_polling_interval( $form_section = 'global' ) 
 		<table border="0" cellpadding="4" cellspacing="0">
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_session_poll_interval_messages"><?php _e( 'Wie oft nach neuen Nachrichten gefragt werden soll',
+					<label for="chat_session_poll_interval_messages"><?php _e( 'Abfrage-Intervall für neue Nachrichten',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column">
 					<input type="text" id="chat_session_poll_interval_messages" name="chat[session_poll_interval_messages]"
@@ -1440,7 +1440,7 @@ function psource_chat_form_section_polling_interval( $form_section = 'global' ) 
 			</tr>
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_session_poll_interval_invites"><?php _e( 'Wie oft nach Einladungen fragen',
+					<label for="chat_session_poll_interval_invites"><?php _e( 'Abfrage-Intervall für neue Einladungen',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column">
 					<input type="text" id="chat_session_poll_interval_invites" name="chat[session_poll_interval_invites]"
@@ -1453,7 +1453,7 @@ function psource_chat_form_section_polling_interval( $form_section = 'global' ) 
 			</tr>
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_session_poll_interval_meta"><?php _e( 'Wie oft müssen Metadaten aktualisiert werden?',
+					<label for="chat_session_poll_interval_meta"><?php _e( 'Abfrage-Intervall für Meta-Daten',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column">
 					<input type="text" id="chat_session_poll_interval_meta" name="chat[session_poll_interval_meta]"
@@ -1493,7 +1493,7 @@ function psource_chat_form_section_polling_content( $form_section = 'global' ) {
 		<table border="0" cellpadding="4" cellspacing="0">
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_session_poll_type"><?php _e( 'Wählen für die Abfrage verwendete AJAX-Variante (System AJAX empfohlen)',
+					<label for="chat_session_poll_type"><?php _e( 'Wählen für die Abfrage verwendete AJAX-Variante (PS-Chat AJAX empfohlen)',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column"><?php
 					?><select id="chat_session_poll_type" name="chat[session_poll_type]">
@@ -2443,7 +2443,7 @@ function psource_chat_form_section_blocked_urls_admin( $form_section = 'global' 
 	?>
 	<fieldset>
 		<legend><?php _e( 'Chat auf WP Admin-URLs ausblenden', 'psource-chat' ); ?></legend>
-		<p class="info"><?php _e( 'Dieser Abschnitt steuert, wie der Chat im WordPress-Administrationsbereich funktioniert. Dies sind globale Einstellungen, die sich auf alle Benutzer auswirken', 'psource-chat' ); ?></p>
+		<p class="info"><?php _e( 'Dieser Abschnitt steuert, wie der Chat im Administrationsbereich funktioniert. Dies sind globale Einstellungen, die sich auf alle Benutzer auswirken', 'psource-chat' ); ?></p>
 		<table border="0" cellpadding="4" cellspacing="0">
 			<tr>
 				<td class="chat-label-column">
