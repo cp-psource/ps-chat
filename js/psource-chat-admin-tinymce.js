@@ -55,10 +55,10 @@
 						psource_chat_default_options.login_options.sort();
 						chat_login_options_arr.sort();
 						
-						if (psource_chat_default_options.login_options.join(',') != jQuery.trim(chat_login_options_arr.join(','))) {
+						if (psource_chat_default_options.login_options.join(',') !== chat_login_options_arr.join(',').trim()) {
 							var user_role_str = '';
 							for (var user_role_idx in chat_login_options_arr) {
-								var user_role = jQuery.trim(chat_login_options_arr[user_role_idx]);
+								var user_role = chat_login_options_arr[user_role_idx].trim();
 								if (jQuery.inArray(user_role, psource_chat_wp_user_level_10_roles) == -1) {
 									if (user_role_str != '') user_role_str+=',';
 									user_role_str+=user_role;
@@ -83,10 +83,10 @@
 
 						psource_chat_default_options.moderator_roles.sort();
 						
-						if (psource_chat_default_options.moderator_roles.join(',') != jQuery.trim(chat_moderator_roles_arr.join(','))) {
+						if (psource_chat_default_options.moderator_roles.join(',') !== chat_moderator_roles_arr.join(',').trim()) {
 							var user_role_str = '';
 							for (var user_role_idx in chat_moderator_roles_arr) {
-								var user_role = jQuery.trim(chat_moderator_roles_arr[user_role_idx]);
+								var user_role = chat_moderator_roles_arr[user_role_idx].trim();
 								if (jQuery.inArray(user_role, psource_chat_wp_user_level_10_roles) == -1) {
 									if (user_role_str != '') user_role_str+=',';
 									user_role_str+=user_role;
@@ -98,7 +98,7 @@
 						
 					}
 				} else {
-					var chat_form_value = jQuery.trim(jQuery('#chat_'+chat_form_key).val());
+					var chat_form_value = jQuery('#chat_'+chat_form_key).val().trim();
 					//console.log("chat_form_key=["+chat_form_key+"]=["+chat_form_value+"]");
 					
 					if ((chat_form_key == "blocked_words_active") && (chat_form_value == '')) {

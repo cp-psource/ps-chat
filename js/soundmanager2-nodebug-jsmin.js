@@ -8,76 +8,2694 @@
  * Code provided under the BSD License:
  * http://schillmania.com/projects/soundmanager2/license.txt
  *
- * V2.97a.20140901
+ * V2.97a.20170601
  */
-(function(g,h){function G(F,G){function W(b){return c.preferFlash&&v&&!c.ignoreFlash&&c.flash[b]!==h&&c.flash[b]}function r(b){return function(c){var d=this._s;return!d||!d._a?null:b.call(this,c)}}this.setupOptions={url:F||null,flashVersion:8,debugMode:!0,debugFlash:!1,useConsole:!0,consoleOnly:!0,waitForWindowLoad:!1,bgColor:"#ffffff",useHighPerformance:!1,flashPollingInterval:null,html5PollingInterval:null,flashLoadTimeout:1E3,wmode:null,allowScriptAccess:"always",useFlashBlock:!1,useHTML5Audio:!0,
-html5Test:/^(probably|maybe)$/i,preferFlash:!1,noSWFCache:!1,idPrefix:"sound"};this.defaultOptions={autoLoad:!1,autoPlay:!1,from:null,loops:1,onid3:null,onload:null,whileloading:null,onplay:null,onpause:null,onresume:null,whileplaying:null,onposition:null,onstop:null,onfailure:null,onfinish:null,multiShot:!0,multiShotEvents:!1,position:null,pan:0,stream:!0,to:null,type:null,usePolicyFile:!1,volume:100};this.flash9Options={isMovieStar:null,usePeakData:!1,useWaveformData:!1,useEQData:!1,onbufferchange:null,
-ondataerror:null};this.movieStarOptions={bufferTime:3,serverURL:null,onconnect:null,duration:null};this.audioFormats={mp3:{type:['audio/mpeg; codecs\x3d"mp3"',"audio/mpeg","audio/mp3","audio/MPA","audio/mpa-robust"],required:!0},mp4:{related:["aac","m4a","m4b"],type:['audio/mp4; codecs\x3d"mp4a.40.2"',"audio/aac","audio/x-m4a","audio/MP4A-LATM","audio/mpeg4-generic"],required:!1},ogg:{type:["audio/ogg; codecs\x3dvorbis"],required:!1},opus:{type:["audio/ogg; codecs\x3dopus","audio/opus"],required:!1},
-wav:{type:['audio/wav; codecs\x3d"1"',"audio/wav","audio/wave","audio/x-wav"],required:!1}};this.movieID="sm2-container";this.id=G||"sm2movie";this.debugID="soundmanager-debug";this.debugURLParam=/([#?&])debug=1/i;this.versionNumber="V2.97a.20140901";this.altURL=this.movieURL=this.version=null;this.enabled=this.swfLoaded=!1;this.oMC=null;this.sounds={};this.soundIDs=[];this.didFlashBlock=this.muted=!1;this.filePattern=null;this.filePatterns={flash8:/\.mp3(\?.*)?$/i,flash9:/\.mp3(\?.*)?$/i};this.features=
-{buffering:!1,peakData:!1,waveformData:!1,eqData:!1,movieStar:!1};this.sandbox={};this.html5={usingFlash:null};this.flash={};this.ignoreFlash=this.html5Only=!1;var Ja,c=this,Ka=null,k=null,X,t=navigator.userAgent,La=g.location.href.toString(),p=document,la,Ma,ma,n,x=[],M=!1,N=!1,m=!1,y=!1,na=!1,O,w,oa,Y,pa,D,H,I,Na,qa,ra,Z,sa,$,ta,E,ua,P,va,aa,J,Oa,wa,Pa,xa,Qa,Q=null,ya=null,R,za,K,ba,ca,q,S=!1,Aa=!1,Ra,Sa,Ta,da=0,T=null,ea,Ua=[],U,u=null,Va,fa,V,z,ga,Ba,Wa,s,fb=Array.prototype.slice,A=!1,Ca,v,Da,
-Xa,B,ha,Ya=0,ia=t.match(/(ipad|iphone|ipod)/i),Za=t.match(/android/i),C=t.match(/msie/i),gb=t.match(/webkit/i),ja=t.match(/safari/i)&&!t.match(/chrome/i),Ea=t.match(/opera/i),Fa=t.match(/(mobile|pre\/|xoom)/i)||ia||Za,$a=!La.match(/usehtml5audio/i)&&!La.match(/sm2\-ignorebadua/i)&&ja&&!t.match(/silk/i)&&t.match(/OS X 10_6_([3-7])/i),Ga=p.hasFocus!==h?p.hasFocus():null,ka=ja&&(p.hasFocus===h||!p.hasFocus()),ab=!ka,bb=/(mp3|mp4|mpa|m4a|m4b)/i,Ha=p.location?p.location.protocol.match(/http/i):null,cb=
-!Ha?"http://":"",db=/^\s*audio\/(?:x-)?(?:mpeg4|aac|flv|mov|mp4||m4v|m4a|m4b|mp4v|3gp|3g2)\s*(?:$|;)/i,eb="mpeg4 aac flv mov mp4 m4v f4v m4a m4b mp4v 3gp 3g2".split(" "),hb=RegExp("\\.("+eb.join("|")+")(\\?.*)?$","i");this.mimePattern=/^\s*audio\/(?:x-)?(?:mp(?:eg|3))\s*(?:$|;)/i;this.useAltURL=!Ha;var Ia;try{Ia=Audio!==h&&(Ea&&opera!==h&&10>opera.version()?new Audio(null):new Audio).canPlayType!==h}catch(ib){Ia=!1}this.hasHTML5=Ia;this.setup=function(b){var e=!c.url;b!==h&&m&&u&&c.ok();oa(b);b&&
-(e&&(P&&b.url!==h)&&c.beginDelayedInit(),!P&&(b.url!==h&&"complete"===p.readyState)&&setTimeout(E,1));return c};this.supported=this.ok=function(){return u?m&&!y:c.useHTML5Audio&&c.hasHTML5};this.getMovie=function(b){return X(b)||p[b]||g[b]};this.createSound=function(b,e){function d(){a=ba(a);c.sounds[a.id]=new Ja(a);c.soundIDs.push(a.id);return c.sounds[a.id]}var a,f=null;if(!m||!c.ok())return!1;e!==h&&(b={id:b,url:e});a=w(b);a.url=ea(a.url);void 0===a.id&&(a.id=c.setupOptions.idPrefix+Ya++);if(q(a.id,
-!0))return c.sounds[a.id];if(fa(a))f=d(),f._setup_html5(a);else{if(c.html5Only||c.html5.usingFlash&&a.url&&a.url.match(/data\:/i))return d();8<n&&null===a.isMovieStar&&(a.isMovieStar=!(!a.serverURL&&!(a.type&&a.type.match(db)||a.url&&a.url.match(hb))));a=ca(a,void 0);f=d();8===n?k._createSound(a.id,a.loops||1,a.usePolicyFile):(k._createSound(a.id,a.url,a.usePeakData,a.useWaveformData,a.useEQData,a.isMovieStar,a.isMovieStar?a.bufferTime:!1,a.loops||1,a.serverURL,a.duration||null,a.autoPlay,!0,a.autoLoad,
-a.usePolicyFile),a.serverURL||(f.connected=!0,a.onconnect&&a.onconnect.apply(f)));!a.serverURL&&(a.autoLoad||a.autoPlay)&&f.load(a)}!a.serverURL&&a.autoPlay&&f.play();return f};this.destroySound=function(b,e){if(!q(b))return!1;var d=c.sounds[b],a;d._iO={};d.stop();d.unload();for(a=0;a<c.soundIDs.length;a++)if(c.soundIDs[a]===b){c.soundIDs.splice(a,1);break}e||d.destruct(!0);delete c.sounds[b];return!0};this.load=function(b,e){return!q(b)?!1:c.sounds[b].load(e)};this.unload=function(b){return!q(b)?
-!1:c.sounds[b].unload()};this.onposition=this.onPosition=function(b,e,d,a){return!q(b)?!1:c.sounds[b].onposition(e,d,a)};this.clearOnPosition=function(b,e,d){return!q(b)?!1:c.sounds[b].clearOnPosition(e,d)};this.start=this.play=function(b,e){var d=null,a=e&&!(e instanceof Object);if(!m||!c.ok())return!1;if(q(b,a))a&&(e={url:e});else{if(!a)return!1;a&&(e={url:e});e&&e.url&&(e.id=b,d=c.createSound(e).play())}null===d&&(d=c.sounds[b].play(e));return d};this.setPosition=function(b,e){return!q(b)?!1:c.sounds[b].setPosition(e)};
-this.stop=function(b){return!q(b)?!1:c.sounds[b].stop()};this.stopAll=function(){for(var b in c.sounds)c.sounds.hasOwnProperty(b)&&c.sounds[b].stop()};this.pause=function(b){return!q(b)?!1:c.sounds[b].pause()};this.pauseAll=function(){var b;for(b=c.soundIDs.length-1;0<=b;b--)c.sounds[c.soundIDs[b]].pause()};this.resume=function(b){return!q(b)?!1:c.sounds[b].resume()};this.resumeAll=function(){var b;for(b=c.soundIDs.length-1;0<=b;b--)c.sounds[c.soundIDs[b]].resume()};this.togglePause=function(b){return!q(b)?
-!1:c.sounds[b].togglePause()};this.setPan=function(b,e){return!q(b)?!1:c.sounds[b].setPan(e)};this.setVolume=function(b,e){return!q(b)?!1:c.sounds[b].setVolume(e)};this.mute=function(b){var e=0;b instanceof String&&(b=null);if(b)return!q(b)?!1:c.sounds[b].mute();for(e=c.soundIDs.length-1;0<=e;e--)c.sounds[c.soundIDs[e]].mute();return c.muted=!0};this.muteAll=function(){c.mute()};this.unmute=function(b){b instanceof String&&(b=null);if(b)return!q(b)?!1:c.sounds[b].unmute();for(b=c.soundIDs.length-
-1;0<=b;b--)c.sounds[c.soundIDs[b]].unmute();c.muted=!1;return!0};this.unmuteAll=function(){c.unmute()};this.toggleMute=function(b){return!q(b)?!1:c.sounds[b].toggleMute()};this.getMemoryUse=function(){var b=0;k&&8!==n&&(b=parseInt(k._getMemoryUse(),10));return b};this.disable=function(b){var e;b===h&&(b=!1);if(y)return!1;y=!0;for(e=c.soundIDs.length-1;0<=e;e--)Pa(c.sounds[c.soundIDs[e]]);O(b);s.remove(g,"load",H);return!0};this.canPlayMIME=function(b){var e;c.hasHTML5&&(e=V({type:b}));!e&&u&&(e=b&&
-c.ok()?!!(8<n&&b.match(db)||b.match(c.mimePattern)):null);return e};this.canPlayURL=function(b){var e;c.hasHTML5&&(e=V({url:b}));!e&&u&&(e=b&&c.ok()?!!b.match(c.filePattern):null);return e};this.canPlayLink=function(b){return b.type!==h&&b.type&&c.canPlayMIME(b.type)?!0:c.canPlayURL(b.href)};this.getSoundById=function(b,e){return!b?null:c.sounds[b]};this.onready=function(b,c){if("function"===typeof b)c||(c=g),pa("onready",b,c),D();else throw R("needFunction","onready");return!0};this.ontimeout=function(b,
-c){if("function"===typeof b)c||(c=g),pa("ontimeout",b,c),D({type:"ontimeout"});else throw R("needFunction","ontimeout");return!0};this._wD=this._writeDebug=function(b,c){return!0};this._debug=function(){};this.reboot=function(b,e){var d,a,f;for(d=c.soundIDs.length-1;0<=d;d--)c.sounds[c.soundIDs[d]].destruct();if(k)try{C&&(ya=k.innerHTML),Q=k.parentNode.removeChild(k)}catch(h){}ya=Q=u=k=null;c.enabled=P=m=S=Aa=M=N=y=A=c.swfLoaded=!1;c.soundIDs=[];c.sounds={};Ya=0;if(b)x=[];else for(d in x)if(x.hasOwnProperty(d)){a=
-0;for(f=x[d].length;a<f;a++)x[d][a].fired=!1}c.html5={usingFlash:null};c.flash={};c.html5Only=!1;c.ignoreFlash=!1;g.setTimeout(function(){ta();e||c.beginDelayedInit()},20);return c};this.reset=function(){return c.reboot(!0,!0)};this.getMoviePercent=function(){return k&&"PercentLoaded"in k?k.PercentLoaded():null};this.beginDelayedInit=function(){na=!0;E();setTimeout(function(){if(Aa)return!1;aa();$();return Aa=!0},20);I()};this.destruct=function(){c.disable(!0)};Ja=function(b){var e,d,a=this,f,l,L,
-g,p,r,t=!1,m=[],u=0,x,y,v=null,z;d=e=null;this.sID=this.id=b.id;this.url=b.url;this._iO=this.instanceOptions=this.options=w(b);this.pan=this.options.pan;this.volume=this.options.volume;this.isHTML5=!1;this._a=null;z=this.url?!1:!0;this.id3={};this._debug=function(){};this.load=function(b){var e=null,d;b!==h?a._iO=w(b,a.options):(b=a.options,a._iO=b,v&&v!==a.url&&(a._iO.url=a.url,a.url=null));a._iO.url||(a._iO.url=a.url);a._iO.url=ea(a._iO.url);d=a.instanceOptions=a._iO;if(!d.url&&!a.url)return a;
-if(d.url===a.url&&0!==a.readyState&&2!==a.readyState)return 3===a.readyState&&d.onload&&ha(a,function(){d.onload.apply(a,[!!a.duration])}),a;a.loaded=!1;a.readyState=1;a.playState=0;a.id3={};if(fa(d))e=a._setup_html5(d),e._called_load||(a._html5_canplay=!1,a.url!==d.url&&(a._a.src=d.url,a.setPosition(0)),a._a.autobuffer="auto",a._a.preload="auto",a._a._called_load=!0);else{if(c.html5Only||a._iO.url&&a._iO.url.match(/data\:/i))return a;try{a.isHTML5=!1;a._iO=ca(ba(d));if(a._iO.autoPlay&&(a._iO.position||
-a._iO.from))a._iO.autoPlay=!1;d=a._iO;8===n?k._load(a.id,d.url,d.stream,d.autoPlay,d.usePolicyFile):k._load(a.id,d.url,!!d.stream,!!d.autoPlay,d.loops||1,!!d.autoLoad,d.usePolicyFile)}catch(f){J({type:"SMSOUND_LOAD_JS_EXCEPTION",fatal:!0})}}a.url=d.url;return a};this.unload=function(){0!==a.readyState&&(a.isHTML5?(g(),a._a&&(a._a.pause(),v=ga(a._a))):8===n?k._unload(a.id,"about:blank"):k._unload(a.id),f());return a};this.destruct=function(b){a.isHTML5?(g(),a._a&&(a._a.pause(),ga(a._a),A||L(),a._a._s=
-null,a._a=null)):(a._iO.onfailure=null,k._destroySound(a.id));b||c.destroySound(a.id,!0)};this.start=this.play=function(b,e){var d,f,l,g,L;f=!0;f=null;e=e===h?!0:e;b||(b={});a.url&&(a._iO.url=a.url);a._iO=w(a._iO,a.options);a._iO=w(b,a._iO);a._iO.url=ea(a._iO.url);a.instanceOptions=a._iO;if(!a.isHTML5&&a._iO.serverURL&&!a.connected)return a.getAutoPlay()||a.setAutoPlay(!0),a;fa(a._iO)&&(a._setup_html5(a._iO),p());1===a.playState&&!a.paused&&(d=a._iO.multiShot,d||(a.isHTML5&&a.setPosition(a._iO.position),
-f=a));if(null!==f)return f;b.url&&b.url!==a.url&&(!a.readyState&&!a.isHTML5&&8===n&&z?z=!1:a.load(a._iO));a.loaded||(0===a.readyState?(!a.isHTML5&&!c.html5Only?(a._iO.autoPlay=!0,a.load(a._iO)):a.isHTML5?a.load(a._iO):f=a,a.instanceOptions=a._iO):2===a.readyState&&(f=a));if(null!==f)return f;!a.isHTML5&&(9===n&&0<a.position&&a.position===a.duration)&&(b.position=0);if(a.paused&&0<=a.position&&(!a._iO.serverURL||0<a.position))a.resume();else{a._iO=w(b,a._iO);if((!a.isHTML5&&null!==a._iO.position&&
-0<a._iO.position||null!==a._iO.from&&0<a._iO.from||null!==a._iO.to)&&0===a.instanceCount&&0===a.playState&&!a._iO.serverURL){d=function(){a._iO=w(b,a._iO);a.play(a._iO)};if(a.isHTML5&&!a._html5_canplay)a.load({_oncanplay:d}),f=!1;else if(!a.isHTML5&&!a.loaded&&(!a.readyState||2!==a.readyState))a.load({onload:d}),f=!1;if(null!==f)return f;a._iO=y()}(!a.instanceCount||a._iO.multiShotEvents||a.isHTML5&&a._iO.multiShot&&!A||!a.isHTML5&&8<n&&!a.getAutoPlay())&&a.instanceCount++;a._iO.onposition&&0===a.playState&&
-r(a);a.playState=1;a.paused=!1;a.position=a._iO.position!==h&&!isNaN(a._iO.position)?a._iO.position:0;a.isHTML5||(a._iO=ca(ba(a._iO)));a._iO.onplay&&e&&(a._iO.onplay.apply(a),t=!0);a.setVolume(a._iO.volume,!0);a.setPan(a._iO.pan,!0);a.isHTML5?2>a.instanceCount?(p(),f=a._setup_html5(),a.setPosition(a._iO.position),f.play()):(l=new Audio(a._iO.url),g=function(){s.remove(l,"ended",g);a._onfinish(a);ga(l);l=null},L=function(){s.remove(l,"canplay",L);try{l.currentTime=a._iO.position/1E3}catch(b){}l.play()},
-s.add(l,"ended",g),void 0!==a._iO.volume&&(l.volume=Math.max(0,Math.min(1,a._iO.volume/100))),a.muted&&(l.muted=!0),a._iO.position?s.add(l,"canplay",L):l.play()):(f=k._start(a.id,a._iO.loops||1,9===n?a.position:a.position/1E3,a._iO.multiShot||!1),9===n&&!f&&a._iO.onplayerror&&a._iO.onplayerror.apply(a))}return a};this.stop=function(b){var c=a._iO;1===a.playState&&(a._onbufferchange(0),a._resetOnPosition(0),a.paused=!1,a.isHTML5||(a.playState=0),x(),c.to&&a.clearOnPosition(c.to),a.isHTML5?a._a&&(b=
-a.position,a.setPosition(0),a.position=b,a._a.pause(),a.playState=0,a._onTimer(),g()):(k._stop(a.id,b),c.serverURL&&a.unload()),a.instanceCount=0,a._iO={},c.onstop&&c.onstop.apply(a));return a};this.setAutoPlay=function(b){a._iO.autoPlay=b;a.isHTML5||(k._setAutoPlay(a.id,b),b&&!a.instanceCount&&1===a.readyState&&a.instanceCount++)};this.getAutoPlay=function(){return a._iO.autoPlay};this.setPosition=function(b){b===h&&(b=0);var c=a.isHTML5?Math.max(b,0):Math.min(a.duration||a._iO.duration,Math.max(b,
-0));a.position=c;b=a.position/1E3;a._resetOnPosition(a.position);a._iO.position=c;if(a.isHTML5){if(a._a){if(a._html5_canplay){if(a._a.currentTime!==b)try{a._a.currentTime=b,(0===a.playState||a.paused)&&a._a.pause()}catch(e){}}else if(b)return a;a.paused&&a._onTimer(!0)}}else b=9===n?a.position:b,a.readyState&&2!==a.readyState&&k._setPosition(a.id,b,a.paused||!a.playState,a._iO.multiShot);return a};this.pause=function(b){if(a.paused||0===a.playState&&1!==a.readyState)return a;a.paused=!0;a.isHTML5?
-(a._setup_html5().pause(),g()):(b||b===h)&&k._pause(a.id,a._iO.multiShot);a._iO.onpause&&a._iO.onpause.apply(a);return a};this.resume=function(){var b=a._iO;if(!a.paused)return a;a.paused=!1;a.playState=1;a.isHTML5?(a._setup_html5().play(),p()):(b.isMovieStar&&!b.serverURL&&a.setPosition(a.position),k._pause(a.id,b.multiShot));!t&&b.onplay?(b.onplay.apply(a),t=!0):b.onresume&&b.onresume.apply(a);return a};this.togglePause=function(){if(0===a.playState)return a.play({position:9===n&&!a.isHTML5?a.position:
-a.position/1E3}),a;a.paused?a.resume():a.pause();return a};this.setPan=function(b,c){b===h&&(b=0);c===h&&(c=!1);a.isHTML5||k._setPan(a.id,b);a._iO.pan=b;c||(a.pan=b,a.options.pan=b);return a};this.setVolume=function(b,e){b===h&&(b=100);e===h&&(e=!1);a.isHTML5?a._a&&(c.muted&&!a.muted&&(a.muted=!0,a._a.muted=!0),a._a.volume=Math.max(0,Math.min(1,b/100))):k._setVolume(a.id,c.muted&&!a.muted||a.muted?0:b);a._iO.volume=b;e||(a.volume=b,a.options.volume=b);return a};this.mute=function(){a.muted=!0;a.isHTML5?
-a._a&&(a._a.muted=!0):k._setVolume(a.id,0);return a};this.unmute=function(){a.muted=!1;var b=a._iO.volume!==h;a.isHTML5?a._a&&(a._a.muted=!1):k._setVolume(a.id,b?a._iO.volume:a.options.volume);return a};this.toggleMute=function(){return a.muted?a.unmute():a.mute()};this.onposition=this.onPosition=function(b,c,e){m.push({position:parseInt(b,10),method:c,scope:e!==h?e:a,fired:!1});return a};this.clearOnPosition=function(a,b){var c;a=parseInt(a,10);if(isNaN(a))return!1;for(c=0;c<m.length;c++)if(a===
-m[c].position&&(!b||b===m[c].method))m[c].fired&&u--,m.splice(c,1)};this._processOnPosition=function(){var b,c;b=m.length;if(!b||!a.playState||u>=b)return!1;for(b-=1;0<=b;b--)c=m[b],!c.fired&&a.position>=c.position&&(c.fired=!0,u++,c.method.apply(c.scope,[c.position]));return!0};this._resetOnPosition=function(a){var b,c;b=m.length;if(!b)return!1;for(b-=1;0<=b;b--)c=m[b],c.fired&&a<=c.position&&(c.fired=!1,u--);return!0};y=function(){var b=a._iO,c=b.from,e=b.to,d,f;f=function(){a.clearOnPosition(e,
-f);a.stop()};d=function(){if(null!==e&&!isNaN(e))a.onPosition(e,f)};null!==c&&!isNaN(c)&&(b.position=c,b.multiShot=!1,d());return b};r=function(){var b,c=a._iO.onposition;if(c)for(b in c)if(c.hasOwnProperty(b))a.onPosition(parseInt(b,10),c[b])};x=function(){var b,c=a._iO.onposition;if(c)for(b in c)c.hasOwnProperty(b)&&a.clearOnPosition(parseInt(b,10))};p=function(){a.isHTML5&&Ra(a)};g=function(){a.isHTML5&&Sa(a)};f=function(b){b||(m=[],u=0);t=!1;a._hasTimer=null;a._a=null;a._html5_canplay=!1;a.bytesLoaded=
-null;a.bytesTotal=null;a.duration=a._iO&&a._iO.duration?a._iO.duration:null;a.durationEstimate=null;a.buffered=[];a.eqData=[];a.eqData.left=[];a.eqData.right=[];a.failures=0;a.isBuffering=!1;a.instanceOptions={};a.instanceCount=0;a.loaded=!1;a.metadata={};a.readyState=0;a.muted=!1;a.paused=!1;a.peakData={left:0,right:0};a.waveformData={left:[],right:[]};a.playState=0;a.position=null;a.id3={}};f();this._onTimer=function(b){var c,f=!1,l={};if(a._hasTimer||b){if(a._a&&(b||(0<a.playState||1===a.readyState)&&
-!a.paused))c=a._get_html5_duration(),c!==e&&(e=c,a.duration=c,f=!0),a.durationEstimate=a.duration,c=1E3*a._a.currentTime||0,c!==d&&(d=c,f=!0),(f||b)&&a._whileplaying(c,l,l,l,l);return f}};this._get_html5_duration=function(){var b=a._iO;return(b=a._a&&a._a.duration?1E3*a._a.duration:b&&b.duration?b.duration:null)&&!isNaN(b)&&Infinity!==b?b:null};this._apply_loop=function(a,b){a.loop=1<b?"loop":""};this._setup_html5=function(b){b=w(a._iO,b);var c=A?Ka:a._a,e=decodeURI(b.url),d;A?e===decodeURI(Ca)&&
-(d=!0):e===decodeURI(v)&&(d=!0);if(c){if(c._s)if(A)c._s&&(c._s.playState&&!d)&&c._s.stop();else if(!A&&e===decodeURI(v))return a._apply_loop(c,b.loops),c;d||(v&&f(!1),c.src=b.url,Ca=v=a.url=b.url,c._called_load=!1)}else b.autoLoad||b.autoPlay?(a._a=new Audio(b.url),a._a.load()):a._a=Ea&&10>opera.version()?new Audio(null):new Audio,c=a._a,c._called_load=!1,A&&(Ka=c);a.isHTML5=!0;a._a=c;c._s=a;l();a._apply_loop(c,b.loops);b.autoLoad||b.autoPlay?a.load():(c.autobuffer=!1,c.preload="auto");return c};
-l=function(){if(a._a._added_events)return!1;var b;a._a._added_events=!0;for(b in B)B.hasOwnProperty(b)&&a._a&&a._a.addEventListener(b,B[b],!1);return!0};L=function(){var b;a._a._added_events=!1;for(b in B)B.hasOwnProperty(b)&&a._a&&a._a.removeEventListener(b,B[b],!1)};this._onload=function(b){var c=!!b||!a.isHTML5&&8===n&&a.duration;a.loaded=c;a.readyState=c?3:2;a._onbufferchange(0);a._iO.onload&&ha(a,function(){a._iO.onload.apply(a,[c])});return!0};this._onbufferchange=function(b){if(0===a.playState||
-b&&a.isBuffering||!b&&!a.isBuffering)return!1;a.isBuffering=1===b;a._iO.onbufferchange&&a._iO.onbufferchange.apply(a,[b]);return!0};this._onsuspend=function(){a._iO.onsuspend&&a._iO.onsuspend.apply(a);return!0};this._onfailure=function(b,c,e){a.failures++;if(a._iO.onfailure&&1===a.failures)a._iO.onfailure(b,c,e)};this._onwarning=function(b,c,e){if(a._iO.onwarning)a._iO.onwarning(b,c,e)};this._onfinish=function(){var b=a._iO.onfinish;a._onbufferchange(0);a._resetOnPosition(0);a.instanceCount&&(a.instanceCount--,
-a.instanceCount||(x(),a.playState=0,a.paused=!1,a.instanceCount=0,a.instanceOptions={},a._iO={},g(),a.isHTML5&&(a.position=0)),(!a.instanceCount||a._iO.multiShotEvents)&&b&&ha(a,function(){b.apply(a)}))};this._whileloading=function(b,c,e,d){var f=a._iO;a.bytesLoaded=b;a.bytesTotal=c;a.duration=Math.floor(e);a.bufferLength=d;a.durationEstimate=!a.isHTML5&&!f.isMovieStar?f.duration?a.duration>f.duration?a.duration:f.duration:parseInt(a.bytesTotal/a.bytesLoaded*a.duration,10):a.duration;a.isHTML5||(a.buffered=
-[{start:0,end:a.duration}]);(3!==a.readyState||a.isHTML5)&&f.whileloading&&f.whileloading.apply(a)};this._whileplaying=function(b,c,e,d,f){var l=a._iO;if(isNaN(b)||null===b)return!1;a.position=Math.max(0,b);a._processOnPosition();!a.isHTML5&&8<n&&(l.usePeakData&&(c!==h&&c)&&(a.peakData={left:c.leftPeak,right:c.rightPeak}),l.useWaveformData&&(e!==h&&e)&&(a.waveformData={left:e.split(","),right:d.split(",")}),l.useEQData&&(f!==h&&f&&f.leftEQ)&&(b=f.leftEQ.split(","),a.eqData=b,a.eqData.left=b,f.rightEQ!==
-h&&f.rightEQ&&(a.eqData.right=f.rightEQ.split(","))));1===a.playState&&(!a.isHTML5&&(8===n&&!a.position&&a.isBuffering)&&a._onbufferchange(0),l.whileplaying&&l.whileplaying.apply(a));return!0};this._oncaptiondata=function(b){a.captiondata=b;a._iO.oncaptiondata&&a._iO.oncaptiondata.apply(a,[b])};this._onmetadata=function(b,c){var e={},d,f;d=0;for(f=b.length;d<f;d++)e[b[d]]=c[d];a.metadata=e;console.log("updated metadata",a.metadata);a._iO.onmetadata&&a._iO.onmetadata.call(a,a.metadata)};this._onid3=
-function(b,c){var e=[],d,f;d=0;for(f=b.length;d<f;d++)e[b[d]]=c[d];a.id3=w(a.id3,e);a._iO.onid3&&a._iO.onid3.apply(a)};this._onconnect=function(b){b=1===b;if(a.connected=b)a.failures=0,q(a.id)&&(a.getAutoPlay()?a.play(h,a.getAutoPlay()):a._iO.autoLoad&&a.load()),a._iO.onconnect&&a._iO.onconnect.apply(a,[b])};this._ondataerror=function(b){0<a.playState&&a._iO.ondataerror&&a._iO.ondataerror.apply(a)}};va=function(){return p.body||p.getElementsByTagName("div")[0]};X=function(b){return p.getElementById(b)};
-w=function(b,e){var d=b||{},a,f;a=e===h?c.defaultOptions:e;for(f in a)a.hasOwnProperty(f)&&d[f]===h&&(d[f]="object"!==typeof a[f]||null===a[f]?a[f]:w(d[f],a[f]));return d};ha=function(b,c){!b.isHTML5&&8===n?g.setTimeout(c,0):c()};Y={onready:1,ontimeout:1,defaultOptions:1,flash9Options:1,movieStarOptions:1};oa=function(b,e){var d,a=!0,f=e!==h,l=c.setupOptions;for(d in b)if(b.hasOwnProperty(d))if("object"!==typeof b[d]||null===b[d]||b[d]instanceof Array||b[d]instanceof RegExp)f&&Y[e]!==h?c[e][d]=b[d]:
-l[d]!==h?(c.setupOptions[d]=b[d],c[d]=b[d]):Y[d]===h?a=!1:c[d]instanceof Function?c[d].apply(c,b[d]instanceof Array?b[d]:[b[d]]):c[d]=b[d];else if(Y[d]===h)a=!1;else return oa(b[d],d);return a};s=function(){function b(a){a=fb.call(a);var b=a.length;d?(a[1]="on"+a[1],3<b&&a.pop()):3===b&&a.push(!1);return a}function c(b,e){var h=b.shift(),g=[a[e]];if(d)h[g](b[0],b[1]);else h[g].apply(h,b)}var d=g.attachEvent,a={add:d?"attachEvent":"addEventListener",remove:d?"detachEvent":"removeEventListener"};return{add:function(){c(b(arguments),
-"add")},remove:function(){c(b(arguments),"remove")}}}();B={abort:r(function(){}),canplay:r(function(){var b=this._s,c;if(b._html5_canplay)return!0;b._html5_canplay=!0;b._onbufferchange(0);c=b._iO.position!==h&&!isNaN(b._iO.position)?b._iO.position/1E3:null;if(this.currentTime!==c)try{this.currentTime=c}catch(d){}b._iO._oncanplay&&b._iO._oncanplay()}),canplaythrough:r(function(){var b=this._s;b.loaded||(b._onbufferchange(0),b._whileloading(b.bytesLoaded,b.bytesTotal,b._get_html5_duration()),b._onload(!0))}),
-durationchange:r(function(){var b=this._s,c;c=b._get_html5_duration();!isNaN(c)&&c!==b.duration&&(b.durationEstimate=b.duration=c)}),ended:r(function(){this._s._onfinish()}),error:r(function(){this._s._onload(!1)}),loadeddata:r(function(){var b=this._s;!b._loaded&&!ja&&(b.duration=b._get_html5_duration())}),loadedmetadata:r(function(){}),loadstart:r(function(){this._s._onbufferchange(1)}),play:r(function(){this._s._onbufferchange(0)}),playing:r(function(){this._s._onbufferchange(0)}),progress:r(function(b){var c=
-this._s,d,a,f=0,f=b.target.buffered;d=b.loaded||0;var l=b.total||1;c.buffered=[];if(f&&f.length){d=0;for(a=f.length;d<a;d++)c.buffered.push({start:1E3*f.start(d),end:1E3*f.end(d)});f=1E3*(f.end(0)-f.start(0));d=Math.min(1,f/(1E3*b.target.duration))}isNaN(d)||(c._whileloading(d,l,c._get_html5_duration()),d&&(l&&d===l)&&B.canplaythrough.call(this,b))}),ratechange:r(function(){}),suspend:r(function(b){var c=this._s;B.progress.call(this,b);c._onsuspend()}),stalled:r(function(){}),timeupdate:r(function(){this._s._onTimer()}),
-waiting:r(function(){this._s._onbufferchange(1)})};fa=function(b){return!b||!b.type&&!b.url&&!b.serverURL?!1:b.serverURL||b.type&&W(b.type)?!1:b.type?V({type:b.type}):V({url:b.url})||c.html5Only||b.url.match(/data\:/i)};ga=function(b){var e;b&&(e=ja?"about:blank":c.html5.canPlayType("audio/wav")?"data:audio/wave;base64,/UklGRiYAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQIAAAD//w\x3d\x3d":"about:blank",b.src=e,void 0!==b._called_unload&&(b._called_load=!1));A&&(Ca=null);return e};V=function(b){if(!c.useHTML5Audio||
-!c.hasHTML5)return!1;var e=b.url||null;b=b.type||null;var d=c.audioFormats,a;if(b&&c.html5[b]!==h)return c.html5[b]&&!W(b);if(!z){z=[];for(a in d)d.hasOwnProperty(a)&&(z.push(a),d[a].related&&(z=z.concat(d[a].related)));z=RegExp("\\.("+z.join("|")+")(\\?.*)?$","i")}a=e?e.toLowerCase().match(z):null;!a||!a.length?b&&(e=b.indexOf(";"),a=(-1!==e?b.substr(0,e):b).substr(6)):a=a[1];a&&c.html5[a]!==h?e=c.html5[a]&&!W(a):(b="audio/"+a,e=c.html5.canPlayType({type:b}),e=(c.html5[a]=e)&&c.html5[b]&&!W(b));
-return e};Wa=function(){function b(a){var b,d=b=!1;if(!e||"function"!==typeof e.canPlayType)return b;if(a instanceof Array){g=0;for(b=a.length;g<b;g++)if(c.html5[a[g]]||e.canPlayType(a[g]).match(c.html5Test))d=!0,c.html5[a[g]]=!0,c.flash[a[g]]=!!a[g].match(bb);b=d}else a=e&&"function"===typeof e.canPlayType?e.canPlayType(a):!1,b=!(!a||!a.match(c.html5Test));return b}if(!c.useHTML5Audio||!c.hasHTML5)return u=c.html5.usingFlash=!0,!1;var e=Audio!==h?Ea&&10>opera.version()?new Audio(null):new Audio:
-null,d,a,f={},l,g;l=c.audioFormats;for(d in l)if(l.hasOwnProperty(d)&&(a="audio/"+d,f[d]=b(l[d].type),f[a]=f[d],d.match(bb)?(c.flash[d]=!0,c.flash[a]=!0):(c.flash[d]=!1,c.flash[a]=!1),l[d]&&l[d].related))for(g=l[d].related.length-1;0<=g;g--)f["audio/"+l[d].related[g]]=f[d],c.html5[l[d].related[g]]=f[d],c.flash[l[d].related[g]]=f[d];f.canPlayType=e?b:null;c.html5=w(c.html5,f);c.html5.usingFlash=Va();u=c.html5.usingFlash;return!0};sa={};R=function(){};ba=function(b){8===n&&(1<b.loops&&b.stream)&&(b.stream=
-!1);return b};ca=function(b,c){if(b&&!b.usePolicyFile&&(b.onid3||b.usePeakData||b.useWaveformData||b.useEQData))b.usePolicyFile=!0;return b};la=function(){return!1};Pa=function(b){for(var c in b)b.hasOwnProperty(c)&&"function"===typeof b[c]&&(b[c]=la)};xa=function(b){b===h&&(b=!1);(y||b)&&c.disable(b)};Qa=function(b){var e=null;if(b)if(b.match(/\.swf(\?.*)?$/i)){if(e=b.substr(b.toLowerCase().lastIndexOf(".swf?")+4))return b}else b.lastIndexOf("/")!==b.length-1&&(b+="/");b=(b&&-1!==b.lastIndexOf("/")?
-b.substr(0,b.lastIndexOf("/")+1):"./")+c.movieURL;c.noSWFCache&&(b+="?ts\x3d"+(new Date).getTime());return b};ra=function(){n=parseInt(c.flashVersion,10);8!==n&&9!==n&&(c.flashVersion=n=8);var b=c.debugMode||c.debugFlash?"_debug.swf":".swf";c.useHTML5Audio&&(!c.html5Only&&c.audioFormats.mp4.required&&9>n)&&(c.flashVersion=n=9);c.version=c.versionNumber+(c.html5Only?" (HTML5-only mode)":9===n?" (AS3/Flash 9)":" (AS2/Flash 8)");8<n?(c.defaultOptions=w(c.defaultOptions,c.flash9Options),c.features.buffering=
-!0,c.defaultOptions=w(c.defaultOptions,c.movieStarOptions),c.filePatterns.flash9=RegExp("\\.(mp3|"+eb.join("|")+")(\\?.*)?$","i"),c.features.movieStar=!0):c.features.movieStar=!1;c.filePattern=c.filePatterns[8!==n?"flash9":"flash8"];c.movieURL=(8===n?"soundmanager2.swf":"soundmanager2_flash9.swf").replace(".swf",b);c.features.peakData=c.features.waveformData=c.features.eqData=8<n};Oa=function(b,c){if(!k)return!1;k._setPolling(b,c)};wa=function(){};q=this.getSoundById;K=function(){var b=[];c.debugMode&&
-b.push("sm2_debug");c.debugFlash&&b.push("flash_debug");c.useHighPerformance&&b.push("high_performance");return b.join(" ")};za=function(){R("fbHandler");var b=c.getMoviePercent(),e={type:"FLASHBLOCK"};if(c.html5Only)return!1;c.ok()?c.oMC&&(c.oMC.className=[K(),"movieContainer","swf_loaded"+(c.didFlashBlock?" swf_unblocked":"")].join(" ")):(u&&(c.oMC.className=K()+" movieContainer "+(null===b?"swf_timedout":"swf_error")),c.didFlashBlock=!0,D({type:"ontimeout",ignoreInit:!0,error:e}),J(e))};pa=function(b,
-c,d){x[b]===h&&(x[b]=[]);x[b].push({method:c,scope:d||null,fired:!1})};D=function(b){b||(b={type:c.ok()?"onready":"ontimeout"});if(!m&&b&&!b.ignoreInit||"ontimeout"===b.type&&(c.ok()||y&&!b.ignoreInit))return!1;var e={success:b&&b.ignoreInit?c.ok():!y},d=b&&b.type?x[b.type]||[]:[],a=[],f,e=[e],g=u&&!c.ok();b.error&&(e[0].error=b.error);b=0;for(f=d.length;b<f;b++)!0!==d[b].fired&&a.push(d[b]);if(a.length){b=0;for(f=a.length;b<f;b++)a[b].scope?a[b].method.apply(a[b].scope,e):a[b].method.apply(this,
-e),g||(a[b].fired=!0)}return!0};H=function(){g.setTimeout(function(){c.useFlashBlock&&za();D();"function"===typeof c.onload&&c.onload.apply(g);c.waitForWindowLoad&&s.add(g,"load",H)},1)};Da=function(){if(v!==h)return v;var b=!1,c=navigator,d=c.plugins,a,f=g.ActiveXObject;if(d&&d.length)(c=c.mimeTypes)&&(c["application/x-shockwave-flash"]&&c["application/x-shockwave-flash"].enabledPlugin&&c["application/x-shockwave-flash"].enabledPlugin.description)&&(b=!0);else if(f!==h&&!t.match(/MSAppHost/i)){try{a=
-new f("ShockwaveFlash.ShockwaveFlash")}catch(l){a=null}b=!!a}return v=b};Va=function(){var b,e,d=c.audioFormats;if(ia&&t.match(/os (1|2|3_0|3_1)\s/i))c.hasHTML5=!1,c.html5Only=!0,c.oMC&&(c.oMC.style.display="none");else if(c.useHTML5Audio&&(!c.html5||!c.html5.canPlayType))c.hasHTML5=!1;if(c.useHTML5Audio&&c.hasHTML5)for(e in U=!0,d)if(d.hasOwnProperty(e)&&d[e].required)if(c.html5.canPlayType(d[e].type)){if(c.preferFlash&&(c.flash[e]||c.flash[d[e].type]))b=!0}else U=!1,b=!0;c.ignoreFlash&&(b=!1,U=
-!0);c.html5Only=c.hasHTML5&&c.useHTML5Audio&&!b;return!c.html5Only};ea=function(b){var e,d,a=0;if(b instanceof Array){e=0;for(d=b.length;e<d;e++)if(b[e]instanceof Object){if(c.canPlayMIME(b[e].type)){a=e;break}}else if(c.canPlayURL(b[e])){a=e;break}b[a].url&&(b[a]=b[a].url);b=b[a]}return b};Ra=function(b){b._hasTimer||(b._hasTimer=!0,!Fa&&c.html5PollingInterval&&(null===T&&0===da&&(T=setInterval(Ta,c.html5PollingInterval)),da++))};Sa=function(b){b._hasTimer&&(b._hasTimer=!1,!Fa&&c.html5PollingInterval&&
-da--)};Ta=function(){var b;if(null!==T&&!da)return clearInterval(T),T=null,!1;for(b=c.soundIDs.length-1;0<=b;b--)c.sounds[c.soundIDs[b]].isHTML5&&c.sounds[c.soundIDs[b]]._hasTimer&&c.sounds[c.soundIDs[b]]._onTimer()};J=function(b){b=b!==h?b:{};"function"===typeof c.onerror&&c.onerror.apply(g,[{type:b.type!==h?b.type:null}]);b.fatal!==h&&b.fatal&&c.disable()};Xa=function(){if(!$a||!Da())return!1;var b=c.audioFormats,e,d;for(d in b)if(b.hasOwnProperty(d)&&("mp3"===d||"mp4"===d))if(c.html5[d]=!1,b[d]&&
-b[d].related)for(e=b[d].related.length-1;0<=e;e--)c.html5[b[d].related[e]]=!1};this._setSandboxType=function(b){};this._externalInterfaceOK=function(b){if(c.swfLoaded)return!1;c.swfLoaded=!0;ka=!1;$a&&Xa();setTimeout(ma,C?100:1)};aa=function(b,e){function d(a,b){return'\x3cparam name\x3d"'+a+'" value\x3d"'+b+'" /\x3e'}if(M&&N)return!1;if(c.html5Only)return ra(),c.oMC=X(c.movieID),ma(),N=M=!0,!1;var a=e||c.url,f=c.altURL||a,g=va(),k=K(),n=null,n=p.getElementsByTagName("html")[0],m,r,q,n=n&&n.dir&&
-n.dir.match(/rtl/i);b=b===h?c.id:b;ra();c.url=Qa(Ha?a:f);e=c.url;c.wmode=!c.wmode&&c.useHighPerformance?"transparent":c.wmode;if(null!==c.wmode&&(t.match(/msie 8/i)||!C&&!c.useHighPerformance)&&navigator.platform.match(/win32|win64/i))Ua.push(sa.spcWmode),c.wmode=null;g={name:b,id:b,src:e,quality:"high",allowScriptAccess:c.allowScriptAccess,bgcolor:c.bgColor,pluginspage:cb+"www.macromedia.com/go/getflashplayer",title:"JS/Flash audio component (SoundManager 2)",type:"application/x-shockwave-flash",
-wmode:c.wmode,hasPriority:"true"};c.debugFlash&&(g.FlashVars="debug\x3d1");c.wmode||delete g.wmode;if(C)a=p.createElement("div"),r=['\x3cobject id\x3d"'+b+'" data\x3d"'+e+'" type\x3d"'+g.type+'" title\x3d"'+g.title+'" classid\x3d"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase\x3d"'+cb+'download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version\x3d6,0,40,0"\x3e',d("movie",e),d("AllowScriptAccess",c.allowScriptAccess),d("quality",g.quality),c.wmode?d("wmode",c.wmode):"",d("bgcolor",
-c.bgColor),d("hasPriority","true"),c.debugFlash?d("FlashVars",g.FlashVars):"","\x3c/object\x3e"].join("");else for(m in a=p.createElement("embed"),g)g.hasOwnProperty(m)&&a.setAttribute(m,g[m]);wa();k=K();if(g=va())if(c.oMC=X(c.movieID)||p.createElement("div"),c.oMC.id)q=c.oMC.className,c.oMC.className=(q?q+" ":"movieContainer")+(k?" "+k:""),c.oMC.appendChild(a),C&&(m=c.oMC.appendChild(p.createElement("div")),m.className="sm2-object-box",m.innerHTML=r),N=!0;else{c.oMC.id=c.movieID;c.oMC.className=
-"movieContainer "+k;m=k=null;c.useFlashBlock||(c.useHighPerformance?k={position:"fixed",width:"8px",height:"8px",bottom:"0px",left:"0px",overflow:"hidden"}:(k={position:"absolute",width:"6px",height:"6px",top:"-9999px",left:"-9999px"},n&&(k.left=Math.abs(parseInt(k.left,10))+"px")));gb&&(c.oMC.style.zIndex=1E4);if(!c.debugFlash)for(q in k)k.hasOwnProperty(q)&&(c.oMC.style[q]=k[q]);try{C||c.oMC.appendChild(a),g.appendChild(c.oMC),C&&(m=c.oMC.appendChild(p.createElement("div")),m.className="sm2-object-box",
-m.innerHTML=r),N=!0}catch(s){throw Error(R("domError")+" \n"+s.toString());}}return M=!0};$=function(){if(c.html5Only)return aa(),!1;if(k||!c.url)return!1;k=c.getMovie(c.id);k||(Q?(C?c.oMC.innerHTML=ya:c.oMC.appendChild(Q),Q=null,M=!0):aa(c.id,c.url),k=c.getMovie(c.id));"function"===typeof c.oninitmovie&&setTimeout(c.oninitmovie,1);return!0};I=function(){setTimeout(Na,1E3)};qa=function(){g.setTimeout(function(){c.setup({preferFlash:!1}).reboot();c.didFlashBlock=!0;c.beginDelayedInit()},1)};Na=function(){var b,
-e=!1;if(!c.url||S)return!1;S=!0;s.remove(g,"load",I);if(v&&ka&&!Ga)return!1;m||(b=c.getMoviePercent(),0<b&&100>b&&(e=!0));setTimeout(function(){b=c.getMoviePercent();if(e)return S=!1,g.setTimeout(I,1),!1;!m&&ab&&(null===b?c.useFlashBlock||0===c.flashLoadTimeout?c.useFlashBlock&&za():!c.useFlashBlock&&U?qa():D({type:"ontimeout",ignoreInit:!0,error:{type:"INIT_FLASHBLOCK"}}):0!==c.flashLoadTimeout&&(!c.useFlashBlock&&U?qa():xa(!0)))},c.flashLoadTimeout)};Z=function(){if(Ga||!ka)return s.remove(g,"focus",
-Z),!0;Ga=ab=!0;S=!1;I();s.remove(g,"focus",Z);return!0};O=function(b){if(m)return!1;if(c.html5Only)return m=!0,H(),!0;var e=!0,d;if(!c.useFlashBlock||!c.flashLoadTimeout||c.getMoviePercent())m=!0;d={type:!v&&u?"NO_FLASH":"INIT_TIMEOUT"};if(y||b)c.useFlashBlock&&c.oMC&&(c.oMC.className=K()+" "+(null===c.getMoviePercent()?"swf_timedout":"swf_error")),D({type:"ontimeout",error:d,ignoreInit:!0}),J(d),e=!1;y||(c.waitForWindowLoad&&!na?s.add(g,"load",H):H());return e};Ma=function(){var b,e=c.setupOptions;
-for(b in e)e.hasOwnProperty(b)&&(c[b]===h?c[b]=e[b]:c[b]!==e[b]&&(c.setupOptions[b]=c[b]))};ma=function(){if(m)return!1;if(c.html5Only)return m||(s.remove(g,"load",c.beginDelayedInit),c.enabled=!0,O()),!0;$();try{k._externalInterfaceTest(!1),Oa(!0,c.flashPollingInterval||(c.useHighPerformance?10:50)),c.debugMode||k._disableDebug(),c.enabled=!0,c.html5Only||s.add(g,"unload",la)}catch(b){return J({type:"JS_TO_FLASH_EXCEPTION",fatal:!0}),xa(!0),O(),!1}O();s.remove(g,"load",c.beginDelayedInit);return!0};
-E=function(){if(P)return!1;P=!0;Ma();wa();!v&&c.hasHTML5&&c.setup({useHTML5Audio:!0,preferFlash:!1});Wa();!v&&u&&(Ua.push(sa.needFlash),c.setup({flashLoadTimeout:1}));p.removeEventListener&&p.removeEventListener("DOMContentLoaded",E,!1);$();return!0};Ba=function(){"complete"===p.readyState&&(E(),p.detachEvent("onreadystatechange",Ba));return!0};ua=function(){na=!0;E();s.remove(g,"load",ua)};ta=function(){if(Fa&&(c.setupOptions.useHTML5Audio=!0,c.setupOptions.preferFlash=!1,ia||Za&&!t.match(/android\s2\.3/i)))ia&&
-(c.ignoreFlash=!0),A=!0};ta();Da();s.add(g,"focus",Z);s.add(g,"load",I);s.add(g,"load",ua);p.addEventListener?p.addEventListener("DOMContentLoaded",E,!1):p.attachEvent?p.attachEvent("onreadystatechange",Ba):J({type:"NO_DOM2_EVENTS",fatal:!0})}if(!g||!g.document)throw Error("SoundManager requires a browser with window and document objects.");var F=null;if(void 0===g.SM2_DEFER||!SM2_DEFER)F=new G;"object"===typeof module&&module&&"object"===typeof module.exports?(g.soundManager=F,module.exports.SoundManager=
-G,module.exports.soundManager=F):"function"===typeof define&&define.amd?define("SoundManager",[],function(){return{SoundManager:G,soundManager:F}}):(g.SoundManager=G,g.soundManager=F)})(window);
+
+(function SM2(window, _undefined) {
+'use strict';
+if (!window || !window.document) {
+  throw new Error('SoundManager requires a browser with window and document objects.');
+}
+var soundManager = null;
+function SoundManager(smURL, smID) {
+  this.setupOptions = {
+    url: (smURL || null),
+    flashVersion: 8,
+    debugMode: true,
+    debugFlash: false,
+    useConsole: true,
+    consoleOnly: true,
+    waitForWindowLoad: false,
+    bgColor: '#ffffff',
+    useHighPerformance: false,
+    flashPollingInterval: null,
+    html5PollingInterval: null,
+    flashLoadTimeout: 1000,
+    wmode: null,
+    allowScriptAccess: 'always',
+    useFlashBlock: false,
+    useHTML5Audio: true,
+    forceUseGlobalHTML5Audio: false,
+    ignoreMobileRestrictions: false,
+    html5Test: /^(probably|maybe)$/i,
+    preferFlash: false,
+    noSWFCache: false,
+    idPrefix: 'sound'
+  };
+  this.defaultOptions = {
+    autoLoad: false,
+    autoPlay: false,
+    from: null,
+    loops: 1,
+    onid3: null,
+    onerror: null,
+    onload: null,
+    whileloading: null,
+    onplay: null,
+    onpause: null,
+    onresume: null,
+    whileplaying: null,
+    onposition: null,
+    onstop: null,
+    onfinish: null,
+    multiShot: true,
+    multiShotEvents: false,
+    position: null,
+    pan: 0,
+    playbackRate: 1,
+    stream: true,
+    to: null,
+    type: null,
+    usePolicyFile: false,
+    volume: 100
+  };
+  this.flash9Options = {
+    onfailure: null,
+    isMovieStar: null,
+    usePeakData: false,
+    useWaveformData: false,
+    useEQData: false,
+    onbufferchange: null,
+    ondataerror: null
+  };
+  this.movieStarOptions = {
+    bufferTime: 3,
+    serverURL: null,
+    onconnect: null,
+    duration: null
+  };
+  this.audioFormats = {
+    mp3: {
+      type: ['audio/mpeg; codecs="mp3"', 'audio/mpeg', 'audio/mp3', 'audio/MPA', 'audio/mpa-robust'],
+      required: true
+    },
+    mp4: {
+      related: ['aac', 'm4a', 'm4b'],
+      type: ['audio/mp4; codecs="mp4a.40.2"', 'audio/aac', 'audio/x-m4a', 'audio/MP4A-LATM', 'audio/mpeg4-generic'],
+      required: false
+    },
+    ogg: {
+      type: ['audio/ogg; codecs=vorbis'],
+      required: false
+    },
+    opus: {
+      type: ['audio/ogg; codecs=opus', 'audio/opus'],
+      required: false
+    },
+    wav: {
+      type: ['audio/wav; codecs="1"', 'audio/wav', 'audio/wave', 'audio/x-wav'],
+      required: false
+    },
+    flac: {
+      type: ['audio/flac'],
+      required: false
+    }
+  };
+  this.movieID = 'sm2-container';
+  this.id = (smID || 'sm2movie');
+  this.debugID = 'soundmanager-debug';
+  this.debugURLParam = /([#?&])debug=1/i;
+  this.versionNumber = 'V2.97a.20170601';
+  this.version = null;
+  this.movieURL = null;
+  this.altURL = null;
+  this.swfLoaded = false;
+  this.enabled = false;
+  this.oMC = null;
+  this.sounds = {};
+  this.soundIDs = [];
+  this.muted = false;
+  this.didFlashBlock = false;
+  this.filePattern = null;
+  this.filePatterns = {
+    flash8: /\.mp3(\?.*)?$/i,
+    flash9: /\.mp3(\?.*)?$/i
+  };
+  this.features = {
+    buffering: false,
+    peakData: false,
+    waveformData: false,
+    eqData: false,
+    movieStar: false
+  };
+  this.sandbox = {
+  };
+  this.html5 = {
+    usingFlash: null
+  };
+  this.flash = {};
+  this.html5Only = false;
+  this.ignoreFlash = false;
+  var SMSound,
+  sm2 = this, globalHTML5Audio = null, flash = null, sm = 'soundManager', smc = sm + ': ', h5 = 'HTML5::', id, ua = navigator.userAgent, wl = window.location.href.toString(), doc = document, doNothing, setProperties, init, fV, on_queue = [], debugOpen = true, debugTS, didAppend = false, appendSuccess = false, didInit = false, disabled = false, windowLoaded = false, _wDS, wdCount = 0, initComplete, mixin, assign, extraOptions, addOnEvent, processOnEvents, initUserOnload, delayWaitForEI, waitForEI, rebootIntoHTML5, setVersionInfo, handleFocus, strings, initMovie, domContentLoaded, winOnLoad, didDCLoaded, getDocument, createMovie, catchError, setPolling, initDebug, debugLevels = ['log', 'info', 'warn', 'error'], defaultFlashVersion = 8, disableObject, failSafely, normalizeMovieURL, oRemoved = null, oRemovedHTML = null, str, flashBlockHandler, getSWFCSS, swfCSS, toggleDebug, loopFix, policyFix, complain, idCheck, waitingForEI = false, initPending = false, startTimer, stopTimer, timerExecute, h5TimerCount = 0, h5IntervalTimer = null, parseURL, messages = [],
+  canIgnoreFlash, needsFlash = null, featureCheck, html5OK, html5CanPlay, html5ErrorCodes, html5Ext, html5Unload, domContentLoadedIE, testHTML5, event, slice = Array.prototype.slice, useGlobalHTML5Audio = false, lastGlobalHTML5URL, hasFlash, detectFlash, badSafariFix, html5_events, showSupport, flushMessages, wrapCallback, idCounter = 0, didSetup, msecScale = 1000,
+  is_iDevice = ua.match(/(ipad|iphone|ipod)/i), isAndroid = ua.match(/android/i), isIE = ua.match(/msie|trident/i),
+  isWebkit = ua.match(/webkit/i),
+  isSafari = (ua.match(/safari/i) && !ua.match(/chrome/i)),
+  isOpera = (ua.match(/opera/i)),
+  mobileHTML5 = (ua.match(/(mobile|pre\/|xoom)/i) || is_iDevice || isAndroid),
+  isBadSafari = (!wl.match(/usehtml5audio/i) && !wl.match(/sm2-ignorebadua/i) && isSafari && !ua.match(/silk/i) && ua.match(/OS\sX\s10_6_([3-7])/i)),
+  hasConsole = (window.console !== _undefined && console.log !== _undefined),
+  isFocused = (doc.hasFocus !== _undefined ? doc.hasFocus() : null),
+  tryInitOnFocus = (isSafari && (doc.hasFocus === _undefined || !doc.hasFocus())),
+  okToDisable = !tryInitOnFocus,
+  flashMIME = /(mp3|mp4|mpa|m4a|m4b)/i,
+  emptyURL = 'about:blank',
+  emptyWAV = 'data:audio/wave;base64,/UklGRiYAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQIAAAD//w==',
+  overHTTP = (doc.location ? doc.location.protocol.match(/http/i) : null),
+  http = (!overHTTP ? '//' : ''),
+  netStreamMimeTypes = /^\s*audio\/(?:x-)?(?:mpeg4|aac|flv|mov|mp4|m4v|m4a|m4b|mp4v|3gp|3g2)\s*(?:$|;)/i,
+  netStreamTypes = ['mpeg4', 'aac', 'flv', 'mov', 'mp4', 'm4v', 'f4v', 'm4a', 'm4b', 'mp4v', '3gp', '3g2'],
+  netStreamPattern = new RegExp('\\.(' + netStreamTypes.join('|') + ')(\\?.*)?$', 'i');
+  this.mimePattern = /^\s*audio\/(?:x-)?(?:mp(?:eg|3))\s*(?:$|;)/i;
+  this.useAltURL = !overHTTP;
+  swfCSS = {
+    swfBox: 'sm2-object-box',
+    swfDefault: 'movieContainer',
+    swfError: 'swf_error',
+    swfTimedout: 'swf_timedout',
+    swfLoaded: 'swf_loaded',
+    swfUnblocked: 'swf_unblocked',
+    sm2Debug: 'sm2_debug',
+    highPerf: 'high_performance',
+    flashDebug: 'flash_debug'
+  };
+  html5ErrorCodes = [
+    null,
+    'MEDIA_ERR_ABORTED',
+    'MEDIA_ERR_NETWORK',
+    'MEDIA_ERR_DECODE',
+    'MEDIA_ERR_SRC_NOT_SUPPORTED'
+  ];
+  this.hasHTML5 = (function() {
+    try {
+      return (Audio !== _undefined && (isOpera && opera !== _undefined && opera.version() < 10 ? new Audio(null) : new Audio()).canPlayType !== _undefined);
+    } catch(e) {
+      return false;
+    }
+  }());
+  this.setup = function(options) {
+    var noURL = (!sm2.url);
+    if (options !== _undefined && didInit && needsFlash && sm2.ok() && (options.flashVersion !== _undefined || options.url !== _undefined || options.html5Test !== _undefined)) {
+    }
+    assign(options);
+    if (!useGlobalHTML5Audio) {
+      if (mobileHTML5) {
+        if (!sm2.setupOptions.ignoreMobileRestrictions || sm2.setupOptions.forceUseGlobalHTML5Audio) {
+          messages.push(strings.globalHTML5);
+          useGlobalHTML5Audio = true;
+        }
+      } else if (sm2.setupOptions.forceUseGlobalHTML5Audio) {
+        messages.push(strings.globalHTML5);
+        useGlobalHTML5Audio = true;
+      }
+    }
+    if (!didSetup && mobileHTML5) {
+      if (sm2.setupOptions.ignoreMobileRestrictions) {
+        messages.push(strings.ignoreMobile);
+      } else {
+        sm2.setupOptions.useHTML5Audio = true;
+        sm2.setupOptions.preferFlash = false;
+        if (is_iDevice) {
+          sm2.ignoreFlash = true;
+        } else if ((isAndroid && !ua.match(/android\s2\.3/i)) || !isAndroid) {
+          useGlobalHTML5Audio = true;
+        }
+      }
+    }
+    if (options) {
+      if (noURL && didDCLoaded && options.url !== _undefined) {
+        sm2.beginDelayedInit();
+      }
+      if (!didDCLoaded && options.url !== _undefined && doc.readyState === 'complete') {
+        setTimeout(domContentLoaded, 1);
+      }
+    }
+    didSetup = true;
+    return sm2;
+  };
+  this.ok = function() {
+    return (needsFlash ? (didInit && !disabled) : (sm2.useHTML5Audio && sm2.hasHTML5));
+  };
+  this.supported = this.ok;
+  this.getMovie = function(movie_id) {
+    return id(movie_id) || doc[movie_id] || window[movie_id];
+  };
+  this.createSound = function(oOptions, _url) {
+    var cs, cs_string, options, oSound = null;
+    if (!didInit || !sm2.ok()) {
+      return false;
+    }
+    if (_url !== _undefined) {
+      oOptions = {
+        id: oOptions,
+        url: _url
+      };
+    }
+    options = mixin(oOptions);
+    options.url = parseURL(options.url);
+    if (options.id === _undefined) {
+      options.id = sm2.setupOptions.idPrefix + (idCounter++);
+    }
+    if (idCheck(options.id, true)) {
+      return sm2.sounds[options.id];
+    }
+    function make() {
+      options = loopFix(options);
+      sm2.sounds[options.id] = new SMSound(options);
+      sm2.soundIDs.push(options.id);
+      return sm2.sounds[options.id];
+    }
+    if (html5OK(options)) {
+      oSound = make();
+      oSound._setup_html5(options);
+    } else {
+      if (sm2.html5Only) {
+        return make();
+      }
+      if (sm2.html5.usingFlash && options.url && options.url.match(/data:/i)) {
+        return make();
+      }
+      if (fV > 8) {
+        if (options.isMovieStar === null) {
+          options.isMovieStar = !!(options.serverURL || (options.type ? options.type.match(netStreamMimeTypes) : false) || (options.url && options.url.match(netStreamPattern)));
+        }
+      }
+      options = policyFix(options, cs);
+      oSound = make();
+      if (fV === 8) {
+        flash._createSound(options.id, options.loops || 1, options.usePolicyFile);
+      } else {
+        flash._createSound(options.id, options.url, options.usePeakData, options.useWaveformData, options.useEQData, options.isMovieStar, (options.isMovieStar ? options.bufferTime : false), options.loops || 1, options.serverURL, options.duration || null, options.autoPlay, true, options.autoLoad, options.usePolicyFile);
+        if (!options.serverURL) {
+          oSound.connected = true;
+          if (options.onconnect) {
+            options.onconnect.apply(oSound);
+          }
+        }
+      }
+      if (!options.serverURL && (options.autoLoad || options.autoPlay)) {
+        oSound.load(options);
+      }
+    }
+    if (!options.serverURL && options.autoPlay) {
+      oSound.play();
+    }
+    return oSound;
+  };
+  this.destroySound = function(sID, _bFromSound) {
+    if (!idCheck(sID)) return false;
+    var oS = sm2.sounds[sID], i;
+    oS.stop();
+    oS._iO = {};
+    oS.unload();
+    for (i = 0; i < sm2.soundIDs.length; i++) {
+      if (sm2.soundIDs[i] === sID) {
+        sm2.soundIDs.splice(i, 1);
+        break;
+      }
+    }
+    if (!_bFromSound) {
+      oS.destruct(true);
+    }
+    oS = null;
+    delete sm2.sounds[sID];
+    return true;
+  };
+  this.load = function(sID, oOptions) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].load(oOptions);
+  };
+  this.unload = function(sID) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].unload();
+  };
+  this.onPosition = function(sID, nPosition, oMethod, oScope) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].onposition(nPosition, oMethod, oScope);
+  };
+  this.onposition = this.onPosition;
+  this.clearOnPosition = function(sID, nPosition, oMethod) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].clearOnPosition(nPosition, oMethod);
+  };
+  this.play = function(sID, oOptions) {
+    var result = null,
+        overloaded = (oOptions && !(oOptions instanceof Object));
+    if (!didInit || !sm2.ok()) {
+      return false;
+    }
+    if (!idCheck(sID, overloaded)) {
+      if (!overloaded) return false;
+      if (overloaded) {
+        oOptions = {
+          url: oOptions
+        };
+      }
+      if (oOptions && oOptions.url) {
+        oOptions.id = sID;
+        result = sm2.createSound(oOptions).play();
+      }
+    } else if (overloaded) {
+      oOptions = {
+        url: oOptions
+      };
+    }
+    if (result === null) {
+      result = sm2.sounds[sID].play(oOptions);
+    }
+    return result;
+  };
+  this.start = this.play;
+  this.setPlaybackRate = function(sID, rate, allowOverride) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].setPlaybackRate(rate, allowOverride);
+  };
+  this.setPosition = function(sID, nMsecOffset) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].setPosition(nMsecOffset);
+  };
+  this.stop = function(sID) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].stop();
+  };
+  this.stopAll = function() {
+    var oSound;
+    for (oSound in sm2.sounds) {
+      if (sm2.sounds.hasOwnProperty(oSound)) {
+        sm2.sounds[oSound].stop();
+      }
+    }
+  };
+  this.pause = function(sID) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].pause();
+  };
+  this.pauseAll = function() {
+    var i;
+    for (i = sm2.soundIDs.length - 1; i >= 0; i--) {
+      sm2.sounds[sm2.soundIDs[i]].pause();
+    }
+  };
+  this.resume = function(sID) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].resume();
+  };
+  this.resumeAll = function() {
+    var i;
+    for (i = sm2.soundIDs.length - 1; i >= 0; i--) {
+      sm2.sounds[sm2.soundIDs[i]].resume();
+    }
+  };
+  this.togglePause = function(sID) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].togglePause();
+  };
+  this.setPan = function(sID, nPan) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].setPan(nPan);
+  };
+  this.setVolume = function(sID, nVol) {
+    var i, j;
+    if (sID !== _undefined && !isNaN(sID) && nVol === _undefined) {
+      for (i = 0, j = sm2.soundIDs.length; i < j; i++) {
+        sm2.sounds[sm2.soundIDs[i]].setVolume(sID);
+      }
+      return false;
+    }
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].setVolume(nVol);
+  };
+  this.mute = function(sID) {
+    var i = 0;
+    if (sID instanceof String) {
+      sID = null;
+    }
+    if (!sID) {
+      for (i = sm2.soundIDs.length - 1; i >= 0; i--) {
+        sm2.sounds[sm2.soundIDs[i]].mute();
+      }
+      sm2.muted = true;
+    } else {
+      if (!idCheck(sID)) return false;
+      return sm2.sounds[sID].mute();
+    }
+    return true;
+  };
+  this.muteAll = function() {
+    sm2.mute();
+  };
+  this.unmute = function(sID) {
+    var i;
+    if (sID instanceof String) {
+      sID = null;
+    }
+    if (!sID) {
+      for (i = sm2.soundIDs.length - 1; i >= 0; i--) {
+        sm2.sounds[sm2.soundIDs[i]].unmute();
+      }
+      sm2.muted = false;
+    } else {
+      if (!idCheck(sID)) return false;
+      return sm2.sounds[sID].unmute();
+    }
+    return true;
+  };
+  this.unmuteAll = function() {
+    sm2.unmute();
+  };
+  this.toggleMute = function(sID) {
+    if (!idCheck(sID)) return false;
+    return sm2.sounds[sID].toggleMute();
+  };
+  this.getMemoryUse = function() {
+    var ram = 0;
+    if (flash && fV !== 8) {
+      ram = parseInt(flash._getMemoryUse(), 10);
+    }
+    return ram;
+  };
+  this.disable = function(bNoDisable) {
+    var i;
+    if (bNoDisable === _undefined) {
+      bNoDisable = false;
+    }
+    if (disabled) return false;
+    disabled = true;
+    for (i = sm2.soundIDs.length - 1; i >= 0; i--) {
+      disableObject(sm2.sounds[sm2.soundIDs[i]]);
+    }
+    disableObject(sm2);
+    initComplete(bNoDisable);
+    event.remove(window, 'load', initUserOnload);
+    return true;
+  };
+  this.canPlayMIME = function(sMIME) {
+    var result;
+    if (sm2.hasHTML5) {
+      result = html5CanPlay({
+        type: sMIME
+      });
+    }
+    if (!result && needsFlash) {
+      result = (sMIME && sm2.ok() ? !!((fV > 8 ? sMIME.match(netStreamMimeTypes) : null) || sMIME.match(sm2.mimePattern)) : null);
+    }
+    return result;
+  };
+  this.canPlayURL = function(sURL) {
+    var result;
+    if (sm2.hasHTML5) {
+      result = html5CanPlay({
+        url: sURL
+      });
+    }
+    if (!result && needsFlash) {
+      result = (sURL && sm2.ok() ? !!(sURL.match(sm2.filePattern)) : null);
+    }
+    return result;
+  };
+  this.canPlayLink = function(oLink) {
+    if (oLink.type !== _undefined && oLink.type && sm2.canPlayMIME(oLink.type)) return true;
+    return sm2.canPlayURL(oLink.href);
+  };
+  this.getSoundById = function(sID, _suppressDebug) {
+    if (!sID) return null;
+    var result = sm2.sounds[sID];
+    return result;
+  };
+  this.onready = function(oMethod, oScope) {
+    var sType = 'onready',
+        result = false;
+    if (typeof oMethod === 'function') {
+      if (!oScope) {
+        oScope = window;
+      }
+      addOnEvent(sType, oMethod, oScope);
+      processOnEvents();
+      result = true;
+    } else {
+      throw str('needFunction', sType);
+    }
+    return result;
+  };
+  this.ontimeout = function(oMethod, oScope) {
+    var sType = 'ontimeout',
+        result = false;
+    if (typeof oMethod === 'function') {
+      if (!oScope) {
+        oScope = window;
+      }
+      addOnEvent(sType, oMethod, oScope);
+      processOnEvents({ type: sType });
+      result = true;
+    } else {
+      throw str('needFunction', sType);
+    }
+    return result;
+  };
+  this._writeDebug = function(sText, sTypeOrObject) {
+    return true;
+  };
+  this._wD = this._writeDebug;
+  this._debug = function() {
+  };
+  this.reboot = function(resetEvents, excludeInit) {
+    var i, j, k;
+    for (i = sm2.soundIDs.length - 1; i >= 0; i--) {
+      sm2.sounds[sm2.soundIDs[i]].destruct();
+    }
+    if (flash) {
+      try {
+        if (isIE) {
+          oRemovedHTML = flash.innerHTML;
+        }
+        oRemoved = flash.parentNode.removeChild(flash);
+      } catch(e) {
+      }
+    }
+    oRemovedHTML = oRemoved = needsFlash = flash = null;
+    sm2.enabled = didDCLoaded = didInit = waitingForEI = initPending = didAppend = appendSuccess = disabled = useGlobalHTML5Audio = sm2.swfLoaded = false;
+    sm2.soundIDs = [];
+    sm2.sounds = {};
+    idCounter = 0;
+    didSetup = false;
+    if (!resetEvents) {
+      for (i in on_queue) {
+        if (on_queue.hasOwnProperty(i)) {
+          for (j = 0, k = on_queue[i].length; j < k; j++) {
+            on_queue[i][j].fired = false;
+          }
+        }
+      }
+    } else {
+      on_queue = [];
+    }
+    sm2.html5 = {
+      usingFlash: null
+    };
+    sm2.flash = {};
+    sm2.html5Only = false;
+    sm2.ignoreFlash = false;
+    window.setTimeout(function() {
+      if (!excludeInit) {
+        sm2.beginDelayedInit();
+      }
+    }, 20);
+    return sm2;
+  };
+  this.reset = function() {
+    return sm2.reboot(true, true);
+  };
+  this.getMoviePercent = function() {
+    return (flash && 'PercentLoaded' in flash ? flash.PercentLoaded() : null);
+  };
+  this.beginDelayedInit = function() {
+    windowLoaded = true;
+    domContentLoaded();
+    setTimeout(function() {
+      if (initPending) return false;
+      createMovie();
+      initMovie();
+      initPending = true;
+      return true;
+    }, 20);
+    delayWaitForEI();
+  };
+  this.destruct = function() {
+    sm2.disable(true);
+  };
+  SMSound = function(oOptions) {
+    var s = this, resetProperties, add_html5_events, remove_html5_events, stop_html5_timer, start_html5_timer, attachOnPosition, onplay_called = false, onPositionItems = [], onPositionFired = 0, detachOnPosition, applyFromTo, lastURL = null, lastHTML5State, urlOmitted;
+    lastHTML5State = {
+      duration: null,
+      time: null
+    };
+    this.id = oOptions.id;
+    this.sID = this.id;
+    this.url = oOptions.url;
+    this.options = mixin(oOptions);
+    this.instanceOptions = this.options;
+    this._iO = this.instanceOptions;
+    this.pan = this.options.pan;
+    this.volume = this.options.volume;
+    this.isHTML5 = false;
+    this._a = null;
+    urlOmitted = (!this.url);
+    this.id3 = {};
+    this._debug = function() {
+    };
+    this.load = function(options) {
+      var oSound = null, instanceOptions;
+      if (options !== _undefined) {
+        s._iO = mixin(options, s.options);
+      } else {
+        options = s.options;
+        s._iO = options;
+        if (lastURL && lastURL !== s.url) {
+          s._iO.url = s.url;
+          s.url = null;
+        }
+      }
+      if (!s._iO.url) {
+        s._iO.url = s.url;
+      }
+      s._iO.url = parseURL(s._iO.url);
+      s.instanceOptions = s._iO;
+      instanceOptions = s._iO;
+      if (!instanceOptions.url && !s.url) {
+        return s;
+      }
+      if (instanceOptions.url === s.url && s.readyState !== 0 && s.readyState !== 2) {
+        if (s.readyState === 3 && instanceOptions.onload) {
+          wrapCallback(s, function() {
+            instanceOptions.onload.apply(s, [(!!s.duration)]);
+          });
+        }
+        return s;
+      }
+      s.loaded = false;
+      s.readyState = 1;
+      s.playState = 0;
+      s.id3 = {};
+      if (html5OK(instanceOptions)) {
+        oSound = s._setup_html5(instanceOptions);
+        if (!oSound._called_load) {
+          s._html5_canplay = false;
+          if (s.url !== instanceOptions.url) {
+            s._a.src = instanceOptions.url;
+            s.setPosition(0);
+          }
+          s._a.autobuffer = 'auto';
+          s._a.preload = 'auto';
+          s._a._called_load = true;
+        } else {
+        }
+      } else {
+        if (sm2.html5Only) {
+          return s;
+        }
+        if (s._iO.url && s._iO.url.match(/data:/i)) {
+          return s;
+        }
+        try {
+          s.isHTML5 = false;
+          s._iO = policyFix(loopFix(instanceOptions));
+          if (s._iO.autoPlay && (s._iO.position || s._iO.from)) {
+            s._iO.autoPlay = false;
+          }
+          instanceOptions = s._iO;
+          if (fV === 8) {
+            flash._load(s.id, instanceOptions.url, instanceOptions.stream, instanceOptions.autoPlay, instanceOptions.usePolicyFile);
+          } else {
+            flash._load(s.id, instanceOptions.url, !!(instanceOptions.stream), !!(instanceOptions.autoPlay), instanceOptions.loops || 1, !!(instanceOptions.autoLoad), instanceOptions.usePolicyFile);
+          }
+        } catch(e) {
+          catchError({
+            type: 'SMSOUND_LOAD_JS_EXCEPTION',
+            fatal: true
+          });
+        }
+      }
+      s.url = instanceOptions.url;
+      return s;
+    };
+    this.unload = function() {
+      if (s.readyState !== 0) {
+        if (!s.isHTML5) {
+          if (fV === 8) {
+            flash._unload(s.id, emptyURL);
+          } else {
+            flash._unload(s.id);
+          }
+        } else {
+          stop_html5_timer();
+          if (s._a) {
+            s._a.pause();
+            lastURL = html5Unload(s._a);
+          }
+        }
+        resetProperties();
+      }
+      return s;
+    };
+    this.destruct = function(_bFromSM) {
+      if (!s.isHTML5) {
+        s._iO.onfailure = null;
+        flash._destroySound(s.id);
+      } else {
+        stop_html5_timer();
+        if (s._a) {
+          s._a.pause();
+          html5Unload(s._a);
+          if (!useGlobalHTML5Audio) {
+            remove_html5_events();
+          }
+          s._a._s = null;
+          s._a = null;
+        }
+      }
+      if (!_bFromSM) {
+        sm2.destroySound(s.id, true);
+      }
+    };
+    this.play = function(options, _updatePlayState) {
+      var fN, allowMulti, a, onready,
+          audioClone, onended, oncanplay,
+          startOK = true;
+      _updatePlayState = (_updatePlayState === _undefined ? true : _updatePlayState);
+      if (!options) {
+        options = {};
+      }
+      if (s.url) {
+        s._iO.url = s.url;
+      }
+      s._iO = mixin(s._iO, s.options);
+      s._iO = mixin(options, s._iO);
+      s._iO.url = parseURL(s._iO.url);
+      s.instanceOptions = s._iO;
+      if (!s.isHTML5 && s._iO.serverURL && !s.connected) {
+        if (!s.getAutoPlay()) {
+          s.setAutoPlay(true);
+        }
+        return s;
+      }
+      if (html5OK(s._iO)) {
+        s._setup_html5(s._iO);
+        start_html5_timer();
+      }
+      if (s.playState === 1 && !s.paused) {
+        allowMulti = s._iO.multiShot;
+        if (!allowMulti) {
+          if (s.isHTML5) {
+            s.setPosition(s._iO.position);
+          }
+          return s;
+        }
+      }
+      if (options.url && options.url !== s.url) {
+        if (!s.readyState && !s.isHTML5 && fV === 8 && urlOmitted) {
+          urlOmitted = false;
+        } else {
+          s.load(s._iO);
+        }
+      }
+      if (!s.loaded) {
+        if (s.readyState === 0) {
+          if (!s.isHTML5 && !sm2.html5Only) {
+            s._iO.autoPlay = true;
+            s.load(s._iO);
+          } else if (s.isHTML5) {
+            s.load(s._iO);
+          } else {
+            return s;
+          }
+          s.instanceOptions = s._iO;
+        } else if (s.readyState === 2) {
+          return s;
+        } else {
+        }
+      } else {
+      }
+      if (!s.isHTML5 && fV === 9 && s.position > 0 && s.position === s.duration) {
+        options.position = 0;
+      }
+      if (s.paused && s.position >= 0 && (!s._iO.serverURL || s.position > 0)) {
+        s.resume();
+      } else {
+        s._iO = mixin(options, s._iO);
+        if (((!s.isHTML5 && s._iO.position !== null && s._iO.position > 0) || (s._iO.from !== null && s._iO.from > 0) || s._iO.to !== null) && s.instanceCount === 0 && s.playState === 0 && !s._iO.serverURL) {
+          onready = function() {
+            s._iO = mixin(options, s._iO);
+            s.play(s._iO);
+          };
+          if (s.isHTML5 && !s._html5_canplay) {
+            s.load({
+              _oncanplay: onready
+            });
+          } else if (!s.isHTML5 && !s.loaded && (!s.readyState || s.readyState !== 2)) {
+            s.load({
+              onload: onready
+            });
+          }
+          s._iO = applyFromTo();
+        }
+        if (!s.instanceCount || s._iO.multiShotEvents || (s.isHTML5 && s._iO.multiShot && !useGlobalHTML5Audio) || (!s.isHTML5 && fV > 8 && !s.getAutoPlay())) {
+          s.instanceCount++;
+        }
+        if (s._iO.onposition && s.playState === 0) {
+          attachOnPosition(s);
+        }
+        s.playState = 1;
+        s.paused = false;
+        s.position = (s._iO.position !== _undefined && !isNaN(s._iO.position) ? s._iO.position : 0);
+        if (!s.isHTML5) {
+          s._iO = policyFix(loopFix(s._iO));
+        }
+        if (s._iO.onplay && _updatePlayState) {
+          s._iO.onplay.apply(s);
+          onplay_called = true;
+        }
+        s.setVolume(s._iO.volume, true);
+        s.setPan(s._iO.pan, true);
+        if (s._iO.playbackRate !== 1) {
+          s.setPlaybackRate(s._iO.playbackRate);
+        }
+        if (!s.isHTML5) {
+          startOK = flash._start(s.id, s._iO.loops || 1, (fV === 9 ? s.position : s.position / msecScale), s._iO.multiShot || false);
+          if (fV === 9 && !startOK) {
+            if (s._iO.onplayerror) {
+              s._iO.onplayerror.apply(s);
+            }
+          }
+        } else if (s.instanceCount < 2) {
+            start_html5_timer();
+            a = s._setup_html5();
+            s.setPosition(s._iO.position);
+            a.play();
+          } else {
+            audioClone = new Audio(s._iO.url);
+            onended = function() {
+              event.remove(audioClone, 'ended', onended);
+              s._onfinish(s);
+              html5Unload(audioClone);
+              audioClone = null;
+            };
+            oncanplay = function() {
+              event.remove(audioClone, 'canplay', oncanplay);
+              try {
+                audioClone.currentTime = s._iO.position / msecScale;
+              } catch(err) {
+              }
+              audioClone.play();
+            };
+            event.add(audioClone, 'ended', onended);
+            if (s._iO.volume !== _undefined) {
+              audioClone.volume = Math.max(0, Math.min(1, s._iO.volume / 100));
+            }
+            if (s.muted) {
+              audioClone.muted = true;
+            }
+            if (s._iO.position) {
+              event.add(audioClone, 'canplay', oncanplay);
+            } else {
+              audioClone.play();
+            }
+          }
+      }
+      return s;
+    };
+    this.start = this.play;
+    this.stop = function(bAll) {
+      var instanceOptions = s._iO,
+          originalPosition;
+      if (s.playState === 1) {
+        s._onbufferchange(0);
+        s._resetOnPosition(0);
+        s.paused = false;
+        if (!s.isHTML5) {
+          s.playState = 0;
+        }
+        detachOnPosition();
+        if (instanceOptions.to) {
+          s.clearOnPosition(instanceOptions.to);
+        }
+        if (!s.isHTML5) {
+          flash._stop(s.id, bAll);
+          if (instanceOptions.serverURL) {
+            s.unload();
+          }
+        } else if (s._a) {
+            originalPosition = s.position;
+            s.setPosition(0);
+            s.position = originalPosition;
+            s._a.pause();
+            s.playState = 0;
+            s._onTimer();
+            stop_html5_timer();
+          }
+        s.instanceCount = 0;
+        s._iO = {};
+        if (instanceOptions.onstop) {
+          instanceOptions.onstop.apply(s);
+        }
+      }
+      return s;
+    };
+    this.setAutoPlay = function(autoPlay) {
+      s._iO.autoPlay = autoPlay;
+      if (!s.isHTML5) {
+        flash._setAutoPlay(s.id, autoPlay);
+        if (autoPlay) {
+          if (!s.instanceCount && s.readyState === 1) {
+            s.instanceCount++;
+          }
+        }
+      }
+    };
+    this.getAutoPlay = function() {
+      return s._iO.autoPlay;
+    };
+    this.setPlaybackRate = function(playbackRate) {
+      var normalizedRate = Math.max(0.5, Math.min(4, playbackRate));
+      if (s.isHTML5) {
+        try {
+          s._iO.playbackRate = normalizedRate;
+          s._a.playbackRate = normalizedRate;
+        } catch(e) {
+        }
+      }
+      return s;
+    };
+    this.setPosition = function(nMsecOffset) {
+      if (nMsecOffset === _undefined) {
+        nMsecOffset = 0;
+      }
+      var position, position1K,
+          offset = (s.isHTML5 ? Math.max(nMsecOffset, 0) : Math.min(s.duration || s._iO.duration, Math.max(nMsecOffset, 0)));
+      s.position = offset;
+      position1K = s.position / msecScale;
+      s._resetOnPosition(s.position);
+      s._iO.position = offset;
+      if (!s.isHTML5) {
+        position = (fV === 9 ? s.position : position1K);
+        if (s.readyState && s.readyState !== 2) {
+          flash._setPosition(s.id, position, (s.paused || !s.playState), s._iO.multiShot);
+        }
+      } else if (s._a) {
+        if (s._html5_canplay) {
+          if (s._a.currentTime.toFixed(3) !== position1K.toFixed(3)) {
+            try {
+              s._a.currentTime = position1K;
+              if (s.playState === 0 || s.paused) {
+                s._a.pause();
+              }
+            } catch(e) {
+            }
+          }
+        } else if (position1K) {
+          return s;
+        }
+        if (s.paused) {
+          s._onTimer(true);
+        }
+      }
+      return s;
+    };
+    this.pause = function(_bCallFlash) {
+      if (s.paused || (s.playState === 0 && s.readyState !== 1)) return s;
+      s.paused = true;
+      if (!s.isHTML5) {
+        if (_bCallFlash || _bCallFlash === _undefined) {
+          flash._pause(s.id, s._iO.multiShot);
+        }
+      } else {
+        s._setup_html5().pause();
+        stop_html5_timer();
+      }
+      if (s._iO.onpause) {
+        s._iO.onpause.apply(s);
+      }
+      return s;
+    };
+    this.resume = function() {
+      var instanceOptions = s._iO;
+      if (!s.paused) return s;
+      s.paused = false;
+      s.playState = 1;
+      if (!s.isHTML5) {
+        if (instanceOptions.isMovieStar && !instanceOptions.serverURL) {
+          s.setPosition(s.position);
+        }
+        flash._pause(s.id, instanceOptions.multiShot);
+      } else {
+        s._setup_html5().play();
+        start_html5_timer();
+      }
+      if (!onplay_called && instanceOptions.onplay) {
+        instanceOptions.onplay.apply(s);
+        onplay_called = true;
+      } else if (instanceOptions.onresume) {
+        instanceOptions.onresume.apply(s);
+      }
+      return s;
+    };
+    this.togglePause = function() {
+      if (s.playState === 0) {
+        s.play({
+          position: (fV === 9 && !s.isHTML5 ? s.position : s.position / msecScale)
+        });
+        return s;
+      }
+      if (s.paused) {
+        s.resume();
+      } else {
+        s.pause();
+      }
+      return s;
+    };
+    this.setPan = function(nPan, bInstanceOnly) {
+      if (nPan === _undefined) {
+        nPan = 0;
+      }
+      if (bInstanceOnly === _undefined) {
+        bInstanceOnly = false;
+      }
+      if (!s.isHTML5) {
+        flash._setPan(s.id, nPan);
+      }
+      s._iO.pan = nPan;
+      if (!bInstanceOnly) {
+        s.pan = nPan;
+        s.options.pan = nPan;
+      }
+      return s;
+    };
+    this.setVolume = function(nVol, _bInstanceOnly) {
+      if (nVol === _undefined) {
+        nVol = 100;
+      }
+      if (_bInstanceOnly === _undefined) {
+        _bInstanceOnly = false;
+      }
+      if (!s.isHTML5) {
+        flash._setVolume(s.id, (sm2.muted && !s.muted) || s.muted ? 0 : nVol);
+      } else if (s._a) {
+        if (sm2.muted && !s.muted) {
+          s.muted = true;
+          s._a.muted = true;
+        }
+        s._a.volume = Math.max(0, Math.min(1, nVol / 100));
+      }
+      s._iO.volume = nVol;
+      if (!_bInstanceOnly) {
+        s.volume = nVol;
+        s.options.volume = nVol;
+      }
+      return s;
+    };
+    this.mute = function() {
+      s.muted = true;
+      if (!s.isHTML5) {
+        flash._setVolume(s.id, 0);
+      } else if (s._a) {
+        s._a.muted = true;
+      }
+      return s;
+    };
+    this.unmute = function() {
+      s.muted = false;
+      var hasIO = (s._iO.volume !== _undefined);
+      if (!s.isHTML5) {
+        flash._setVolume(s.id, hasIO ? s._iO.volume : s.options.volume);
+      } else if (s._a) {
+        s._a.muted = false;
+      }
+      return s;
+    };
+    this.toggleMute = function() {
+      return (s.muted ? s.unmute() : s.mute());
+    };
+    this.onPosition = function(nPosition, oMethod, oScope) {
+      onPositionItems.push({
+        position: parseInt(nPosition, 10),
+        method: oMethod,
+        scope: (oScope !== _undefined ? oScope : s),
+        fired: false
+      });
+      return s;
+    };
+    this.onposition = this.onPosition;
+    this.clearOnPosition = function(nPosition, oMethod) {
+      var i;
+      nPosition = parseInt(nPosition, 10);
+      if (isNaN(nPosition)) {
+        return;
+      }
+      for (i = 0; i < onPositionItems.length; i++) {
+        if (nPosition === onPositionItems[i].position) {
+          if (!oMethod || (oMethod === onPositionItems[i].method)) {
+            if (onPositionItems[i].fired) {
+              onPositionFired--;
+            }
+            onPositionItems.splice(i, 1);
+          }
+        }
+      }
+    };
+    this._processOnPosition = function() {
+      var i, item, j = onPositionItems.length;
+      if (!j || !s.playState || onPositionFired >= j) return false;
+      for (i = j - 1; i >= 0; i--) {
+        item = onPositionItems[i];
+        if (!item.fired && s.position >= item.position) {
+          item.fired = true;
+          onPositionFired++;
+          item.method.apply(item.scope, [item.position]);
+          j = onPositionItems.length;
+        }
+      }
+      return true;
+    };
+    this._resetOnPosition = function(nPosition) {
+      var i, item, j = onPositionItems.length;
+      if (!j) return false;
+      for (i = j - 1; i >= 0; i--) {
+        item = onPositionItems[i];
+        if (item.fired && nPosition <= item.position) {
+          item.fired = false;
+          onPositionFired--;
+        }
+      }
+      return true;
+    };
+    applyFromTo = function() {
+      var instanceOptions = s._iO,
+          f = instanceOptions.from,
+          t = instanceOptions.to,
+          start, end;
+      end = function() {
+        s.clearOnPosition(t, end);
+        s.stop();
+      };
+      start = function() {
+        if (t !== null && !isNaN(t)) {
+          s.onPosition(t, end);
+        }
+      };
+      if (f !== null && !isNaN(f)) {
+        instanceOptions.position = f;
+        instanceOptions.multiShot = false;
+        start();
+      }
+      return instanceOptions;
+    };
+    attachOnPosition = function() {
+      var item,
+          op = s._iO.onposition;
+      if (op) {
+        for (item in op) {
+          if (op.hasOwnProperty(item)) {
+            s.onPosition(parseInt(item, 10), op[item]);
+          }
+        }
+      }
+    };
+    detachOnPosition = function() {
+      var item,
+          op = s._iO.onposition;
+      if (op) {
+        for (item in op) {
+          if (op.hasOwnProperty(item)) {
+            s.clearOnPosition(parseInt(item, 10));
+          }
+        }
+      }
+    };
+    start_html5_timer = function() {
+      if (s.isHTML5) {
+        startTimer(s);
+      }
+    };
+    stop_html5_timer = function() {
+      if (s.isHTML5) {
+        stopTimer(s);
+      }
+    };
+    resetProperties = function(retainPosition) {
+      if (!retainPosition) {
+        onPositionItems = [];
+        onPositionFired = 0;
+      }
+      onplay_called = false;
+      s._hasTimer = null;
+      s._a = null;
+      s._html5_canplay = false;
+      s.bytesLoaded = null;
+      s.bytesTotal = null;
+      s.duration = (s._iO && s._iO.duration ? s._iO.duration : null);
+      s.durationEstimate = null;
+      s.buffered = [];
+      s.eqData = [];
+      s.eqData.left = [];
+      s.eqData.right = [];
+      s.failures = 0;
+      s.isBuffering = false;
+      s.instanceOptions = {};
+      s.instanceCount = 0;
+      s.loaded = false;
+      s.metadata = {};
+      s.readyState = 0;
+      s.muted = false;
+      s.paused = false;
+      s.peakData = {
+        left: 0,
+        right: 0
+      };
+      s.waveformData = {
+        left: [],
+        right: []
+      };
+      s.playState = 0;
+      s.position = null;
+      s.id3 = {};
+    };
+    resetProperties();
+    this._onTimer = function(bForce) {
+      var duration, isNew = false, time, x = {};
+      if (s._hasTimer || bForce) {
+        if (s._a && (bForce || ((s.playState > 0 || s.readyState === 1) && !s.paused))) {
+          duration = s._get_html5_duration();
+          if (duration !== lastHTML5State.duration) {
+            lastHTML5State.duration = duration;
+            s.duration = duration;
+            isNew = true;
+          }
+          s.durationEstimate = s.duration;
+          time = (s._a.currentTime * msecScale || 0);
+          if (time !== lastHTML5State.time) {
+            lastHTML5State.time = time;
+            isNew = true;
+          }
+          if (isNew || bForce) {
+            s._whileplaying(time, x, x, x, x);
+          }
+        }
+      }
+      return isNew;
+    };
+    this._get_html5_duration = function() {
+      var instanceOptions = s._iO,
+          d = (s._a && s._a.duration ? s._a.duration * msecScale : (instanceOptions && instanceOptions.duration ? instanceOptions.duration : null)),
+          result = (d && !isNaN(d) && d !== Infinity ? d : null);
+      return result;
+    };
+    this._apply_loop = function(a, nLoops) {
+      a.loop = (nLoops > 1 ? 'loop' : '');
+    };
+    this._setup_html5 = function(options) {
+      var instanceOptions = mixin(s._iO, options),
+          a = useGlobalHTML5Audio ? globalHTML5Audio : s._a,
+          dURL = decodeURI(instanceOptions.url),
+          sameURL;
+      if (useGlobalHTML5Audio) {
+        if (dURL === decodeURI(lastGlobalHTML5URL)) {
+          sameURL = true;
+        }
+      } else if (dURL === decodeURI(lastURL)) {
+        sameURL = true;
+      }
+      if (a) {
+        if (a._s) {
+          if (useGlobalHTML5Audio) {
+            if (a._s && a._s.playState && !sameURL) {
+              a._s.stop();
+            }
+          } else if (!useGlobalHTML5Audio && dURL === decodeURI(lastURL)) {
+            s._apply_loop(a, instanceOptions.loops);
+            return a;
+          }
+        }
+        if (!sameURL) {
+          if (lastURL) {
+            resetProperties(false);
+          }
+          a.src = instanceOptions.url;
+          s.url = instanceOptions.url;
+          lastURL = instanceOptions.url;
+          lastGlobalHTML5URL = instanceOptions.url;
+          a._called_load = false;
+        }
+      } else {
+        if (instanceOptions.autoLoad || instanceOptions.autoPlay) {
+          s._a = new Audio(instanceOptions.url);
+          s._a.load();
+        } else {
+          s._a = (isOpera && opera.version() < 10 ? new Audio(null) : new Audio());
+        }
+        a = s._a;
+        a._called_load = false;
+        if (useGlobalHTML5Audio) {
+          globalHTML5Audio = a;
+        }
+      }
+      s.isHTML5 = true;
+      s._a = a;
+      a._s = s;
+      add_html5_events();
+      s._apply_loop(a, instanceOptions.loops);
+      if (instanceOptions.autoLoad || instanceOptions.autoPlay) {
+        s.load();
+      } else {
+        a.autobuffer = false;
+        a.preload = 'auto';
+      }
+      return a;
+    };
+    add_html5_events = function() {
+      if (s._a._added_events) return false;
+      var f;
+      function add(oEvt, oFn, bCapture) {
+        return s._a ? s._a.addEventListener(oEvt, oFn, bCapture || false) : null;
+      }
+      s._a._added_events = true;
+      for (f in html5_events) {
+        if (html5_events.hasOwnProperty(f)) {
+          add(f, html5_events[f]);
+        }
+      }
+      return true;
+    };
+    remove_html5_events = function() {
+      var f;
+      function remove(oEvt, oFn, bCapture) {
+        return (s._a ? s._a.removeEventListener(oEvt, oFn, bCapture || false) : null);
+      }
+      s._a._added_events = false;
+      for (f in html5_events) {
+        if (html5_events.hasOwnProperty(f)) {
+          remove(f, html5_events[f]);
+        }
+      }
+    };
+    this._onload = function(nSuccess) {
+      var fN,
+          loadOK = !!nSuccess || (!s.isHTML5 && fV === 8 && s.duration);
+      s.loaded = loadOK;
+      s.readyState = (loadOK ? 3 : 2);
+      s._onbufferchange(0);
+      if (!loadOK && !s.isHTML5) {
+        s._onerror();
+      }
+      if (s._iO.onload) {
+        wrapCallback(s, function() {
+          s._iO.onload.apply(s, [loadOK]);
+        });
+      }
+      return true;
+    };
+    this._onerror = function(errorCode, description) {
+      if (s._iO.onerror) {
+        wrapCallback(s, function() {
+          s._iO.onerror.apply(s, [errorCode, description]);
+        });
+      }
+    };
+    this._onbufferchange = function(nIsBuffering) {
+      if (s.playState === 0) return false;
+      if ((nIsBuffering && s.isBuffering) || (!nIsBuffering && !s.isBuffering)) return false;
+      s.isBuffering = (nIsBuffering === 1);
+      if (s._iO.onbufferchange) {
+        s._iO.onbufferchange.apply(s, [nIsBuffering]);
+      }
+      return true;
+    };
+    this._onsuspend = function() {
+      if (s._iO.onsuspend) {
+        s._iO.onsuspend.apply(s);
+      }
+      return true;
+    };
+    this._onfailure = function(msg, level, code) {
+      s.failures++;
+      if (s._iO.onfailure && s.failures === 1) {
+        s._iO.onfailure(msg, level, code);
+      } else {
+      }
+    };
+    this._onwarning = function(msg, level, code) {
+      if (s._iO.onwarning) {
+        s._iO.onwarning(msg, level, code);
+      }
+    };
+    this._onfinish = function() {
+      var io_onfinish = s._iO.onfinish;
+      s._onbufferchange(0);
+      s._resetOnPosition(0);
+      if (s.instanceCount) {
+        s.instanceCount--;
+        if (!s.instanceCount) {
+          detachOnPosition();
+          s.playState = 0;
+          s.paused = false;
+          s.instanceCount = 0;
+          s.instanceOptions = {};
+          s._iO = {};
+          stop_html5_timer();
+          if (s.isHTML5) {
+            s.position = 0;
+          }
+        }
+        if (!s.instanceCount || s._iO.multiShotEvents) {
+          if (io_onfinish) {
+            wrapCallback(s, function() {
+              io_onfinish.apply(s);
+            });
+          }
+        }
+      }
+    };
+    this._whileloading = function(nBytesLoaded, nBytesTotal, nDuration, nBufferLength) {
+      var instanceOptions = s._iO;
+      s.bytesLoaded = nBytesLoaded;
+      s.bytesTotal = nBytesTotal;
+      s.duration = Math.floor(nDuration);
+      s.bufferLength = nBufferLength;
+      if (!s.isHTML5 && !instanceOptions.isMovieStar) {
+        if (instanceOptions.duration) {
+          s.durationEstimate = (s.duration > instanceOptions.duration) ? s.duration : instanceOptions.duration;
+        } else {
+          s.durationEstimate = parseInt((s.bytesTotal / s.bytesLoaded) * s.duration, 10);
+        }
+      } else {
+        s.durationEstimate = s.duration;
+      }
+      if (!s.isHTML5) {
+        s.buffered = [{
+          start: 0,
+          end: s.duration
+        }];
+      }
+      if ((s.readyState !== 3 || s.isHTML5) && instanceOptions.whileloading) {
+        instanceOptions.whileloading.apply(s);
+      }
+    };
+    this._whileplaying = function(nPosition, oPeakData, oWaveformDataLeft, oWaveformDataRight, oEQData) {
+      var instanceOptions = s._iO,
+          eqLeft;
+      if (isNaN(nPosition) || nPosition === null) return false;
+      s.position = Math.max(0, nPosition);
+      s._processOnPosition();
+      if (!s.isHTML5 && fV > 8) {
+        if (instanceOptions.usePeakData && oPeakData !== _undefined && oPeakData) {
+          s.peakData = {
+            left: oPeakData.leftPeak,
+            right: oPeakData.rightPeak
+          };
+        }
+        if (instanceOptions.useWaveformData && oWaveformDataLeft !== _undefined && oWaveformDataLeft) {
+          s.waveformData = {
+            left: oWaveformDataLeft.split(','),
+            right: oWaveformDataRight.split(',')
+          };
+        }
+        if (instanceOptions.useEQData) {
+          if (oEQData !== _undefined && oEQData && oEQData.leftEQ) {
+            eqLeft = oEQData.leftEQ.split(',');
+            s.eqData = eqLeft;
+            s.eqData.left = eqLeft;
+            if (oEQData.rightEQ !== _undefined && oEQData.rightEQ) {
+              s.eqData.right = oEQData.rightEQ.split(',');
+            }
+          }
+        }
+      }
+      if (s.playState === 1) {
+        if (!s.isHTML5 && fV === 8 && !s.position && s.isBuffering) {
+          s._onbufferchange(0);
+        }
+        if (instanceOptions.whileplaying) {
+          instanceOptions.whileplaying.apply(s);
+        }
+      }
+      return true;
+    };
+    this._oncaptiondata = function(oData) {
+      s.captiondata = oData;
+      if (s._iO.oncaptiondata) {
+        s._iO.oncaptiondata.apply(s, [oData]);
+      }
+    };
+    this._onmetadata = function(oMDProps, oMDData) {
+      var oData = {}, i, j;
+      for (i = 0, j = oMDProps.length; i < j; i++) {
+        oData[oMDProps[i]] = oMDData[i];
+      }
+      s.metadata = oData;
+      if (s._iO.onmetadata) {
+        s._iO.onmetadata.call(s, s.metadata);
+      }
+    };
+    this._onid3 = function(oID3Props, oID3Data) {
+      var oData = [], i, j;
+      for (i = 0, j = oID3Props.length; i < j; i++) {
+        oData[oID3Props[i]] = oID3Data[i];
+      }
+      s.id3 = mixin(s.id3, oData);
+      if (s._iO.onid3) {
+        s._iO.onid3.apply(s);
+      }
+    };
+    this._onconnect = function(bSuccess) {
+      bSuccess = (bSuccess === 1);
+      s.connected = bSuccess;
+      if (bSuccess) {
+        s.failures = 0;
+        if (idCheck(s.id)) {
+          if (s.getAutoPlay()) {
+            s.play(_undefined, s.getAutoPlay());
+          } else if (s._iO.autoLoad) {
+            s.load();
+          }
+        }
+        if (s._iO.onconnect) {
+          s._iO.onconnect.apply(s, [bSuccess]);
+        }
+      }
+    };
+    this._ondataerror = function(sError) {
+      if (s.playState > 0) {
+        if (s._iO.ondataerror) {
+          s._iO.ondataerror.apply(s);
+        }
+      }
+    };
+  };
+  getDocument = function() {
+    return (doc.body || doc.getElementsByTagName('div')[0]);
+  };
+  id = function(sID) {
+    return doc.getElementById(sID);
+  };
+  mixin = function(oMain, oAdd) {
+    var o1 = (oMain || {}), o2, o;
+    o2 = (oAdd === _undefined ? sm2.defaultOptions : oAdd);
+    for (o in o2) {
+      if (o2.hasOwnProperty(o) && o1[o] === _undefined) {
+        if (typeof o2[o] !== 'object' || o2[o] === null) {
+          o1[o] = o2[o];
+        } else {
+          o1[o] = mixin(o1[o], o2[o]);
+        }
+      }
+    }
+    return o1;
+  };
+  wrapCallback = function(oSound, callback) {
+    if (!oSound.isHTML5 && fV === 8) {
+      window.setTimeout(callback, 0);
+    } else {
+      callback();
+    }
+  };
+  extraOptions = {
+    onready: 1,
+    ontimeout: 1,
+    defaultOptions: 1,
+    flash9Options: 1,
+    movieStarOptions: 1
+  };
+  assign = function(o, oParent) {
+    var i,
+        result = true,
+        hasParent = (oParent !== _undefined),
+        setupOptions = sm2.setupOptions,
+        bonusOptions = extraOptions;
+    for (i in o) {
+      if (o.hasOwnProperty(i)) {
+        if (typeof o[i] !== 'object' || o[i] === null || o[i] instanceof Array || o[i] instanceof RegExp) {
+          if (hasParent && bonusOptions[oParent] !== _undefined) {
+            sm2[oParent][i] = o[i];
+          } else if (setupOptions[i] !== _undefined) {
+            sm2.setupOptions[i] = o[i];
+            sm2[i] = o[i];
+          } else if (bonusOptions[i] === _undefined) {
+            result = false;
+          } else if (sm2[i] instanceof Function) {
+            sm2[i].apply(sm2, (o[i] instanceof Array ? o[i] : [o[i]]));
+          } else {
+            sm2[i] = o[i];
+          }
+        } else if (bonusOptions[i] === _undefined) {
+          result = false;
+        } else {
+          return assign(o[i], i);
+        }
+      }
+    }
+    return result;
+  };
+  function preferFlashCheck(kind) {
+    return (sm2.preferFlash && hasFlash && !sm2.ignoreFlash && (sm2.flash[kind] !== _undefined && sm2.flash[kind]));
+  }
+  event = (function() {
+    var old = (window.attachEvent),
+    evt = {
+      add: (old ? 'attachEvent' : 'addEventListener'),
+      remove: (old ? 'detachEvent' : 'removeEventListener')
+    };
+    function getArgs(oArgs) {
+      var args = slice.call(oArgs),
+          len = args.length;
+      if (old) {
+        args[1] = 'on' + args[1];
+        if (len > 3) {
+          args.pop();
+        }
+      } else if (len === 3) {
+        args.push(false);
+      }
+      return args;
+    }
+    function apply(args, sType) {
+      var element = args.shift(),
+          method = [evt[sType]];
+      if (old) {
+        element[method](args[0], args[1]);
+      } else {
+        element[method].apply(element, args);
+      }
+    }
+    function add() {
+      apply(getArgs(arguments), 'add');
+    }
+    function remove() {
+      apply(getArgs(arguments), 'remove');
+    }
+    return {
+      add: add,
+      remove: remove
+    };
+  }());
+  function html5_event(oFn) {
+    return function(e) {
+      var s = this._s,
+          result;
+      if (!s || !s._a) {
+        result = null;
+      } else {
+        result = oFn.call(this, e);
+      }
+      return result;
+    };
+  }
+  html5_events = {
+    abort: html5_event(function() {
+    }),
+    canplay: html5_event(function() {
+      var s = this._s,
+          position1K;
+      if (s._html5_canplay) {
+        return;
+      }
+      s._html5_canplay = true;
+      s._onbufferchange(0);
+      position1K = (s._iO.position !== _undefined && !isNaN(s._iO.position) ? s._iO.position / msecScale : null);
+      if (this.currentTime !== position1K) {
+        try {
+          this.currentTime = position1K;
+        } catch(ee) {
+        }
+      }
+      if (s._iO._oncanplay) {
+        s._iO._oncanplay();
+      }
+    }),
+    canplaythrough: html5_event(function() {
+      var s = this._s;
+      if (!s.loaded) {
+        s._onbufferchange(0);
+        s._whileloading(s.bytesLoaded, s.bytesTotal, s._get_html5_duration());
+        s._onload(true);
+      }
+    }),
+    durationchange: html5_event(function() {
+      var s = this._s,
+          duration;
+      duration = s._get_html5_duration();
+      if (!isNaN(duration) && duration !== s.duration) {
+        s.durationEstimate = s.duration = duration;
+      }
+    }),
+    ended: html5_event(function() {
+      var s = this._s;
+      s._onfinish();
+    }),
+    error: html5_event(function() {
+      var description = (html5ErrorCodes[this.error.code] || null);
+      this._s._onload(false);
+      this._s._onerror(this.error.code, description);
+    }),
+    loadeddata: html5_event(function() {
+      var s = this._s;
+      if (!s._loaded && !isSafari) {
+        s.duration = s._get_html5_duration();
+      }
+    }),
+    loadedmetadata: html5_event(function() {
+    }),
+    loadstart: html5_event(function() {
+      this._s._onbufferchange(1);
+    }),
+    play: html5_event(function() {
+      this._s._onbufferchange(0);
+    }),
+    playing: html5_event(function() {
+      this._s._onbufferchange(0);
+    }),
+    progress: html5_event(function(e) {
+      var s = this._s,
+          i, j, progStr, buffered = 0,
+          isProgress = (e.type === 'progress'),
+          ranges = e.target.buffered,
+          loaded = (e.loaded || 0),
+          total = (e.total || 1);
+      s.buffered = [];
+      if (ranges && ranges.length) {
+        for (i = 0, j = ranges.length; i < j; i++) {
+          s.buffered.push({
+            start: ranges.start(i) * msecScale,
+            end: ranges.end(i) * msecScale
+          });
+        }
+        buffered = (ranges.end(0) - ranges.start(0)) * msecScale;
+        loaded = Math.min(1, buffered / (e.target.duration * msecScale));
+      }
+      if (!isNaN(loaded)) {
+        s._whileloading(loaded, total, s._get_html5_duration());
+        if (loaded && total && loaded === total) {
+          html5_events.canplaythrough.call(this, e);
+        }
+      }
+    }),
+    ratechange: html5_event(function() {
+    }),
+    suspend: html5_event(function(e) {
+      var s = this._s;
+      html5_events.progress.call(this, e);
+      s._onsuspend();
+    }),
+    stalled: html5_event(function() {
+    }),
+    timeupdate: html5_event(function() {
+      this._s._onTimer();
+    }),
+    waiting: html5_event(function() {
+      var s = this._s;
+      s._onbufferchange(1);
+    })
+  };
+  html5OK = function(iO) {
+    var result;
+    if (!iO || (!iO.type && !iO.url && !iO.serverURL)) {
+      result = false;
+    } else if (iO.serverURL || (iO.type && preferFlashCheck(iO.type))) {
+      result = false;
+    } else {
+      result = ((iO.type ? html5CanPlay({ type: iO.type }) : html5CanPlay({ url: iO.url }) || sm2.html5Only || iO.url.match(/data:/i)));
+    }
+    return result;
+  };
+  html5Unload = function(oAudio) {
+    var url;
+    if (oAudio) {
+      url = (isSafari ? emptyURL : (sm2.html5.canPlayType('audio/wav') ? emptyWAV : emptyURL));
+      oAudio.src = url;
+      if (oAudio._called_unload !== _undefined) {
+        oAudio._called_load = false;
+      }
+    }
+    if (useGlobalHTML5Audio) {
+      lastGlobalHTML5URL = null;
+    }
+    return url;
+  };
+  html5CanPlay = function(o) {
+    if (!sm2.useHTML5Audio || !sm2.hasHTML5) return false;
+    var url = (o.url || null),
+        mime = (o.type || null),
+        aF = sm2.audioFormats,
+        result,
+        offset,
+        fileExt,
+        item;
+    if (mime && sm2.html5[mime] !== _undefined) return (sm2.html5[mime] && !preferFlashCheck(mime));
+    if (!html5Ext) {
+      html5Ext = [];
+      for (item in aF) {
+        if (aF.hasOwnProperty(item)) {
+          html5Ext.push(item);
+          if (aF[item].related) {
+            html5Ext = html5Ext.concat(aF[item].related);
+          }
+        }
+      }
+      html5Ext = new RegExp('\\.(' + html5Ext.join('|') + ')(\\?.*)?$', 'i');
+    }
+    fileExt = (url ? url.toLowerCase().match(html5Ext) : null);
+    if (!fileExt || !fileExt.length) {
+      if (!mime) {
+        result = false;
+      } else {
+        offset = mime.indexOf(';');
+        fileExt = (offset !== -1 ? mime.substr(0, offset) : mime).substr(6);
+      }
+    } else {
+      fileExt = fileExt[1];
+    }
+    if (fileExt && sm2.html5[fileExt] !== _undefined) {
+      result = (sm2.html5[fileExt] && !preferFlashCheck(fileExt));
+    } else {
+      mime = 'audio/' + fileExt;
+      result = sm2.html5.canPlayType({ type: mime });
+      sm2.html5[fileExt] = result;
+      result = (result && sm2.html5[mime] && !preferFlashCheck(mime));
+    }
+    return result;
+  };
+  testHTML5 = function() {
+    if (!sm2.useHTML5Audio || !sm2.hasHTML5) {
+      sm2.html5.usingFlash = true;
+      needsFlash = true;
+      return false;
+    }
+    var a = (Audio !== _undefined ? (isOpera && opera.version() < 10 ? new Audio(null) : new Audio()) : null),
+        item, lookup, support = {}, aF, i;
+    function cp(m) {
+      var canPlay, j,
+          result = false,
+          isOK = false;
+      if (!a || typeof a.canPlayType !== 'function') return result;
+      if (m instanceof Array) {
+        for (i = 0, j = m.length; i < j; i++) {
+          if (sm2.html5[m[i]] || a.canPlayType(m[i]).match(sm2.html5Test)) {
+            isOK = true;
+            sm2.html5[m[i]] = true;
+            sm2.flash[m[i]] = !!(m[i].match(flashMIME));
+          }
+        }
+        result = isOK;
+      } else {
+        canPlay = (a && typeof a.canPlayType === 'function' ? a.canPlayType(m) : false);
+        result = !!(canPlay && (canPlay.match(sm2.html5Test)));
+      }
+      return result;
+    }
+    aF = sm2.audioFormats;
+    for (item in aF) {
+      if (aF.hasOwnProperty(item)) {
+        lookup = 'audio/' + item;
+        support[item] = cp(aF[item].type);
+        support[lookup] = support[item];
+        if (item.match(flashMIME)) {
+          sm2.flash[item] = true;
+          sm2.flash[lookup] = true;
+        } else {
+          sm2.flash[item] = false;
+          sm2.flash[lookup] = false;
+        }
+        if (aF[item] && aF[item].related) {
+          for (i = aF[item].related.length - 1; i >= 0; i--) {
+            support['audio/' + aF[item].related[i]] = support[item];
+            sm2.html5[aF[item].related[i]] = support[item];
+            sm2.flash[aF[item].related[i]] = support[item];
+          }
+        }
+      }
+    }
+    support.canPlayType = (a ? cp : null);
+    sm2.html5 = mixin(sm2.html5, support);
+    sm2.html5.usingFlash = featureCheck();
+    needsFlash = sm2.html5.usingFlash;
+    return true;
+  };
+  strings = {
+  };
+  str = function() {
+  };
+  loopFix = function(sOpt) {
+    if (fV === 8 && sOpt.loops > 1 && sOpt.stream) {
+      sOpt.stream = false;
+    }
+    return sOpt;
+  };
+  policyFix = function(sOpt, sPre) {
+    if (sOpt && !sOpt.usePolicyFile && (sOpt.onid3 || sOpt.usePeakData || sOpt.useWaveformData || sOpt.useEQData)) {
+      sOpt.usePolicyFile = true;
+    }
+    return sOpt;
+  };
+  complain = function(sMsg) {
+  };
+  doNothing = function() {
+    return false;
+  };
+  disableObject = function(o) {
+    var oProp;
+    for (oProp in o) {
+      if (o.hasOwnProperty(oProp) && typeof o[oProp] === 'function') {
+        o[oProp] = doNothing;
+      }
+    }
+    oProp = null;
+  };
+  failSafely = function(bNoDisable) {
+    if (bNoDisable === _undefined) {
+      bNoDisable = false;
+    }
+    if (disabled || bNoDisable) {
+      sm2.disable(bNoDisable);
+    }
+  };
+  normalizeMovieURL = function(movieURL) {
+    var urlParams = null, url;
+    if (movieURL) {
+      if (movieURL.match(/\.swf(\?.*)?$/i)) {
+        urlParams = movieURL.substr(movieURL.toLowerCase().lastIndexOf('.swf?') + 4);
+        if (urlParams) return movieURL;
+      } else if (movieURL.lastIndexOf('/') !== movieURL.length - 1) {
+        movieURL += '/';
+      }
+    }
+    url = (movieURL && movieURL.lastIndexOf('/') !== -1 ? movieURL.substr(0, movieURL.lastIndexOf('/') + 1) : './') + sm2.movieURL;
+    if (sm2.noSWFCache) {
+      url += ('?ts=' + new Date().getTime());
+    }
+    return url;
+  };
+  setVersionInfo = function() {
+    fV = parseInt(sm2.flashVersion, 10);
+    if (fV !== 8 && fV !== 9) {
+      sm2.flashVersion = fV = defaultFlashVersion;
+    }
+    var isDebug = (sm2.debugMode || sm2.debugFlash ? '_debug.swf' : '.swf');
+    if (sm2.useHTML5Audio && !sm2.html5Only && sm2.audioFormats.mp4.required && fV < 9) {
+      sm2.flashVersion = fV = 9;
+    }
+    sm2.version = sm2.versionNumber + (sm2.html5Only ? ' (HTML5-only mode)' : (fV === 9 ? ' (AS3/Flash 9)' : ' (AS2/Flash 8)'));
+    if (fV > 8) {
+      sm2.defaultOptions = mixin(sm2.defaultOptions, sm2.flash9Options);
+      sm2.features.buffering = true;
+      sm2.defaultOptions = mixin(sm2.defaultOptions, sm2.movieStarOptions);
+      sm2.filePatterns.flash9 = new RegExp('\\.(mp3|' + netStreamTypes.join('|') + ')(\\?.*)?$', 'i');
+      sm2.features.movieStar = true;
+    } else {
+      sm2.features.movieStar = false;
+    }
+    sm2.filePattern = sm2.filePatterns[(fV !== 8 ? 'flash9' : 'flash8')];
+    sm2.movieURL = (fV === 8 ? 'soundmanager2.swf' : 'soundmanager2_flash9.swf').replace('.swf', isDebug);
+    sm2.features.peakData = sm2.features.waveformData = sm2.features.eqData = (fV > 8);
+  };
+  setPolling = function(bPolling, bHighPerformance) {
+    if (!flash) {
+      return;
+    }
+    flash._setPolling(bPolling, bHighPerformance);
+  };
+  initDebug = function() {
+  };
+  idCheck = this.getSoundById;
+  getSWFCSS = function() {
+    var css = [];
+    if (sm2.debugMode) {
+      css.push(swfCSS.sm2Debug);
+    }
+    if (sm2.debugFlash) {
+      css.push(swfCSS.flashDebug);
+    }
+    if (sm2.useHighPerformance) {
+      css.push(swfCSS.highPerf);
+    }
+    return css.join(' ');
+  };
+  flashBlockHandler = function() {
+    var name = str('fbHandler'),
+        p = sm2.getMoviePercent(),
+        css = swfCSS,
+        error = {
+          type: 'FLASHBLOCK'
+        };
+    if (sm2.html5Only) {
+      return;
+    }
+    if (!sm2.ok()) {
+      if (needsFlash) {
+        sm2.oMC.className = getSWFCSS() + ' ' + css.swfDefault + ' ' + (p === null ? css.swfTimedout : css.swfError);
+      }
+      sm2.didFlashBlock = true;
+      processOnEvents({
+        type: 'ontimeout',
+        ignoreInit: true,
+        error: error
+      });
+      catchError(error);
+    } else {
+      if (sm2.oMC) {
+        sm2.oMC.className = [getSWFCSS(), css.swfDefault, css.swfLoaded + (sm2.didFlashBlock ? ' ' + css.swfUnblocked : '')].join(' ');
+      }
+    }
+  };
+  addOnEvent = function(sType, oMethod, oScope) {
+    if (on_queue[sType] === _undefined) {
+      on_queue[sType] = [];
+    }
+    on_queue[sType].push({
+      method: oMethod,
+      scope: (oScope || null),
+      fired: false
+    });
+  };
+  processOnEvents = function(oOptions) {
+    if (!oOptions) {
+      oOptions = {
+        type: (sm2.ok() ? 'onready' : 'ontimeout')
+      };
+    }
+    if (!didInit && oOptions && !oOptions.ignoreInit) return false;
+    if (oOptions.type === 'ontimeout' && (sm2.ok() || (disabled && !oOptions.ignoreInit))) return false;
+    var status = {
+          success: (oOptions && oOptions.ignoreInit ? sm2.ok() : !disabled)
+        },
+        srcQueue = (oOptions && oOptions.type ? on_queue[oOptions.type] || [] : []),
+        queue = [], i, j,
+        args = [status],
+        canRetry = (needsFlash && !sm2.ok());
+    if (oOptions.error) {
+      args[0].error = oOptions.error;
+    }
+    for (i = 0, j = srcQueue.length; i < j; i++) {
+      if (srcQueue[i].fired !== true) {
+        queue.push(srcQueue[i]);
+      }
+    }
+    if (queue.length) {
+      for (i = 0, j = queue.length; i < j; i++) {
+        if (queue[i].scope) {
+          queue[i].method.apply(queue[i].scope, args);
+        } else {
+          queue[i].method.apply(this, args);
+        }
+        if (!canRetry) {
+          queue[i].fired = true;
+        }
+      }
+    }
+    return true;
+  };
+  initUserOnload = function() {
+    window.setTimeout(function() {
+      if (sm2.useFlashBlock) {
+        flashBlockHandler();
+      }
+      processOnEvents();
+      if (typeof sm2.onload === 'function') {
+        sm2.onload.apply(window);
+      }
+      if (sm2.waitForWindowLoad) {
+        event.add(window, 'load', initUserOnload);
+      }
+    }, 1);
+  };
+  detectFlash = function() {
+    if (hasFlash !== _undefined) return hasFlash;
+    var hasPlugin = false, n = navigator, obj, type, types, AX = window.ActiveXObject;
+    var nP;
+    try {
+      nP = n.plugins;
+    } catch(e) {
+      nP = undefined;
+    }
+    if (nP && nP.length) {
+      type = 'application/x-shockwave-flash';
+      types = n.mimeTypes;
+      if (types && types[type] && types[type].enabledPlugin && types[type].enabledPlugin.description) {
+        hasPlugin = true;
+      }
+    } else if (AX !== _undefined && !ua.match(/MSAppHost/i)) {
+      try {
+        obj = new AX('ShockwaveFlash.ShockwaveFlash');
+      } catch(e) {
+        obj = null;
+      }
+      hasPlugin = (!!obj);
+      obj = null;
+    }
+    hasFlash = hasPlugin;
+    return hasPlugin;
+  };
+  featureCheck = function() {
+    var flashNeeded,
+        item,
+        formats = sm2.audioFormats,
+        isSpecial = (is_iDevice && !!(ua.match(/os (1|2|3_0|3_1)\s/i)));
+    if (isSpecial) {
+      sm2.hasHTML5 = false;
+      sm2.html5Only = true;
+      if (sm2.oMC) {
+        sm2.oMC.style.display = 'none';
+      }
+    } else if (sm2.useHTML5Audio) {
+        if (!sm2.html5 || !sm2.html5.canPlayType) {
+          sm2.hasHTML5 = false;
+        }
+      }
+    if (sm2.useHTML5Audio && sm2.hasHTML5) {
+      canIgnoreFlash = true;
+      for (item in formats) {
+        if (formats.hasOwnProperty(item)) {
+          if (formats[item].required) {
+            if (!sm2.html5.canPlayType(formats[item].type)) {
+              canIgnoreFlash = false;
+              flashNeeded = true;
+            } else if (sm2.preferFlash && (sm2.flash[item] || sm2.flash[formats[item].type])) {
+              flashNeeded = true;
+            }
+          }
+        }
+      }
+    }
+    if (sm2.ignoreFlash) {
+      flashNeeded = false;
+      canIgnoreFlash = true;
+    }
+    sm2.html5Only = (sm2.hasHTML5 && sm2.useHTML5Audio && !flashNeeded);
+    return (!sm2.html5Only);
+  };
+  parseURL = function(url) {
+    var i, j, urlResult = 0, result;
+    if (url instanceof Array) {
+      for (i = 0, j = url.length; i < j; i++) {
+        if (url[i] instanceof Object) {
+          if (sm2.canPlayMIME(url[i].type)) {
+            urlResult = i;
+            break;
+          }
+        } else if (sm2.canPlayURL(url[i])) {
+          urlResult = i;
+          break;
+        }
+      }
+      if (url[urlResult].url) {
+        url[urlResult] = url[urlResult].url;
+      }
+      result = url[urlResult];
+    } else {
+      result = url;
+    }
+    return result;
+  };
+  startTimer = function(oSound) {
+    if (!oSound._hasTimer) {
+      oSound._hasTimer = true;
+      if (!mobileHTML5 && sm2.html5PollingInterval) {
+        if (h5IntervalTimer === null && h5TimerCount === 0) {
+          h5IntervalTimer = setInterval(timerExecute, sm2.html5PollingInterval);
+        }
+        h5TimerCount++;
+      }
+    }
+  };
+  stopTimer = function(oSound) {
+    if (oSound._hasTimer) {
+      oSound._hasTimer = false;
+      if (!mobileHTML5 && sm2.html5PollingInterval) {
+        h5TimerCount--;
+      }
+    }
+  };
+  timerExecute = function() {
+    var i;
+    if (h5IntervalTimer !== null && !h5TimerCount) {
+      clearInterval(h5IntervalTimer);
+      h5IntervalTimer = null;
+      return;
+    }
+    for (i = sm2.soundIDs.length - 1; i >= 0; i--) {
+      if (sm2.sounds[sm2.soundIDs[i]].isHTML5 && sm2.sounds[sm2.soundIDs[i]]._hasTimer) {
+        sm2.sounds[sm2.soundIDs[i]]._onTimer();
+      }
+    }
+  };
+  catchError = function(options) {
+    options = (options !== _undefined ? options : {});
+    if (typeof sm2.onerror === 'function') {
+      sm2.onerror.apply(window, [{
+        type: (options.type !== _undefined ? options.type : null)
+      }]);
+    }
+    if (options.fatal !== _undefined && options.fatal) {
+      sm2.disable();
+    }
+  };
+  badSafariFix = function() {
+    if (!isBadSafari || !detectFlash()) {
+      return;
+    }
+    var aF = sm2.audioFormats, i, item;
+    for (item in aF) {
+      if (aF.hasOwnProperty(item)) {
+        if (item === 'mp3' || item === 'mp4') {
+          sm2.html5[item] = false;
+          if (aF[item] && aF[item].related) {
+            for (i = aF[item].related.length - 1; i >= 0; i--) {
+              sm2.html5[aF[item].related[i]] = false;
+            }
+          }
+        }
+      }
+    }
+  };
+  this._setSandboxType = function(sandboxType) {
+  };
+  this._externalInterfaceOK = function(swfVersion) {
+    if (sm2.swfLoaded) {
+      return;
+    }
+    var e;
+    sm2.swfLoaded = true;
+    tryInitOnFocus = false;
+    if (isBadSafari) {
+      badSafariFix();
+    }
+    setTimeout(init, isIE ? 100 : 1);
+  };
+  createMovie = function(movieID, movieURL) {
+    if (didAppend && appendSuccess) return false;
+    function initMsg() {
+    }
+    if (sm2.html5Only) {
+      setVersionInfo();
+      initMsg();
+      sm2.oMC = id(sm2.movieID);
+      init();
+      didAppend = true;
+      appendSuccess = true;
+      return false;
+    }
+    var remoteURL = (movieURL || sm2.url),
+    localURL = (sm2.altURL || remoteURL),
+    swfTitle = 'JS/Flash audio component (SoundManager 2)',
+    oTarget = getDocument(),
+    extraClass = getSWFCSS(),
+    isRTL = null,
+    html = doc.getElementsByTagName('html')[0],
+    oEmbed, oMovie, tmp, movieHTML, oEl, s, x, sClass;
+    isRTL = (html && html.dir && html.dir.match(/rtl/i));
+    movieID = (movieID === _undefined ? sm2.id : movieID);
+    function param(name, value) {
+      return '<param name="' + name + '" value="' + value + '" />';
+    }
+    setVersionInfo();
+    sm2.url = normalizeMovieURL(overHTTP ? remoteURL : localURL);
+    movieURL = sm2.url;
+    sm2.wmode = (!sm2.wmode && sm2.useHighPerformance ? 'transparent' : sm2.wmode);
+    if (sm2.wmode !== null && (ua.match(/msie 8/i) || (!isIE && !sm2.useHighPerformance)) && navigator.platform.match(/win32|win64/i)) {
+      messages.push(strings.spcWmode);
+      sm2.wmode = null;
+    }
+    oEmbed = {
+      name: movieID,
+      id: movieID,
+      src: movieURL,
+      quality: 'high',
+      allowScriptAccess: sm2.allowScriptAccess,
+      bgcolor: sm2.bgColor,
+      pluginspage: http + 'www.macromedia.com/go/getflashplayer',
+      title: swfTitle,
+      type: 'application/x-shockwave-flash',
+      wmode: sm2.wmode,
+      hasPriority: 'true'
+    };
+    if (sm2.debugFlash) {
+      oEmbed.FlashVars = 'debug=1';
+    }
+    if (!sm2.wmode) {
+      delete oEmbed.wmode;
+    }
+    if (isIE) {
+      oMovie = doc.createElement('div');
+      movieHTML = [
+        '<object id="' + movieID + '" data="' + movieURL + '" type="' + oEmbed.type + '" title="' + oEmbed.title + '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0">',
+        param('movie', movieURL),
+        param('AllowScriptAccess', sm2.allowScriptAccess),
+        param('quality', oEmbed.quality),
+        (sm2.wmode ? param('wmode', sm2.wmode) : ''),
+        param('bgcolor', sm2.bgColor),
+        param('hasPriority', 'true'),
+        (sm2.debugFlash ? param('FlashVars', oEmbed.FlashVars) : ''),
+        '</object>'
+      ].join('');
+    } else {
+      oMovie = doc.createElement('embed');
+      for (tmp in oEmbed) {
+        if (oEmbed.hasOwnProperty(tmp)) {
+          oMovie.setAttribute(tmp, oEmbed[tmp]);
+        }
+      }
+    }
+    initDebug();
+    extraClass = getSWFCSS();
+    oTarget = getDocument();
+    if (oTarget) {
+      sm2.oMC = (id(sm2.movieID) || doc.createElement('div'));
+      if (!sm2.oMC.id) {
+        sm2.oMC.id = sm2.movieID;
+        sm2.oMC.className = swfCSS.swfDefault + ' ' + extraClass;
+        s = null;
+        oEl = null;
+        if (!sm2.useFlashBlock) {
+          if (sm2.useHighPerformance) {
+            s = {
+              position: 'fixed',
+              width: '8px',
+              height: '8px',
+              bottom: '0px',
+              left: '0px',
+              overflow: 'hidden'
+            };
+          } else {
+            s = {
+              position: 'absolute',
+              width: '6px',
+              height: '6px',
+              top: '-9999px',
+              left: '-9999px'
+            };
+            if (isRTL) {
+              s.left = Math.abs(parseInt(s.left, 10)) + 'px';
+            }
+          }
+        }
+        if (isWebkit) {
+          sm2.oMC.style.zIndex = 10000;
+        }
+        if (!sm2.debugFlash) {
+          for (x in s) {
+            if (s.hasOwnProperty(x)) {
+              sm2.oMC.style[x] = s[x];
+            }
+          }
+        }
+        try {
+          if (!isIE) {
+            sm2.oMC.appendChild(oMovie);
+          }
+          oTarget.appendChild(sm2.oMC);
+          if (isIE) {
+            oEl = sm2.oMC.appendChild(doc.createElement('div'));
+            oEl.className = swfCSS.swfBox;
+            oEl.innerHTML = movieHTML;
+          }
+          appendSuccess = true;
+        } catch(e) {
+          throw new Error(str('domError') + ' \n' + e.toString());
+        }
+      } else {
+        sClass = sm2.oMC.className;
+        sm2.oMC.className = (sClass ? sClass + ' ' : swfCSS.swfDefault) + (extraClass ? ' ' + extraClass : '');
+        sm2.oMC.appendChild(oMovie);
+        if (isIE) {
+          oEl = sm2.oMC.appendChild(doc.createElement('div'));
+          oEl.className = swfCSS.swfBox;
+          oEl.innerHTML = movieHTML;
+        }
+        appendSuccess = true;
+      }
+    }
+    didAppend = true;
+    initMsg();
+    return true;
+  };
+  initMovie = function() {
+    if (sm2.html5Only) {
+      createMovie();
+      return false;
+    }
+    if (flash) return false;
+    if (!sm2.url) {
+       return false;
+    }
+    flash = sm2.getMovie(sm2.id);
+    if (!flash) {
+      if (!oRemoved) {
+        createMovie(sm2.id, sm2.url);
+      } else {
+        if (!isIE) {
+          sm2.oMC.appendChild(oRemoved);
+        } else {
+          sm2.oMC.innerHTML = oRemovedHTML;
+        }
+        oRemoved = null;
+        didAppend = true;
+      }
+      flash = sm2.getMovie(sm2.id);
+    }
+    if (typeof sm2.oninitmovie === 'function') {
+      setTimeout(sm2.oninitmovie, 1);
+    }
+    return true;
+  };
+  delayWaitForEI = function() {
+    setTimeout(waitForEI, 1000);
+  };
+  rebootIntoHTML5 = function() {
+    window.setTimeout(function() {
+      sm2.setup({
+        preferFlash: false
+      }).reboot();
+      sm2.didFlashBlock = true;
+      sm2.beginDelayedInit();
+    }, 1);
+  };
+  waitForEI = function() {
+    var p,
+        loadIncomplete = false;
+    if (!sm2.url) {
+      return;
+    }
+    if (waitingForEI) {
+      return;
+    }
+    waitingForEI = true;
+    event.remove(window, 'load', delayWaitForEI);
+    if (hasFlash && tryInitOnFocus && !isFocused) {
+      return;
+    }
+    if (!didInit) {
+      p = sm2.getMoviePercent();
+      if (p > 0 && p < 100) {
+        loadIncomplete = true;
+      }
+    }
+    setTimeout(function() {
+      p = sm2.getMoviePercent();
+      if (loadIncomplete) {
+        waitingForEI = false;
+        window.setTimeout(delayWaitForEI, 1);
+        return;
+      }
+      if (!didInit && okToDisable) {
+        if (p === null) {
+          if (sm2.useFlashBlock || sm2.flashLoadTimeout === 0) {
+            if (sm2.useFlashBlock) {
+              flashBlockHandler();
+            }
+          } else if (!sm2.useFlashBlock && canIgnoreFlash) {
+            rebootIntoHTML5();
+          } else {
+            processOnEvents({
+              type: 'ontimeout',
+              ignoreInit: true,
+              error: {
+                type: 'INIT_FLASHBLOCK'
+              }
+            });
+          }
+        } else if (sm2.flashLoadTimeout === 0) {
+        } else if (!sm2.useFlashBlock && canIgnoreFlash) {
+          rebootIntoHTML5();
+        } else {
+          failSafely(true);
+        }
+      }
+    }, sm2.flashLoadTimeout);
+  };
+  handleFocus = function() {
+    function cleanup() {
+      event.remove(window, 'focus', handleFocus);
+    }
+    if (isFocused || !tryInitOnFocus) {
+      cleanup();
+      return true;
+    }
+    okToDisable = true;
+    isFocused = true;
+    waitingForEI = false;
+    delayWaitForEI();
+    cleanup();
+    return true;
+  };
+  flushMessages = function() {
+  };
+  showSupport = function() {
+  };
+  initComplete = function(bNoDisable) {
+    if (didInit) return false;
+    if (sm2.html5Only) {
+      didInit = true;
+      initUserOnload();
+      return true;
+    }
+    var wasTimeout = (sm2.useFlashBlock && sm2.flashLoadTimeout && !sm2.getMoviePercent()),
+        result = true,
+        error;
+    if (!wasTimeout) {
+      didInit = true;
+    }
+    error = {
+      type: (!hasFlash && needsFlash ? 'NO_FLASH' : 'INIT_TIMEOUT')
+    };
+    if (disabled || bNoDisable) {
+      if (sm2.useFlashBlock && sm2.oMC) {
+        sm2.oMC.className = getSWFCSS() + ' ' + (sm2.getMoviePercent() === null ? swfCSS.swfTimedout : swfCSS.swfError);
+      }
+      processOnEvents({
+        type: 'ontimeout',
+        error: error,
+        ignoreInit: true
+      });
+      catchError(error);
+      result = false;
+    } else {
+    }
+    if (!disabled) {
+      if (sm2.waitForWindowLoad && !windowLoaded) {
+        event.add(window, 'load', initUserOnload);
+      } else {
+        initUserOnload();
+      }
+    }
+    return result;
+  };
+  setProperties = function() {
+    var i,
+        o = sm2.setupOptions;
+    for (i in o) {
+      if (o.hasOwnProperty(i)) {
+        if (sm2[i] === _undefined) {
+          sm2[i] = o[i];
+        } else if (sm2[i] !== o[i]) {
+          sm2.setupOptions[i] = sm2[i];
+        }
+      }
+    }
+  };
+  init = function() {
+    if (didInit) {
+      return false;
+    }
+    function cleanup() {
+      event.remove(window, 'load', sm2.beginDelayedInit);
+    }
+    if (sm2.html5Only) {
+      if (!didInit) {
+        cleanup();
+        sm2.enabled = true;
+        initComplete();
+      }
+      return true;
+    }
+    initMovie();
+    try {
+      flash._externalInterfaceTest(false);
+      setPolling(true, (sm2.flashPollingInterval || (sm2.useHighPerformance ? 10 : 50)));
+      if (!sm2.debugMode) {
+        flash._disableDebug();
+      }
+      sm2.enabled = true;
+      if (!sm2.html5Only) {
+        event.add(window, 'unload', doNothing);
+      }
+    } catch(e) {
+      catchError({
+        type: 'JS_TO_FLASH_EXCEPTION',
+        fatal: true
+      });
+      failSafely(true);
+      initComplete();
+      return false;
+    }
+    initComplete();
+    cleanup();
+    return true;
+  };
+  domContentLoaded = function() {
+    if (didDCLoaded) return false;
+    didDCLoaded = true;
+    setProperties();
+    initDebug();
+    if (!hasFlash && sm2.hasHTML5) {
+      sm2.setup({
+        useHTML5Audio: true,
+        preferFlash: false
+      });
+    }
+    testHTML5();
+    if (!hasFlash && needsFlash) {
+      messages.push(strings.needFlash);
+      sm2.setup({
+        flashLoadTimeout: 1
+      });
+    }
+    if (doc.removeEventListener) {
+      doc.removeEventListener('DOMContentLoaded', domContentLoaded, false);
+    }
+    initMovie();
+    return true;
+  };
+  domContentLoadedIE = function() {
+    if (doc.readyState === 'complete') {
+      domContentLoaded();
+      doc.detachEvent('onreadystatechange', domContentLoadedIE);
+    }
+    return true;
+  };
+  winOnLoad = function() {
+    windowLoaded = true;
+    domContentLoaded();
+    event.remove(window, 'load', winOnLoad);
+  };
+  detectFlash();
+  event.add(window, 'focus', handleFocus);
+  event.add(window, 'load', delayWaitForEI);
+  event.add(window, 'load', winOnLoad);
+  if (doc.addEventListener) {
+    doc.addEventListener('DOMContentLoaded', domContentLoaded, false);
+  } else if (doc.attachEvent) {
+    doc.attachEvent('onreadystatechange', domContentLoadedIE);
+  } else {
+    catchError({
+      type: 'NO_DOM2_EVENTS',
+      fatal: true
+    });
+  }
+}
+// SM2_DEFER details: http://www.schillmania.com/projects/soundmanager2/doc/getstarted/#lazy-loading
+if (window.SM2_DEFER === _undefined || !SM2_DEFER) {
+  soundManager = new SoundManager();
+}
+if (typeof module === 'object' && module && typeof module.exports === 'object') {
+  module.exports.SoundManager = SoundManager;
+  module.exports.soundManager = soundManager;
+} else if (typeof define === 'function' && define.amd) {
+  define(function() {
+    function getInstance(smBuilder) {
+      if (!window.soundManager && smBuilder instanceof Function) {
+        var instance = smBuilder(SoundManager);
+        if (instance instanceof SoundManager) {
+          window.soundManager = instance;
+        }
+      }
+      return window.soundManager;
+    }
+    return {
+      constructor: SoundManager,
+      getInstance: getInstance
+    };
+  });
+}
+// standard browser case
+// constructor
+window.SoundManager = SoundManager;
+// public API, flash callbacks etc.
+window.soundManager = soundManager;
+}(window));

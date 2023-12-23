@@ -1129,7 +1129,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
                     event.preventDefault();
 
-                    var message_text = jQuery.trim(jQuery(this).val());
+                    var message_text = jQuery(this).val().trim();
 
                     // IF we are NOT using the send button we want to remove the
                     //message_text = message_text.replace('\n', '');
@@ -1153,7 +1153,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                 event.preventDefault();
 
                 var chat_textarea = jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area textarea.psource-chat-send');
-                var message_text = jQuery.trim(jQuery(chat_textarea).val());
+                var message_text = chat_textarea.value.trim();
                 if (message_text != '') {
                     psource_chat.chat_session_enqueue_message(message_text, chat_session);
                     jQuery(chat_textarea).val('');
@@ -2236,7 +2236,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             window.close();
         });
 
-        jQuery(window).resize(function() {
+        jQuery(window).on( "resize", function() {
             if (!jQuery('body').hasClass('psource-chat-pop-out')) {
                 return;
             }
@@ -2771,7 +2771,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                 if (_cookie_auth_str == '') {
                     psource_chat.settings['auth'] = {};
                 } else {
-                    psource_chat.settings['auth'] = jQuery.parseJSON(_cookie_auth_str);
+                    psource_chat.settings['auth'] = JSON.parse(_cookie_auth_str);
                 }
 
                 if (response.status === 'connected') {
@@ -3037,7 +3037,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             if (document.cookie && document.cookie != '') {
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
+                    var cookie = cookies[i].trim();
                     // Does this cookie string begin with the name we want?
                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -3057,7 +3057,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             el.focus();
             var range = el.createTextRange();
             range.collapse(false);
-            range.select();
+            range.trigger("select");
         }
     },
     handle_private_chat_click: function ($selector) {
