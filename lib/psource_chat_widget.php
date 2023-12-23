@@ -386,7 +386,7 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 					if ((isset($friend->chat_status)) && ($friend->chat_status == "available")) {
 						$friend_status_data = psource_chat_get_chat_status_data($current_user->ID, $friend);
 
-						$chat_output .= '<li><a class="'. $friend_status_data['href_class'] .'" title="'. $friend_status_data['href_title'] .' - '. __('Klicken, um Chat-Sitzung zu starten', 'psource-chat') .'" href="#" rel="'.md5($friend->ID) .'">';
+						$chat_output .= '<li><a class="'. $friend_status_data['href_class'] .'" title="'. $friend_status_data['href_title'] .' - '. __('Chat-Sitzung starten', 'psource-chat') .'" href="#" rel="'.md5($friend->ID) .'">';
 
 						//$chat_output .= '<span class="psource-chat-ab-icon psource-chat-ab-icon-'. $friend->chat_status .'"></span>';
 

@@ -21,8 +21,6 @@ entsprechendes Hosting, zB. einen Root-Server Dein Eigen nennst.
 Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin im Nu Kinderleicht.
 
 [Projektseite](https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/)
-[Handbuch](https://n3rds.work/docs/ps-chat-handbuch/)
-[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/ps-chat-supportforum/)
 [GitHub](https://github.com/piestingtal-source/ps-chat)
 
 == Mehr PSOURCE ==
