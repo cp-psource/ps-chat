@@ -4,7 +4,7 @@ Plugin Name: PS Chat
 Plugin URI: https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
 Author: Webmasterservice N3rds@Work
-Version: 2.4.6
+Version: 2.4.8
 Author URI: https://n3rds.work
 Text Domain: psource-chat
 Domain Path: /languages
@@ -30,7 +30,7 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 }
 if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
-		var $chat_current_version = '2.4.6';
+		var $chat_current_version = '2.4.8';
 		//var $translation_domain = 'psource-chat';
 
 		/**
@@ -1979,8 +1979,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			);
 
 			$this->_pagehooks['chat_settings_panel_network_global'] = add_submenu_page( 'chat_settings_panel_network_site',
-				_x( 'Basiseinstellungen', 'page label', 'psource-chat' ),
-				_x( 'Basiseinstellungen', 'menu label', 'psource-chat' ),
+				_x( 'Einstellungen', 'page label', 'psource-chat' ),
+				_x( 'Einstellungen', 'menu label', 'psource-chat' ),
 				'manage_network_options',
 				'chat_settings_panel_network_global',
 				array( &$this->_admin_panels, 'chat_settings_panel_global' )
@@ -2073,8 +2073,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			);
 
 			$this->_pagehooks['chat_settings_panel_global'] = add_submenu_page( 'chat_settings_panel',
-				_x( 'Basiseinstellungen', 'page label', 'psource-chat' ),
-				_x( 'Basiseinstellungen', 'menu label', 'menu label', 'psource-chat' ),
+				_x( 'Einstellungen', 'page label', 'psource-chat' ),
+				_x( 'Einstellungen', 'menu label', 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel_global',
 				array( &$this->_admin_panels, 'chat_settings_panel_global' )
@@ -2764,7 +2764,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				<tr>
 					<th>
 						<label
-							for="psource_chat_wp_admin"><?php _e( 'Chats in WP Admin anzeigen', 'psource-chat' ); ?></label>
+							for="psource_chat_wp_admin"><?php _e( 'Chats im Dashboard anzeigen	', 'psource-chat' ); ?></label>
 					</th>
 					<td>
 						<select name="psource_chat_user_settings[chat_wp_admin]" id="psource_chat_wp_admin">
@@ -4156,223 +4156,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$content .= '<li class="psource-chat-action-menu-item-sound-off"><a href="#" class="psource-chat-action-sound" title="' .
 					            __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '"><img height="16" width="16" src="' . plugins_url( '/images/sound-off.png', __FILE__ ) . '" alt="' . __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '" class="psource-chat-sound-off" title="' . __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '" /></a></li>';
 				}
-
-                //Hier kannst Du die Emoji-Liste bearbeiten. Verwende Icons von https://emojipedia.org/
+				//Hier kannst Du die Emoji-Liste bearbeiten. Verwende Icons von https://emojipedia.org/
 				if ( $chat_session['box_emoticons'] == "enabled" ) {
-					$smilies_list = array(
-						'😀',
-						'😃',
-						'😄',
-						'😁',
-						'😆',
-						'😅',
-						'🤣',
-						'😍',
-						'😂',
-						'😉',
-						'😊',
-						'😇',
-						'🥰',
-						'😍',
-						'🤩',
-						'😘',
-						'😗',
-						'😚',
-						'😛',
-						'🤪',
-						'😝',
-						'🤑',
-						'🤗',
-						'🤭',
-						'🤫',
-						'🤐',
-						'🤨',
-						'😐',
-						'😑',
-						'😶',
-						'😏',
-						'😒',
-						'🙄',
-						'😬',
-						'🤥',
-						'😔',
-						'😪',
-						'🤤',
-						'😴',
-						'😷',
-						'🤒',
-						'🤕',
-						'🤢',
-						'🤮',
-						'🤧',
-						'🥵',
-						'🥶',
-						'🥴',
-						'😵',
-						'🤯',
-						'🤠',
-						'🥳',
-						'😎',
-						'🤓',
-						'🧐',
-						'😕',
-						'😟',
-						'😮',
-						'😳',
-						'😨',
-						'😢',
-						'😭',
-						'😱',
-						'😣',
-						'😓',
-						'😫',
-						'😤',
-						'🥱',
-						'😠',
-						'🤬',
-						'😈',
-						'👿',
-						'💩',
-						'🤡',
-						'👽',
-						'👻',
-						'💋',
-						'👋',
-						'🤚',
-						'🖐️',
-						'✋',
-						'🖖',
-						'👌',
-						'🤏',
-						'✌️',
-						'🤞',
-						'🤘',
-						'🤙',
-						'👍',
-						'👎',
-						'✊',
-						'👊',
-						'👏',
-						'🙌',
-						'🤲',
-						'🤝',
-						'🙏',
-						'✍️',
-						'🤳',
-						'💪',
-						'👂',
-						'👃',
-						'🧠',
-						'👅',
-						'👄',
-						'💏',
-						'👩‍❤️‍💋‍👨',
-						'💑',
-						'👩‍❤️‍👨',
-						'👪',
-						'💘',
-						'💖',
-						'💗',
-						'💓',
-						'💕',
-						'💔',
-						'❤️',
-						'💯',
-						'💢',
-						'💬',
-						'💤',
-						'🛑',
-						'📣',
-						'📯',
-						'🔔',
-						'🎵',
-						'⛔',
-						'🚫',
-						'☢️',
-						'☣️',
-						'♀️',
-						'♂️',
-						'‼️',
-						'⁉️',
-						'❓',
-						'❗',
-						'🙈',
-						'🙉',
-						'🙊',
-						'💥',
-						'💦',
-						'🐵',
-						'🐶',
-						'🐺',
-						'🦊',
-						'🦝',
-						'🐱',
-						'🦁',
-						'🐯',
-						'🐴',
-						'🦄',
-						'🦓',
-						'🐮',
-						'🐷',
-						'🐭',
-						'🐹',
-						'🐻',
-						'🦇',
-						'🐔',
-						'🐣',
-						'🐧',
-						'🦅',
-						'🐍',
-						'🐲',
-						'🦖',
-						'🦕',
-						'🐟',
-						'🦈',
-						'🐛',
-						'🐜',
-						'🐝',
-						'🕷️',
-						'🍀',
-						'🌲',
-						'🌳',
-						'🌴',
-						'🌵',
-						'🍂',
-						'🍄',
-						'🌍',
-						'🌎',
-						'🌏',
-						'🌐',
-						'🌟',
-						'🌠',
-						'☁️',
-						'⛅',
-						'⛈️',
-						'🌤️',
-						'🌥️',
-						'🌦️',
-						'🌧️',
-						'🌨️',
-						'🌩️',
-						'🌪️',
-						'🌫️',
-						'🌈',
-						'⚡',
-						'❄️',
-						'🔥',
-						'💧',
-						'🌊',
-						'🎄',
-						'✨',
-						'💌',
-						'💶',
-						'🏝️',
-						'⚔️',
-						'⚰️',
-						'🛏️',
-						'🚿',
-						'🚽',
-					);
+					$emoji_string = '😀,😃,😄,😁,😆,😅,🤣,😂,😊,😇,😍,🤩,😘,😗,😚,😛,🤪,😜,😝,🤑,🤗,🤭,🤫,🤔,🤐,🤨,😐,😑,😶,😏,😒,🙄,😬,🤥,😔,😪,🤤,😴,😷,🤒,🤕,🤢,🤮,🤧,🥵,🥶,🥴,😵,🤯,🤠,🥳,😎,🤓,🧐,😕,😟,😮,😳,😨,😢,😭,😱,😣,😓,😫,😤,🥱,😠,🤬,😈,👿,💩,🤡,👽,👻,💋,👋,🤚,🖐️,✋,🖖,👌,🤏,✌️,🤞,🤘,🤙,👍,👎,✊,👊,🤝,🙏,💪,👂,👃,🧠,👅,👄,💏,👩‍❤️‍💋‍👨,💑,👩‍❤️‍👨,👪,💘,💖,💗,💓,💕,💔,❤️,💯,💢,💬,💤,🛑,📣,📯,🔔,🎵,⛔,🚫,☢️,☣️,♀️,♂️,‼️,⁉️,❓,❗,🙈,🙉,🙊,💥,💦,🐵,🐶,🐺,🦊,🦝,🐱,🦁,🐯,🐴,🦄,🦓,🐮,🐷,🐭,🐹,🐻,🦇,🐔,🐣,🐧,🦅,🐍,🐲,🦖,🦕,🐟,🦈,🐛,🐜,🐝,🕷️,🍀,🌲,🌳,🌴,🌵,🍂,🍄,🌍,🌎,🌏,🌐,🌟,🌠,☁️,⛅,⛈️,🌤️,🌥️,🌦️,🌧️,🌨️,🌩️,🌪️,🌫️,🌈,⚡,❄️,🔥,💧,🌊,🎄,✨,💌,💶,🏝️,⚔️,⚰️,🛏️,🚿,🚽,🍏,🍎,🍐,🍊,🍋,🍌,🍉,🍇,🍓,🫐,🍈,🍒,🍑,🥭,🍍,🥥,🥝,🍅,🍆,🥑,🥦,🥬,🥒,🌶️,🌽,🥕,🥔,🍠,🍞,🥯,🥖,🧀,🥨,🥐,🍔,🍟,🍕,🌭,🍿,🧂,🥓,🍖,🍗,🍠,🍙,🍚,🍛,🍜,🍝,🍠,🍡,🍢,🍣,🍤,🍥,🥮,🍦,🍧,🍨,🍩,🍪,🎂,🍰,🧁,🥧,🍫,🍬,🍭,🍮,🍯,🍼,🥛,☕,🍵,🍶,🍾,🍷,🍸,🍹,🍺,🍻,🥂,🥃,🥤,🧊,🥄,🍴,🍽️,🥢';
+
+					$smilies_list = explode(',', $emoji_string);
 
 					$content .= '<li class="psource-chat-send-input-emoticons">';
 					$content .= '<a class="psource-chat-emoticons-menu" href="#">' . trim( convert_smilies( $smilies_list[0] ) ) . '</a>';
@@ -4787,20 +4575,20 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_style_settings = "display:none;";
 			}
 
-			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><img src="' . plugins_url( '/images/gear_icon.png', __FILE__ ) . '" alt="' . __( 'Chat Einstellungen', 'psource-chat' ) . '" width="16" height="16" title="' . __( 'Chat Einstellungen', 'psource-chat' ) . '" /></a>' . $chat_action_menu . '</li>';
+			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><span class="dashicons dashicons-admin-tools"></span></a>' . $chat_action_menu . '</li>';
 
 			//$transient_key = "chat-session-". $chat_session['blog_id'] ."-". $chat_session['id'] .'-'. $chat_session['session_type'];
 			$transient_key = "chat-session-" . $chat_session['id'] . '-' . $chat_session['session_type'];
 
 			if ( $chat_session['box_popout'] == "enabled" ) {
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', 'psource-chat' ) . '" href="' . add_query_arg( array(
-						'psource-chat-action' => 'pop-out',
-						'psource-chat-key'    => base64_encode( $transient_key )
-					), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#10070;</a></li>';
+					'psource-chat-action' => 'pop-out',
+					'psource-chat-key'    => base64_encode( $transient_key )
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-expand"></span></a></li>';
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', 'psource-chat' ) . '" href="' . add_query_arg( array(
-						'psource-chat-action' => 'pop-in',
-						'psource-chat-id'     => base64_encode( $chat_session['id'] )
-					), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#10063;</a></li>';
+					'psource-chat-action' => 'pop-in',
+					'psource-chat-id'     => base64_encode( $chat_session['id'] )
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-contract"></span></a></li>';
 			}
 
 			$chat_header_actions .= '</ul></div>';

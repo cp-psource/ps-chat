@@ -12,16 +12,16 @@ if ( ( isset( $_GET['psource-chat-key'] ) ) && ( ! empty( $_GET['psource-chat-ke
 		?>
 		<!DOCTYPE html>
 		<!--[if IE 6]>
-		<html id="ie6" lang="en-US">
+		<html id="ie6" lang="de-DE">
 		<![endif]-->
 		<!--[if IE 7]>
-		<html id="ie7" lang="en-US">
+		<html id="ie7" lang="de-DE">
 		<![endif]-->
 		<!--[if IE 8]>
-		<html id="ie8" lang="en-US">
+		<html id="ie8" lang="de-DE">
 		<![endif]-->
 		<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
-		<html lang="en-US">
+		<html lang="de-DE">
 	<!--<![endif]-->
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>"/>

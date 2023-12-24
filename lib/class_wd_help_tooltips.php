@@ -363,9 +363,9 @@ function open_tooltip ($me) {
 <?php } ?>
 
 	// IE safeguard
-	if ($.browser.msie) {
-		var $pointer_left = $tip.find(".psource-left_pointer");
-		if ($pointer_left.length) $pointer_left.css("position", "absolute");
+	if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+    	var $pointer_left = $tip.find(".psource-left_pointer");
+    	if ($pointer_left.length) $pointer_left.css("position", "absolute");
 	}
 
 	$tip
@@ -397,23 +397,23 @@ function open_tooltip ($me) {
  * Closes tooltip.
  */
 function close_tooltip () {
-	if (!$("#psource-tooltip").length) return false;
+    if (!$("#psource-tooltip").length) return false;
 
-	// IE conditional alternate removal
-	if ($.browser.msie) {
-		$("#psource-tooltip").hide('fast');
-	} else {
-		// Not IE, do regular transparency animation
-		$("#psource-tooltip")
-			.animate({
-				"opacity": 0
-			},
-			'fast',
-			function () {
-				$(this).remove();
-			}
-		);
-	}
+    // IE conditional alternate removal
+    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+        $("#psource-tooltip").hide('fast');
+    } else {
+        // Not IE, do regular transparency animation
+        $("#psource-tooltip")
+            .animate({
+                "opacity": 0
+            },
+            'fast',
+            function () {
+                $(this).remove();
+            }
+        );
+    }
 }
 
 
@@ -421,7 +421,7 @@ function close_tooltip () {
 $(function () {
 
 // Populate and place bound tips
-$.each($.parseJSON('<?php echo $selectors; ?>'), function (tip_id, selector) {
+$.each(JSON.parse('<?php echo $selectors; ?>'), function (tip_id, selector) {
 	var $tip = $("#" + tip_id);
 	if (!$tip.length) return true;
 
@@ -445,7 +445,7 @@ $(".psource-help-trigger")
 <?php } ?>
 		return false;
 	})
-	.mouseover(function (e) {
+	.on("mouseover", function (e) {
 		open_tooltip($(this));
 
 	})

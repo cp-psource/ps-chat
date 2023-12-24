@@ -367,7 +367,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 				<?php if ( is_network_admin() ) { ?>
 					<h2><?php _e( 'Chat-Einstellungen Netzwerk Allgemein', 'psource-chat' ); ?></h2>
 				<?php } else { ?>
-					<h2><?php _e( 'Chat Basiseinstellungen', 'psource-chat' ); ?></h2>
+					<h2><?php _e( 'Chat Einstellungen', 'psource-chat' ); ?></h2>
 				<?php } ?>
 
 				<form method="post" id="psource-chat-settings-form" action="?page=<?php echo $_GET['page']; ?>">
@@ -395,7 +395,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 								<li id="psource_chat_wp_tab"><a href="#psource_chat_blocked_urls"><span><?php
 											_e( 'Blockierte URLs', 'psource-chat' ); ?></span></a></li>
 								<li id="chat_wpadmin_tab"><a href="#chat_wpadmin_panel"><span><?php
-											_e( 'WPAdmin', 'psource-chat' ); ?></span></a></li>
+											_e( 'Dashboard', 'psource-chat' ); ?></span></a></li>
 								<?php if ( $buddypress_active ) { ?>
 									<li>
 										<a href="#psource_chat_buddypress_panel"><span><?php _e( 'BuddyPress', 'psource-chat' ); ?></span></a>
@@ -695,7 +695,7 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 								</li>
 							<?php } ?>
 							<li id="chat_advanced_tab"><a href="#chat_advanced_panel"><span><?php
-										_e( 'Advanced', 'psource-chat' ); ?></span></a></li>
+										_e( 'Erweitert', 'psource-chat' ); ?></span></a></li>
 						</ul>
 						<div id="chat_widgets_panel" class="panel current">
 							<?php psource_chat_form_section_dashboard( $form_section ); ?>
