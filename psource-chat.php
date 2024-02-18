@@ -4,7 +4,7 @@ Plugin Name: PS Chat
 Plugin URI: https://cp-psource.github.io/ps-chat/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
 Author: PSOURCE
-Version: 2.4.8
+Version: 2.4.9
 Author URI: https://github.com/cp-psource
 Text Domain: psource-chat
 Domain Path: /languages
@@ -36,7 +36,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
 		private $_admin_panels;
     	private $_pagehooks;
-		var $chat_current_version = '2.4.8';
+		var $chat_current_version = '2.4.9';
 		//var $translation_domain = 'psource-chat';
 
 		/**
