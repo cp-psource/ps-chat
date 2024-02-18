@@ -1,22 +1,26 @@
 <?php
 /*
 Plugin Name: PS Chat
-Plugin URI: https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/
+Plugin URI: https://cp-psource.github.io/ps-chat/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
-Author: Webmasterservice N3rds@Work
+Author: PSOURCE
 Version: 2.4.8
-Author URI: https://n3rds.work
+Author URI: https://github.com/cp-psource
 Text Domain: psource-chat
 Domain Path: /languages
 */
-
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use Psource\PluginUpdateChecker\v5\PucFactory;
-$MyUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-chat', 
-	__FILE__, 
-	'ps-chat' 
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+ 
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/ps-chat',
+	__FILE__,
+	'ps-chat'
 );
+ 
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+
 
 // Needs to be set BEFORE loading psource_chat_utilities.php!
 //define('CHAT_DEBUG_LOG', 1);
