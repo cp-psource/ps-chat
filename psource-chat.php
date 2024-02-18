@@ -34,6 +34,8 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 }
 if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
+		private $_admin_panels;
+    	private $_pagehooks;
 		var $chat_current_version = '2.4.8';
 		//var $translation_domain = 'psource-chat';
 
@@ -2037,8 +2039,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'manage_options',
 				'chat_settings_panel',
 				array( $this->_admin_panels, 'chat_settings_panel_page' ),
-				'dashicons-format-status'
-			//plugin_dir_url( __FILE__ ) .'images/icon/greyscale-16.png'
+				'dashicons-format-status',
+			    plugin_dir_url( __FILE__ ) .'images/icon/greyscale-16.png'
 			);
 
 			$this->_pagehooks['chat_settings_panel_page'] = add_submenu_page( 'chat_settings_panel',
@@ -3743,7 +3745,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		 */
 		function chat_session_box_styles( $chat_session, $id_override = '' ) {
 			$content = '';
-//		echo $chat_session;
+			// echo $chat_session;
 			if ( empty( $id_override ) ) {
 				$CSS_prefix = '#psource-chat-box-' . $chat_session['id'];
 				$content .= '<style type="text/css" id="psource-chat-box-' . $chat_session['id'] . '-css">';
