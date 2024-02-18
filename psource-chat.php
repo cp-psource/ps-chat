@@ -1,22 +1,26 @@
 <?php
 /*
 Plugin Name: PS Chat
-Plugin URI: https://n3rds.work/piestingtal_source/ps-chat-wordpress-livechatsystem/
+Plugin URI: https://cp-psource.github.io/ps-chat/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
-Author: Webmasterservice N3rds@Work
+Author: PSOURCE
 Version: 2.4.8
-Author URI: https://n3rds.work
+Author URI: https://github.com/cp-psource
 Text Domain: psource-chat
 Domain Path: /languages
 */
-
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use Psource\PluginUpdateChecker\v5\PucFactory;
-$MyUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-chat', 
-	__FILE__, 
-	'ps-chat' 
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+ 
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/ps-chat',
+	__FILE__,
+	'ps-chat'
 );
+ 
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+
 
 // Needs to be set BEFORE loading psource_chat_utilities.php!
 //define('CHAT_DEBUG_LOG', 1);
@@ -30,6 +34,8 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 }
 if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
+		private $_admin_panels;
+    	private $_pagehooks;
 		var $chat_current_version = '2.4.8';
 		//var $translation_domain = 'psource-chat';
 
@@ -2033,8 +2039,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'manage_options',
 				'chat_settings_panel',
 				array( $this->_admin_panels, 'chat_settings_panel_page' ),
-				'dashicons-format-status'
-			//plugin_dir_url( __FILE__ ) .'images/icon/greyscale-16.png'
+				'dashicons-format-status',
+			    plugin_dir_url( __FILE__ ) .'images/icon/greyscale-16.png'
 			);
 
 			$this->_pagehooks['chat_settings_panel_page'] = add_submenu_page( 'chat_settings_panel',
@@ -3739,7 +3745,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		 */
 		function chat_session_box_styles( $chat_session, $id_override = '' ) {
 			$content = '';
-//		echo $chat_session;
+			// echo $chat_session;
 			if ( empty( $id_override ) ) {
 				$CSS_prefix = '#psource-chat-box-' . $chat_session['id'];
 				$content .= '<style type="text/css" id="psource-chat-box-' . $chat_session['id'] . '-css">';
