@@ -2822,7 +2822,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         }
 
         if (jQuery('select.psource-chat-status-widget').length) {
-            jQuery('select.psource-chat-status-widget').change(function (event) {
+            jQuery('select.psource-chat-status-widget').on('change', function (event) {
                 event.preventDefault();
 
                 var user_new_status = jQuery(this).val();
