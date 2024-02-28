@@ -35,7 +35,5 @@ tinyMCE.addI18n("en.chat_dlg", {
 	current_user: "Aktueller Benutzer",
 	network_user: "Netzwerkbenutzer",
 	public_user: "Öffentlicher Benutzer",
-	facebook: "Facebook",
-	twitter: "Twitter",
 	moderator_roles: "Moderator Rollen"
 });
