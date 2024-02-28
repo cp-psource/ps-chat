@@ -4,7 +4,7 @@ Plugin Name: PS Chat
 Plugin URI: https://cp-psource.github.io/ps-chat/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
 Author: PSOURCE
-Version: 2.4.9
+Version: 2.5.0
 Author URI: https://github.com/cp-psource
 Text Domain: psource-chat
 Domain Path: /languages
@@ -37,7 +37,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		public $tips;
 		private $_admin_panels;
     	private $_pagehooks;
-		var $chat_current_version = '2.4.9';
+		var $chat_current_version = '2.5.0';
 		//var $translation_domain = 'psource-chat';
 
 		/**
@@ -4513,11 +4513,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', 'psource-chat' ) . '" href="' . add_query_arg( array(
 					'psource-chat-action' => 'pop-out',
 					'psource-chat-key'    => base64_encode( $transient_key )
-				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-expand"></span></a></li>';
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#x25B2;</a></li>';
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', 'psource-chat' ) . '" href="' . add_query_arg( array(
 					'psource-chat-action' => 'pop-in',
 					'psource-chat-id'     => base64_encode( $chat_session['id'] )
-				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-contract"></span></a></li>';
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#9660;</a></li>';
 			}
 
 			$chat_header_actions .= '</ul></div>';
