@@ -28,6 +28,11 @@ Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin 
 
 = 2.4.9 =
 
+* Entfernt: X / Meta / Google
+* Fixes: Deprecated jQuery
+
+= 2.4.9 =
+
 * Updater 1.3
 * Fix: Creation of dynamic property
 

@@ -1658,7 +1658,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			}
 		}
 
-
 		/**
 		 * We load the pop-out chat option.
 		 *
@@ -1843,7 +1842,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		}
 
 		function set_chat_localized() {
-			if ( $this->get_option( 'session_poll_type', 'global' ) == "wordpress" ) {
+			if ( $this->get_option( 'session_poll_type', 'global' ) == "plugin" ) {
 				if ( psource_chat_validate_config_file( $this->_chat_plugin_settings['config_file'], 'ABSPATH' ) === true ) {
 					$this->chat_localized['settings']["ajax_url"] = plugins_url( '/psource-chat-ajax.php', __FILE__ );
 				} else {
