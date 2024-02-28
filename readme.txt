@@ -30,6 +30,7 @@ Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin 
 
 * Entfernt: X / Meta / Google
 * Fixes: Deprecated jQuery
+* Fix undefinied avatar
 
 = 2.4.9 =
 

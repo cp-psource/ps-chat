@@ -6627,7 +6627,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$chat_id       = $chat_session['id'];
 			$session_type  = trim( $chat_session['session_type'] );
 			$name          = trim( $this->chat_auth['name'] );
-			$user_avatar   = trim( $this->chat_auth['avatar'] );
+			$user_avatar = isset($this->chat_auth['avatar']) ? trim($this->chat_auth['avatar']) : '';
 			$auth_hash     = trim( $this->chat_auth['auth_hash'] );
 			$user_type     = trim( $this->chat_auth['type'] );
 			$ip_address    = ( isset( $_SERVER['HTTP_X_FORWARD_FOR'] ) ) ? $_SERVER['HTTP_X_FORWARD_FOR'] : $_SERVER['REMOTE_ADDR'];
