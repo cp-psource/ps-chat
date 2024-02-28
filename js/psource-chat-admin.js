@@ -4,7 +4,7 @@
 	jQuery(document).ready(function () {
 		
 		/* controls the show/hide of the Row Name/Avatar form fields. Save some space. */
-		jQuery('select#chat_row_name_avatar').change(function(){
+		jQuery('select#chat_row_name_avatar').on('change', function(){
 			var option_selected = jQuery(this).val();
 
 			if (option_selected == "avatar") {
@@ -29,7 +29,7 @@
 			}
 		});
 		
-		jQuery('select#chat_users_list_show').change(function(){
+		jQuery('select#chat_users_list_show').on('change', function(){
 			var option_selected = jQuery(this).val();
 
 			if (option_selected == "avatar") {
@@ -57,7 +57,7 @@
 			} 
 		});
 
-		jQuery('select#chat_load_jscss_all').change(function(){
+		jQuery('select#chat_load_jscss_all').on('change', function(){
 			var option_selected = jQuery(this).val();
 
 			if (option_selected == "enabled") {
@@ -70,7 +70,7 @@
 			} 
 		});
 
-		jQuery('select#psource_chat_wp_admin').change(function(){
+		jQuery('select#psource_chat_wp_admin').on('change', function(){
 			var option_selected = jQuery(this).val();
 
 			if (option_selected == "enabled") {
@@ -81,7 +81,7 @@
 			} 
 		});
 
-		jQuery('select#psource_chat_wp_toolbar').change(function(){
+		jQuery('select#psource_chat_wp_toolbar').on('change', function(){
 			var option_selected = jQuery(this).val();
 
 			if (option_selected == "enabled") {
@@ -92,7 +92,7 @@
 			} 
 		});
 
-		jQuery('select#psource_chat_dashboard_friends_widget').change(function(){
+		jQuery('select#psource_chat_dashboard_friends_widget').on('change', function(){
 			var option_selected = jQuery(this).val();
 
 			if (option_selected == "enabled") {
@@ -103,7 +103,7 @@
 			} 
 		});
 
-		jQuery('select#psource_chat_dashboard_widget').change(function(){
+		jQuery('select#psource_chat_dashboard_widget').on('change', function(){
 			var option_selected = jQuery(this).val();
 
 			if (option_selected == "enabled") {

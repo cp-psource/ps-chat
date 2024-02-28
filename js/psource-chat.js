@@ -181,14 +181,6 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                             }
                             psource_chat.chat_session_set_auth_view();
                             psource_chat.chat_session_sound_setup(0);
-
-                            // If the user auth type is 'wordpress' we don't want to load the third party libs. Save some overhead.
-                            if (psource_chat.settings['auth']['type'] != "wordpress") {
-                                psource_chat.chat_session_facebook_setup();
-                                psource_chat.chat_session_google_plus_setup();
-                                psource_chat.chat_session_twitter_setup();
-                            }
-
                             psource_chat.chat_session_size_box();
                             psource_chat.chat_session_size_message_list();
                             psource_chat.chat_session_message_update();
@@ -2342,31 +2334,6 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             } else if (psource_chat.settings['auth']['type'] == "public_user") {
                 psource_chat.settings['auth'] = {};
 
-            } else if (psource_chat.settings['auth']['type'] == "facebook") {
-                FB.logout();
-                psource_chat.settings['auth'] = {};
-
-            } else if (psource_chat.settings['auth']['type'] == "google_plus") {
-                if ((psource_chat.settings['auth']['access_token'] != "") && (psource_chat.settings['auth']['access_token'] != undefined)) {
-                    psource_chat.settings['auth'] = {};
-                    var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' + psource_chat.settings['auth']['access_token'];
-                    jQuery.ajax({
-                        type: 'GET',
-                        url: revokeUrl,
-                        async: false,
-                        contentType: "application/json",
-                        dataType: 'jsonp',
-                        success: function (nullResponse) {
-                            //console.log('logout success');
-                            psource_chat.settings['auth'] = {};
-                        },
-                        error: function (e) {
-                            //console.log('logout error');
-                        }
-                    });
-                }
-            } else if (psource_chat.settings['auth']['type'] == "twitter") {
-                psource_chat.settings['auth'] = {};
             }
 
             // Update our cookie
@@ -2750,140 +2717,6 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             }
         });
     },
-    chat_session_facebook_setup: function () {
-        //console.log('in chat_session_facebook_setup');
-        if (psource_chat_localized['settings']['facebook_active'] == "1") {
-            //console.log('using FB');
-
-            if (!jQuery('#fb-root').length) {
-                jQuery("body").append('<div id="fb-root"></div>');
-            }
-            FB.init({
-                appId: psource_chat_localized['settings']['facebook_app_id'],
-                status: true,
-                cookie: true,
-                xfbml: true
-            });
-            FB.XFBML.parse();
-
-            FB.Event.subscribe('auth.statusChange', function (response) {
-                var _cookie_auth_str = psource_chat.cookie('psource-chat-auth');
-                if (_cookie_auth_str == '') {
-                    psource_chat.settings['auth'] = {};
-                } else {
-                    psource_chat.settings['auth'] = JSON.parse(_cookie_auth_str);
-                }
-
-                if (response.status === 'connected') {
-                    //console.log('FB connected %o', response);
-                    FB.api('/me', function (response) {
-                        if (response.id != undefined) {
-
-                            var user_info = {};
-                            user_info['type'] = 'facebook';
-                            user_info['id'] = response.id
-                            user_info['name'] = response.name;
-                            user_info['profile_link'] = response.link;
-                            user_info['avatar'] = "http://graph.facebook.com/" + response.id + "/picture";
-                            user_info['email'] = '';
-
-                            psource_chat.chat_session_user_login(user_info, '');
-
-                        } else {
-                            if ((psource_chat.settings['auth']['type'] != undefined) && (psource_chat.settings['auth']['type'] == "facebook")) {
-                                psource_chat.settings['auth'] = {};
-
-                                psource_chat.cookie('psource-chat-auth', JSON.stringify(psource_chat.settings['auth']), {
-                                    path: psource_chat_localized['settings']['cookiepath'],
-                                    domain: psource_chat_localized['settings']['cookie_domain']
-                                });
-                                psource_chat.chat_session_set_auth_view();
-                            }
-                        }
-                    });
-                } else if (response.status === 'not_authorized') {
-                    //console.log('FB not_authorized %o', response);
-
-                    if ((psource_chat.settings['auth']['type'] != undefined) && (psource_chat.settings['auth']['type'] == "facebook")) {
-                        psource_chat.settings['auth'] = {};
-                        psource_chat.cookie('psource-chat-auth', JSON.stringify(psource_chat.settings['auth']), {
-                            path: psource_chat_localized['settings']['cookiepath'],
-                            domain: psource_chat_localized['settings']['cookie_domain']
-                        });
-                        psource_chat.chat_session_set_auth_view();
-                    }
-
-                } else {
-                    //console.log('FB unknown %o', response);
-                    if ((psource_chat.settings['auth']['type'] != undefined) && (psource_chat.settings['auth']['type'] == "facebook")) {
-                        psource_chat.settings['auth'] = {};
-                        psource_chat.cookie('psource-chat-auth', JSON.stringify(psource_chat.settings['auth']), {
-                            path: psource_chat_localized['settings']['cookiepath'],
-                            domain: psource_chat_localized['settings']['cookie_domain']
-                        });
-                        psource_chat.chat_session_set_auth_view();
-                    }
-                }
-            });
-
-        } else {
-            jQuery('div.psource-chat-box span.chat-facebook-signin-btn').hide();
-        }
-        return;
-    },
-    chat_session_google_plus_setup: function () {
-        if (psource_chat_localized['settings']['google_plus_active'] == "1") {
-
-            var po = document.createElement('script');
-            po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://apis.google.com/js/client:plusone.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        }
-    },
-
-
-    chat_session_twitter_setup: function () {
-        if (psource_chat_localized['settings']['twitter_active'] == 1) {
-            //console.log('Twitter active');
-            jQuery('.psource-chat-box .psource-chat-module-login a.chat-twitter-signin-btn').on( "click", function (event) {
-                event.preventDefault();
-                //var popup_href = jQuery(this).attr('href');
-                if (window.location.search == "") {
-                    var popup_href = window.location.href + "?" + "psource-chat-action=pop-twitter";
-                } else {
-                    var popup_href = window.location.href + "&psource-chat-action=pop-twitter";
-                }
-                //console.log('popup_href=['+popup_href+']');
-                window.location.href = popup_href;
-
-// The following is not longer used but produces a popup window for Teitter Auth. Using the above is a redirect and cleaner.
-                /*
-                 var popup_twitter_auth = window.open(popup_href, "", "width=600,height=500,resizable=yes,scrollbars=yes");
-                 if ((popup_twitter_auth == null || typeof(popup_twitter_auth) =='undefined')) {
-                 //alert("Your browser has blocked a popup window\n\nWe try to open the following url:\n"+popup_href);
-                 window.location(popup_href);
-                 } else  {
-                 var pollTimerTwitter = window.setInterval(function() {
-                 if (popup_twitter_auth.closed !== false) {
-                 console.log("Twitter Pop-up is closed");
-                 window.clearInterval(pollTimerTwitter);
-                 var auth_cookie = psource_chat.cookie('psource-chat-auth');
-                 if ((auth_cookie != undefined) && (!jQuery.isEmptyObject(auth_cookie))) {
-                 psource_chat.settings['auth'] = JSON.parse(auth_cookie);
-                 psource_chat.chat_session_set_auth_view();
-                 }
-                 }
-                 }, 1000);
-                 }
-                 */
-                return false;
-
-            });
-        }
-    },
-
 
     wp_admin_bar_setup: function () {
 
@@ -2989,7 +2822,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         }
 
         if (jQuery('select.psource-chat-status-widget').length) {
-            jQuery('select.psource-chat-status-widget').change(function (event) {
+            jQuery('select.psource-chat-status-widget').on('change', function (event) {
                 event.preventDefault();
 
                 var user_new_status = jQuery(this).val();
@@ -3097,38 +2930,3 @@ jQuery(document).ready(function () {
         }
     });
 });
-
-function PSOURCEChatGooglePlusSigninCallback(authResult) {
-    if (authResult['access_token']) {
-        // Successfully authorized
-        // Hide the sign-in button now that the user is authorized, for example:
-        //document.getElementById('signinButton').setAttribute('style', 'display: none');
-
-        jQuery.ajax({
-            type: "GET",
-            url: "https://www.googleapis.com/plus/v1/people/me?access_token=" + authResult['access_token'],
-            cache: false,
-            dataType: "json",
-            success: function (response) {
-                if (response.id != undefined) {
-
-                    var user_info = {};
-                    user_info['access_token'] = authResult['access_token'];
-                    user_info['type'] = 'google_plus';
-                    user_info['id'] = response['id'];
-                    user_info['name'] = response['displayName'];
-                    user_info['profile_link'] = response['url'];
-                    user_info['avatar'] = response['image']['url'];
-
-                    psource_chat.chat_session_user_login(user_info, '');
-                }
-            }
-        });
-    } else if (authResult['error']) {
-        // There was an error.
-        // Possible error codes:
-        //   "access_denied" - User denied access to your app
-        //   "immediate_failed" - Could not automatially log in the user
-        // console.log('There was an error: ' + authResult['error']);
-    }
-}

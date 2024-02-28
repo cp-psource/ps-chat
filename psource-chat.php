@@ -4,7 +4,7 @@ Plugin Name: PS Chat
 Plugin URI: https://cp-psource.github.io/ps-chat/
 Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
 Author: PSOURCE
-Version: 2.4.8
+Version: 2.5.0
 Author URI: https://github.com/cp-psource
 Text Domain: psource-chat
 Domain Path: /languages
@@ -34,9 +34,10 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 }
 if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
+		public $tips;
 		private $_admin_panels;
     	private $_pagehooks;
-		var $chat_current_version = '2.4.8';
+		var $chat_current_version = '2.5.0';
 		//var $translation_domain = 'psource-chat';
 
 		/**
@@ -1050,12 +1051,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'session_poll_interval_meta'     => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_META' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_META : '5',
 				'session_poll_type'              => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE : 'wordpress',
 				'session_performance'            => 'disabled',
-				'twitter_api_key'                => '',
-				'twitter_api_secret'             => '',
-				'google_plus_application_id'     => '',
-				'facebook_application_id'        => '',
-				'facebook_application_secret'    => '',
-				'facebook_active_in_site'        => '',
 				'blocked_ip_addresses_active'    => defined( 'PSOURCE_CHAT_GLOBAL_BLOCKED_IP_ADDRESSES_ACTIVE' ) ? PSOURCE_CHAT_GLOBAL_BLOCKED_IP_ADDRESSES_ACTIVE : 'disabled',
 				'blocked_ip_addresses'           => array( '0.0.0.0' ),
 				'blocked_admin_urls_action'      => 'exclude',
@@ -1172,9 +1167,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->chat_localized['settings']                              = array();
 			$this->chat_localized['settings']['ajax_url']                  = admin_url( 'admin-ajax.php', 'relative' );
 			$this->chat_localized['settings']['plugin_url']                = plugins_url( "/", __FILE__ );
-			$this->chat_localized['settings']['google_plus_text_sign_out'] = __( 'Google abmelden', 'psource-chat' );
-			$this->chat_localized['settings']['facebook_text_sign_out']    = __( 'Facebook abmelden', 'psource-chat' );
-			$this->chat_localized['settings']['twitter_text_sign_out']     = __( 'Twitter abmelden', 'psource-chat' );
 
 			$this->chat_localized['settings']['please_wait']       = __( 'Bitte warte...', 'psource-chat' );
 			$this->chat_localized['settings']['row_delete_text']   = __( 'ausblenden', 'psource-chat' );
@@ -1186,26 +1178,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->chat_localized['settings']['user_declined_chat'] = __( 'Abgelehnt', 'psource-chat' );
 
 			$this->chat_localized['settings']['wp_is_mobile'] = wp_is_mobile();
-
-
-			$this->chat_localized['settings']["twitter_active"] = false;
-			if ( $this->get_option( 'twitter_api_key', 'global' ) != '' ) {
-				$this->chat_localized['settings']["twitter_active"] = true;
-			}
-
-			$this->chat_localized['settings']["facebook_active"] = false;
-			if ( $this->get_option( 'facebook_application_id', 'global' ) != '' ) {
-				$this->chat_localized['settings']["facebook_app_id"] = $this->get_option( 'facebook_application_id', 'global' );
-				if ( $this->get_option( 'facebook_active_in_site', 'global' ) == "yes" ) {
-					$this->chat_localized['settings']["facebook_active"] = true;
-				}
-			}
-
-			$this->chat_localized['settings']["google_plus_active"] = false;
-			if ( $this->get_option( 'google_plus_application_id', 'global' ) != '' ) {
-				$this->chat_localized['settings']["google_plus_active"]         = true;
-				$this->chat_localized['settings']["google_plus_application_id"] = $this->get_option( 'google_plus_application_id', 'global' );
-			}
 
 			$this->chat_localized['settings']["session_poll_interval_messages"] = $this->get_option( 'session_poll_interval_messages', 'global' );
 			if ( $this->chat_localized['settings']["session_poll_interval_messages"] < 0 ) {
@@ -1618,13 +1590,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			wp_register_script( 'psource-chat-admin-js', plugins_url( '/js/psource-chat-admin.js', __FILE__ ), array( 'jquery' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-admin-farbtastic-js', plugins_url( '/js/psource-chat-admin-farbtastic.js', __FILE__ ), array(), $this->chat_current_version, true );
 
-			//Facebook Script
-			$locale = get_locale();
-			$scheme = is_ssl() ? 'https://' : 'http://';
-
-			// We use 'facebook-all' to match our Ultimate Facebook plugin which enques the same script. Prevents enque duplication
-			wp_register_script( 'facebook-all', $scheme . 'connect.facebook.net/' . $locale . '/all.js' );
-
 			//$_SCRIPTS_LOADED = false;
 			$_BLOCK_URL = false;
 
@@ -1686,12 +1651,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				wp_enqueue_script( 'json2' );
 				$this->_registered_scripts['json2'] = 'json2';
 
-				//Facebook Scripts
-				if ( $this->chat_localized['settings']["facebook_active"] === true ) {
-					wp_enqueue_script( 'facebook-all' );
-					$this->_registered_scripts['facebook-all'] = 'facebook-all';
-				}
-
 				$this->_registered_styles['psource-chat-style'] = 'psource-chat-style';
 
 				wp_enqueue_script( 'psource-chat-js' );
@@ -1699,10 +1658,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			}
 		}
 
-
 		/**
-		 * Special logic. We load two templates. One is the Twitter login popup. The second is the pop-out chat option. Both options pass query string parameters
-		 * which are checked within this function. If we find a match we load the special template and exit.
+		 * We load the pop-out chat option.
 		 *
 		 * @global    none
 		 *
@@ -1739,13 +1696,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 								}
 							}
 						}
-						break;
-
-					case 'pop-twitter':
-						load_template( dirname( __FILE__ ) . '/templates/psource-chat-pop-twitter-auth.php' );
-						die();
-
-						break;
+					break;
 				}
 			}
 		}
@@ -1891,7 +1842,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		}
 
 		function set_chat_localized() {
-			if ( $this->get_option( 'session_poll_type', 'global' ) == "wordpress" ) {
+			if ( $this->get_option( 'session_poll_type', 'global' ) == "plugin" ) {
 				if ( psource_chat_validate_config_file( $this->_chat_plugin_settings['config_file'], 'ABSPATH' ) === true ) {
 					$this->chat_localized['settings']["ajax_url"] = plugins_url( '/psource-chat-ajax.php', __FILE__ );
 				} else {
@@ -2034,13 +1985,15 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			require( dirname( __FILE__ ) . '/lib/psource_chat_admin_panels.php' );
 			$this->_admin_panels = new psource_chat_admin_panels();
 
-			add_menu_page( _x( "PS-Chat", 'page label', 'psource-chat' ),
+			add_menu_page(
+				_x( "PS-Chat", 'page label', 'psource-chat' ),
 				_x( "PS-Chat", 'menu label', 'psource-chat' ),
 				'manage_options',
 				'chat_settings_panel',
 				array( $this->_admin_panels, 'chat_settings_panel_page' ),
 				'dashicons-format-status',
-			    plugin_dir_url( __FILE__ ) .'images/icon/greyscale-16.png'
+				10, // Setzen Sie hier die Position des Menüs, z.B. 10
+				plugin_dir_url( __FILE__ ) . 'images/icon/greyscale-16.png' // Verschieben des Icons an diese Stelle
 			);
 
 			$this->_pagehooks['chat_settings_panel_page'] = add_submenu_page( 'chat_settings_panel',
@@ -3270,17 +3223,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				// If the chat_auth type is not yet set. check the allowed login_options. If we are not allowing non-WP
 				// user then abort. No use showing the chat
 				if ( ! isset( $this->chat_auth['type'] ) ) {
-					if ( ( ! $this->use_public_auth( $chat_session ) )
-					     && ( ! $this->use_facebook_auth( $chat_session ) )
-					     && ( ! $this->use_twitter_auth( $chat_session ) )
-					     && ( ! $this->use_google_plus_auth( $chat_session ) )
-					) {
+					if ( ! $this->use_public_auth( $chat_session ) ) {
 						return false;
 					}
-
 				} else {
-					//log_chat_message(__FUNCTION__ .": ". __LINE__ .": here");;
-
 					// Need to check the user.
 					// Check for WordPress users
 					if ( $this->chat_auth['type'] == "wordpress" ) {
@@ -3332,9 +3278,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 							}
 						}
 					} else {
-						// Check for other: Facebook, Twitter, Google+, Public
+						// Check for other: Public
 						if ( ! in_array( $this->chat_auth['type'], $chat_session['login_options'] ) ) {
-							//log_chat_message(__FUNCTION__ .": ". __LINE__ .": here");;
 							return false;
 						}
 					}
@@ -4190,7 +4135,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 		/**
 		 * Adds the login module to the chat box. The module is just a div container displayed within the outer chat box div.
-		 * The login module is a container for the public login form, as well as Facebook, Twitter and Google+ buttons
+		 * The login module is a container for the public login form
 		 *
 		 * @global    none
 		 *
@@ -4201,36 +4146,14 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		function chat_session_login_module( $chat_session ) {
 			$content = '';
 
-			if ( ( $this->use_facebook_auth( $chat_session ) ) || ( $this->use_google_plus_auth( $chat_session ) ) || ( $this->use_twitter_auth( $chat_session ) ) || ( $this->use_public_auth( $chat_session ) ) ) {
-
+			// Nur die öffentliche Authentifizierung verwenden
+			if ( $this->use_public_auth( $chat_session ) ) {
 				$content .= $this->chat_login_public( $chat_session );
-				$content_auth         = '';
-				$twitter_login_button = $this->chat_login_twitter( $chat_session );
-				if ( ! empty( $twitter_login_button ) ) {
-					$content_auth .= '<span class="psource-chat-login-button">' . $twitter_login_button . '</span>';
-				}
-				$google_login_button = $this->chat_login_google_plus( $chat_session );
-				if ( ! empty( $google_login_button ) ) {
-					$content_auth .= '<span class="psource-chat-login-button">' . $google_login_button . '</span>';
-				}
-
-				$facebook_login_button = $this->chat_login_facebook( $chat_session );
-				if ( ! empty( $facebook_login_button ) ) {
-					$content_auth .= '<span class="psource-chat-login-button">' . $facebook_login_button . '</span>';
-				}
-
-				if ( ! empty( $content_auth ) ) {
-					$content .= '<div class="login-message">' . __( 'Melde Dich an mit:', 'psource-chat' ) . '</div>';
-					$content .= '<div class="chat-login-wrap">';
-					$content .= $content_auth;
-					$content .= '</div>';
-				}
-
-				$container_style = 'display:none;';
-
-				$content = $this->chat_session_module_wrap( $chat_session, $content, 'psource-chat-module-login', $container_style );
-
 			}
+
+			// Wrapper für das Login-Modul erstellen
+			$container_style = 'display:none;';
+			$content = $this->chat_session_module_wrap( $chat_session, $content, 'psource-chat-module-login', $container_style );
 
 			return $content;
 		}
@@ -4590,11 +4513,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', 'psource-chat' ) . '" href="' . add_query_arg( array(
 					'psource-chat-action' => 'pop-out',
 					'psource-chat-key'    => base64_encode( $transient_key )
-				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-expand"></span></a></li>';
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#x25B2;</a></li>';
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', 'psource-chat' ) . '" href="' . add_query_arg( array(
 					'psource-chat-action' => 'pop-in',
 					'psource-chat-id'     => base64_encode( $chat_session['id'] )
-				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="dashicons dashicons-editor-contract"></span></a></li>';
+				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#9660;</a></li>';
 			}
 
 			$chat_header_actions .= '</ul></div>';
@@ -4949,156 +4872,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		}
 
 		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function is_facebook_setup() {
-			if ( ( $this->get_option( 'facebook_application_id', 'global' ) != '' ) && ( $this->get_option( 'facebook_application_secret', 'global' ) != '' ) ) {
-				return true;
-			}
-
-			return false;
-		}
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function use_facebook_auth( $chat_session ) {
-			return ( ( in_array( 'facebook', $chat_session['login_options'] ) ) && ( $this->get_option( 'facebook_application_id', 'global' ) != '' ) );
-		}
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function chat_login_facebook( $chat_session ) {
-			$content = '';
-
-			if ( $this->use_facebook_auth( $chat_session ) ) {
-				$content .= '<span id="chat-facebook-signin-btn-' . $chat_session['id'] . '"
-				class="chat-auth-button chat-facebook-signin-btn"><fb:login-button></fb:login-button></span>';
-			}
-
-			return $content;
-		}
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function is_google_plus_setup() {
-			if ( $this->get_option( 'google_plus_application_id', 'global' ) != '' ) {
-				return true;
-			}
-
-			return false;
-		}
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function use_google_plus_auth( $chat_session ) {
-			return ( ( in_array( 'google_plus', $chat_session['login_options'] ) ) && ( $this->get_option( 'google_plus_application_id', 'global' ) != '' ) );
-		}
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function chat_login_google_plus( $chat_session ) {
-			$content = '';
-
-			if ( $this->use_google_plus_auth( $chat_session ) ) {
-				$content .= '<span class="g-signin" data-callback="PSOURCEChatGooglePlusSigninCallback" data-clientid="' . $this->get_option( 'google_plus_application_id', 'global' )
-				            . '" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login"></span>';
-			}
-
-			return $content;
-		}
-
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function is_twitter_setup() {
-			if ( $this->get_option( 'twitter_api_key', 'global' ) != '' ) {
-				return true;
-			}
-
-			return false;
-		}
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function use_twitter_auth( $chat_session ) {
-			return ( ( in_array( 'twitter', $chat_session['login_options'] ) ) && ( $this->get_option( 'twitter_api_key', 'global' ) != '' ) );
-		}
-
-		/**
-		 *
-		 *
-		 * @global    none
-		 *
-		 * @param    none
-		 *
-		 * @return    none
-		 */
-		function chat_login_twitter( $chat_session ) {
-			$content = '';
-
-			if ( $this->use_twitter_auth( $chat_session ) ) {
-				$content .= '<a href="#" id="chat-twitter-signin-btn-' . $chat_session['id'] . '" class="chat-auth-button chat-twitter-signin-btn"></a>';
-			}
-
-			return $content;
-		}
-
-		/**
 		 * @see        http://codex.wordpress.org/TinyMCE_Custom_Buttons
 		 */
 		function tinymce_register_button( $buttons ) {
@@ -5357,16 +5130,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$reply_data['user_info'] = $user_info;
 					break;
 
-				case 'facebook':
-				case 'google_plus':
-				case 'twitter':
-					$user_info['ip_address'] = ( isset( $_SERVER['HTTP_X_FORWARD_FOR'] ) ) ? $_SERVER['HTTP_X_FORWARD_FOR'] : $_SERVER['REMOTE_ADDR'];
-					$user_info['auth_hash']  = md5( $user_info['id'] . $user_info['ip_address'] );
-					$reply_data['user_info'] = $user_info;
-					break;
-
-				default:
-					break;
+					default:
+				break;
 			}
 			wp_send_json( $reply_data );
 			die();
@@ -6862,7 +6627,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$chat_id       = $chat_session['id'];
 			$session_type  = trim( $chat_session['session_type'] );
 			$name          = trim( $this->chat_auth['name'] );
-			$user_avatar   = trim( $this->chat_auth['avatar'] );
+			$user_avatar = isset($this->chat_auth['avatar']) ? trim($this->chat_auth['avatar']) : '';
 			$auth_hash     = trim( $this->chat_auth['auth_hash'] );
 			$user_type     = trim( $this->chat_auth['type'] );
 			$ip_address    = ( isset( $_SERVER['HTTP_X_FORWARD_FOR'] ) ) ? $_SERVER['HTTP_X_FORWARD_FOR'] : $_SERVER['REMOTE_ADDR'];

@@ -143,7 +143,7 @@ function psource_chat_form_section_logs( $form_section = 'page' ) {
 										?>
 									</optgroup>
 									<option value="public" <?php print ( $psource_chat->get_option( 'log_display_role_level',
-											$form_section ) == 'public' ) ? 'selected="selected"' : ''; ?>><?php _e( "Öffentlich, Facebook, Twitter, Google",
+											$form_section ) == 'public' ) ? 'selected="selected"' : ''; ?>><?php _e( "Öffentlich",
 											'psource-chat' ); ?></option>
 								</select>
 							</td>
@@ -536,38 +536,17 @@ function psource_chat_form_section_login_options( $form_section = 'page' ) {
 							<strong><?php _e( "Andere Anmeldeoptionen:", 'psource-chat' ); ?></strong>
 						</p>
 						<ul id="psource-chat-login-options-list-other" class="psource-chat-user-roles-list">
-
-							<li><input type="checkbox" id="chat_login_options_public_user"
-									name="chat[login_options][]" class="chat_login_options" value="public_user"
-									<?php print ( in_array( 'public_user', $psource_chat->get_option( 'login_options', $form_section ) ) > 0 ) ? 'checked="checked"' : ''; ?>
-									/> <label><?php _e( 'Öffentliche Benutzer', 'psource-chat' ); ?></label>
-							</li>
-
-							<?php if ( $form_section != "network-site" ) { ?>
-								<li><input type="checkbox" id="chat_login_options_twitter"
-										name="chat[login_options][]" class="chat_login_options" value="twitter"
-										<?php print ( ! $psource_chat->is_twitter_setup() ) ? 'disabled="disabled"' : ''; ?>
-										<?php print ( in_array( 'twitter', $psource_chat->get_option( 'login_options', $form_section ) ) > 0 ) ? 'checked="checked"' : ''; ?> />
-									<label><?php _e( 'Twitter', 'psource-chat' ); ?></label> <a
-										href="admin.php?page=chat_settings_panel_global#psource_chat_twitter_panel"><?php
-										_e( 'Setup', 'psource-chat' ) ?></a></li>
-
-								<li><input type="checkbox" id="chat_login_options_google_plus"
-										name="chat[login_options][]" class="chat_login_options" value="google_plus"
-										<?php print ( ! $psource_chat->is_google_plus_setup() ) ? 'disabled="disabled"' : ''; ?>
-										<?php print ( in_array( 'google_plus', $psource_chat->get_option( 'login_options', $form_section ) ) > 0 ) ? 'checked="checked"' : ''; ?> />
-									<label><?php _e( 'Google+', 'psource-chat' ); ?></label> <a
-										href="admin.php?page=chat_settings_panel_global#psource_chat_google_plus_panel"><?php
-										_e( 'Setup', 'psource-chat' ) ?></a></li>
-
-								<li><input type="checkbox" id="chat_login_options_facebook"
-										name="chat[login_options][]" class="chat_login_options" value="facebook"
-										<?php print ( ! $psource_chat->is_facebook_setup() ) ? 'disabled="disabled"' : ''; ?>
-										<?php print ( in_array( 'facebook', $psource_chat->get_option( 'login_options', $form_section ) ) > 0 ) ? 'checked="checked"' : ''; ?> />
-									<label><?php _e( 'Facebook', 'psource-chat' ); ?></label> <a
-										href="admin.php?page=chat_settings_panel_global#psource_chat_facebook_panel"><?php
-										_e( 'Setup', 'psource-chat' ) ?></a></li>
-							<?php } ?>
+						<li>
+						<input type="checkbox" id="chat_login_options_public_user"
+						name="chat[login_options][]" class="chat_login_options" value="public_user"
+						<?php
+						$login_options = $psource_chat->get_option('login_options', $form_section);
+						if (is_array($login_options) && in_array('public_user', $login_options)) {
+							echo 'checked="checked"';
+						}
+						?>
+						/> <label><?php _e('Öffentliche Benutzer', 'psource-chat'); ?></label>
+					</li>
 						</ul>
 					<?php } ?>
 				</td>
@@ -1354,7 +1333,7 @@ function psource_chat_form_section_login_view_options( $form_section = 'page' ) 
 			</tr>
 			<tr>
 				<td class="chat-label-column-wide">
-					<label for="chat_noauth_login_message"><?php _e( 'Anmeldeformular Nachricht wird über den Anmeldefeldern und der Facebook-Schaltfläche angezeigt', 'psource-chat' ); ?></label><br/>
+					<label for="chat_noauth_login_message"><?php _e( 'Anmeldeformular Nachricht wird über den Anmeldefeldern angezeigt', 'psource-chat' ); ?></label><br/>
 					<input name="chat[noauth_login_message]" id="chat_noauth_login_message" style="width: 100%"
 						value="<?php echo $noauth_login_message ?>"/>
 
@@ -1363,51 +1342,6 @@ function psource_chat_form_section_login_view_options( $form_section = 'page' ) 
 				<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'noauth_login_message', 'tip' ); ?></td>
 			</tr>
 
-		</table>
-	</fieldset>
-<?php
-}
-
-
-function psource_chat_form_section_twitter( $form_section = 'global' ) {
-	global $psource_chat;
-	?>
-	<fieldset>
-		<legend><?php _e( 'Twitter', 'psource-chat' ); ?></legend>
-
-		<p class="info"><?php _e( sprintf( 'Gib Deinen Besuchern die Möglichkeit sich per Twitter zu Deinen Chats anzumelden.' ), 'psource-chat' ); ?></p>
-		<table border="0" cellpadding="4" cellspacing="0">
-			<tr>
-				<td style="vertical-align:top; width: 35%">
-					<label for="chat_twitter_api_key"><?php _e( 'Consumer Key', 'psource-chat' ); ?></label><br/>
-					<input type="text" id="chat_twitter_api_key" name="chat[twitter_api_key]"
-						value="<?php print $psource_chat->get_option( 'twitter_api_key', $form_section ); ?>" class="" style="width: 90%" size="30"/><br/><br/>
-
-					<label for="chat_twitter_api_secret"><?php _e( 'Consumer Secret', 'psource-chat' ); ?></label><br/>
-					<input type="password" id="chat_twitter_api_secret" name="chat[twitter_api_secret]"
-						value="<?php print $psource_chat->get_option( 'twitter_api_secret', $form_section ); ?>" class="" style="width: 90%" size="30"/>
-				</td>
-				<td class="info" style="vertical-align:top; width: 65%">
-					<ol>
-						<li><?php _e( sprintf( 'Melde Dich bei Deinem Twitterkonto an und navigiere zur <a target="_blank" href="%s">Twitter Developer</a> Sektion.', "https://dev.twitter.com/apps" ), 'psource-chat' ); ?></li>
-
-						<li><?php _e( sprintf( 'Wenn Du bereits eine Twitter-Anwendung für Deine Website registriert hast, kannst Du denselben Verbraucherschlüssel und dieselben geheimen Verbraucherschlüssel wiederverwenden.', "https://dev.twitter.com/apps" ), 'psource-chat' ); ?></li>
-
-
-						<li><?php _e( sprintf( "Wenn Du eine neue Anwendung erstellen musst, kannst Du auf <strong> Neue Anwendung erstellen </strong> klicken und die restlichen Anweisungen unten befolgen.", "https://dev.twitter.com/apps" ), 'psource-chat' ); ?></li>
-						<li><?php _e( 'Fill in the form with values for your website:', 'psource-chat' ); ?>
-							<ul>
-								<li><?php _e( '<strong>Name</strong>: Sollte der Name Deiner Webseite sein.', 'psource-chat' ); ?></li>
-								<li><?php _e( '<strong>Description</strong>: Sollte eine kurze Beschreibung Deiner Webseite sein.', 'psource-chat' ); ?></li>
-								<li><?php _e( '<strong>Website</strong>: Should be the home URL of your website. <strong>Not the page where Chat is displayed</strong>', 'psource-chat' ); ?></li>
-								<li><?php _e( '<strong>Callback URL</strong>: Sollte die Home-URL Deiner Website sein', 'psource-chat' ); ?>
-									<strong><?php print get_bloginfo( 'url' ); ?></strong></li>
-							</ul>
-						</li>
-						<li><?php _e( 'Nachdem Du das App-Formular gesendet hast, werden auf der nächsten Seite die Details für Deine neue Twitter-App angezeigt. Kopiere die Werte für den <strong>Verbraucherschlüssel</strong> und das <strong>Verbrauchergeheimnis</strong> in die Formularfelder auf dieser Seite.', 'psource-chat' ); ?></li>
-					</ol>
-				</td>
-			</tr>
 		</table>
 	</fieldset>
 <?php
@@ -1493,32 +1427,18 @@ function psource_chat_form_section_polling_content( $form_section = 'global' ) {
 		<table border="0" cellpadding="4" cellspacing="0">
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_session_poll_type"><?php _e( 'Wählen für die Abfrage verwendete AJAX-Variante (PS-Chat AJAX empfohlen)',
+					<label for="chat_session_poll_type"><?php _e( 'Wählen für die Abfrage verwendete AJAX-Variante (System AJAX empfohlen)',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column"><?php
 					?><select id="chat_session_poll_type" name="chat[session_poll_type]">
 						<?php if ( $_use_plugin_ajax === true ) { ?>
-							<option value="plugin" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'wordpress' ) ? 'selected="selected"' : ''; ?>><?php _e( 'System AJAX', 'psource-chat' ); ?></option><?php
+							<option value="wordpress" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'wordpress' ) ? 'selected="selected"' : ''; ?>><?php _e( 'System AJAX', 'psource-chat' ); ?></option><?php
 						} ?>
-						<option value="wordpress" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'plugin' ) ? 'selected="selected"' : ''; ?>><?php _e( 'PS-Chat AJAX', 'psource-chat' ); ?></option>
+						<option value="plugin" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'plugin' ) ? 'selected="selected"' : ''; ?>><?php _e( 'PS-Chat AJAX', 'psource-chat' ); ?></option>
 					</select>
 				</td>
 				<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'session_poll_type', 'tip' ); ?></td>
 			</tr>
-			<?php /*?>
-		<tr>
-			<td class="chat-label-column"><label for="chat_session_static_file_path"><?php _e('Static Files Directory',
-				'psource-chat'); ?></label></td>
-			<td class="chat-value-column">
-				<input type="text" id="chat_session_static_file_path" name="chat[session_static_file_path]"
-					value="<?php echo $psource_chat->get_option('session_static_file_path', $form_section); ?>" />
-				<p class="description"><?php _e('Dieses statische Dateiverzeichnis sollte beschreibbar und jederzeit über das Chat-Plugin zugänglich sein.',
-				 	'psource-chat'); ?></p>
-			</td>
-			<td class="chat-help-column"><?php echo psource_chat_get_help_item('session_static_file_path', 'tip'); ?></td>
-		</tr>
-<?php */
-			?>
 		</table>
 	</fieldset>
 
@@ -1546,119 +1466,11 @@ function psource_chat_form_section_performance_content( $form_section = 'global'
 				</td>
 				<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'session_performance', 'tip' ); ?></td>
 			</tr>
-			<?php /* ?>
-		<tr>
-			<td class="chat-label-column"><label for="chat_session_static_file_path"><?php _e('Static Files Directory',
-				'psource-chat'); ?></label></td>
-			<td class="chat-value-column">
-				<input type="text" id="chat_session_static_file_path" name="chat[session_static_file_path]"
-					value="<?php echo $psource_chat->get_option('session_static_file_path', $form_section); ?>" />
-				<p class="description"><?php _e('This static file directory should be writable and accessible at all times from the chat plugin.',
-				 	'psource-chat'); ?></p>
-			</td>
-			<td class="chat-help-column"><?php echo psource_chat_get_help_item('session_static_file_path', 'tip'); ?></td>
-		</tr>
-<?php */
-			?>
 		</table>
 	</fieldset>
 
 <?php
 }
-
-function psource_chat_form_section_facebook( $form_section = 'global' ) {
-	global $psource_chat;
-	?>
-	<fieldset>
-		<legend><?php _e( 'Facebook', 'psource-chat' ); ?></legend>
-		<table border="0" cellpadding="4" cellspacing="0">
-			<tr>
-				<td style="vertical-align:top; width: 35%">
-					<label for="chat_facebook_application_id"><?php _e( 'App ID', 'psource-chat' ); ?></label><br/>
-					<input type="text" id="chat_facebook_application_id" name="chat[facebook_application_id]" value="<?php
-					print $psource_chat->get_option( 'facebook_application_id', $form_section ); ?>" class="" style="width: 90%" size="40"/><br/><br/>
-
-					<label for="chat_facebook_application_secret"><?php _e( 'App Geheimnis', 'psource-chat' ); ?></label><br/>
-					<input type="password" id="chat_facebook_application_secret" name="chat[facebook_application_secret]"
-						value="<?php print $psource_chat->get_option( 'facebook_application_secret', $form_section ); ?>" class="" style="width: 90%" size="40"/><br/><br/>
-
-
-					<label for="chat_facebook_active_in_site"><?php _e( 'Lade Facebook JavaScript ( all.js ) Bibliothek?', 'psource-chat' ); ?></label><br/>
-					<label><input type="radio" id="chat_facebook_active_in_site" name="chat[facebook_active_in_site]" value="yes" <?php
-						print ( $psource_chat->get_option( 'facebook_active_in_site', $form_section ) == 'yes' ) ? 'checked="checked"' : ''; ?> class=""
-							/> <?php _e( 'JA', 'psource-chat' ); ?></label>
-					<label><input type="radio" id="chat_facebook_active_in_site" name="chat[facebook_active_in_site]" value="no" <?php
-						print ( $psource_chat->get_option( 'facebook_active_in_site', $form_section ) == 'no' ) ? 'checked="checked"' : ''; ?> class=""
-							/> <?php _e( 'NEIN', 'psource-chat' ); ?></label><br/>
-
-					<p class="description"><?php _e( 'Wähle NEIN, wenn Du bereits andere Facebook-Plugins ausführst.', 'psource-chat' ); ?></p>
-
-				</td>
-				<td class="info" style="vertical-align:top; width: 65%">
-
-					<ol>
-						<li><?php print sprintf( __( 'Registriere diese Seite als Anwendung auf Facebook <a target="_blank" href="%s">App-Registrierungsseite</a>', 'psource-chat' ), 'http://www.facebook.com/developers/createapp.php' ); ?></li>
-						<li><?php _e( 'Wenn Du nicht angemeldet bist, kannst Du Deinen Facebook-Benutzernamen und Passwort verwenden', 'psource-chat' ); ?></li>
-						<li><?php _e( 'Die Seiten-URL sollte sein', 'psource-chat' ); ?>
-							<b><?php print get_bloginfo( 'url' ); ?></b></li>
-						<li><?php _e( 'Sobald Du Deine Website als Anwendung registriert hast, erhältst Du eine App-ID und ein App-Geheimnis.', 'psource-chat' ); ?></li>
-						<li><?php _e( 'Kopiere sie und füge sie in die Felder links ein', 'psource-chat' ); ?></li>
-					</ol>
-				</td>
-			</tr>
-		</table>
-	</fieldset>
-<?php
-}
-
-function psource_chat_form_section_google_plus( $form_section = 'global' ) {
-	global $psource_chat;
-	?>
-	<fieldset>
-		<legend><?php _e( 'Google', 'psource-chat' ); ?></legend>
-		<p><?php _e( 'Um eine Client-ID und ein Client-Geheimnis zu erstellen, erstelle ein Google Developers Console-Projekt, aktiviere die Google API, erstelle eine OAuth 2.0-Client-ID und registriere Deine JavaScript-Ursprünge', 'psource-chat' ); ?></p>
-		<table border="0" cellpadding="4" cellspacing="0">
-			<tr>
-				<td style="vertical-align:top; width: 35%">
-					<label for="chat_google_plus_application_id"><?php _e( 'Client ID', 'psource-chat' ); ?></label><br/>
-					<input type="text" id="chat_google_plus_application_id" name="chat[google_plus_application_id]"
-						value="<?php print $psource_chat->get_option( 'google_plus_application_id', $form_section ); ?>" class="" style="width: 90%" size="30"/>
-				</td>
-				<td class="info" style="vertical-align:top; width: 65%">
-					<ol>
-						<li><?php _e( 'Melde Dich zuerst in Deinem Google Konto an', 'psource-chat' ); ?></li>
-						<li><?php echo sprintf( __( 'In der <a target="_blank" href="%s">Google Developers Console</a>, klicke auf <strong>Create Project</strong>, und gib einen Projektnamen ein (wie "Seitenname Chat").', 'psource-chat' ), "https://console.developers.google.com/project" ); ?></li>
-
-						<li><?php echo sprintf( __( 'Nach der Projekterstellung wirst Du zum Projekt-Dashboard weitergeleitet. Gehe zu <a target="_blank" href="%s">Enable and Manage APIs</a>, aktiviere <strong>Google API</strong>.', 'psource-chat' ), "https://console.developers.google.com/apis/library" ); ?></li>
-
-						<li><?php echo sprintf( __( 'Gehe zu <a target="_blank" href="%s">Credentials</a> Tab zur linken, klicke auf New Credentials und wähle <strong>OAuth client ID</strong>. Du wirst aufgefordert, zuerst den Einwilligungsbildschirm zu konfigurieren.', 'psource-chat' ), "https://console.developers.google.com/apis/credentials" ); ?>
-							<ol style="list-style-type:lower-alpha;">
-								<li><?php _e( 'In das <strong>Produkt Name</strong> Feld, gibst Du einen Namen für Deine Anwendung ein (z. B. "Wordpress Chat"). Alle anderen Felder sind optional. Klicke auf <strong>Speichern</strong>.', 'psource-chat' ); ?></li>
-								<li><?php _e( 'Gehe im Abschnitt Client-ID-Einstellungen wie folgt vor:	', 'psource-chat' ); ?>
-									<ol style="list-style-type:circle">
-										<li><?php _e( 'Wähle <em>Webanwendung</em> als <strong>Anwendungstyp</strong> aus.', 'psource-chat' ); ?></li>
-										<li><?php _e( 'Gib einen Namen für die Anmeldeinformationen an und unterscheide ihn vom Projektnamen.', 'psource-chat' ); ?></li>
-										<li><?php _e( 'Gib die vollständige Domain Deiner Seite in die <strong>autorisierten JavaScript-Ursprünge</strong> und <strong>autorisierte Weiterleitungs-URIs</strong> ein.', 'psource-chat' ); ?>
-											<strong><?php print get_bloginfo( 'url' ); ?></strong></li>
-										<li><?php _e( 'Klicke abschließend auf die Schaltfläche <strong>Erstellen</strong>.', 'psource-chat' ); ?></li>
-									</ol>
-								</li>
-							</ol>
-						</li>
-						<li><?php _e( 'Auf der nächsten Seite findest Du den Abschnitt <strong>Client-ID für Webanwendungen</strong>.', 'psource-chat' ); ?>
-							<ol style="list-style-type:lower-alpha;">
-								<li><?php _e( 'Vergewissere Dich, dass die <em>JavaScript-Ursprünge</em> mit der URL Deiner Website übereinstimmen.', 'psource-chat' ); ?></li>
-								<li><?php _e( 'Kopiere den Wert <strong>Client ID</strong> in das Feld links.', 'psource-chat' ); ?></li>
-							</ol>
-						</li>
-					</ol>
-				</td>
-			</tr>
-		</table>
-	</fieldset>
-<?php
-}
-
 
 function psource_chat_form_section_blocked_words_global( $form_section = 'banned' ) {
 	global $psource_chat;
@@ -1740,7 +1552,7 @@ function psource_chat_form_section_block_users_global( $form_section = 'global' 
 				<td class="chat-label-column chat-label-column-top">
 					<label for="chat_blocked_users"><?php _e( 'Benutzer (nur E-Mail-Adresse)', 'psource-chat' ); ?></label>
 
-					<p class="description"><?php _e( 'Eine Benutzer-E-Mail pro Zeile. Muster oder Bereiche werden nicht unterstützt. Wirkt sich nur auf öffentliche Benutzer aus. Unterstützt nicht das Blockieren von Facebook- oder Twitter Nutzern.', 'psource-chat' ); ?></p>
+					<p class="description"><?php _e( 'Eine Benutzer-E-Mail pro Zeile. Muster oder Bereiche werden nicht unterstützt. Wirkt sich nur auf öffentliche Benutzer aus.', 'psource-chat' ); ?></p>
 				</td>
 				<td class="chat-value-column">
 
@@ -2807,14 +2619,14 @@ function psource_chat_form_section_wpadmin( $form_section = 'global' ) {
 				</td>
 				<td class="chat-value-column">
 					<select name="chat_user_meta[chat_dashboard]" id="psource_chat_dashboard">
-						<option value="enabled"<?php if ( $psource_chat->_chat_options_defaults['user_meta']['chat_dashboard'] == 'enabled' ) {
+						<option value="enabled"<?php if (isset($psource_chat->_chat_options_defaults['user_meta']['chat_dashboard']) && $psource_chat->_chat_options_defaults['user_meta']['chat_dashboard'] == 'enabled') {
 							echo ' selected="selected" ';
 						} ?>><?php
-							_e( 'Aktiviert', 'psource-chat' ); ?></option>
-						<option value="disabled"<?php if ( $psource_chat->_chat_options_defaults['user_meta']['chat_dashboard'] == 'disabled' ) {
+							_e('Aktiviert', 'psource-chat'); ?></option>
+						<option value="disabled"<?php if (isset($psource_chat->_chat_options_defaults['user_meta']['chat_dashboard']) && $psource_chat->_chat_options_defaults['user_meta']['chat_dashboard'] == 'disabled') {
 							echo ' selected="selected" ';
 						} ?>><?php
-							_e( 'Deaktiviert', 'psource-chat' ); ?></option>
+							_e('Deaktiviert', 'psource-chat'); ?></option>
 					</select>
 				</td>
 				<td class="chat-help-column"><?php //echo psource_chat_get_help_item('bp_form_background_color', 'tip'); ?></td>
