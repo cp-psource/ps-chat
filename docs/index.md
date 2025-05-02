@@ -19,8 +19,6 @@ Host your own live chat sessions, interact with your visitors and boost your
 sales without needing any third party javascript or other code - works great
 with BuddyPress and Multisite too.
 
-[youtube https://www.youtube.com/watch?v=jbfXpzFmzKk]
-
 = You can use Chat lite to... =
 * Add a site-wide chat window in the bottom corner of your site
 * Add chat to any blog post or page
