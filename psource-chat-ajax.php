@@ -22,7 +22,7 @@ if (!empty($configsArray) && isset($configsArray['ABSPATH'])) {
 
 $isShortinit = ($_POST['function'] === "chat_messages_update");
 
-define('SHORTINIT', $isShortinit);
+define('SHORTINIT', false);
 define('WP_USE_THEMES', false);
 define('WP_DEBUG', false);
 define('PSOURCE_CHAT_SHORTINIT', $isShortinit);
