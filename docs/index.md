@@ -6,9 +6,8 @@ title: "PS Chat"
 <h2 align="center" style="color:#38c2bb;">📚 PS Chat</h2>
 
 <div class="menu">
-  <a href="https://github.com/cp-psource/cp-smart-crm/discussions" style="color:#38c2bb;">💬 Forum</a>
-  <a href="dokumentation.html" style="color:#38c2bb;">📝 Dokumentation</a>
-  <a href="https://github.com/cp-psource/cp-smart-crm/releases" style="color:#38c2bb;">📝 Download</a>
+  <a href="https://github.com/cp-psource/ps-chat/discussions" style="color:#38c2bb;">💬 Forum</a>
+  <a href="https://github.com/cp-psource/ps-chat/releases" style="color:#38c2bb;">📝 Download</a>
 </div>
 
 Add chat to your blog. Chat with your readers and let them chat with each other.
@@ -34,9 +33,6 @@ Separate chat windows are added  to any post or page in WordPress through a new 
 
 = Integrate With Your Theme =
 The Chat Lite Plugin gives you full control over the colors and sizes of your chats.  Get exactly the look and feel you want!
-
-= Chat Pro =
-Chat lite is a fully functional but limited version of our <a href='http://premium.wpmudev.org/project/wordpress-chat-plugin'>full Chat plugin</a>.
 
 Our full version includes many more features:
 
