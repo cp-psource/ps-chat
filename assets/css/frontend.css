@@ -1,0 +1,893 @@
+/**
+ * PS Chat Frontend Styles - Original Design
+ * Seitenkanten Chat floating overlay with all original features
+ * FORCE FIXED POSITIONING - Override any conflicting styles
+ */
+
+/* EMERGENCY POSITIONING OVERRIDE - Maximum CSS Specificity */
+html body div.psource-chat-container[data-ps-chat-positioned="true"],
+html body .psource-chat-container[id*="psource-chat"],
+html body div[id="psource-chat-seitenkanten"],
+html body .psource-chat-container,
+html .psource-chat-container,
+body .psource-chat-container,
+.psource-chat-container {
+    position: fixed !important;
+    z-index: 2147483647 !important; /* Maximum possible z-index */
+    display: block !important;
+    float: none !important;
+    clear: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateZ(0) !important; /* Force new stacking context */
+    backface-visibility: hidden !important; /* Force GPU acceleration */
+    will-change: transform !important; /* Optimize for positioning changes */
+}
+
+/* Position-specific emergency overrides */
+html body .psource-chat-container.psource-chat-bottom-right,
+html body div[id="psource-chat-seitenkanten"] {
+    bottom: 20px !important;
+    right: 20px !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+html body .psource-chat-container.psource-chat-bottom-left {
+    bottom: 20px !important;
+    left: 20px !important;
+    top: auto !important;
+    right: auto !important;
+}
+
+html body .psource-chat-container.psource-chat-top-right {
+    top: 20px !important;
+    right: 20px !important;
+    bottom: auto !important;
+    left: auto !important;
+}
+
+html body .psource-chat-container.psource-chat-top-left {
+    top: 20px !important;
+    left: 20px !important;
+    bottom: auto !important;
+    right: auto !important;
+}
+
+/* Chat Container - FORCE Fixed overlay positioning with MAXIMUM specificity */
+html body .psource-chat-container,
+html .psource-chat-container,
+body .psource-chat-container,
+.psource-chat-container {
+    width: 400px !important;
+    max-width: 90vw !important;
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid #e1e5e9 !important;
+    overflow: hidden !important;
+}
+
+/* Position Classes - FORCE fixed positioning with higher specificity */
+html .psource-chat-container.psource-chat-bottom-right,
+body .psource-chat-container.psource-chat-bottom-right {
+    bottom: 20px !important;
+    right: 20px !important;
+    top: auto !important;
+    left: auto !important;
+    position: fixed !important;
+}
+
+html .psource-chat-container.psource-chat-bottom-left,
+body .psource-chat-container.psource-chat-bottom-left {
+    bottom: 20px !important;
+    left: 20px !important;
+    top: auto !important;
+    right: auto !important;
+    position: fixed !important;
+}
+
+html .psource-chat-container.psource-chat-top-right,
+body .psource-chat-container.psource-chat-top-right {
+    top: 20px !important;
+    right: 20px !important;
+    bottom: auto !important;
+    left: auto !important;
+    position: fixed !important;
+}
+
+html .psource-chat-container.psource-chat-top-left,
+body .psource-chat-container.psource-chat-top-left {
+    top: 20px !important;
+    left: 20px !important;
+    bottom: auto !important;
+    right: auto !important;
+    position: fixed !important;
+}
+
+/* Minimized state - FORCE */
+.psource-chat-container.minimized {
+    height: 50px !important;
+    overflow: hidden !important;
+}
+
+.psource-chat-container.minimized .psource-chat-users,
+.psource-chat-container.minimized .psource-chat-messages,
+.psource-chat-container.minimized .psource-chat-typing,
+.psource-chat-container.minimized .psource-chat-input-area {
+    display: none !important;
+}
+
+/* Minimized state header styling */
+.psource-chat-container.minimized .psource-chat-header {
+    border-radius: 12px !important;
+}
+
+.psource-chat-container:not(.minimized) .psource-chat-header {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Force minimize/maximize transitions */
+.psource-chat-container {
+    transition: height 0.3s ease !important;
+}
+
+/* Override any theme/plugin styles that might interfere */
+.psource-chat-container * {
+    box-sizing: border-box !important;
+}
+
+/* Ensure it's not affected by parent containers */
+.psource-chat-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    clear: none !important;
+    display: block !important;
+}
+
+/* Chat Header */
+.psource-chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+}
+
+.psource-chat-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+}
+
+.psource-chat-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.psource-chat-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.psource-chat-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* FORCE minimize button visibility - override any theme interference */
+.psource-chat-minimize {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 28px !important;
+    height: 28px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+}
+
+.psource-chat-minimize:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.psource-chat-minimize svg {
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    pointer-events: none !important;
+}
+
+/* Active Users */
+.psource-chat-users {
+    background: #f8f9fa;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e1e5e9;
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+.psource-chat-users-title {
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.psource-chat-user-count {
+    font-size: 11px;
+    background: #28a745;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.psource-chat-user-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.psource-chat-user {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 12px;
+    border: 1px solid #e1e5e9;
+    transition: all 0.2s ease;
+}
+
+.psource-chat-user:hover {
+    background: #e9ecef;
+    cursor: pointer;
+}
+
+.psource-chat-user-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.psource-chat-user-status {
+    width: 8px;
+    height: 8px;
+    background: #28a745;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: auto;
+}
+
+.no-users {
+    color: #6c757d;
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* Messages Area */
+.psource-chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 16px 20px;
+    scroll-behavior: smooth;
+}
+
+.psource-chat-message {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+    animation: slideIn 0.3s ease;
+}
+
+.psource-chat-message.own {
+    flex-direction: row-reverse;
+}
+
+.psource-chat-message.private {
+    background: #fff3cd;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.psource-chat-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.psource-chat-message-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.psource-chat-message.own .psource-chat-message-content {
+    text-align: right;
+}
+
+.psource-chat-message-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.psource-chat-message.own .psource-chat-message-header {
+    justify-content: flex-end;
+}
+
+.psource-chat-username {
+    font-weight: 600;
+    font-size: 14px;
+    color: #495057;
+}
+
+.psource-chat-timestamp {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.psource-chat-message-text {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    max-width: 80%;
+}
+
+.psource-chat-message.own .psource-chat-message-text {
+    background: #007bff;
+    color: white;
+    margin-left: auto;
+}
+
+/* Typing Indicator */
+.psource-chat-typing {
+    padding: 8px 20px;
+    font-size: 12px;
+    color: #6c757d;
+    font-style: italic;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.psource-chat-typing-dots {
+    display: inline-flex;
+    gap: 2px;
+    margin-left: 4px;
+}
+
+.psource-chat-typing-dot {
+    width: 4px;
+    height: 4px;
+    background: #6c757d;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.psource-chat-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.psource-chat-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+/* Input Area */
+.psource-chat-input-area {
+    padding: 16px 20px;
+    border-top: 1px solid #e1e5e9;
+    border-radius: 0 0 12px 12px;
+    background: white;
+}
+
+.psource-chat-guest-info {
+    margin-bottom: 12px;
+}
+
+.psource-chat-guest-name {
+    width: 100%;
+    border: 2px solid #e1e5e9;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.psource-chat-guest-name:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.psource-chat-input-container {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    position: relative;
+}
+
+.psource-chat-input {
+    flex: 1;
+    border: 2px solid #e1e5e9;
+    border-radius: 20px;
+    padding: 12px 16px;
+    font-size: 14px;
+    resize: none;
+    min-height: 20px;
+    max-height: 100px;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+    line-height: 1.4;
+}
+
+.psource-chat-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.psource-chat-emoji-btn {
+    background: rgba(0, 123, 255, 0.1);
+    border: none;
+    color: #007bff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.psource-chat-emoji-btn:hover {
+    background: rgba(0, 123, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.psource-chat-send-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.psource-chat-send-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.psource-chat-send-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.psource-chat-message-counter {
+    font-size: 11px;
+    color: #6c757d;
+    text-align: right;
+    margin-top: 4px;
+    padding: 0 16px;
+}
+
+.psource-chat-message-counter .current-length.warning {
+    color: #ffc107;
+}
+
+.psource-chat-message-counter .current-length.danger {
+    color: #dc3545;
+}
+
+.psource-chat-send-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========== EMOJI PICKER STYLES ========== */
+.psource-chat-emoji-picker {
+    position: fixed !important;
+    background: #ffffff !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    z-index: 1000000 !important;
+    max-width: 300px !important;
+    max-height: 250px !important;
+    overflow: hidden !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.psource-chat-emoji-picker .emoji-picker-tabs {
+    display: flex !important;
+    border-bottom: 1px solid #e1e5e9 !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.psource-chat-emoji-picker .emoji-tab {
+    background: none !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    margin-right: 4px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    transition: background 0.2s ease !important;
+}
+
+.psource-chat-emoji-picker .emoji-tab:hover,
+.psource-chat-emoji-picker .emoji-tab.active {
+    background: #f1f3f4 !important;
+}
+
+.psource-chat-emoji-picker .emoji-picker-content {
+    max-height: 180px !important;
+    overflow-y: auto !important;
+}
+
+.psource-chat-emoji-picker .emoji-category {
+    line-height: 1.4 !important;
+    font-size: 20px !important;
+    user-select: none !important;
+}
+
+.psource-chat-emoji-picker .emoji-btn {
+    display: inline-block !important;
+    padding: 4px !important;
+    margin: 2px !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    transition: background 0.2s ease !important;
+}
+
+.psource-chat-emoji-picker .emoji-btn:hover {
+    background: #f8f9fa !important;
+}
+
+/* ========== USER SETTINGS COMPACT MENU ========== */
+.psource-chat-settings-menu {
+    position: fixed !important;
+    background: #ffffff !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    z-index: 1000001 !important;
+    min-width: 200px !important;
+    max-width: 250px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    display: none !important;
+}
+
+.psource-chat-settings-menu .settings-menu-header {
+    background: #f8f9fa !important;
+    color: #495057 !important;
+    padding: 10px 12px !important;
+    border-bottom: 1px solid #e1e5e9 !important;
+    border-radius: 8px 8px 0 0 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    text-align: center !important;
+}
+
+.psource-chat-settings-menu .settings-menu-item {
+    background: #ffffff !important;
+    padding: 8px 12px !important;
+    border-bottom: 1px solid #f1f3f4 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: default !important;
+}
+
+.psource-chat-settings-menu .settings-menu-item:hover {
+    background: #f8f9fa !important;
+}
+
+.psource-chat-settings-menu .settings-menu-item:last-child {
+    border-bottom: none !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.psource-chat-settings-menu .settings-menu-item label {
+    font-weight: 500 !important;
+    color: #495057 !important;
+    font-size: 12px !important;
+    margin: 0 !important;
+    pointer-events: none !important;
+}
+
+.psource-chat-settings-menu .settings-select {
+    width: 60px !important;
+    padding: 4px 6px !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    background: #ffffff !important;
+    color: #2d3748 !important;
+    cursor: pointer !important;
+}
+
+.psource-chat-settings-menu .settings-select:hover {
+    border-color: #cbd5e0 !important;
+}
+
+/* ========== MODERATION TOOLS COMPACT MENU ========== */
+.psource-chat-moderation-menu {
+    position: fixed !important;
+    background: #ffffff !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    z-index: 1000001 !important;
+    min-width: 180px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    display: none !important;
+}
+
+.psource-chat-moderation-menu .moderation-menu-header {
+    background: #f8f9fa !important;
+    color: #495057 !important;
+    padding: 10px 12px !important;
+    border-bottom: 1px solid #e1e5e9 !important;
+    border-radius: 8px 8px 0 0 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    text-align: center !important;
+}
+
+.psource-chat-moderation-menu .moderation-menu-item {
+    background: #ffffff !important;
+    padding: 10px 12px !important;
+    border-bottom: 1px solid #f1f3f4 !important;
+    cursor: pointer !important;
+    font-size: 12px !important;
+    color: #495057 !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    user-select: none !important;
+}
+
+.psource-chat-moderation-menu .moderation-menu-item:last-child {
+    border-bottom: none !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.psource-chat-moderation-menu .moderation-menu-item:hover {
+    background: #f8f9fa !important;
+    color: #2d3748 !important;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .psource-chat-container {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .psource-chat-users {
+        background: #1a202c;
+        border-color: #4a5568;
+    }
+    
+    .psource-chat-user {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .psource-chat-message-text {
+        background: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .psource-chat-input {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .psource-chat-username {
+        color: #e2e8f0;
+    }
+    
+    .psource-chat-timestamp {
+        color: #a0aec0;
+    }
+    
+    .psource-chat-input-area {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+}
+
+/* Loading States */
+.psource-chat-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.psource-chat-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #e1e5e9;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error States */
+.psource-chat-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 8px 20px;
+    border: 1px solid #f5c6cb;
+    font-size: 14px;
+}
+
+/* Success States */
+.psource-chat-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 8px 20px;
+    border: 1px solid #c3e6cb;
+    font-size: 14px;
+}
+
+/* Additional Force Positioning Rules */
+#psource-chat-seitenkanten,
+#psource-chat-admin {
+    position: fixed !important;
+    z-index: 999999 !important;
+}
+
+/* Force specific positioning for each ID */
+#psource-chat-seitenkanten.psource-chat-bottom-right,
+#psource-chat-admin.psource-chat-bottom-right {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+#psource-chat-seitenkanten.psource-chat-bottom-left,
+#psource-chat-admin.psource-chat-bottom-left {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    top: auto !important;
+    right: auto !important;
+}
+
+#psource-chat-seitenkanten.psource-chat-top-right,
+#psource-chat-admin.psource-chat-top-right {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    bottom: auto !important;
+    left: auto !important;
+}
+
+#psource-chat-seitenkanten.psource-chat-top-left,
+#psource-chat-admin.psource-chat-top-left {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    bottom: auto !important;
+    right: auto !important;
+}
+
+/* Debug helper - remove when working */
+.psource-chat-container::before {
+    content: "PS Chat Position: " attr(class);
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 1000000;
+    display: none; /* Hide by default, enable for debugging */
+}
+
+/* Force above WordPress admin bar */
+#wpadminbar ~ .psource-chat-container {
+    z-index: 999999 !important;
+}
+
+/* Ensure it works with common themes that might interfere */
+.psource-chat-container {
+    transform: none !important;
+    will-change: auto !important;
+}

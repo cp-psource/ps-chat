@@ -1,0 +1,432 @@
+/*
+ * PSSource Chat Admin Styles
+ * 
+ * @package PSSource\Chat
+ */
+
+/* Admin Panel General Styles */
+.psource-chat-admin {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccd0d4;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.psource-chat-admin h1,
+.psource-chat-admin h2,
+.psource-chat-admin h3 {
+    color: #23282d;
+    margin-top: 0;
+}
+
+/* Navigation Tabs */
+.psource-chat-nav-tabs {
+    border-bottom: 1px solid #ccd0d4;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.psource-chat-nav-tabs li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.psource-chat-nav-tabs a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #0073aa;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.psource-chat-nav-tabs a:hover {
+    color: #005177;
+    border-bottom-color: #0073aa;
+}
+
+.psource-chat-nav-tabs .active a {
+    color: #23282d;
+    border-bottom-color: #0073aa;
+    font-weight: 600;
+}
+
+/* Settings Form */
+.psource-chat-settings-form {
+    max-width: 800px;
+}
+
+.psource-chat-settings-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+}
+
+.psource-chat-settings-section h3 {
+    margin-top: 0;
+    color: #23282d;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.psource-chat-form-field {
+    margin-bottom: 20px;
+}
+
+.psource-chat-form-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #23282d;
+}
+
+.psource-chat-form-field input[type="text"],
+.psource-chat-form-field input[type="number"],
+.psource-chat-form-field textarea,
+.psource-chat-form-field select {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.psource-chat-form-field textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.psource-chat-checkbox-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.psource-chat-checkbox-field input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.psource-chat-checkbox-field label {
+    margin: 0;
+    font-weight: normal;
+}
+
+/* Dashboard Widgets */
+.psource-chat-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.psource-chat-widget {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.psource-chat-widget h3 {
+    margin-top: 0;
+    color: #0073aa;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+}
+
+.psource-chat-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.psource-chat-stat:last-child {
+    border-bottom: none;
+}
+
+.psource-chat-stat-label {
+    font-weight: 600;
+    color: #23282d;
+}
+
+.psource-chat-stat-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0073aa;
+}
+
+/* Sessions Table */
+.psource-chat-sessions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.psource-chat-sessions-table th,
+.psource-chat-sessions-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.psource-chat-sessions-table th {
+    background: #f9f9f9;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.psource-chat-sessions-table tr:hover {
+    background: #f9f9f9;
+}
+
+.psource-chat-status-active {
+    color: #46b450;
+    font-weight: 600;
+}
+
+.psource-chat-status-inactive {
+    color: #dc3232;
+}
+
+.psource-chat-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.psource-chat-action-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.psource-chat-action-view {
+    background: #0073aa;
+    color: #fff;
+}
+
+.psource-chat-action-view:hover {
+    background: #005177;
+    color: #fff;
+}
+
+.psource-chat-action-delete {
+    background: #dc3232;
+    color: #fff;
+}
+
+.psource-chat-action-delete:hover {
+    background: #a00;
+    color: #fff;
+}
+
+/* Messages Display */
+.psource-chat-messages {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 20px 0;
+}
+
+.psource-chat-message {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.psource-chat-message:last-child {
+    border-bottom: none;
+}
+
+.psource-chat-message-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+.psource-chat-message-user {
+    font-weight: 600;
+    color: #0073aa;
+}
+
+.psource-chat-message-time {
+    color: #999;
+}
+
+.psource-chat-message-content {
+    color: #23282d;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .psource-chat-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .psource-chat-nav-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .psource-chat-sessions-table {
+        font-size: 14px;
+    }
+    
+    .psource-chat-form-field input[type="text"],
+    .psource-chat-form-field input[type="number"],
+    .psource-chat-form-field textarea,
+    .psource-chat-form-field select {
+        max-width: 100%;
+    }
+}
+
+/* Loading States */
+.psource-chat-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #666;
+}
+
+.psource-chat-loading::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0073aa;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: psource-chat-spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes psource-chat-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success/Error Messages */
+.psource-chat-notice {
+    padding: 12px 15px;
+    margin: 20px 0;
+    border-radius: 3px;
+    border-left: 4px solid;
+}
+
+.psource-chat-notice-success {
+    background: #dff0d8;
+    border-left-color: #46b450;
+    color: #3c763d;
+}
+
+.psource-chat-notice-error {
+    background: #f2dede;
+    border-left-color: #dc3232;
+    color: #a94442;
+}
+
+.psource-chat-notice-info {
+    background: #d9edf7;
+    border-left-color: #0073aa;
+    color: #31708f;
+}
+
+/* Color Picker */
+.psource-chat-color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.psource-chat-color-preview {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Help Text */
+.psource-chat-help-text {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Modal Overlay */
+.psource-chat-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100000;
+    display: none;
+}
+
+.psource-chat-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 100001;
+}
+
+.psource-chat-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.psource-chat-modal-title {
+    margin: 0;
+    color: #23282d;
+}
+
+.psource-chat-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.psource-chat-modal-close:hover {
+    color: #000;
+}

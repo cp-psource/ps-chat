@@ -1,0 +1,477 @@
+/**
+ * Dashboard Chat Styles
+ * CSS for PS Chat Dashboard Widgets
+ */
+
+/* Main Chat Widget */
+.psource-chat-widget {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.chat-users-count {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.chat-users-count .dashicons {
+    margin-right: 5px;
+    color: #0073aa;
+}
+
+.chat-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.chat-controls .button {
+    padding: 2px 6px;
+    min-height: auto;
+    font-size: 12px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f9f9f9;
+    min-height: 200px;
+    max-height: 300px;
+}
+
+.chat-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #666;
+}
+
+.chat-loading .dashicons {
+    margin-right: 8px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.chat-message {
+    display: flex;
+    margin-bottom: 15px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-avatar {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.message-avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.message-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.message-header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.message-author {
+    font-weight: 600;
+    color: #0073aa;
+    margin-right: 8px;
+}
+
+.message-time {
+    font-size: 11px;
+    color: #999;
+}
+
+.message-text {
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px 20px;
+    color: #666;
+}
+
+.chat-input-wrapper {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: #fff;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input-container textarea {
+    flex: 1;
+    resize: vertical;
+    min-height: 36px;
+    max-height: 100px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.chat-input-container textarea:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+.chat-send-btn {
+    background: #0073aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.chat-send-btn:hover {
+    background: #005a87;
+}
+
+.chat-send-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.chat-input-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #666;
+}
+
+.char-counter.warning {
+    color: #d63638;
+    font-weight: 600;
+}
+
+.chat-status-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status-dot.status-online {
+    background: #46b450;
+}
+
+.status-dot.status-offline {
+    background: #d63638;
+}
+
+.status-dot.status-connecting {
+    background: #ffb900;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Status Widget */
+.psource-chat-status {
+    padding: 15px;
+}
+
+.user-status-section {
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-details strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.status-selector select {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.status-message-section {
+    margin-bottom: 20px;
+}
+
+.status-message-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.status-message-section input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+.stat-item .dashicons {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #0073aa;
+}
+
+.stat-item span:not(.dashicons) {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.stat-item small {
+    color: #666;
+    font-size: 11px;
+}
+
+/* Friends Widget */
+.psource-chat-friends {
+    padding: 15px;
+}
+
+.friends-search {
+    margin-bottom: 15px;
+}
+
+.friends-search input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.friends-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.loading-friends {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.loading-friends .dashicons {
+    margin-right: 5px;
+    animation: spin 1s linear infinite;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.friend-item:hover {
+    background: #f8f9fa;
+}
+
+.friend-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.friend-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.friend-name {
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.friend-status {
+    display: block;
+    font-size: 11px;
+    color: #666;
+    text-transform: capitalize;
+}
+
+.friend-status.status-online { color: #46b450; }
+.friend-status.status-away { color: #ffb900; }
+.friend-status.status-busy { color: #d63638; }
+.friend-status.status-invisible { color: #666; }
+
+.friend-actions .button {
+    padding: 2px 8px;
+    font-size: 11px;
+    min-height: auto;
+}
+
+.friends-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.friends-actions .button {
+    flex: 1;
+    font-size: 12px;
+    padding: 4px 8px;
+    text-align: center;
+}
+
+.no-friends {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Error and Success Messages */
+.error-message {
+    background: #fef7f7;
+    border-left: 4px solid #d63638;
+    padding: 8px 12px;
+    margin: 8px 0;
+    color: #d63638;
+    font-size: 12px;
+}
+
+.success-message {
+    background: #f0f8f0;
+    border-left: 4px solid #46b450;
+    padding: 8px 12px;
+    margin: 8px 0;
+    color: #46b450;
+    font-size: 12px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .chat-header {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+    
+    .chat-controls {
+        justify-content: center;
+    }
+    
+    .quick-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .friends-actions {
+        flex-direction: column;
+    }
+}
+
+/* Accessibility */
+.chat-input-container textarea:focus,
+.status-selector select:focus,
+.status-message-section input:focus,
+.friends-search input:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 1px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .chat-message {
+        border: 1px solid #000;
+        background: #fff;
+        padding: 8px;
+        border-radius: 4px;
+    }
+    
+    .status-dot {
+        border: 1px solid #000;
+    }
+}
