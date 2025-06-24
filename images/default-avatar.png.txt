@@ -1,3 +1,0 @@
-# Default Avatar Placeholder
-# This file serves as a placeholder reference for default-avatar.png
-# In a real implementation, this would be an actual image file.
