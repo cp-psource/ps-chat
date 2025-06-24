@@ -45,8 +45,8 @@ class Enhanced_Shortcode_Handler {
         
         // Check if shortcode is used in current post
         if (is_a($post, 'WP_Post') && $this->has_chat_shortcode($post->post_content)) {
-            wp_enqueue_script('psource-chat-frontend', PSOURCE_CHAT_URL . 'assets/js/frontend.js', ['jquery'], '1.0.0', true);
-            wp_enqueue_style('psource-chat-frontend', PSOURCE_CHAT_URL . 'assets/css/frontend.css', [], '1.0.0');
+            wp_enqueue_script('psource-chat-frontend', PSOURCE_CHAT_PLUGIN_URL . 'assets/js/frontend.js', ['jquery'], '1.0.0', true);
+            wp_enqueue_style('psource-chat-frontend', PSOURCE_CHAT_PLUGIN_URL . 'assets/css/frontend.css', [], '1.0.0');
             
             // Localize script
             wp_localize_script('psource-chat-frontend', 'PSChatShortcode', [

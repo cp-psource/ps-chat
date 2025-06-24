@@ -32,6 +32,11 @@ class Plugin {
     private $options = [];
     
     /**
+     * Registered extensions
+     */
+    private $extensions = [];
+    
+    /**
      * Get plugin instance
      */
     public static function get_instance() {
@@ -54,8 +59,10 @@ class Plugin {
      * Initialize plugin
      */
     private function init() {
-        // Ensure database tables exist
-        Database::maybe_create_tables();
+        // Ensure database tables exist (only in WordPress environment)
+        if (function_exists('get_current_blog_id')) {
+            Database::maybe_create_tables();
+        }
         
         // Load options
         $this->load_options();
@@ -109,12 +116,109 @@ class Plugin {
      */
     private function init_hooks() {
         // Basic plugin hooks only - admin components are initialized in init_components
+        
+        // Frontend assets and custom CSS
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend_assets']);
+        add_action('wp_head', [$this, 'output_custom_css']);
+    }
+    
+    /**
+     * Enqueue frontend assets
+     */
+    public function enqueue_frontend_assets() {
+        $extension_options = get_option('psource_chat_extensions', []);
+        $frontend_options = $extension_options['frontend'] ?? [];
+        
+        // Only load if frontend chat is enabled
+        if (($frontend_options['enabled'] ?? 'disabled') !== 'enabled') {
+            return;
+        }
+        
+        // Main frontend chat CSS
+        wp_enqueue_style(
+            'psource-chat-frontend',
+            PSOURCE_CHAT_PLUGIN_URL . 'assets/css/frontend-chat.css',
+            [],
+            $this->version
+        );
+        
+        // Attachments CSS
+        wp_enqueue_style(
+            'psource-chat-attachments',
+            PSOURCE_CHAT_PLUGIN_URL . 'assets/css/attachments.css',
+            ['psource-chat-frontend'],
+            $this->version
+        );
+        
+        // Attachments JS
+        wp_enqueue_script(
+            'psource-chat-attachments-js',
+            PSOURCE_CHAT_PLUGIN_URL . 'assets/js/attachments.js',
+            ['jquery'],
+            $this->version,
+            true
+        );
+        
+        // Localize script
+        wp_localize_script('psource-chat-attachments-js', 'psourceChatAttachments', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('psource_chat_attachments'),
+            'strings' => [
+                'fileTooBig' => __('Datei ist zu groß', 'psource-chat'),
+                'invalidFileType' => __('Dateityp nicht erlaubt', 'psource-chat'),
+                'uploadError' => __('Upload-Fehler', 'psource-chat')
+            ]
+        ]);
+    }
+    
+    /**
+     * Output custom CSS for frontend chat styling
+     */
+    public function output_custom_css() {
+        $extension_options = get_option('psource_chat_extensions', []);
+        $frontend_options = $extension_options['frontend'] ?? [];
+        
+        // Only output CSS if frontend chat is enabled
+        if (($frontend_options['enabled'] ?? 'disabled') !== 'enabled') {
+            return;
+        }
+        
+        $custom_css = psource_chat_generate_custom_css();
+        
+        if (!empty($custom_css)) {
+            echo '<style id="psource-chat-custom-css">' . "\n" . $custom_css . "\n" . '</style>' . "\n";
+        }
+        
+        // Add theme and button style classes to body
+        $theme = $frontend_options['theme'] ?? 'default';
+        $button_style = $frontend_options['button_style'] ?? 'default';
+        
+        if ($theme !== 'default' || $button_style !== 'default') {
+            echo '<script>';
+            echo 'document.addEventListener("DOMContentLoaded", function() {';
+            
+            if ($theme !== 'default') {
+                echo 'document.querySelectorAll(".psource-chat-widget").forEach(function(el) { el.classList.add("theme-' . esc_js($theme) . '"); });';
+            }
+            
+            if ($button_style !== 'default') {
+                echo 'document.querySelectorAll(".psource-chat-widget").forEach(function(el) { el.classList.add("button-style-' . esc_js($button_style) . '"); });';
+            }
+            
+            echo '});';
+            echo '</script>' . "\n";
+        }
     }
     
     /**
      * Initialize components
      */
     private function init_components() {
+        // Only initialize full components in WordPress environment
+        if (!function_exists('is_admin')) {
+            return;
+        }
+        
         // Initialize core chat engine ALWAYS (needed for AJAX handlers)
         \PSSource\Chat\Core\Chat_Engine::get_instance();
         
@@ -213,20 +317,42 @@ class Plugin {
             }
         }
         
-        // Load Attachments extension
-        $attachments_options = $extension_options['attachments'] ?? [];
-        if (($attachments_options['enabled'] ?? 'disabled') === 'enabled') {
-            if (file_exists(PSOURCE_CHAT_INCLUDES_DIR . 'core/extension-base.php')) {
-                require_once PSOURCE_CHAT_INCLUDES_DIR . 'core/extension-base.php';
-            }
-            if (file_exists(PSOURCE_CHAT_INCLUDES_DIR . 'extensions/class-attachments.php')) {
-                require_once PSOURCE_CHAT_INCLUDES_DIR . 'extensions/class-attachments.php';
-                new \PSSource\Chat\Extensions\Attachments();
-            }
+        // Load Attachments extension (always load for template functionality)
+        if (file_exists(PSOURCE_CHAT_INCLUDES_DIR . 'core/extension-base.php')) {
+            require_once PSOURCE_CHAT_INCLUDES_DIR . 'core/extension-base.php';
+        }
+        if (file_exists(PSOURCE_CHAT_INCLUDES_DIR . 'extensions/class-attachments.php')) {
+            require_once PSOURCE_CHAT_INCLUDES_DIR . 'extensions/class-attachments.php';
+            $attachments_extension = new \PSSource\Chat\Extensions\Attachments();
+            $this->register_extension('attachments', $attachments_extension);
         }
         
         // Hook for external extensions
         do_action('psource_chat_load_extensions');
+        
+        // Load custom CSS generator
+        require_once PSOURCE_CHAT_PLUGIN_DIR . 'includes/core/custom-css-generator.php';
+    }
+    
+    /**
+     * Register an extension
+     */
+    public function register_extension($id, $extension) {
+        $this->extensions[$id] = $extension;
+    }
+    
+    /**
+     * Get registered extension
+     */
+    public function get_extension($id) {
+        return $this->extensions[$id] ?? null;
+    }
+    
+    /**
+     * Get all registered extensions
+     */
+    public function get_extensions() {
+        return $this->extensions;
     }
     
     /**

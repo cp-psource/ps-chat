@@ -8,6 +8,7 @@
 namespace PSSource\Chat\Extensions;
 
 use PSSource\Chat\Core\Extension_Base;
+use PSSource\Chat\Core\Plugin;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -358,36 +359,83 @@ class Attachments extends Extension_Base {
         
         return $content;
     }
-    
-    /**
+     /**
      * Get attachment buttons HTML for chat interface
      */
     public function get_attachment_buttons($chat_options = []) {
         if (!$this->is_enabled()) {
             return '';
         }
-        
+
         $buttons = [];
         
         // Emoji button
         if ($this->get_option('emojis_enabled') === 'yes' && ($chat_options['enable_emoji'] ?? true)) {
-            $buttons[] = '<button type="button" class="psource-chat-attachment-btn psource-chat-emoji-btn" title="' . esc_attr__('Emoji hinzufügen', 'psource-chat') . '">😊</button>';
+            $buttons[] = '<button type="button" class="psource-chat-btn psource-chat-emoji-btn" title="' . esc_attr__('Emoji hinzufügen', 'psource-chat') . '">' .
+                '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' .
+                '<path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,6C14.2,6 16,7.8 16,10C16,12.2 14.2,14 12,14C9.8,14 8,12.2 8,10C8,7.8 9.8,6 12,6M7,19C7.5,18.25 8.75,17.5 10.5,17.5C11.25,17.5 12,17.75 12.75,18C13.5,17.75 14.25,17.5 15,17.5C16.75,17.5 18,18.25 18.5,19H7Z"/>' .
+                '</svg></button>';
         }
         
-        // GIF button
+        // GIF button  
         if ($this->get_option('gifs_enabled') === 'yes' && ($chat_options['enable_gifs'] ?? false)) {
-            $buttons[] = '<button type="button" class="psource-chat-attachment-btn psource-chat-gif-btn" title="' . esc_attr__('GIF hinzufügen', 'psource-chat') . '">GIF</button>';
+            $buttons[] = '<button type="button" class="psource-chat-btn psource-chat-gif-btn" title="' . esc_attr__('GIF hinzufügen', 'psource-chat') . '">' .
+                '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' .
+                '<path d="M11.5,9H13V7H11.5V9M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7,13H9V11H11V13H13V11H15V9H11V7H9V13H7V13Z"/>' .
+                '</svg></button>';
         }
         
         // Upload button
         if ($this->get_option('uploads_enabled') === 'yes' && ($chat_options['enable_uploads'] ?? false)) {
-            $buttons[] = '<button type="button" class="psource-chat-attachment-btn psource-chat-upload-btn" title="' . esc_attr__('Datei hochladen', 'psource-chat') . '">📎</button>';
+            $buttons[] = '<button type="button" class="psource-chat-btn psource-chat-upload-btn" title="' . esc_attr__('Datei hochladen', 'psource-chat') . '">' .
+                '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' .
+                '<path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>' .
+                '</svg></button>' .
+                '<input type="file" class="psource-chat-upload-input" style="display: none;" accept="' . esc_attr($this->get_allowed_file_types()) . '" />';
         }
-        
+
         if (empty($buttons)) {
             return '';
         }
+
+        return implode(' ', $buttons);
+    }
+    
+    /**
+     * Static helper to get attachment buttons from any context
+     */
+    public static function render_attachment_buttons($chat_options = []) {
+        $plugin = Plugin::get_instance();
+        $attachments_ext = $plugin->get_extension('attachments');
         
-        return '<div class="psource-chat-attachment-buttons">' . implode('', $buttons) . '</div>';
+        if (!$attachments_ext) {
+            return '';
+        }
+        
+        return $attachments_ext->get_attachment_buttons($chat_options);
+    }
+    
+    /**
+     * Get allowed file types for uploads
+     */
+    private function get_allowed_file_types() {
+        $allowed_types = $this->get_option('uploads_allowed_types');
+        if (empty($allowed_types)) {
+            return 'image/*,.pdf,.doc,.docx';
+        }
+        
+        // Convert comma-separated extensions to file type accepts
+        $types = array_map('trim', explode(',', $allowed_types));
+        $accept_types = [];
+        
+        foreach ($types as $type) {
+            if (in_array($type, ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
+                $accept_types[] = 'image/*';
+            } else {
+                $accept_types[] = '.' . ltrim($type, '.');
+            }
+        }
+        
+        return implode(',', array_unique($accept_types));
     }
 }

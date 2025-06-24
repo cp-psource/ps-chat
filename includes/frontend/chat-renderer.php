@@ -8,6 +8,7 @@
 namespace PSSource\Chat\Frontend;
 
 use PSSource\Chat\Core\Plugin;
+use PSSource\Chat\Extensions\Attachments;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -112,6 +113,13 @@ class Chat_Renderer {
                     </button>
                     <?php endif; ?>
                     
+                    <button class="psource-chat-btn psource-chat-users-btn" 
+                            title="<?php esc_attr_e('Online Benutzer', 'psource-chat'); ?>">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16,4C18.2,4 20,5.8 20,8C20,10.2 18.2,12 16,12C13.8,12 12,10.2 12,8C12,5.8 13.8,4 16,4M16,14C18.67,14 22,15.33 22,18V20H10V18C10,15.33 13.33,14 16,14M8,4C10.2,4 12,5.8 12,8C12,10.2 10.2,12 8,12C5.8,12 4,10.2 4,8C4,5.8 5.8,4 8,4M8,14C10.67,14 14,15.33 14,18V20H2V18C2,15.33 5.33,14 8,14Z"/>
+                        </svg>
+                    </button>
+                    
                     <button class="psource-chat-btn psource-chat-minimize" 
                             title="<?php esc_attr_e('Minimieren', 'psource-chat'); ?>">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display: block;">
@@ -167,13 +175,15 @@ class Chat_Renderer {
                               rows="1"
                               maxlength="<?php echo esc_attr($max_message_length); ?>"></textarea>
                     
-                    <?php if ($enable_emoji): ?>
-                    <button class="psource-chat-btn psource-chat-emoji-btn" 
-                            type="button"
-                            title="<?php esc_attr_e('Emoji hinzufügen', 'psource-chat'); ?>">
-                        😊
-                    </button>
-                    <?php endif; ?>
+                    <?php 
+                    // Use global attachment buttons template
+                    $chat_options = [
+                        'enable_emoji' => $enable_emoji,
+                        'enable_gifs' => ($frontend_options['enable_gifs'] ?? 'no') === 'yes',
+                        'enable_uploads' => ($frontend_options['enable_uploads'] ?? 'no') === 'yes'
+                    ];
+                    echo Attachments::render_attachment_buttons($chat_options);
+                    ?>
                     
                     <button class="psource-chat-send-btn" 
                             type="button"
@@ -353,13 +363,15 @@ class Chat_Renderer {
                               rows="1"
                               maxlength="<?php echo esc_attr($max_message_length); ?>"></textarea>
                     
-                    <?php if ($enable_emoji): ?>
-                    <button class="psource-chat-btn psource-chat-emoji-btn" 
-                            type="button"
-                            title="<?php esc_attr_e('Emoji hinzufügen', 'psource-chat'); ?>">
-                        😊
-                    </button>
-                    <?php endif; ?>
+                    <?php 
+                    // Use global attachment buttons template for admin chat
+                    $admin_chat_options = [
+                        'enable_emoji' => $enable_emoji,
+                        'enable_gifs' => true, // Admin chat can have GIFs
+                        'enable_uploads' => true // Admin chat can have uploads
+                    ];
+                    echo Attachments::render_attachment_buttons($admin_chat_options);
+                    ?>
                     
                     <button class="psource-chat-send-btn" 
                             type="button"
@@ -582,6 +594,17 @@ class Chat_Renderer {
                         <textarea class="psource-chat-input" 
                                   placeholder="<?php esc_attr_e('Type your message...', 'psource-chat'); ?>"
                                   rows="2"></textarea>
+                        
+                        <?php 
+                        // Use global attachment buttons template for shortcode chat
+                        $shortcode_chat_options = [
+                            'enable_emoji' => true, // Shortcode chats typically allow emojis
+                            'enable_gifs' => false, // Usually no GIFs for shortcode chats
+                            'enable_uploads' => false // Usually no uploads for shortcode chats
+                        ];
+                        echo Attachments::render_attachment_buttons($shortcode_chat_options);
+                        ?>
+                        
                         <button class="psource-chat-send-btn">
                             <?php _e('Send', 'psource-chat'); ?>
                         </button>

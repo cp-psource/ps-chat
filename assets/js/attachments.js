@@ -61,7 +61,26 @@
             $(document).on('click', '.psource-chat-upload-btn', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                self.showUploadDialog($(this));
+                var $uploadInput = $(this).siblings('.psource-chat-upload-input');
+                if ($uploadInput.length) {
+                    $uploadInput.trigger('click');
+                } else {
+                    // Fallback: create a temporary input
+                    var $tempInput = $('<input type="file" style="display: none;" />');
+                    $('body').append($tempInput);
+                    $tempInput.trigger('click');
+                    $tempInput.on('change', function() {
+                        self.handleFileUpload(this.files[0], $(e.target).closest('.psource-chat-widget'));
+                        $(this).remove();
+                    });
+                }
+            });
+            
+            // Handle file input change
+            $(document).on('change', '.psource-chat-upload-input', function(e) {
+                if (this.files && this.files[0]) {
+                    self.handleFileUpload(this.files[0], $(this).closest('.psource-chat-widget'));
+                }
             });
             
             // Click outside to close pickers
@@ -87,6 +106,169 @@
             if (this.settings.uploadsEnabled) {
                 this.createUploadHandler();
             }
+        },
+        
+        /**
+         * Toggle emoji picker
+         */
+        toggleEmojiPicker: function(button) {
+            var picker = $('#psource-chat-emoji-picker');
+            
+            if (picker.is(':visible')) {
+                this.closeAllPickers();
+                return;
+            }
+            
+            this.closeAllPickers();
+            this.positionPicker(picker, button);
+            picker.show();
+        },
+        
+        /**
+         * Toggle GIF picker
+         */
+        toggleGifPicker: function(button) {
+            var picker = $('#psource-chat-gif-picker');
+            
+            if (picker.is(':visible')) {
+                this.closeAllPickers();
+                return;
+            }
+            
+            this.closeAllPickers();
+            this.positionPicker(picker, button);
+            picker.show();
+        },
+        
+        /**
+         * Show upload dialog
+         */
+        showUploadDialog: function(button) {
+            var input = $('<input type="file" style="display: none;">');
+            input.attr('accept', this.getAllowedTypesAttribute());
+            
+            var self = this;
+            input.on('change', function() {
+                var file = this.files[0];
+                if (file) {
+                    self.handleFileSelect(file, button);
+                }
+            });
+            
+            $('body').append(input);
+            input.click();
+            
+            // Clean up
+            setTimeout(function() {
+                input.remove();
+            }, 1000);
+        },
+        
+        /**
+         * Position picker relative to button
+         */
+        positionPicker: function(picker, button) {
+            var buttonOffset = button.offset();
+            var buttonHeight = button.outerHeight();
+            var pickerHeight = picker.outerHeight();
+            var windowHeight = $(window).height();
+            
+            var top = buttonOffset.top - pickerHeight - 10;
+            var left = buttonOffset.left;
+            
+            // Adjust if picker would go above viewport
+            if (top < 10) {
+                top = buttonOffset.top + buttonHeight + 10;
+            }
+            
+            // Adjust horizontal position if needed
+            var pickerWidth = picker.outerWidth();
+            if (left + pickerWidth > $(window).width() - 20) {
+                left = $(window).width() - pickerWidth - 20;
+            }
+            
+            picker.css({
+                position: 'fixed',
+                top: top + 'px',
+                left: left + 'px',
+                zIndex: 999999
+            });
+        },
+        
+        /**
+         * Close all pickers
+         */
+        closeAllPickers: function() {
+            $('.psource-chat-attachment-picker').hide();
+        },
+        
+        /**
+         * Create emoji picker
+         */
+        createEmojiPicker: function() {
+            if ($('#psource-chat-emoji-picker').length > 0) return;
+            
+            var emojis = this.getEmojis();
+            var categories = this.categorizeEmojis(emojis);
+            
+            var html = '<div id="psource-chat-emoji-picker" class="psource-chat-attachment-picker psource-chat-emoji-picker" style="display: none;">';
+            
+            // Tabs
+            html += '<div class="emoji-picker-tabs">';
+            var isFirst = true;
+            for (var category in categories) {
+                html += '<button type="button" class="emoji-tab' + (isFirst ? ' active' : '') + '" data-category="' + category + '">';
+                html += this.getCategoryIcon(category);
+                html += '</button>';
+                isFirst = false;
+            }
+            html += '</div>';
+            
+            // Content
+            html += '<div class="emoji-picker-content">';
+            isFirst = true;
+            for (var category in categories) {
+                html += '<div class="emoji-category" data-category="' + category + '"' + (isFirst ? '' : ' style="display: none;"') + '>';
+                categories[category].forEach(function(emoji) {
+                    html += '<span class="emoji-item" data-emoji="' + emoji + '">' + emoji + '</span>';
+                });
+                html += '</div>';
+                isFirst = false;
+            }
+            html += '</div>';
+            
+            html += '</div>';
+            
+            $('body').append(html);
+            this.bindEmojiPickerEvents();
+        },
+        
+        /**
+         * Create GIF picker
+         */
+        createGifPicker: function() {
+            if ($('#psource-chat-gif-picker').length > 0) return;
+            
+            var html = '<div id="psource-chat-gif-picker" class="psource-chat-attachment-picker psource-chat-gif-picker" style="display: none;">';
+            html += '<div class="gif-picker-header">';
+            html += '<input type="text" class="gif-search-input" placeholder="' + this.settings.strings.searchGifs + '">';
+            html += '</div>';
+            html += '<div class="gif-picker-content">';
+            html += '<div class="gif-loading" style="display: none;">🔄 Laden...</div>';
+            html += '<div class="gif-results"></div>';
+            html += '</div>';
+            html += '</div>';
+            
+            $('body').append(html);
+            this.bindGifPickerEvents();
+        },
+        
+        /**
+         * Create upload handler
+         */
+        createUploadHandler: function() {
+            // Upload functionality would be implemented here
+            console.log('Upload handler created');
         },
         
         /**
@@ -382,7 +564,9 @@
          * Get active message input
          */
         getActiveMessageInput: function() {
-            return $('.psource-chat-message-input:focus, .psource-chat-message-input').first();
+            // Try different input selectors used in various chat implementations
+            var inputs = $('.psource-chat-input:focus, .psource-chat-message-input:focus, .psource-chat-input, .psource-chat-message-input');
+            return inputs.first();
         },
         
         /**
@@ -412,6 +596,62 @@
             
             console.log('File selected:', file.name);
             // File upload implementation would go here
+        },
+        
+        /**
+         * Handle file upload
+         */
+        handleFileUpload: function(file, chatWidget) {
+            if (!file) return;
+            
+            // Validate file
+            if (!this.validateFile(file)) {
+                return;
+            }
+            
+            var self = this;
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('action', 'psource_chat_upload_file');
+            formData.append('nonce', this.settings.nonce);
+            
+            // Show upload progress
+            var progressBar = $('<div class="upload-progress"><div class="progress-bar"></div><span class="progress-text">Uploading...</span></div>');
+            chatWidget.find('.psource-chat-messages').append(progressBar);
+            
+            $.ajax({
+                url: this.settings.ajaxUrl,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = (evt.loaded / evt.total) * 100;
+                            progressBar.find('.progress-bar').css('width', percentComplete + '%');
+                        }
+                    }, false);
+                    return xhr;
+                },
+                success: function(response) {
+                    progressBar.remove();
+                    if (response.success) {
+                        // Add file attachment to message
+                        var input = self.getActiveMessageInput();
+                        var currentValue = input.val();
+                        input.val(currentValue + ' [attachment:' + response.data.file_id + ']');
+                        input.trigger('change');
+                    } else {
+                        alert('Upload failed: ' + (response.data || 'Unknown error'));
+                    }
+                },
+                error: function() {
+                    progressBar.remove();
+                    alert('Upload failed. Please try again.');
+                }
+            });
         },
         
         /**

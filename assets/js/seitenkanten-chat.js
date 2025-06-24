@@ -49,18 +49,23 @@
             
             // Load saved state from localStorage (highest priority)
             var savedState = this.loadState();
+            console.log('Loaded saved state from localStorage:', savedState);
             
             // Determine initial minimized state
             if (savedState !== null) {
                 this.minimized = savedState;
+                console.log('Using saved state:', this.minimized);
             } else if (this.container.hasClass('minimized')) {
                 this.minimized = true;
+                console.log('Container has minimized class, using minimized = true');
             } else {
                 this.minimized = (this.settings.initial_state === 'minimized');
+                console.log('Using initial_state setting:', this.settings.initial_state, 'minimized =', this.minimized);
             }
             
             // Apply the determined state
             this.container.toggleClass('minimized', this.minimized);
+            console.log('Applied initial state to container, minimized =', this.minimized);
             
             this.bindEvents();
             this.setupChat();
@@ -224,10 +229,26 @@
          */
         bindEvents: function() {
             var self = this;
+            console.log('PS Chat: Binding events to container:', this.container);
+            
+            // Ensure we have a valid container
+            if (!this.container || !this.container.length) {
+                console.error('PS Chat: Cannot bind events - no valid container found');
+                return;
+            }
+            
+            console.log('PS Chat: Available buttons in container:', {
+                settings: this.container.find('.psource-chat-settings-btn').length,
+                moderation: this.container.find('.psource-chat-moderate-btn').length,
+                emoji: this.container.find('.psource-chat-emoji-btn').length,
+                users: this.container.find('.psource-chat-users-btn').length,
+                minimize: this.container.find('.psource-chat-minimize').length
+            });
             
             // Header click to toggle
             this.container.find('.psource-chat-header').on('click', function(e) {
                 if (!$(e.target).hasClass('psource-chat-btn') && !$(e.target).closest('.psource-chat-btn').length) {
+                    console.log('Header clicked for minimize');
                     self.toggleMinimize();
                 }
             });
@@ -236,6 +257,7 @@
             $(document).on('click', '.psource-chat-minimize', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+                console.log('Minimize button clicked');
                 setTimeout(function() {
                     self.toggleMinimize();
                 }, 50);
@@ -245,6 +267,7 @@
             $(document).on('click', '.psource-chat-settings-btn', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+                console.log('Settings button clicked, calling showUserSettings()');
                 self.showUserSettings();
             });
             
@@ -252,14 +275,16 @@
             $(document).on('click', '.psource-chat-moderate-btn', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+                console.log('Moderation button clicked, calling showModerationTools()');
                 self.showModerationTools();
             });
             
-            // Emoji button
-            $(document).on('click', '.psource-chat-emoji-btn', function(e) {
+            // User list button
+            $(document).on('click', '.psource-chat-users-btn', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                self.toggleEmojiPicker();
+                console.log('Users button clicked, calling showUserList()');
+                self.showUserList();
             });
             
             // Message form submission
@@ -440,12 +465,15 @@
          * Toggle minimize state
          */
         toggleMinimize: function() {
+            console.log('toggleMinimize called, current state:', this.minimized);
             
             // Toggle state
             this.minimized = !this.minimized;
             
             // Update container class
             this.container.toggleClass('minimized', this.minimized);
+            
+            console.log('New minimized state:', this.minimized);
             
             // Update the icon
             setTimeout(function() {
@@ -454,6 +482,7 @@
             
             // Save state
             this.saveState();
+            console.log('State saved to localStorage');
             
             // Force positioning
             this.forceFixedPositioning();
@@ -520,10 +549,20 @@
         /**
          * Load active users
          */
-        loadActiveUsers: function() {
+        loadActiveUsers: function(callback) {
             this.ajaxRequest('psource_chat_get_users', {}, function(response) {
                 if (response.success && response.data && response.data.users) {
                     this.displayUsers(response.data.users);
+                    
+                    // Call callback if provided
+                    if (typeof callback === 'function') {
+                        callback(response.data.users);
+                    }
+                } else {
+                    // Call callback with empty array if request failed
+                    if (typeof callback === 'function') {
+                        callback([]);
+                    }
                 }
             }.bind(this));
         },
@@ -716,89 +755,462 @@
          * DEPRECATED: Old emoji functions replaced by modular attachment system
          * These are kept for backward compatibility but should not be used
          */
-        
-        /**
-         * Show user settings
+         /**
+         * Show user settings dropdown
          */
         showUserSettings: function() {
-            
-            // Toggle behavior
-            var existingMenu = $('.psource-chat-settings-menu');
-            if (existingMenu.length) {
-                existingMenu.remove();
-                return;
-            }
-            
-            $('.psource-chat-moderation-menu').remove();
-            
-            var menuHtml = '<div class="psource-chat-settings-menu">' +
-                '<div class="settings-menu-header">Einstellungen</div>' +
-                '<div class="settings-option">' +
-                '<label>Sound:</label>' +
-                '<select name="enable_sound" class="settings-select">' +
-                '<option value="yes">An</option>' +
-                '<option value="no">Aus</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="settings-option">' +
-                '<label>Benachrichtigungen:</label>' +
-                '<select name="enable_notifications" class="settings-select">' +
-                '<option value="yes">An</option>' +
-                '<option value="no">Aus</option>' +
-                '</select>' +
-                '</div>' +
-                '</div>';
-            
-            $('body').append(menuHtml);
-            this.positionMenu('.psource-chat-settings-menu', '.psource-chat-settings-btn');
-            this.loadUserSettingsInMenu();
+            console.log('showUserSettings called');
+            this.showDropdownMenu('settings', '.psource-chat-settings-btn', {
+                title: 'Einstellungen',
+                icon: 'admin-generic',
+                items: [
+                    {
+                        type: 'setting',
+                        label: 'Sound-Benachrichtigungen',
+                        name: 'enable_sound',
+                        options: [
+                            { value: 'yes', label: 'Aktiviert' },
+                            { value: 'no', label: 'Deaktiviert' }
+                        ]
+                    },
+                    {
+                        type: 'setting',
+                        label: 'Desktop-Benachrichtigungen',
+                        name: 'enable_notifications',
+                        options: [
+                            { value: 'yes', label: 'Aktiviert' },
+                            { value: 'no', label: 'Deaktiviert' }
+                        ]
+                    },
+                    {
+                        type: 'setting',
+                        label: 'Auto-Scroll',
+                        name: 'auto_scroll',
+                        options: [
+                            { value: 'yes', label: 'Aktiviert' },
+                            { value: 'no', label: 'Deaktiviert' }
+                        ]
+                    },
+                    {
+                        type: 'setting',
+                        label: 'Timestamps anzeigen',
+                        name: 'show_timestamps',
+                        options: [
+                            { value: 'yes', label: 'Aktiviert' },
+                            { value: 'no', label: 'Deaktiviert' }
+                        ]
+                    }
+                ]
+            });
         },
-        
+
         /**
-         * Show moderation tools
+         * Show moderation tools dropdown
          */
         showModerationTools: function() {
+            console.log('showModerationTools called');
+            this.showDropdownMenu('moderation', '.psource-chat-moderate-btn', {
+                title: 'Moderation',
+                icon: 'shield',
+                items: [
+                    {
+                        type: 'action',
+                        action: 'clear_messages',
+                        icon: 'trash',
+                        label: 'Alle Nachrichten löschen',
+                        class: 'danger'
+                    },
+                    { type: 'separator' },
+                    {
+                        type: 'action',
+                        action: 'kick_user',
+                        icon: 'dismiss',
+                        label: 'Benutzer kicken'
+                    },
+                    {
+                        type: 'action',
+                        action: 'ban_user',
+                        icon: 'no',
+                        label: 'Benutzer bannen',
+                        class: 'danger'
+                    },
+                    { type: 'separator' },
+                    {
+                        type: 'action',
+                        action: 'export_logs',
+                        icon: 'download',
+                        label: 'Chat-Logs exportieren',
+                        class: 'success'
+                    },
+                    {
+                        type: 'action',
+                        action: 'user_list',
+                        icon: 'groups',
+                        label: 'Benutzer-Liste anzeigen',
+                        class: 'primary'
+                    }
+                ]
+            });
+        },
+
+        /**
+         * Show user list dropdown
+         */
+        showUserList: function() {
+            var self = this;
+            this.loadActiveUsers(function(users) {
+                var userItems = users.map(function(user) {
+                    return {
+                        type: 'user',
+                        user: user
+                    };
+                });
+
+                self.showDropdownMenu('userlist', '.psource-chat-users-btn', {
+                    title: 'Online Benutzer (' + users.length + ')',
+                    icon: 'groups',
+                    items: userItems
+                });
+            });
+        },
+
+        /**
+         * Generic dropdown menu system
+         */
+        showDropdownMenu: function(type, buttonSelector, config) {
+            console.log('showDropdownMenu called:', { type, buttonSelector, config });
             
-            var existingMenu = $('.psource-chat-moderation-menu');
-            if (existingMenu.length) {
-                existingMenu.remove();
-                return;
+            // Close any existing dropdowns
+            this.closeAllDropdowns();
+            
+            var menuClass = 'psource-chat-' + type + '-menu';
+            var menuHtml = this.buildDropdownHtml(menuClass, config);
+            
+            console.log('Adding dropdown HTML to body:', menuHtml.substring(0, 100) + '...');
+            $('body').append(menuHtml);
+            
+            console.log('Positioning dropdown...', buttonSelector);
+            this.positionDropdown('.' + menuClass, buttonSelector);
+            this.bindDropdownEvents();
+            
+            // Load current settings for settings menu
+            if (type === 'settings') {
+                this.loadUserSettingsInMenu();
+            }
+        },
+
+        /**
+         * Build dropdown HTML from config
+         */
+        buildDropdownHtml: function(menuClass, config) {
+            var html = '<div class="psource-chat-dropdown-overlay"></div>' +
+                '<div class="psource-chat-dropdown-menu ' + menuClass + '">';
+            
+            // Header
+            if (config.title) {
+                html += '<div class="psource-chat-dropdown-header">';
+                if (config.icon) {
+                    html += '<span class="dashicons dashicons-' + config.icon + '"></span> ';
+                }
+                html += config.title + '</div>';
             }
             
-            $('.psource-chat-settings-menu, .psource-chat-emoji-picker').remove();
+            // Content
+            html += '<div class="psource-chat-dropdown-content">';
             
-            var menuHtml = '<div class="psource-chat-moderation-menu">' +
-                '<div class="moderation-menu-header">Moderation</div>' +
-                '<div class="moderation-menu-item" data-action="clear_messages">Nachrichten löschen</div>' +
-                '<div class="moderation-menu-item" data-action="ban_user">Benutzer bannen</div>' +
-                '<div class="moderation-menu-item" data-action="kick_user">Benutzer kicken</div>' +
-                '</div>';
+            if (config.items) {
+                for (var i = 0; i < config.items.length; i++) {
+                    var item = config.items[i];
+                    html += this.buildDropdownItem(item);
+                }
+            }
             
-            $('body').append(menuHtml);
-            this.positionMenu('.psource-chat-moderation-menu', '.psource-chat-moderate-btn');
+            html += '</div></div>';
+            
+            return html;
         },
-        
+
         /**
-         * Position menu relative to button
+         * Build individual dropdown item
          */
-        positionMenu: function(menuSelector, buttonSelector) {
+        buildDropdownItem: function(item) {
+            switch (item.type) {
+                case 'separator':
+                    return '<div class="psource-chat-dropdown-separator"></div>';
+                    
+                case 'action':
+                    var classes = 'psource-chat-dropdown-item';
+                    if (item.class) {
+                        classes += ' ' + item.class;
+                    }
+                    var html = '<div class="' + classes + '" data-action="' + item.action + '">';
+                    if (item.icon) {
+                        html += '<span class="dashicons dashicons-' + item.icon + '"></span>';
+                    }
+                    html += item.label + '</div>';
+                    return html;
+                    
+                case 'setting':
+                    var html = '<div class="psource-chat-settings-option">' +
+                        '<label>' + item.label + ':</label>' +
+                        '<select name="' + item.name + '" class="settings-select">';
+                    for (var j = 0; j < item.options.length; j++) {
+                        var option = item.options[j];
+                        html += '<option value="' + option.value + '">' + option.label + '</option>';
+                    }
+                    html += '</select></div>';
+                    return html;
+                    
+                case 'user':
+                    var user = item.user;
+                    var statusClass = user.status || 'online';
+                    var avatar = user.avatar || user.name.charAt(0).toUpperCase();
+                    return '<div class="psource-chat-user-item" data-user-id="' + user.id + '">' +
+                        '<div class="psource-chat-user-avatar">' + avatar + '</div>' +
+                        '<div class="psource-chat-user-name">' + user.name + '</div>' +
+                        '<div class="psource-chat-user-status ' + statusClass + '"></div>' +
+                        '</div>';
+                        
+                default:
+                    return '';
+            }
+        },
+
+        /**
+         * Enhanced dropdown positioning with better logic
+         */
+        positionDropdown: function(menuSelector, buttonSelector) {
+            var self = this;
             var btn = this.container.find(buttonSelector);
             var menu = $(menuSelector);
             
             if (btn.length && menu.length) {
-                var btnOffset = btn.offset();
-                var btnHeight = btn.outerHeight();
-                var btnWidth = btn.outerWidth();
-                
-                menu.css({
-                    'position': 'fixed',
-                    'top': (btnOffset.top + btnHeight + 5) + 'px',
-                    'left': (btnOffset.left - menu.outerWidth() + btnWidth) + 'px',
-                    'z-index': '1000001'
-                });
+                // Wait for menu to be fully rendered
+                setTimeout(function() {
+                    var btnOffset = btn.offset();
+                    var btnHeight = btn.outerHeight();
+                    var btnWidth = btn.outerWidth();
+                    var menuWidth = menu.outerWidth();
+                    var menuHeight = menu.outerHeight();
+                    
+                    var windowWidth = $(window).width();
+                    var windowHeight = $(window).height();
+                    var scrollTop = $(window).scrollTop();
+                    
+                    // Calculate preferred position (below button, aligned to right edge)
+                    var left = btnOffset.left + btnWidth - menuWidth;
+                    var top = btnOffset.top + btnHeight + 8; // Increased spacing
+                    
+                    // Adjust horizontal position if menu would go off-screen
+                    if (left < 15) {
+                        left = btnOffset.left; // Align to left edge of button
+                    }
+                    if (left + menuWidth > windowWidth - 15) {
+                        left = windowWidth - menuWidth - 15; // Keep margin
+                    }
+                    
+                    // Adjust vertical position if menu would go below viewport
+                    if (top + menuHeight > windowHeight + scrollTop - 15) {
+                        top = btnOffset.top - menuHeight - 8; // Show above button
+                    }
+                    
+                    // Ensure menu stays above fold
+                    if (top < scrollTop + 15) {
+                        top = scrollTop + 15;
+                    }
+                    
+                    // Apply position directly with higher z-index
+                    menu.css({
+                        'position': 'fixed',
+                        'top': (top - scrollTop) + 'px',
+                        'left': left + 'px',
+                        'z-index': '9999999',
+                        'opacity': '1',
+                        'display': 'block'
+                    });
+                    
+                    console.log('Dropdown positioned:', {
+                        menuSelector: menuSelector,
+                        buttonSelector: buttonSelector,
+                        btnOffset: btnOffset,
+                        menuPosition: { top: (top - scrollTop), left: left },
+                        menuSize: { width: menuWidth, height: menuHeight }
+                    });
+                }, 50);
             }
         },
         
+        /**
+         * Close all open dropdowns
+         */
+        closeAllDropdowns: function() {
+            $('.psource-chat-dropdown-menu, .psource-chat-dropdown-overlay').remove();
+        },
+        
+        /**
+         * Bind dropdown events
+         */
+        bindDropdownEvents: function() {
+            var self = this;
+            
+            // Close dropdown when clicking overlay
+            $(document).off('click.psourceChatDropdown').on('click.psourceChatDropdown', '.psource-chat-dropdown-overlay', function() {
+                self.closeAllDropdowns();
+            });
+            
+            // Close dropdown when clicking outside
+            $(document).off('click.psourceChatDropdownOutside').on('click.psourceChatDropdownOutside', function(e) {
+                if (!$(e.target).closest('.psource-chat-dropdown-menu, .psource-chat-settings-btn, .psource-chat-moderate-btn, .psource-chat-emoji-btn, .psource-chat-users-btn').length) {
+                    self.closeAllDropdowns();
+                }
+            });
+            
+            // Handle all dropdown actions
+            $(document).off('click.psourceChatDropdownAction').on('click.psourceChatDropdownAction', '.psource-chat-dropdown-item[data-action]', function(e) {
+                e.preventDefault();
+                var action = $(this).data('action');
+                self.handleDropdownAction(action);
+                self.closeAllDropdowns();
+            });
+            
+            // Handle user item clicks
+            $(document).off('click.psourceChatUserItem').on('click.psourceChatUserItem', '.psource-chat-user-item', function(e) {
+                e.preventDefault();
+                var userId = $(this).data('user-id');
+                self.handleUserAction(userId);
+            });
+            
+            // Handle emoji clicks
+            $(document).off('click.psourceChatEmojiItem').on('click.psourceChatEmojiItem', '.psource-chat-emoji-item', function(e) {
+                e.preventDefault();
+                var emoji = $(this).data('emoji');
+                self.insertEmojiIntoInput(emoji);
+                self.closeAllDropdowns();
+            });
+            
+            // Handle settings changes
+            $(document).off('change.psourceChatSettings').on('change.psourceChatSettings', '.psource-chat-settings-menu select', function() {
+                var setting = $(this).attr('name');
+                var value = $(this).val();
+                self.saveUserSetting(setting, value);
+            });
+            
+            // Close on escape key
+            $(document).off('keydown.psourceChatDropdown').on('keydown.psourceChatDropdown', function(e) {
+                if (e.keyCode === 27) { // ESC key
+                    self.closeAllDropdowns();
+                }
+            });
+        },
+        
+        /**
+         * Handle dropdown actions
+         */
+        handleDropdownAction: function(action) {
+            var self = this;
+            
+            switch(action) {
+                // Moderation actions
+                case 'clear_messages':
+                    if (confirm('Alle Chat-Nachrichten löschen?')) {
+                        this.ajaxRequest('psource_chat_clear_messages', {}, function(response) {
+                            if (response.success) {
+                                self.container.find('.psource-chat-messages').empty();
+                            }
+                        });
+                    }
+                    break;
+                    
+                case 'kick_user':
+                    var username = prompt('Benutzername zum Kicken:');
+                    if (username) {
+                        this.ajaxRequest('psource_chat_kick_user', { username: username }, function(response) {
+                            if (response.success) {
+                                alert('Benutzer wurde gekickt.');
+                            }
+                        });
+                    }
+                    break;
+                    
+                case 'ban_user':
+                    var username = prompt('Benutzername zum Bannen:');
+                    if (username && confirm('Benutzer "' + username + '" permanent bannen?')) {
+                        this.ajaxRequest('psource_chat_ban_user', { username: username }, function(response) {
+                            if (response.success) {
+                                alert('Benutzer wurde gebannt.');
+                            }
+                        });
+                    }
+                    break;
+                    
+                case 'export_logs':
+                    this.ajaxRequest('psource_chat_export_logs', {}, function(response) {
+                        if (response.success && response.data.download_url) {
+                            window.open(response.data.download_url);
+                        }
+                    });
+                    break;
+                    
+                case 'user_list':
+                    this.showUserList();
+                    break;
+                
+                // Attachment actions
+                case 'show_emojis':
+                    this.showEmojiPicker();
+                    break;
+                    
+                case 'show_gifs':
+                    this.showGifPicker();
+                    break;
+                    
+                case 'upload_file':
+                    this.showFileUpload();
+                    break;
+                    
+                default:
+                    console.log('Unknown action:', action);
+            }
+        },
+        
+        /**
+         * Handle user actions (from user list)
+         */
+        handleUserAction: function(userId) {
+            // For now, just close the dropdown
+            // Could be extended to show user profile, start private chat, etc.
+            this.closeAllDropdowns();
+        },
+
+        /**
+         * Show emoji picker (legacy compatibility)
+         */
+        showEmojiPicker: function() {
+            // This could integrate with the Attachments extension
+            console.log('Emoji picker requested');
+        },
+        
+        /**
+         * Show GIF picker
+         */
+        showGifPicker: function() {
+            console.log('GIF picker requested');
+        },
+        
+        /**
+         * Show file upload
+         */
+        showFileUpload: function() {
+            console.log('File upload requested');
+        },
+
+        /**
+         * Handle moderation actions (legacy method for backward compatibility)
+         */
+        handleModerationAction: function(action) {
+            return this.handleDropdownAction(action);
+        },
+
         /**
          * Load user settings into menu
          */
@@ -806,6 +1218,8 @@
             var settings = this.getUserSettings();
             $('.psource-chat-settings-menu select[name="enable_sound"]').val(settings.enable_sound);
             $('.psource-chat-settings-menu select[name="enable_notifications"]').val(settings.enable_notifications);
+            $('.psource-chat-settings-menu select[name="auto_scroll"]').val(settings.auto_scroll);
+            $('.psource-chat-settings-menu select[name="show_timestamps"]').val(settings.show_timestamps);
         },
         
         /**
@@ -1016,6 +1430,10 @@
             
             // Initialize with configuration
             PSSourceChat.init(config);
+            
+            // Make chat instance globally accessible for debugging
+            window.PSChatInstance = PSSourceChat;
+            console.log('PS Chat initialized and available as window.PSChatInstance');
         } else {
             console.log('PS Chat: Required objects not found');
             console.log('- psourceChatFrontend:', typeof psourceChatFrontend);

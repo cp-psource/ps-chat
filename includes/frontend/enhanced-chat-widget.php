@@ -57,8 +57,8 @@ class Enhanced_Chat_Widget extends \WP_Widget {
      */
     public function enqueue_widget_scripts() {
         if (is_active_widget(false, false, $this->id_base)) {
-            wp_enqueue_script('psource-chat-widget', PSOURCE_CHAT_URL . 'assets/js/widget.js', ['jquery'], '1.0.0', true);
-            wp_enqueue_style('psource-chat-widget', PSOURCE_CHAT_URL . 'assets/css/widget.css', [], '1.0.0');
+            wp_enqueue_script('psource-chat-widget', PSOURCE_CHAT_PLUGIN_URL . 'assets/js/widget.js', ['jquery'], '1.0.0', true);
+            wp_enqueue_style('psource-chat-widget', PSOURCE_CHAT_PLUGIN_URL . 'assets/css/widget.css', [], '1.0.0');
             
             wp_localize_script('psource-chat-widget', 'PSChatWidget', [
                 'ajax_url' => admin_url('admin-ajax.php'),

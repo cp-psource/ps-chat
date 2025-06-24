@@ -697,6 +697,41 @@ class Chat_Extensions {
     public function render_frontend_extension($ext_id) {
         $options = get_option('psource_chat_extensions', []);
         $frontend_options = $options['frontend'] ?? [];
+        
+        // Tab navigation
+        $active_tab = $_GET['tab'] ?? 'general';
+        ?>
+        <div class="psource-chat-extension-tabs">
+            <h2 class="nav-tab-wrapper">
+                <a href="<?php echo admin_url('admin.php?page=psource-chat-extensions&extension=frontend&tab=general'); ?>" 
+                   class="nav-tab <?php echo $active_tab === 'general' ? 'nav-tab-active' : ''; ?>">
+                    <?php _e('Allgemeine Einstellungen', 'psource-chat'); ?>
+                </a>
+                <a href="<?php echo admin_url('admin.php?page=psource-chat-extensions&extension=frontend&tab=attachments'); ?>" 
+                   class="nav-tab <?php echo $active_tab === 'attachments' ? 'nav-tab-active' : ''; ?>">
+                    <?php _e('Attachments', 'psource-chat'); ?>
+                </a>
+                <a href="<?php echo admin_url('admin.php?page=psource-chat-extensions&extension=frontend&tab=appearance'); ?>" 
+                   class="nav-tab <?php echo $active_tab === 'appearance' ? 'nav-tab-active' : ''; ?>">
+                    <?php _e('Darstellung/Aussehen', 'psource-chat'); ?>
+                </a>
+            </h2>
+            
+            <?php if ($active_tab === 'general'): ?>
+                <?php $this->render_frontend_general_tab($frontend_options); ?>
+            <?php elseif ($active_tab === 'attachments'): ?>
+                <?php $this->render_frontend_attachments_tab($frontend_options); ?>
+            <?php elseif ($active_tab === 'appearance'): ?>
+                <?php $this->render_frontend_appearance_tab($frontend_options); ?>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
+    
+    /**
+     * Render general settings tab for frontend
+     */
+    private function render_frontend_general_tab($frontend_options) {
         ?>
         <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Seitenkanten Chat Einstellungen', 'psource-chat'); ?></legend>
@@ -828,17 +863,30 @@ class Chat_Extensions {
                 
                 <tr>
                     <td class="chat-label-column">
-                        <label for="frontend_enable_sound"><?php _e('Sound-Benachrichtigungen', 'psource-chat'); ?></label>
+                        <label for="frontend_enable_gifs"><?php _e('GIF-Button aktivieren', 'psource-chat'); ?></label>
                     </td>
                     <td class="chat-value-column">
-                        <select id="frontend_enable_sound" name="psource_chat_extensions[frontend][enable_sound]">
-                            <option value="yes" <?php selected($frontend_options['enable_sound'] ?? 'yes', 'yes'); ?>><?php _e('Ja - Sound bei neuen Nachrichten', 'psource-chat'); ?></option>
-                            <option value="no" <?php selected($frontend_options['enable_sound'] ?? 'yes', 'no'); ?>><?php _e('Nein - kein Sound', 'psource-chat'); ?></option>
+                        <select id="frontend_enable_gifs" name="psource_chat_extensions[frontend][enable_gifs]">
+                            <option value="no" <?php selected($frontend_options['enable_gifs'] ?? 'no', 'no'); ?>><?php _e('Nein - kein GIF-Button', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($frontend_options['enable_gifs'] ?? 'no', 'yes'); ?>><?php _e('Ja - GIF-Button anzeigen', 'psource-chat'); ?></option>
                         </select>
-                        <p class="description"><?php _e('Spielt einen Benachrichtigungston ab, wenn neue Nachrichten eingehen.', 'psource-chat'); ?></p>
+                        <p class="description"><?php _e('Zeigt einen Button zum Einfügen von GIFs in Nachrichten.', 'psource-chat'); ?></p>
                     </td>
                 </tr>
                 
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_enable_uploads"><?php _e('Upload-Button aktivieren', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <select id="frontend_enable_uploads" name="psource_chat_extensions[frontend][enable_uploads]">
+                            <option value="no" <?php selected($frontend_options['enable_uploads'] ?? 'no', 'no'); ?>><?php _e('Nein - kein Upload-Button', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($frontend_options['enable_uploads'] ?? 'no', 'yes'); ?>><?php _e('Ja - Upload-Button anzeigen', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Zeigt einen Button zum Hochladen von Dateien in Nachrichten.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+
                 <tr>
                     <td class="chat-label-column">
                         <label for="frontend_visual_notifications"><?php _e('Visuelle Benachrichtigungen', 'psource-chat'); ?></label>
@@ -903,9 +951,15 @@ class Chat_Extensions {
                         <p class="description"><?php _e('Maximale Anzahl Zeichen pro Nachricht (50-2000)', 'psource-chat'); ?></p>
                     </td>
                 </tr>
-            </table>
         </fieldset>
-        
+        <?php
+    }
+    
+    /**
+     * Render attachments tab for frontend
+     */
+    private function render_frontend_attachments_tab($frontend_options) {
+        ?>
         <?php 
         // Check if Attachments extension is enabled to show attachment options
         $extension_options = get_option('psource_chat_extensions', []);
@@ -916,7 +970,7 @@ class Chat_Extensions {
             <legend><?php _e('Attachment-Einstellungen für Frontend Chat', 'psource-chat'); ?></legend>
             <p class="description"><?php _e('Diese Optionen steuern, welche Attachment-Funktionen im Frontend Chat verfügbar sind. Die globalen Attachment-Einstellungen werden in der Attachments-Erweiterung konfiguriert.', 'psource-chat'); ?></p>
             
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <?php if (($attachments_options['emojis_enabled'] ?? 'yes') === 'yes'): ?>
                 <tr>
                     <td class="chat-label-column">
@@ -986,6 +1040,141 @@ class Chat_Extensions {
             </div>
         </fieldset>
         <?php endif; ?>
+        <?php
+    }
+    
+    /**
+     * Render appearance tab for frontend
+     */
+    private function render_frontend_appearance_tab($frontend_options) {
+        ?>
+        <fieldset class="extension-settings-fieldset">
+            <legend><?php _e('Darstellung & Aussehen', 'psource-chat'); ?></legend>
+            <p class="description"><?php _e('Gestalte das Aussehen deines Seitenkanten-Chats individuell.', 'psource-chat'); ?></p>
+            
+            <table class="form-table">
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_theme"><?php _e('Chat-Theme', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <select id="frontend_theme" name="psource_chat_extensions[frontend][theme]">
+                            <option value="default" <?php selected($frontend_options['theme'] ?? 'default', 'default'); ?>><?php _e('Standard (Hell)', 'psource-chat'); ?></option>
+                            <option value="dark" <?php selected($frontend_options['theme'] ?? 'default', 'dark'); ?>><?php _e('Dunkel', 'psource-chat'); ?></option>
+                            <option value="minimal" <?php selected($frontend_options['theme'] ?? 'default', 'minimal'); ?>><?php _e('Minimal', 'psource-chat'); ?></option>
+                            <option value="custom" <?php selected($frontend_options['theme'] ?? 'default', 'custom'); ?>><?php _e('Benutzerdefiniert', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Wähle ein vorgefertigtes Theme oder erstelle ein benutzerdefiniertes Design.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_header_bg_color"><?php _e('Header-Hintergrundfarbe', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <input type="color" id="frontend_header_bg_color" name="psource_chat_extensions[frontend][header_bg_color]" 
+                               value="<?php echo esc_attr($frontend_options['header_bg_color'] ?? '#007cba'); ?>" />
+                        <p class="description"><?php _e('Hintergrundfarbe der Chat-Kopfzeile.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_header_text_color"><?php _e('Header-Textfarbe', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <input type="color" id="frontend_header_text_color" name="psource_chat_extensions[frontend][header_text_color]" 
+                               value="<?php echo esc_attr($frontend_options['header_text_color'] ?? '#ffffff'); ?>" />
+                        <p class="description"><?php _e('Textfarbe in der Chat-Kopfzeile.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_chat_bg_color"><?php _e('Chat-Hintergrundfarbe', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <input type="color" id="frontend_chat_bg_color" name="psource_chat_extensions[frontend][chat_bg_color]" 
+                               value="<?php echo esc_attr($frontend_options['chat_bg_color'] ?? '#ffffff'); ?>" />
+                        <p class="description"><?php _e('Hintergrundfarbe des Chat-Bereichs.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_input_bg_color"><?php _e('Eingabefeld-Hintergrund', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <input type="color" id="frontend_input_bg_color" name="psource_chat_extensions[frontend][input_bg_color]" 
+                               value="<?php echo esc_attr($frontend_options['input_bg_color'] ?? '#f8f9fa'); ?>" />
+                        <p class="description"><?php _e('Hintergrundfarbe des Nachrichteneingabefelds.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_font_size"><?php _e('Schriftgröße', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <input type="number" id="frontend_font_size" name="psource_chat_extensions[frontend][font_size]" 
+                               value="<?php echo esc_attr($frontend_options['font_size'] ?? '14'); ?>" 
+                               min="10" max="24" /> px
+                        <p class="description"><?php _e('Schriftgröße für Chat-Nachrichten (10-24px).', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_border_radius"><?php _e('Ecken-Rundung', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <input type="number" id="frontend_border_radius" name="psource_chat_extensions[frontend][border_radius]" 
+                               value="<?php echo esc_attr($frontend_options['border_radius'] ?? '12'); ?>" 
+                               min="0" max="25" /> px
+                        <p class="description"><?php _e('Rundung der Chat-Fenster-Ecken (0-25px).', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_button_style"><?php _e('Button-Stil', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <select id="frontend_button_style" name="psource_chat_extensions[frontend][button_style]">
+                            <option value="default" <?php selected($frontend_options['button_style'] ?? 'default', 'default'); ?>><?php _e('Standard', 'psource-chat'); ?></option>
+                            <option value="flat" <?php selected($frontend_options['button_style'] ?? 'default', 'flat'); ?>><?php _e('Flach', 'psource-chat'); ?></option>
+                            <option value="rounded" <?php selected($frontend_options['button_style'] ?? 'default', 'rounded'); ?>><?php _e('Abgerundet', 'psource-chat'); ?></option>
+                            <option value="square" <?php selected($frontend_options['button_style'] ?? 'default', 'square'); ?>><?php _e('Eckig', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Stil der Chat-Buttons (Senden, Emoji, Upload, etc.).', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_button_color"><?php _e('Button-Farbe', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <input type="color" id="frontend_button_color" name="psource_chat_extensions[frontend][button_color]" 
+                               value="<?php echo esc_attr($frontend_options['button_color'] ?? '#007cba'); ?>" />
+                        <p class="description"><?php _e('Farbe für Chat-Buttons.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_custom_css"><?php _e('Benutzerdefiniertes CSS', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <textarea id="frontend_custom_css" name="psource_chat_extensions[frontend][custom_css]" 
+                                  rows="6" cols="50" class="large-text code" 
+                                  placeholder="/* Eigenes CSS hier eingeben */"><?php echo esc_textarea($frontend_options['custom_css'] ?? ''); ?></textarea>
+                        <p class="description"><?php _e('Zusätzliches CSS für erweiterte Anpassungen. Verwende .psource-chat-widget als Basis-Selektor.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
         <?php
     }
     

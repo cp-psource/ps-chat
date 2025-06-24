@@ -3,6 +3,130 @@
  * Styles for emoji picker, GIF picker, and upload interfaces
  */
 
+/* Chat Button Base Styles - Theme Independent */
+.psource-chat-btn,
+.psource-chat-send-btn,
+.psource-chat-emoji-btn,
+.psource-chat-gif-btn,
+.psource-chat-upload-btn {
+    background: #f8f9fa !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    color: #495057 !important;
+    min-width: 35px !important;
+    height: 35px !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    margin: 2px !important;
+}
+
+.psource-chat-btn:hover,
+.psource-chat-send-btn:hover,
+.psource-chat-emoji-btn:hover,
+.psource-chat-gif-btn:hover,
+.psource-chat-upload-btn:hover {
+    background: #e9ecef !important;
+    border-color: #ced4da !important;
+    transform: translateY(-1px) !important;
+    color: #495057 !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+.psource-chat-btn:active,
+.psource-chat-btn:focus,
+.psource-chat-send-btn:active,
+.psource-chat-send-btn:focus,
+.psource-chat-emoji-btn:active,
+.psource-chat-emoji-btn:focus,
+.psource-chat-gif-btn:active,
+.psource-chat-gif-btn:focus,
+.psource-chat-upload-btn:active,
+.psource-chat-upload-btn:focus {
+    transform: translateY(0) !important;
+    background: #dee2e6 !important;
+    color: #495057 !important;
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.psource-chat-btn svg,
+.psource-chat-send-btn svg,
+.psource-chat-emoji-btn svg,
+.psource-chat-gif-btn svg,
+.psource-chat-upload-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    fill: currentColor !important;
+    display: block !important;
+    pointer-events: none !important;
+}
+
+/* Send Button Specific Styling */
+.psource-chat-send-btn {
+    background: #007cba !important;
+    color: #ffffff !important;
+    border-color: #005a87 !important;
+    font-weight: 500 !important;
+}
+
+.psource-chat-send-btn:hover {
+    background: #005a87 !important;
+    color: #ffffff !important;
+    border-color: #004064 !important;
+}
+
+.psource-chat-send-btn:active,
+.psource-chat-send-btn:focus {
+    background: #004064 !important;
+    color: #ffffff !important;
+}
+
+/* Input Field Styling */
+.psource-chat-input,
+.psource-chat-message-input {
+    background: #ffffff !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: #495057 !important;
+    outline: none !important;
+    transition: border-color 0.2s ease !important;
+    resize: none !important;
+}
+
+.psource-chat-input:focus,
+.psource-chat-message-input:focus {
+    border-color: #007cba !important;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1) !important;
+}
+
+/* Chat Input Container */
+.psource-chat-input-container {
+    display: flex !important;
+    gap: 5px !important;
+    align-items: center !important;
+    padding: 8px !important;
+    background: #f8f9fa !important;
+    border-top: 1px solid #e1e5e9 !important;
+}
+
 /* Attachment Buttons Container */
 .psource-chat-attachment-buttons {
     display: flex;

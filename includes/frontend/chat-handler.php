@@ -44,6 +44,14 @@ class Chat_Handler {
             '1.0.1'
         );
         
+        // Enqueue dropdown menu CSS
+        wp_enqueue_style(
+            'psource-chat-dropdowns',
+            plugin_dir_url(dirname(dirname(__FILE__))) . 'assets/css/chat-dropdowns.css',
+            ['psource-chat-frontend'],
+            '1.0.1'
+        );
+        
         // Enqueue jQuery (required for original functionality)
         wp_enqueue_script('jquery');
         
@@ -126,6 +134,14 @@ class Chat_Handler {
             'psource-chat-admin-frontend',
             plugin_dir_url(dirname(dirname(__FILE__))) . 'assets/css/frontend.css',
             [],
+            '1.0.1'
+        );
+        
+        // Enqueue dropdown menu CSS for admin
+        wp_enqueue_style(
+            'psource-chat-admin-dropdowns',
+            plugin_dir_url(dirname(dirname(__FILE__))) . 'assets/css/chat-dropdowns.css',
+            ['psource-chat-admin-frontend'],
             '1.0.1'
         );
         

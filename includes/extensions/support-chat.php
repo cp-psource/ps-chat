@@ -96,14 +96,14 @@ class Support_Chat {
         
         wp_enqueue_style(
             'psource-support-chat',
-            PSOURCE_CHAT_URL . 'assets/css/support-chat.css',
+            PSOURCE_CHAT_PLUGIN_URL . 'assets/css/support-chat.css',
             [],
             PSOURCE_CHAT_VERSION
         );
         
         wp_enqueue_script(
             'psource-support-chat',
-            PSOURCE_CHAT_URL . 'assets/js/support-chat.js',
+            PSOURCE_CHAT_PLUGIN_URL . 'assets/js/support-chat.js',
             ['jquery'],
             PSOURCE_CHAT_VERSION,
             true
