@@ -30,7 +30,6 @@
     function initializeFrontendChat() {
         chatContainer = $('.psource-chat-container');
         if (chatContainer.length === 0) {
-            console.log('PS Chat: Container nicht gefunden');
             return;
         }
 

@@ -44,30 +44,23 @@
                 return;
             }
             
-            console.log('PS Chat: Container ready, initializing...');
-            
             // CRITICAL: Ensure proper positioning BEFORE anything else
             this.ensureProperPositioning();
             
             // Load saved state from localStorage (highest priority)
             var savedState = this.loadState();
-            console.log('PS Chat: Loaded saved state:', savedState);
             
             // Determine initial minimized state
             if (savedState !== null) {
                 this.minimized = savedState;
-                console.log('PS Chat: Using saved state:', this.minimized);
             } else if (this.container.hasClass('minimized')) {
                 this.minimized = true;
-                console.log('PS Chat: Using PHP minimized class');
             } else {
                 this.minimized = (this.settings.initial_state === 'minimized');
-                console.log('PS Chat: Using settings initial_state:', this.settings.initial_state);
             }
             
             // Apply the determined state
             this.container.toggleClass('minimized', this.minimized);
-            console.log('PS Chat: Applied initial state - minimized:', this.minimized);
             
             this.bindEvents();
             this.setupChat();
@@ -83,7 +76,6 @@
             this.startPositionMonitoring();
             
             this.initialized = true;
-            console.log('PSSource Chat initialized with state:', this.minimized ? 'minimized' : 'maximized');
         },
         
         /**
@@ -101,11 +93,8 @@
                 return null;
             }
             
-            console.log('PS Chat: Found container:', container.attr('id') || container.attr('class'));
-            
             // CRITICAL: Move container to body if it's not already there
             if (container.parent()[0].tagName !== 'BODY') {
-                console.log('PS Chat: Moving container to body from:', container.parent()[0].tagName);
                 container.detach().appendTo('body');
             }
             
@@ -117,8 +106,6 @@
          */
         ensureProperPositioning: function() {
             if (!this.container || !this.container.length) return;
-            
-            console.log('PS Chat: Ensuring proper positioning...');
             
             // Remove any existing positioning that might interfere
             this.container.removeClass('psource-chat-bottom-right psource-chat-bottom-left psource-chat-top-right psource-chat-top-left');
@@ -167,8 +154,6 @@
             // Additional DOM attributes to prevent interference
             this.container.attr('data-ps-chat-positioned', 'true');
             
-            console.log('PS Chat: Applied positioning styles:', positionStyles);
-            
             // Verify positioning worked
             setTimeout(function() {
                 this.verifyPositioning();
@@ -183,12 +168,6 @@
             
             var computedStyle = window.getComputedStyle(this.container[0]);
             var rect = this.container[0].getBoundingClientRect();
-            
-            console.log('PS Chat: Position verification:');
-            console.log('- CSS Position:', computedStyle.position);
-            console.log('- Z-Index:', computedStyle.zIndex);
-            console.log('- Bounding Rect:', rect);
-            console.log('- Parent:', this.container.parent()[0].tagName);
             
             // Check for problems and fix them
             var problems = [];
@@ -213,12 +192,6 @@
                 problems.push('Off-screen positioning');
                 this.ensureProperPositioning();
             }
-            
-            if (problems.length > 0) {
-                console.warn('PS Chat: Fixed positioning problems:', problems);
-            } else {
-                console.log('PS Chat: Positioning verification passed');
-            }
         },
         
         /**
@@ -235,8 +208,6 @@
                     if (computedStyle.position !== 'fixed' || 
                         parseInt(computedStyle.zIndex) < 999999 ||
                         self.container.parent()[0].tagName !== 'BODY') {
-                        
-                        console.log('PS Chat: Position drift detected, correcting...');
                         self.ensureProperPositioning();
                     }
                 }
@@ -249,11 +220,8 @@
         bindEvents: function() {
             var self = this;
             
-            console.log('PS Chat: Binding events to container:', this.container);
-            
             // Header click to toggle
             this.container.find('.psource-chat-header').on('click', function(e) {
-                console.log('PS Chat: Header clicked');
                 if (!$(e.target).hasClass('psource-chat-btn') && !$(e.target).closest('.psource-chat-btn').length) {
                     self.toggleMinimize();
                 }
@@ -263,7 +231,6 @@
             $(document).on('click', '.psource-chat-minimize', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('PS Chat: Minimize button clicked');
                 setTimeout(function() {
                     self.toggleMinimize();
                 }, 50);
@@ -308,27 +275,22 @@
             $(window).off('resize.psourceChat').on('resize.psourceChat', function() {
                 self.forcePositioning();
             });
-            
-            console.log('PS Chat: All event handlers bound');
         },
         
         /**
          * Setup chat interface
          */
         setupChat: function() {
-            console.log('PS Chat: Setting up chat interface...');
             
             // IMMEDIATE FORCE POSITIONING - Override any theme interference
             this.forceFixedPositioning();
             
             // Apply initial minimized state
             this.container.toggleClass('minimized', this.minimized);
-            console.log('PS Chat: Applied minimized state in setupChat:', this.minimized);
             
             // Apply position class AGAIN for certainty
             this.container.removeClass('psource-chat-bottom-right psource-chat-bottom-left psource-chat-top-right psource-chat-top-left');
             this.container.addClass('psource-chat-' + this.settings.position);
-            console.log('PS Chat: Applied position class: psource-chat-' + this.settings.position);
             
             // Set dimensions
             this.container.css({
@@ -345,29 +307,23 @@
             // AGGRESSIVE: Force positioning multiple times with delays
             setTimeout(function() {
                 this.forceFixedPositioning();
-                console.log('PS Chat: Re-forced positioning after 100ms');
             }.bind(this), 100);
             
             setTimeout(function() {
                 this.forceFixedPositioning();
-                console.log('PS Chat: Re-forced positioning after 500ms');
             }.bind(this), 500);
             
             setTimeout(function() {
                 this.forceFixedPositioning();
-                console.log('PS Chat: Re-forced positioning after 1000ms');
             }.bind(this), 1000);
             
             setTimeout(function() {
                 this.forceFixedPositioning();
-                console.log('PS Chat: Re-forced positioning after 2000ms');
             }.bind(this), 2000);
             
             // Load initial data
             this.loadMessages();
             this.loadActiveUsers();
-            
-            console.log('PS Chat: Setup completed');
         },
         
         /**
@@ -375,8 +331,6 @@
          */
         forceFixedPositioning: function() {
             if (!this.container || !this.container.length) return;
-            
-            console.log('PS Chat: Force positioning starting...');
             
             // AGGRESSIVE positioning override - remove any conflicting styles
             this.container.css({
@@ -392,7 +346,6 @@
             
             // Force position based on setting with !important
             var position = this.settings.position || 'bottom-right';
-            console.log('PS Chat: Applying position:', position);
             
             // Remove ALL position classes first
             this.container.removeClass('psource-chat-bottom-right psource-chat-bottom-left psource-chat-top-right psource-chat-top-left');
@@ -429,7 +382,6 @@
             
             if (positions[position]) {
                 this.container.css(positions[position]);
-                console.log('PS Chat: Applied position CSS:', positions[position]);
             }
             
             // Additional aggressive overrides
@@ -437,9 +389,6 @@
             
             // Check if positioning worked
             var computedStyle = this.container.css(['position', 'top', 'right', 'bottom', 'left', 'z-index']);
-            console.log('PS Chat: Final computed styles:', computedStyle);
-            
-            console.log('PS Chat: Force positioning completed for', position);
         },
         
         /**
@@ -456,14 +405,12 @@
             var minimizeBtn = this.container.find('.psource-chat-minimize');
             
             if (!minimizeBtn.length) {
-                console.log('PS Chat: No minimize button found');
                 return;
             }
             
             var svg = minimizeBtn.find('svg path');
             
             if (!svg.length) {
-                console.log('PS Chat: No SVG path found in minimize button');
                 return;
             }
             
@@ -471,12 +418,10 @@
                 // Show maximize icon (plus/expand)
                 svg.attr('d', 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z');
                 minimizeBtn.attr('title', 'Maximieren');
-                console.log('PS Chat: Set icon to EXPAND (minimized state)');
             } else {
                 // Show minimize icon (minus)
                 svg.attr('d', 'M19 13H5v-2h14v2z');
                 minimizeBtn.attr('title', 'Minimieren');
-                console.log('PS Chat: Set icon to MINIMIZE (maximized state)');
             }
             
             // Force visibility
@@ -490,15 +435,12 @@
          * Toggle minimize state
          */
         toggleMinimize: function() {
-            console.log('PS Chat: toggleMinimize called, current state:', this.minimized);
             
             // Toggle state
             this.minimized = !this.minimized;
             
             // Update container class
             this.container.toggleClass('minimized', this.minimized);
-            
-            console.log('PS Chat: New minimized state:', this.minimized);
             
             // Update the icon
             setTimeout(function() {
@@ -530,8 +472,6 @@
                 self.loadMessages();
                 self.loadActiveUsers();
             }, this.settings.update_interval);
-            
-            console.log('PS Chat: Update loop started with interval:', this.settings.update_interval);
         },
         
         /**
@@ -543,8 +483,6 @@
             
             if (!message) return;
             
-            console.log('PS Chat: Sending message:', message);
-            
             // Clear input
             input.val('');
             
@@ -554,7 +492,6 @@
                 guest_name: this.container.find('.psource-chat-guest-name').val() || ''
             }, function(response) {
                 if (response.success) {
-                    console.log('PS Chat: Message sent successfully');
                     this.loadMessages();
                 } else {
                     console.error('PS Chat: Error sending message:', response.data);
@@ -591,8 +528,6 @@
          */
         displayMessages: function(data) {
             if (!data.messages || !data.messages.length) return;
-            
-            console.log('PS Chat: Displaying', data.messages.length, 'messages');
             
             var messagesContainer = this.container.find('.psource-chat-messages');
             var hasNewMessages = false;
@@ -680,7 +615,6 @@
          * Toggle emoji picker
          */
         toggleEmojiPicker: function() {
-            console.log('PS Chat: Toggle emoji picker called');
             
             // Toggle behavior: if picker exists, remove it
             var existingPicker = $('.psource-chat-emoji-picker');
@@ -699,7 +633,6 @@
             
             var picker = $('.psource-chat-emoji-picker');
             if (picker.length === 0) {
-                console.log('PS Chat: Failed to create emoji picker');
                 return;
             }
             
@@ -851,7 +784,6 @@
          * Show user settings
          */
         showUserSettings: function() {
-            console.log('PS Chat: Showing user settings');
             
             // Toggle behavior
             var existingMenu = $('.psource-chat-settings-menu');
@@ -889,7 +821,6 @@
          * Show moderation tools
          */
         showModerationTools: function() {
-            console.log('PS Chat: Showing moderation tools');
             
             var existingMenu = $('.psource-chat-moderation-menu');
             if (existingMenu.length) {
@@ -994,7 +925,6 @@
         saveState: function() {
             if (typeof Storage !== 'undefined') {
                 localStorage.setItem('psource_chat_minimized', this.minimized ? '1' : '0');
-                console.log('PS Chat: State saved:', this.minimized);
             }
         },
         
@@ -1022,14 +952,12 @@
                 // Check minimize icon
                 var btn = self.container.find('.psource-chat-minimize');
                 if (btn.length && btn.find('svg path').length === 0) {
-                    console.log('PS Chat: Minimize icon disappeared, restoring...');
                     self.updateMinimizeIcon();
                 }
                 
                 // Check positioning - if position is not fixed, re-apply
                 var currentPosition = self.container.css('position');
                 if (currentPosition !== 'fixed') {
-                    console.log('PS Chat: Position changed from fixed to', currentPosition, '- re-applying!');
                     self.forceFixedPositioning();
                 }
                 
@@ -1042,8 +970,6 @@
                     // For bottom positions, chat should be near bottom of viewport
                     var expectedBottom = windowHeight - 100; // Should be within 100px of bottom
                     if (containerOffset && containerOffset.top > expectedBottom + 200) {
-                        console.log('PS Chat: Chat appears to be below viewport (in footer?) - re-positioning!');
-                        console.log('PS Chat: Container top:', containerOffset.top, 'Expected max:', expectedBottom + 200);
                         self.forceFixedPositioning();
                     }
                 }
@@ -1079,7 +1005,6 @@
          * AJAX request helper
          */
         ajaxRequest: function(action, data, callback) {
-            console.log('PS Chat: AJAX Request', action, data);
             
             $.ajax({
                 url: psource_chat_ajax.ajax_url,
@@ -1089,7 +1014,6 @@
                     nonce: psource_chat_ajax.nonce
                 }, data),
                 success: function(response) {
-                    console.log('PS Chat: AJAX Success', action, response);
                     if (typeof callback === 'function') {
                         callback(response);
                     }
@@ -1110,16 +1034,13 @@
     
     // Auto-initialize when DOM ready
     $(document).ready(function() {
-        console.log('PS Chat: DOM Ready - starting emergency positioning protocol');
         
         // PHASE 1: Immediate emergency positioning for any existing chat containers
         $('.psource-chat-container, #psource-chat-seitenkanten').each(function() {
             var $chat = $(this);
-            console.log('PS Chat: Found chat container:', $chat.attr('id') || $chat.attr('class'));
             
             // Emergency relocation to body
             if (!$chat.parent().is('body')) {
-                console.log('PS Chat: EMERGENCY - Moving chat from', $chat.parent().get(0).tagName, 'to body');
                 $chat.detach().appendTo('body');
             }
             
@@ -1133,14 +1054,11 @@
                 'z-index': '2147483647',
                 'display': 'block'
             }).attr('style', $chat.attr('style') + '; position: fixed !important; bottom: 20px !important; right: 20px !important; z-index: 2147483647 !important;');
-            
-            console.log('PS Chat: Emergency positioning applied to:', $chat.attr('id'));
+
         });
         
         // PHASE 2: Initialize chat functionality if conditions are met
         if (typeof psourceChatFrontend !== 'undefined' && $('.psource-chat-container').length > 0) {
-            console.log('PS Chat: Conditions met, initializing...');
-            
             // Get configuration from WordPress localization
             var config = {
                 ajax_url: psourceChatFrontend.ajaxUrl,
@@ -1159,8 +1077,6 @@
                 config.allow_guest_chat = frontendOptions.allow_guest_chat === 'yes';
             }
             
-            console.log('PS Chat: Configuration:', config);
-            
             // Initialize with configuration
             PSSourceChat.init(config);
         } else {
@@ -1172,7 +1088,6 @@
     
     // PHASE 3: Continuous monitoring to prevent theme interference
     $(window).on('load', function() {
-        console.log('PS Chat: Window loaded - starting continuous monitoring');
         
         // Monitor every 2 seconds for theme interference
         setInterval(function() {
@@ -1183,20 +1098,17 @@
                 
                 // Check if chat was moved out of body
                 if (currentParent.tagName !== 'BODY') {
-                    console.log('PS Chat: ALERT - Chat moved to', currentParent.tagName, '- relocating to body!');
                     $chat.detach().appendTo('body');
                 }
                 
                 // Check if position was changed from fixed
                 if (currentPosition !== 'fixed') {
-                    console.log('PS Chat: ALERT - Position changed to', currentPosition, '- restoring fixed!');
                     $chat.css('position', 'fixed');
                 }
                 
                 // Check if chat is below viewport (in footer area)
                 var rect = $chat.get(0).getBoundingClientRect();
                 if (rect.top > window.innerHeight + 100) {
-                    console.log('PS Chat: ALERT - Chat below viewport (possibly in footer) - emergency repositioning!');
                     $chat.css({
                         'position': 'fixed',
                         'bottom': '20px',
@@ -1220,8 +1132,6 @@
                             
                             // Check if a chat container was added
                             if ($node.hasClass('psource-chat-container') || $node.attr('id') === 'psource-chat-seitenkanten') {
-                                console.log('PS Chat: New chat container detected in DOM - applying emergency positioning');
-                                
                                 // Immediate emergency positioning
                                 if (!$node.parent().is('body')) {
                                     $node.appendTo('body');
@@ -1238,7 +1148,6 @@
                             // Check if chat container was added inside this node
                             $node.find('.psource-chat-container, #psource-chat-seitenkanten').each(function() {
                                 var $chat = $(this);
-                                console.log('PS Chat: Chat container found inside new node - relocating');
                                 $chat.detach().appendTo('body').css({
                                     'position': 'fixed',
                                     'bottom': '20px',
