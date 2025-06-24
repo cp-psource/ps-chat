@@ -144,6 +144,9 @@ class Plugin {
         // Load API
         new \PSSource\Chat\API\Chat_REST_Controller();
         
+        // Initialize extensions
+        $this->init_extensions();
+        
         // Load frontend components (only if extensions are enabled)
         if (!is_admin()) {
             $extension_options = get_option('psource_chat_extensions', []);
@@ -207,6 +210,18 @@ class Plugin {
             if (file_exists(PSOURCE_CHAT_INCLUDES_DIR . 'extensions/support-chat.php')) {
                 require_once PSOURCE_CHAT_INCLUDES_DIR . 'extensions/support-chat.php';
                 new \PSSource\Chat\Extensions\Support_Chat();
+            }
+        }
+        
+        // Load Attachments extension
+        $attachments_options = $extension_options['attachments'] ?? [];
+        if (($attachments_options['enabled'] ?? 'disabled') === 'enabled') {
+            if (file_exists(PSOURCE_CHAT_INCLUDES_DIR . 'core/extension-base.php')) {
+                require_once PSOURCE_CHAT_INCLUDES_DIR . 'core/extension-base.php';
+            }
+            if (file_exists(PSOURCE_CHAT_INCLUDES_DIR . 'extensions/class-attachments.php')) {
+                require_once PSOURCE_CHAT_INCLUDES_DIR . 'extensions/class-attachments.php';
+                new \PSSource\Chat\Extensions\Attachments();
             }
         }
         

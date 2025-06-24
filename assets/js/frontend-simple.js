@@ -52,8 +52,6 @@
         if (!isMinimized) {
             startPolling();
         }
-        
-        console.log('PS Chat Frontend initialized with position:', config.position);
     }
 
     /**

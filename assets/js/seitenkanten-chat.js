@@ -67,6 +67,11 @@
             this.startUpdateLoop();
             this.monitorMinimizeIcon();
             
+            // Initialize attachments integration
+            setTimeout(function() {
+                this.initAttachments();
+            }.bind(this), 200);
+            
             // Set initial icon after everything is set up
             setTimeout(function() {
                 this.updateMinimizeIcon();
@@ -682,103 +687,35 @@
         },
         
         /**
-         * Create emoji picker
+         * Initialize attachments integration
          */
-        createEmojiPicker: function() {
-            if ($('.psource-chat-emoji-picker').length > 0) return;
-            
-            // Original emoji string from legacy code
-            var emoji_string = '😀,😃,😄,😁,😆,😅,🤣,😂,😊,😇,😍,🤩,😘,😗,😚,😛,🤪,😜,😝,🤑,🤗,🤭,🤫,🤔,🤐,🤨,😐,😑,😶,😏,😒,🙄,😬,🤥,😔,😪,🤤,😴,😷,🤒,🤕,🤢,🤮,🤧,🥵,🥶,🥴,😵,🤯,🤠,🥳,😎,🤓,🧐,😕,😟,😮,😳,😨,😢,😭,😱,😣,😓,😫,😤,🥱,😠,🤬,😈,👿,💩,🤡,👽,👻,💋,👋,🤚,🖐️,✋,🖖,👌,🤏,✌️,🤞,🤘,🤙,👍,👎,✊,👊,🤝,🙏,💪,👂,👃,🧠,👅,👄';
-            
-            var all_emojis = emoji_string.split(',');
-            var smileys = all_emojis.slice(0, 30);
-            var gestures = all_emojis.slice(30, 50);
-            var misc = all_emojis.slice(50);
-            
-            var pickerHtml = '<div class="psource-chat-emoji-picker" style="display: none;">' +
-                '<div class="emoji-picker-tabs">' +
-                '<button class="emoji-tab active" data-category="smileys">😊</button>' +
-                '<button class="emoji-tab" data-category="gestures">👍</button>' +
-                '<button class="emoji-tab" data-category="misc">💪</button>' +
-                '</div>' +
-                '<div class="emoji-picker-content">' +
-                '<div class="emoji-category" data-category="smileys">' +
-                this.createEmojiButtons(smileys) +
-                '</div>' +
-                '<div class="emoji-category" data-category="gestures" style="display:none;">' +
-                this.createEmojiButtons(gestures) +
-                '</div>' +
-                '<div class="emoji-category" data-category="misc" style="display:none;">' +
-                this.createEmojiButtons(misc) +
-                '</div>' +
-                '</div>' +
-                '</div>';
-            
-            $('body').append(pickerHtml);
-            this.bindEmojiPickerEvents();
+        initAttachments: function() {
+            // Check if attachments system is available
+            if (typeof PSChatAttachments !== 'undefined' && PSChatAttachments.initialized) {
+                // Get chat options for attachments
+                var chatOptions = {
+                    enable_emoji: this.settings.enable_emoji !== false,
+                    enable_gifs: this.settings.enable_gifs === true,
+                    enable_uploads: this.settings.enable_uploads === true
+                };
+                
+                // Add attachment buttons to message input area
+                var inputArea = this.container.find('.psource-chat-input');
+                if (inputArea.length && !inputArea.find('.psource-chat-attachment-buttons').length) {
+                    var buttonsHtml = PSChatAttachments.renderButtons(chatOptions);
+                    if (buttonsHtml) {
+                        inputArea.append(buttonsHtml);
+                        console.log('PS Chat: Attachment buttons added');
+                    }
+                }
+            }
         },
         
         /**
-         * Create emoji buttons HTML
-         */
-        createEmojiButtons: function(emojis) {
-            var html = '';
-            emojis.forEach(function(emoji) {
-                html += '<span class="emoji-btn" data-emoji="' + emoji + '">' + emoji + '</span>';
-            });
-            return html;
-        },
-        
         /**
-         * Bind emoji picker events
+         * DEPRECATED: Old emoji functions replaced by modular attachment system
+         * These are kept for backward compatibility but should not be used
          */
-        bindEmojiPickerEvents: function() {
-            var self = this;
-            
-            // Emoji clicks
-            $(document).off('click.emojiPicker').on('click.emojiPicker', '.psource-chat-emoji-picker .emoji-btn', function(e) {
-                e.preventDefault();
-                var emoji = $(this).data('emoji');
-                self.insertEmoji(emoji);
-                $('.psource-chat-emoji-picker').fadeOut(200, function() {
-                    $(this).remove();
-                });
-            });
-            
-            // Category tabs
-            $(document).off('click.emojiTabs').on('click.emojiTabs', '.psource-chat-emoji-picker .emoji-tab', function(e) {
-                e.preventDefault();
-                var category = $(this).data('category');
-                self.switchEmojiCategory(category);
-            });
-        },
-        
-        /**
-         * Switch emoji category
-         */
-        switchEmojiCategory: function(category) {
-            $('.psource-chat-emoji-picker .emoji-tab').removeClass('active');
-            $('.psource-chat-emoji-picker .emoji-tab[data-category="' + category + '"]').addClass('active');
-            
-            $('.psource-chat-emoji-picker .emoji-category').hide();
-            $('.psource-chat-emoji-picker .emoji-category[data-category="' + category + '"]').show();
-        },
-        
-        /**
-         * Insert emoji into input
-         */
-        insertEmoji: function(emoji) {
-            var input = this.container.find('.psource-chat-message-input')[0];
-            if (!input) return;
-            
-            var start = input.selectionStart;
-            var end = input.selectionEnd;
-            var text = input.value;
-            
-            input.value = text.substring(0, start) + emoji + text.substring(end);
-            input.selectionStart = input.selectionEnd = start + emoji.length;
-            input.focus();
-        },
         
         /**
          * Show user settings
@@ -792,7 +729,7 @@
                 return;
             }
             
-            $('.psource-chat-moderation-menu, .psource-chat-emoji-picker').remove();
+            $('.psource-chat-moderation-menu').remove();
             
             var menuHtml = '<div class="psource-chat-settings-menu">' +
                 '<div class="settings-menu-header">Einstellungen</div>' +

@@ -43,9 +43,42 @@ spl_autoload_register(function ($class) {
     $filename = array_pop($parts);
     $path = implode('/', array_map('strtolower', $parts));
     
-    // Convert CamelCase/Snake_Case to kebab-case for filename
-    $filename = strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $filename));
-    $filename = str_replace('_', '-', $filename);
+    // Convert class names to proper file names
+    if ($path === 'extensions' && $filename === 'Attachments') {
+        $filename = 'class-attachments';
+    } elseif ($path === 'core' && $filename === 'Extension_Base') {
+        $filename = 'extension-base';
+    } elseif ($path === 'core' && $filename === 'Chat_Engine') {
+        $filename = 'chat-engine';
+    } elseif ($path === 'core' && $filename === 'Plugin') {
+        $filename = 'plugin';
+    } elseif ($path === 'admin' && $filename === 'Chat_Extensions') {
+        $filename = 'chat-extensions';
+    } elseif ($path === 'admin' && $filename === 'Admin_Menu') {
+        $filename = 'admin-menu';
+    } elseif ($path === 'admin' && $filename === 'Dashboard_Widgets') {
+        $filename = 'dashboard-widgets';
+    } elseif ($path === 'frontend' && $filename === 'Frontend_Chat') {
+        $filename = 'frontend-chat';
+    } elseif ($path === 'frontend' && $filename === 'Admin_Bar_Chat') {
+        $filename = 'admin-bar-chat';
+    } elseif ($path === 'frontend' && $filename === 'Chat_Handler') {
+        $filename = 'chat-handler';
+    } elseif ($path === 'frontend' && $filename === 'Shortcode_Handler') {
+        $filename = 'shortcode-handler';
+    } elseif ($path === 'api' && $filename === 'Chat_REST_Controller') {
+        $filename = 'chat-rest-controller';
+    } elseif ($path === 'integrations' && $filename === 'BuddyPress') {
+        $filename = 'buddypress';
+    } elseif ($path === 'core' && $filename === 'Database') {
+        $filename = 'database';
+    } elseif ($path === 'core' && $filename === 'Installer') {
+        $filename = 'installer';
+    } else {
+        // Default: convert CamelCase to kebab-case
+        $filename = strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $filename));
+        $filename = str_replace('_', '-', $filename);
+    }
     
     $file = PSOURCE_CHAT_INCLUDES_DIR . ($path ? $path . '/' : '') . $filename . '.php';
     

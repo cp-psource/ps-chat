@@ -107,6 +107,15 @@ class Chat_Extensions {
             'priority' => 25
         ]);
         
+        // Attachments Extension
+        $this->register_extension('attachments', [
+            'title' => __('Anhänge & Medien', 'psource-chat'),
+            'description' => __('Emojis, GIFs und Datei-Uploads für Chat-Nachrichten', 'psource-chat'),
+            'icon' => 'dashicons-paperclip',
+            'callback' => [$this, 'render_attachments_extension'],
+            'priority' => 15
+        ]);
+        
         // Private Chat Extension  
         $this->register_extension('private_chat', [
             'title' => __('Privater Chat', 'psource-chat'),
@@ -375,6 +384,50 @@ class Chat_Extensions {
             padding: 20px;
         }
         
+        .extension-settings-fieldset,
+        .attachments-settings-fieldset {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccd0d4;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+        
+        .extension-settings-fieldset legend,
+        .attachments-settings-fieldset legend {
+            font-weight: 600;
+            font-size: 16px;
+            padding: 0 10px;
+            color: #23282d;
+        }
+        
+        .extension-settings-fieldset .form-table,
+        .attachments-settings-fieldset .form-table {
+            margin-top: 15px;
+        }
+        
+        /* Legacy table styling for older fieldsets */
+        .extension-settings-fieldset table[border],
+        .attachments-settings-fieldset table[border] {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .extension-settings-fieldset table[border] td,
+        .attachments-settings-fieldset table[border] td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        
+        .chat-label-column {
+            width: 30%;
+            font-weight: 600;
+        }
+        
+        .chat-value-column {
+            width: 70%;
+        }
+        
         @media (max-width: 768px) {
             .extension-nav {
                 grid-template-columns: 1fr;
@@ -537,9 +590,9 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $dashboard_options = $options['dashboard'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Dashboard Chat Widget', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="dashboard_widget_enabled"><?php _e('Dashboard Widget aktivieren', 'psource-chat'); ?></label>
@@ -574,9 +627,9 @@ class Chat_Extensions {
             </table>
         </fieldset>
         
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Dashboard Status Widget', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="dashboard_status_widget_enabled"><?php _e('Status Widget aktivieren', 'psource-chat'); ?></label>
@@ -645,11 +698,11 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $frontend_options = $options['frontend'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Seitenkanten Chat Einstellungen', 'psource-chat'); ?></legend>
             <p class="description"><?php _e('Der Seitenkanten Chat ist ein schwimmender Chat-Button, der auf allen Seiten der Website angezeigt wird.', 'psource-chat'); ?></p>
             
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="frontend_enabled"><?php _e('Seitenkanten Chat aktivieren', 'psource-chat'); ?></label>
@@ -852,6 +905,87 @@ class Chat_Extensions {
                 </tr>
             </table>
         </fieldset>
+        
+        <?php 
+        // Check if Attachments extension is enabled to show attachment options
+        $extension_options = get_option('psource_chat_extensions', []);
+        $attachments_options = $extension_options['attachments'] ?? [];
+        
+        if (($attachments_options['enabled'] ?? 'disabled') === 'enabled'): ?>
+        <fieldset>
+            <legend><?php _e('Attachment-Einstellungen für Frontend Chat', 'psource-chat'); ?></legend>
+            <p class="description"><?php _e('Diese Optionen steuern, welche Attachment-Funktionen im Frontend Chat verfügbar sind. Die globalen Attachment-Einstellungen werden in der Attachments-Erweiterung konfiguriert.', 'psource-chat'); ?></p>
+            
+            <table border="0" cellpadding="4" cellspacing="0">
+                <?php if (($attachments_options['emojis_enabled'] ?? 'yes') === 'yes'): ?>
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_enable_emoji"><?php _e('Emojis aktivieren', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <select id="frontend_enable_emoji" name="psource_chat_extensions[frontend][enable_emoji]">
+                            <option value="yes" <?php selected($frontend_options['enable_emoji'] ?? 'yes', 'yes'); ?>><?php _e('Ja - Emoji-Button anzeigen', 'psource-chat'); ?></option>
+                            <option value="no" <?php selected($frontend_options['enable_emoji'] ?? 'yes', 'no'); ?>><?php _e('Nein - keine Emojis', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Zeigt einen Emoji-Button unter dem Chat-Eingabefeld.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <?php endif; ?>
+                
+                <?php if (($attachments_options['gifs_enabled'] ?? 'no') === 'yes'): ?>
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_enable_gifs"><?php _e('GIFs aktivieren', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <select id="frontend_enable_gifs" name="psource_chat_extensions[frontend][enable_gifs]">
+                            <option value="no" <?php selected($frontend_options['enable_gifs'] ?? 'no', 'no'); ?>><?php _e('Nein - keine GIFs', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($frontend_options['enable_gifs'] ?? 'no', 'yes'); ?>><?php _e('Ja - GIF-Button anzeigen', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Zeigt einen GIF-Suchbutton unter dem Chat-Eingabefeld.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <?php endif; ?>
+                
+                <?php if (($attachments_options['uploads_enabled'] ?? 'no') === 'yes'): ?>
+                <tr>
+                    <td class="chat-label-column">
+                        <label for="frontend_enable_uploads"><?php _e('Datei-Uploads aktivieren', 'psource-chat'); ?></label>
+                    </td>
+                    <td class="chat-value-column">
+                        <select id="frontend_enable_uploads" name="psource_chat_extensions[frontend][enable_uploads]">
+                            <option value="no" <?php selected($frontend_options['enable_uploads'] ?? 'no', 'no'); ?>><?php _e('Nein - keine Datei-Uploads', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($frontend_options['enable_uploads'] ?? 'no', 'yes'); ?>><?php _e('Ja - Upload-Button anzeigen', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Zeigt einen Datei-Upload-Button unter dem Chat-Eingabefeld.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <?php endif; ?>
+                
+                <?php if (($attachments_options['emojis_enabled'] ?? 'yes') === 'no' && 
+                         ($attachments_options['gifs_enabled'] ?? 'no') === 'no' && 
+                         ($attachments_options['uploads_enabled'] ?? 'no') === 'no'): ?>
+                <tr>
+                    <td colspan="2" class="chat-value-column">
+                        <div class="notice notice-info inline">
+                            <p><?php _e('Keine Attachment-Funktionen aktiviert. Aktiviere zunächst Emojis, GIFs oder Uploads in der Attachments-Erweiterung.', 'psource-chat'); ?></p>
+                        </div>
+                    </td>
+                </tr>
+                <?php endif; ?>
+            </table>
+        </fieldset>
+        <?php else: ?>
+        <fieldset>
+            <legend><?php _e('Attachment-Funktionen', 'psource-chat'); ?></legend>
+            <div class="notice notice-warning inline">
+                <p>
+                    <?php _e('Attachment-Funktionen sind nicht verfügbar.', 'psource-chat'); ?> 
+                    <strong><?php _e('Aktiviere zunächst die Attachments-Erweiterung, um Emojis, GIFs und Datei-Uploads zu verwenden.', 'psource-chat'); ?></strong>
+                </p>
+            </div>
+        </fieldset>
+        <?php endif; ?>
         <?php
     }
     
@@ -862,11 +996,11 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $widget_options = $options['widgets'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Verfügbare Chat Widgets', 'psource-chat'); ?></legend>
             <p class="description"><?php _e('Diese Widgets können in den WordPress Widgets-Bereichen (Design > Widgets) verwendet werden.', 'psource-chat'); ?></p>
             
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="enable_chat_widget"><?php _e('Haupt Chat Widget', 'psource-chat'); ?></label>
@@ -965,9 +1099,9 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $adminbar_options = $options['admin_bar'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Admin Bar Chat Integration', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="adminbar_enabled"><?php _e('Admin Bar Chat aktivieren', 'psource-chat'); ?></label>
@@ -1040,9 +1174,9 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $performance_options = $options['performance'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Polling und Performance', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="polling_interval"><?php _e('Abfrageintervall', 'psource-chat'); ?></label>
@@ -1086,9 +1220,9 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $security_options = $options['security'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('IP-Blockierung', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="blocked_ips"><?php _e('Blockierte IP-Adressen', 'psource-chat'); ?></label>
@@ -1101,9 +1235,9 @@ class Chat_Extensions {
             </table>
         </fieldset>
         
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Wort-Filter', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="blocked_words"><?php _e('Blockierte Wörter', 'psource-chat'); ?></label>
@@ -1134,9 +1268,9 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $bp_options = $options['buddypress'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('BuddyPress Chat Integration', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="bp_profile_chat"><?php _e('Chat auf Profil-Seiten', 'psource-chat'); ?></label>
@@ -1176,9 +1310,9 @@ class Chat_Extensions {
             </table>
         </fieldset>
         
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('BuddyPress Freunde Integration', 'psource-chat'); ?></legend>
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="bp_friends_integration"><?php _e('Freunde-System verwenden', 'psource-chat'); ?></label>
@@ -1261,11 +1395,11 @@ class Chat_Extensions {
         $options = get_option('psource_chat_extensions', []);
         $support_chat_options = $options['support_chat'] ?? [];
         ?>
-        <fieldset>
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Support Chat Einstellungen', 'psource-chat'); ?></legend>
-            <p><?php _e('Konfigurieren Sie den Support-Chat für professionelle Kundenbetreuung mit privaten Sessions und Kategorien.', 'psource-chat'); ?></p>
+            <p class="description"><?php _e('Konfigurieren Sie den Support-Chat für professionelle Kundenbetreuung mit privaten Sessions und Kategorien.', 'psource-chat'); ?></p>
             
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="form-table">
                 <tr>
                     <td class="chat-label-column">
                         <label for="support_chat_enabled"><?php _e('Support Chat aktivieren', 'psource-chat'); ?></label>
@@ -1406,9 +1540,9 @@ class Chat_Extensions {
         $private_options = $extension_options['private_chat'] ?? [];
         
         ?>
-        <fieldset class="extension-fieldset">
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('Privater Chat', 'psource-chat'); ?></legend>
-            <p class="info"><?php _e('Die privaten Chats funktionieren ähnlich wie die Chat-Sitzung in der unteren Ecke. Ein privater Chat ist eine Eins-zu-Eins-Chat-Sitzung zwischen zwei Benutzern. Mit den folgenden Einstellungen können Sie die Optionen für Private und deren Auswirkungen auf Benutzer steuern.', 'psource-chat'); ?></p>
+            <p class="description"><?php _e('Die privaten Chats funktionieren ähnlich wie die Chat-Sitzung in der unteren Ecke. Ein privater Chat ist eine Eins-zu-Eins-Chat-Sitzung zwischen zwei Benutzern. Mit den folgenden Einstellungen können Sie die Optionen für Private und deren Auswirkungen auf Benutzer steuern.', 'psource-chat'); ?></p>
             
             <table class="form-table" role="presentation">
                 <tr>
@@ -1478,9 +1612,9 @@ class Chat_Extensions {
         $wysiwyg_options = $extension_options['wysiwyg_button'] ?? [];
         
         ?>
-        <fieldset class="extension-fieldset">
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('WYSIWYG Chat-Schaltfläche Benutzerrollen', 'psource-chat'); ?></legend>
-            <p class="info"><?php _e('Wähle mit der Schaltfläche Rollen aus welche die Chat WYSIWYG Schaltfläche, verwenden dürfen. Beachte, dass der Benutzer auch über Bearbeitungsfunktionen für den Beitragstyp verfügen muss.', 'psource-chat'); ?></p>
+            <p class="description"><?php _e('Wähle mit der Schaltfläche Rollen aus welche die Chat WYSIWYG Schaltfläche, verwenden dürfen. Beachte, dass der Benutzer auch über Bearbeitungsfunktionen für den Beitragstyp verfügen muss.', 'psource-chat'); ?></p>
             
             <table class="form-table" role="presentation">
                 <tr>
@@ -1504,9 +1638,9 @@ class Chat_Extensions {
             </table>
         </fieldset>
         
-        <fieldset class="extension-fieldset">
+        <fieldset class="extension-settings-fieldset">
             <legend><?php _e('WYSIWYG Chat Button Beitragstypen', 'psource-chat'); ?></legend>
-            <p class="info"><?php _e('Wähle aus, für welche Beitragstypen die Schaltfläche Chat WYSIWYG verfügbar sein soll.', 'psource-chat'); ?></p>
+            <p class="description"><?php _e('Wähle aus, für welche Beitragstypen die Schaltfläche Chat WYSIWYG verfügbar sein soll.', 'psource-chat'); ?></p>
             
             <table class="form-table" role="presentation">
                 <tr>
@@ -1526,6 +1660,196 @@ class Chat_Extensions {
                             </label>
                         <?php endforeach; ?>
                         <p class="description"><?php _e('Beitragstypen für die der Chat-Button im Editor verfügbar ist.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <?php
+    }
+
+    /**
+     * Render Attachments extension
+     */
+    public function render_attachments_extension($ext_id) {
+        $options = get_option('psource_chat_extensions', []);
+        $attachments_options = $options['attachments'] ?? [];
+        
+        // Merge with defaults
+        $defaults = [
+            'enabled' => 'disabled',
+            'emojis_enabled' => 'yes',
+            'emojis_source' => 'builtin',
+            'emojis_custom_set' => '',
+            'gifs_enabled' => 'no',
+            'gifs_api_key' => '',
+            'gifs_source' => 'giphy',
+            'uploads_enabled' => 'no',
+            'uploads_max_size' => '5',
+            'uploads_allowed_types' => 'jpg,jpeg,png,gif,pdf,doc,docx',
+            'uploads_require_login' => 'yes',
+            'attachment_history' => 'yes',
+            'moderate_uploads' => 'yes'
+        ];
+        
+        $options = array_merge($defaults, $attachments_options);
+        ?>
+        <fieldset class="attachments-settings-fieldset">
+            <legend><?php _e('Allgemeine Einstellungen', 'psource-chat'); ?></legend>
+            
+            <div class="attachments-help-box" style="background: #e7f3ff; border: 1px solid #72aee6; border-radius: 4px; padding: 15px; margin-bottom: 20px;">
+                <p><strong><?php _e('So funktioniert das Attachments-System:', 'psource-chat'); ?></strong></p>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li><?php _e('Diese Einstellungen definieren, welche Attachment-Typen global verfügbar sind.', 'psource-chat'); ?></li>
+                    <li><?php _e('In den einzelnen Chat-Einstellungen (Frontend, Dashboard, etc.) kann dann für jeden Chat individuell gewählt werden, welche der hier aktivierten Funktionen verwendet werden sollen.', 'psource-chat'); ?></li>
+                    <li><?php _e('Beispiel: Wenn hier Emojis und GIFs aktiviert sind, kann im Frontend-Chat nur Emojis aktiviert werden, während im Dashboard-Chat beide verfügbar sind.', 'psource-chat'); ?></li>
+                </ul>
+            </div>
+            
+            <table class="form-table">
+                <tr>
+                    <th scope="row"><?php _e('Attachments aktivieren', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][enabled]" class="regular-text">
+                            <option value="disabled" <?php selected($options['enabled'], 'disabled'); ?>><?php _e('Deaktiviert', 'psource-chat'); ?></option>
+                            <option value="enabled" <?php selected($options['enabled'], 'enabled'); ?>><?php _e('Aktiviert', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Aktiviert das Attachments-System für alle Chats.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        
+        <fieldset class="attachments-settings-fieldset">
+            <legend><?php _e('Emoji-Einstellungen', 'psource-chat'); ?></legend>
+            <table class="form-table">
+                <tr>
+                    <th scope="row"><?php _e('Emojis aktivieren', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][emojis_enabled]" class="regular-text">
+                            <option value="no" <?php selected($options['emojis_enabled'], 'no'); ?>><?php _e('Nein', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($options['emojis_enabled'], 'yes'); ?>><?php _e('Ja', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Ermöglicht es Benutzern, Emojis in Nachrichten zu verwenden.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('Emoji-Quelle', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][emojis_source]" class="regular-text">
+                            <option value="builtin" <?php selected($options['emojis_source'], 'builtin'); ?>><?php _e('Eingebaute Emojis', 'psource-chat'); ?></option>
+                            <option value="custom" <?php selected($options['emojis_source'], 'custom'); ?>><?php _e('Benutzerdefiniert', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Wähle die Quelle für die verfügbaren Emojis.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('Benutzerdefinierte Emoji-Liste', 'psource-chat'); ?></th>
+                    <td>
+                        <textarea name="psource_chat_extensions[attachments][emojis_custom_set]" class="large-text" rows="3" placeholder="😀,😃,😄,😁,😆,🤣,😂"><?php echo esc_textarea($options['emojis_custom_set']); ?></textarea>
+                        <p class="description"><?php _e('Kommagetrennte Liste von Emojis (nur wenn "Benutzerdefiniert" gewählt ist).', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        
+        <fieldset class="attachments-settings-fieldset">
+            <legend><?php _e('GIF-Einstellungen', 'psource-chat'); ?></legend>
+            <table class="form-table">
+                <tr>
+                    <th scope="row"><?php _e('GIFs aktivieren', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][gifs_enabled]" class="regular-text">
+                            <option value="no" <?php selected($options['gifs_enabled'], 'no'); ?>><?php _e('Nein', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($options['gifs_enabled'], 'yes'); ?>><?php _e('Ja', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Ermöglicht es Benutzern, GIFs in Nachrichten zu verwenden.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('GIF-Anbieter', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][gifs_source]" class="regular-text">
+                            <option value="giphy" <?php selected($options['gifs_source'], 'giphy'); ?>><?php _e('Giphy', 'psource-chat'); ?></option>
+                            <option value="tenor" <?php selected($options['gifs_source'], 'tenor'); ?>><?php _e('Tenor', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Wähle den Anbieter für GIF-Suche.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('API-Schlüssel', 'psource-chat'); ?></th>
+                    <td>
+                        <input type="text" name="psource_chat_extensions[attachments][gifs_api_key]" class="regular-text" value="<?php echo esc_attr($options['gifs_api_key']); ?>" placeholder="Dein Giphy/Tenor API-Schlüssel" />
+                        <p class="description">
+                            <?php _e('API-Schlüssel für GIF-Anbieter.', 'psource-chat'); ?>
+                            <a href="https://developers.giphy.com/" target="_blank"><?php _e('Giphy API', 'psource-chat'); ?></a> | 
+                            <a href="https://tenor.com/developer/keyregistration" target="_blank"><?php _e('Tenor API', 'psource-chat'); ?></a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        
+        <fieldset class="attachments-settings-fieldset">
+            <legend><?php _e('Datei-Upload-Einstellungen', 'psource-chat'); ?></legend>
+            <table class="form-table">
+                <tr>
+                    <th scope="row"><?php _e('Datei-Uploads aktivieren', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][uploads_enabled]" class="regular-text">
+                            <option value="no" <?php selected($options['uploads_enabled'], 'no'); ?>><?php _e('Nein', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($options['uploads_enabled'], 'yes'); ?>><?php _e('Ja', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Ermöglicht es Benutzern, Dateien hochzuladen.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('Maximale Dateigröße (MB)', 'psource-chat'); ?></th>
+                    <td>
+                        <input type="number" name="psource_chat_extensions[attachments][uploads_max_size]" class="small-text" value="<?php echo esc_attr($options['uploads_max_size']); ?>" min="1" max="100" />
+                        <p class="description"><?php _e('Maximale Größe für hochgeladene Dateien in Megabyte.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('Erlaubte Dateitypen', 'psource-chat'); ?></th>
+                    <td>
+                        <input type="text" name="psource_chat_extensions[attachments][uploads_allowed_types]" class="regular-text" value="<?php echo esc_attr($options['uploads_allowed_types']); ?>" placeholder="jpg,png,pdf,doc" />
+                        <p class="description"><?php _e('Kommagetrennte Liste von erlaubten Dateierweiterungen.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('Anmeldung erforderlich', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][uploads_require_login]" class="regular-text">
+                            <option value="no" <?php selected($options['uploads_require_login'], 'no'); ?>><?php _e('Nein', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($options['uploads_require_login'], 'yes'); ?>><?php _e('Ja', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Ob sich Benutzer anmelden müssen, um Dateien hochzuladen.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php _e('Uploads moderieren', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][moderate_uploads]" class="regular-text">
+                            <option value="no" <?php selected($options['moderate_uploads'], 'no'); ?>><?php _e('Nein', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($options['moderate_uploads'], 'yes'); ?>><?php _e('Ja', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Hochgeladene Dateien müssen vor der Anzeige genehmigt werden.', 'psource-chat'); ?></p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        
+        <fieldset class="attachments-settings-fieldset">
+            <legend><?php _e('Erweiterte Optionen', 'psource-chat'); ?></legend>
+            <table class="form-table">
+                <tr>
+                    <th scope="row"><?php _e('Attachment-Verlauf speichern', 'psource-chat'); ?></th>
+                    <td>
+                        <select name="psource_chat_extensions[attachments][attachment_history]" class="regular-text">
+                            <option value="no" <?php selected($options['attachment_history'], 'no'); ?>><?php _e('Nein', 'psource-chat'); ?></option>
+                            <option value="yes" <?php selected($options['attachment_history'], 'yes'); ?>><?php _e('Ja', 'psource-chat'); ?></option>
+                        </select>
+                        <p class="description"><?php _e('Speichert eine Liste der verwendeten Attachments für schnellen Zugriff.', 'psource-chat'); ?></p>
                     </td>
                 </tr>
             </table>
