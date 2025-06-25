@@ -1664,10 +1664,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 									load_template( $$psource_chat_popup_template );
 									die();
 								} else if ( $psource_chat_popup_template = locate_template( 'psource-chat-pop-out.php' ) ) {
-									load_template( $$psource_chat_popup_template );
+									load_template( $psource_chat_popup_template );
 									die();
 								} else {
-									load_template( dirname( __FILE__ ) . '/templates/psource-chat-pop-out.php' );
+									load_template( dirname( dirname( __FILE__ ) ) . '/templates/psource-chat-pop-out.php' );
 									die();
 								}
 							}
