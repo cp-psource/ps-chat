@@ -7,7 +7,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		public $tips;
 		private $_admin_panels;
 		private $_pagehooks;
-		var $chat_current_version = '2.5.1';
+		var $chat_current_version = '2.5.2';
 		//var $translation_domain = 'psource-chat';
 		
 		/**

@@ -1,9 +1,9 @@
 === PS Chat ===
 Contributors: DerN3rd (PSOURCE)
-Tags: multisite, abstimmung, voting, post,
+Tags: multisite, chat, community, messenger, support
 Requires at least: 4.9
-Tested up to: 5.6
-Stable tag: 2.5.0
+Tested up to: 6.8.1
+Stable tag: 2.5.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,6 +25,14 @@ Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin 
 
 
 == ChangeLog ==
+
+= 2.5.2 =
+
+* Media Handling
+* Media Upload
+* Fix Dashboard Chat Widget
+* PS Community Integrations (Friends/Avatars)
+* Lot of Code Overhaul
 
 = 2.5.0 =
 
