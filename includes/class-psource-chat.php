@@ -1060,6 +1060,12 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			// User meta defaults for profile and other user specific settings. Saved to the user meta table (not wp_options)
 			if ( is_user_logged_in() ) {
 				$user_meta_option                          = get_option( 'psource-chat-user-meta', array() );
+				// Dynamische Dashboard-Widget-Standardwerte basierend auf Admin-Einstellungen
+				$dashboard_options = is_network_admin() ? get_site_option( 'psource-chat-dashboard', array() ) : get_option( 'psource-chat-dashboard', array() );
+				$dashboard_widget_default = isset($dashboard_options['dashboard_widget']) && $dashboard_options['dashboard_widget'] == 'enabled' ? 'enabled' : 'disabled';
+				$dashboard_status_widget_default = isset($dashboard_options['dashboard_status_widget']) && $dashboard_options['dashboard_status_widget'] == 'enabled' ? 'enabled' : 'disabled';
+				$dashboard_friends_widget_default = isset($dashboard_options['dashboard_friends_widget']) && $dashboard_options['dashboard_friends_widget'] == 'enabled' ? 'enabled' : 'disabled';
+
 				$this->_chat_options_defaults['user_meta'] = wp_parse_args( get_option( 'psource-chat-user-meta', array() ),
 					array(
 						'chat_user_status'                      => 'available',
@@ -1069,14 +1075,14 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						'chat_wp_toolbar_show_status'           => 'enabled',
 						'chat_wp_toolbar_show_friends'          => 'enabled',
 						'chat_users_listing'                    => 'disabled',
-						'chat_dashboard_widget'                 => 'disabled',
+						'chat_dashboard_widget'                 => $dashboard_widget_default,
 						'chat_dashboard_widget_height'          => '',
-						'chat_dashboard_status_widget'          => 'disabled',
-						'chat_dashboard_friends_widget'         => 'disabled',
+						'chat_dashboard_status_widget'          => $dashboard_status_widget_default,
+						'chat_dashboard_friends_widget'         => $dashboard_friends_widget_default,
 						'chat_dashboard_friends_widget_height'  => '',
-						'chat_network_dashboard_widget'         => 'disabled',
-						'chat_network_dashboard_status_widget'  => 'disabled',
-						'chat_network_dashboard_friends_widget' => 'disabled'
+						'chat_network_dashboard_widget'         => $dashboard_widget_default,
+						'chat_network_dashboard_status_widget'  => $dashboard_status_widget_default,
+						'chat_network_dashboard_friends_widget' => $dashboard_friends_widget_default
 					)
 				);
 				if ( has_filter( 'psource-chat-options-defaults' ) ) {

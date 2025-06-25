@@ -920,7 +920,7 @@ if (!class_exists('PSOURCEChatDashboardWidget')) {
 			<?php
 		}
 	}
-	$psource_chat_dashboard_idget = new PSOURCEChatDashboardWidget();
+	$psource_chat_dashboard_widget = new PSOURCEChatDashboardWidget();
 }
 
 if (!class_exists('PSOURCEChatStatusDashboardWidget')) {
