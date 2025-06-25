@@ -2,9 +2,9 @@
 /*
 Plugin Name: PS Chat
 Plugin URI: https://cp-psource.github.io/ps-chat/
-Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE!
+Description: Bietet Dir einen voll ausgestatteten Chat-Bereich entweder in einem Beitrag, einer Seite, einem Widget oder in der unteren Ecke Ihrer Website. Unterstützt BuddyPress Group-Chats und private Chats zwischen angemeldeten Benutzern. KEINE EXTERNEN SERVER/DIENSTE! NEU: Media-Support für Link-Previews, Bilder und YouTube-Videos.
 Author: PSOURCE
-Version: 2.5.0
+Version: 2.5.1
 Author URI: https://github.com/cp-psource
 Text Domain: psource-chat
 Domain Path: /languages
@@ -36,6 +36,7 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 // Hauptklasse laden
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-avatar.php' );
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-emoji.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-media.php' );
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-ajax.php' );
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat.php' );
 

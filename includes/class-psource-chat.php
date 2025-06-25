@@ -7,7 +7,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		public $tips;
 		private $_admin_panels;
 		private $_pagehooks;
-		var $chat_current_version = '2.5.0';
+		var $chat_current_version = '2.5.1';
 		//var $translation_domain = 'psource-chat';
 		
 		/**
@@ -1557,6 +1557,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 			//Register scripts
 			wp_register_script( 'psource-chat-js', $this->get_plugin_url( '/js/psource-chat.js' ), array( 'jquery' ), $this->chat_current_version, true );
+			wp_register_script( 'psource-chat-media-js', $this->get_plugin_url( '/js/psource-chat-media.js' ), array( 'jquery' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-admin-js', $this->get_plugin_url( '/js/psource-chat-admin.js' ), array( 'jquery' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-admin-farbtastic-js', $this->get_plugin_url( '/js/psource-chat-admin-farbtastic.js' ), array(), $this->chat_current_version, true );
 
@@ -1589,6 +1590,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				wp_enqueue_script( 'psource-chat-js' );
 				$this->_registered_scripts['psource-chat-js'] = 'psource-chat-js';
+
+				wp_enqueue_script( 'psource-chat-media-js' );
+				$this->_registered_scripts['psource-chat-media-js'] = 'psource-chat-media-js';
 
 				wp_enqueue_script( 'psource-chat-admin-js' );
 				$this->_registered_scripts['psource-chat-admin-js'] = 'psource-chat-admin-js';
@@ -1625,6 +1629,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				wp_enqueue_script( 'psource-chat-js' );
 				$this->_registered_scripts['psource-chat-js'] = 'psource-chat-js';
+
+				wp_enqueue_script( 'psource-chat-media-js' );
+				$this->_registered_scripts['psource-chat-media-js'] = 'psource-chat-media-js';
 			}
 		}
 
@@ -4764,6 +4771,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$row_date_time = "<br />" . $row_date_time;
 			}
 
+			// Apply media content filter for display
+			$message = apply_filters( 'psource_chat_display_message', $message, $row );
+			
 			$row_text .= '<p class="psource-chat-message">' . $row_avatar_name . ' ' . convert_smilies( $message ) . $row_date_time . '</p>';
 
 
@@ -5045,6 +5055,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						$chat_message = str_ireplace( $this->_chat_options['banned']['blocked_words'],
 							$this->_chat_options['banned']['blocked_words_replace'], $chat_message );
 					}
+
+					// Process media content (links, images, videos)
+					$chat_message = apply_filters( 'psource_chat_before_save_message', $chat_message, $chat_session );
 
 					$ret = $this->chat_session_send_message( $chat_message, $chat_session );
 					if ( ! empty( $ret ) ) {
