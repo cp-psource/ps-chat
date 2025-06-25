@@ -534,22 +534,14 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						$this->chat_auth['name'] = $current_user->display_name;
 					}
 
-					// We can only get the avatar when not in SHORTINIT mode since SHORTINIT removes all other plugin filters.
+					// Use the modern avatar system with CP Community support and fallbacks
 					if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != true ) ) {
-
-						$avatar = get_avatar( $current_user->data->user_email, 96, '', $this->chat_auth['name'] );
-
-						if ( $avatar ) {
-							$avatar_parts = array();
-							if ( stristr( $avatar, ' src="' ) !== false ) {
-								preg_match( '/src="([^"]*)"/i', $avatar, $avatar_parts );
-							} else if ( stristr( $avatar, " src='" ) !== false ) {
-								preg_match( "/src='([^']*)'/i", $avatar, $avatar_parts );
-							}
-							if ( ( isset( $avatar_parts[1] ) ) && ( ! empty( $avatar_parts[1] ) ) ) {
-								$this->chat_auth['avatar'] = $avatar_parts[1];
-							}
-						}
+						// Use our new robust avatar system
+						$this->chat_auth['avatar'] = PSource_Chat_Avatar::get_chat_avatar( 
+							$current_user->ID, 
+							$current_user->data->user_email, 
+							$this->chat_auth['name'] 
+						);
 					}
 					$this->chat_auth['chat_status'] = $this->user_meta['chat_user_status'];
 				} else {
@@ -5119,18 +5111,12 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						wp_send_json( $reply_data );
 						die();
 					}
-					$avatar = get_avatar( $user_info['email'], 96, get_option( 'avatar_default' ), $user_info['name'] );
-					if ( $avatar ) {
-						$avatar_parts = array();
-						if ( stristr( $avatar, ' src="' ) !== false ) {
-							preg_match( '/src="([^"]*)"/i', $avatar, $avatar_parts );
-						} else if ( stristr( $avatar, " src='" ) !== false ) {
-							preg_match( "/src='([^']*)'/i", $avatar, $avatar_parts );
-						}
-						if ( ( isset( $avatar_parts[1] ) ) && ( ! empty( $avatar_parts[1] ) ) ) {
-							$user_info['avatar'] = $avatar_parts[1];
-						}
-					}
+					// Use the modern avatar system for user info
+					$user_info['avatar'] = PSource_Chat_Avatar::get_chat_avatar( 
+						$user_info['id'], 
+						$user_info['email'], 
+						$user_info['name'] 
+					);
 
 					$user_info['ip_address'] = ( isset( $_SERVER['HTTP_X_FORWARD_FOR'] ) ) ? $_SERVER['HTTP_X_FORWARD_FOR'] : $_SERVER['REMOTE_ADDR'];
 					$user_info['auth_hash']  = md5( $user_info['name'] . $user_info['email'] . $user_info['ip_address'] );
@@ -6109,7 +6095,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 						$atts['session_type']         = 'private';
 						$atts['box_moderator_footer'] = 'disabled';
 						//$atts['box_title']				= __('Private', 'psource-chat') .'<span class="psource-chat-private-attendees"></span>';
-						$atts['box_title'] = __( '(P)', 'psource-chat' );
+						$atts['box_title'] = __( '(P)', 'psource-chat' ) .'<span class="psource-chat-private-attendees"></span>';
 
 						if ( ! isset( $invite_chat['message']['invite-status'] ) ) {
 							$invite_chat['message']['invite-status'] = "pending";

@@ -542,13 +542,6 @@ div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-m
     border: 0px !important;
 }
 
-div.psource-chat-box div.psource-chat-module-header a:hover img,
-div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-meta a:hover img {
-    border: 0px;
-}
-
-
-
 div.psource-chat_box div.psource-chat-module-header ul.psource-chat-actions-menu {
     margin: 0;
     padding: 0;
@@ -1831,4 +1824,48 @@ div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu
 /* Legacy emoji styles entfernen/ausblenden */
 .psource-chat-emoticons-list {
     display: none !important;
+}
+
+/* === Avatar System Improvements === */
+/* Modern avatar handling with placeholders and fallbacks */
+
+.avatar-placeholder {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+div.psource-chat-box img.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    transition: opacity 0.2s ease;
+}
+
+/* Avatar error handling - show placeholder if image fails to load */
+div.psource-chat-box img.avatar[src*="404"],
+div.psource-chat-box img.avatar[src=""],
+div.psource-chat-box img.avatar:not([src]) {
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNlMGUwZTAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iMTAiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTMyIDQwQzI0IDQwIDE4IDQ2IDE4IDU0VjYwSDQ2VjU0QzQ2IDQ2IDQwIDQwIDMyIDQwWiIgZmlsbD0iIzk5OTk5OSIvPgo8L3N2Zz4K') no-repeat center center;
+    background-size: contain;
+    opacity: 0.6;
+}
+
+/* Improved avatar hover effects */
+div.psource-chat-box a.psource-chat-user-avatar:hover img.avatar {
+    opacity: 0.9;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+/* Dashboard widget avatars */
+#wpadminbar #wp-admin-bar-psource-chat-user-friends span.psource-chat-friend-avatar img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Admin panel avatars */
+#psource-chat-wrap table.psource-chat-session-messages-table td.column-user span.chat-user-avatar img {
+    border-radius: 3px;
+    object-fit: cover;
 }

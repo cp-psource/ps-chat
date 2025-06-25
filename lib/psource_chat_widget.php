@@ -247,11 +247,11 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 				'avatar_width'		=>	'25px'
 			);
 
-			$this->plugin_error_message = __('Für dieses Widget sind entweder BuddyPress Friends aktiviert oder PS Freunde Plugin.', 'psource-chat');
+			$this->plugin_error_message = __('Für dieses Widget ist CP Community, BuddyPress Friends oder das PS Freunde Plugin erforderlich.', 'psource-chat');
 
 			// Set defaults
 			// ...
-			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt Chat-Freunde und Status an. (PS Freunde Plugin erforderlich)', 'psource-chat'));
+			$widget_ops = array('classname' => __CLASS__, 'description' => __('Zeigt Chat-Freunde und Status an. (CP Community, BuddyPress oder PS Freunde Plugin erforderlich)', 'psource-chat'));
 			parent::__construct(__CLASS__, __('PSC-Chat Freunde', 'psource-chat'), $widget_ops);
 		}
 
@@ -262,9 +262,26 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 		function form($instance) {
 			global $psource_chat, $bp;
 
-			if ((empty($bp)) && (!is_plugin_active('friends/friends.php'))
-			 && ((is_multisite()) && (!is_plugin_active_for_network('friends/friends.php')))) {
-				?><p class="error"><?php echo $this->plugin_error_message ;?></p><?php
+			// Check if any supported friends system is available
+			$has_cp_community = function_exists('cpc_get_friends');
+			$has_buddypress = !empty($bp) && function_exists('bp_get_friend_ids');
+			$has_friends_plugin = is_plugin_active('friends/friends.php') || 
+								(is_multisite() && is_plugin_active_for_network('friends/friends.php'));
+
+			if (!$has_cp_community && !$has_buddypress && !$has_friends_plugin) {
+				?><p class="error"><?php echo $this->plugin_error_message; ?></p>
+				<p class="description"><?php _e('Status: CP Community, BuddyPress und PS Freunde Plugin nicht erkannt.', 'psource-chat'); ?></p>
+				<?php
+			} else {
+				// Show which system is active
+				$active_systems = array();
+				if ($has_cp_community) $active_systems[] = 'CP Community';
+				if ($has_buddypress) $active_systems[] = 'BuddyPress';
+				if ($has_friends_plugin) $active_systems[] = 'PS Freunde Plugin';
+				
+				?><p class="info"><?php 
+					printf(__('Aktive Freunde-Systeme: %s', 'psource-chat'), implode(', ', $active_systems)); 
+				?></p><?php
 			}
 			$instance = wp_parse_args( $instance, $this->defaults );
 
@@ -338,37 +355,60 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 				return;
 			}
 
-			// If BuddyPress or Friends plugins is not active
-			if ((empty($bp)) && (!is_plugin_active('friends/friends.php'))
-			 && ((is_multisite()) && (!is_plugin_active_for_network('friends/friends.php')))) {
-				 return;
+			// Check for supported friends systems - prioritize CP Community
+			$friends_list_ids = array();
+			$friends_source = '';
+
+			// 1. Try CP Community first (modern system)
+			if (function_exists('cpc_get_friends')) {
+				try {
+					$cp_friends = cpc_get_friends($current_user->ID, false);
+					if (is_array($cp_friends) && !empty($cp_friends)) {
+						// CP Community returns array of arrays with 'ID' key
+						$friends_list_ids = array_map(function($friend) {
+							return $friend['ID'];
+						}, $cp_friends);
+						$friends_source = 'CP Community';
+					}
+				} catch (Exception $e) {
+					error_log('PS Chat Widget: CP Community friends error - ' . $e->getMessage());
+				}
 			}
 
-			$friends_list_ids = array();
-
-			if ((!empty($bp)) && (function_exists('bp_get_friend_ids'))) {
+			// 2. Fallback to BuddyPress
+			if (empty($friends_list_ids) && !empty($bp) && function_exists('bp_get_friend_ids')) {
 				$friends_ids = bp_get_friend_ids($bp->loggedin_user->id);
 				if (!empty($friends_ids)) {
 					$friends_list_ids = explode(',', $friends_ids);
+					$friends_source = 'BuddyPress';
 				}
+			}
 
-			} else {
-
+			// 3. Final fallback to PS Friends Plugin
+			if (empty($friends_list_ids)) {
 				if ((!is_admin()) && (!function_exists('is_plugin_active'))) {
 					include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 				}
 
-				if (!is_plugin_active('friends/friends.php')) {
-					if ((is_multisite()) && (!is_plugin_active_for_network('friends/friends.php'))) {
-						return;
-					}
+				$has_friends_plugin = is_plugin_active('friends/friends.php') || 
+									(is_multisite() && is_plugin_active_for_network('friends/friends.php'));
+				
+				if ($has_friends_plugin && function_exists('friends_get_list')) {
+					$friends_list_ids = friends_get_list($current_user->ID);
+					$friends_source = 'PS Freunde Plugin';
 				}
-				if (!function_exists('friends_get_list')) {return;}
-
-				$friends_list_ids = friends_get_list($current_user->ID);
 			}
 
-			if ((!is_array($friends_list_ids)) || (!count($friends_list_ids))) {
+			// If no friends system is available or no friends found, return
+			if (empty($friends_list_ids) || !is_array($friends_list_ids)) {
+				// Debug output for admins
+				if (current_user_can('manage_options')) {
+					echo '<!-- PS Chat Friends Widget: No friends found. Source checked: ';
+					if (function_exists('cpc_get_friends')) echo 'CP Community ';
+					if (!empty($bp)) echo 'BuddyPress ';
+					if (function_exists('friends_get_list')) echo 'PS Friends ';
+					echo '-->';
+				}
 				return;
 			}
 
@@ -391,7 +431,8 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 						//$chat_output .= '<span class="psource-chat-ab-icon psource-chat-ab-icon-'. $friend->chat_status .'"></span>';
 
 						if (($instance['row_name_avatar'] == "name-avatar") || ($instance['row_name_avatar'] == "avatar")) {
-							$friend->avatar	= get_avatar($friend->ID, intval($instance['avatar_width']), get_option('avatar_default'), $friend->display_name);
+							// Use modern avatar system with CP Community support
+							$friend->avatar	= PSource_Chat_Avatar::get_avatar($friend->ID, intval($instance['avatar_width']), true);
 							if (!empty($friend->avatar)) {
 								$chat_output .= '<span class="psource-chat-friend-avatar">'. $friend->avatar .'</span>';
 							}
@@ -417,7 +458,14 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 				}
 
 			} else {
-				$chat_output = '<p>'. __("Keine Freunde online.", 'psource-chat') .'</p>';
+				$message = __("Keine Freunde online.", 'psource-chat');
+				
+				// Add debug info for admins
+				if (current_user_can('manage_options') && !empty($friends_source)) {
+					$message .= ' <!-- Freunde-Quelle: ' . $friends_source . ' -->';
+				}
+				
+				$chat_output = '<p>'. $message .'</p>';
 			}
 
 			if (!empty($chat_output)) {
@@ -425,6 +473,11 @@ if (!class_exists('PSOURCEChatFriendsWidget')) {
 
 				$title = apply_filters('widget_title', $instance['box_title']);
 				if ($title) {echo $args['before_title'] . $title . $args['after_title'];}
+
+				// Add debug info for admins about friends source
+				if (current_user_can('manage_options') && !empty($friends_source)) {
+					echo '<!-- PS Chat Friends Widget: Aktive Quelle: ' . $friends_source . ' -->';
+				}
 
 				echo $chat_output;
 
@@ -1050,10 +1103,25 @@ if (!class_exists('PSOURCEChatFriendsDashboardWidget')) {
 		function psource_chat_add_dashboard_widgets() {
 			global $bp, $psource_chat, $blog_id, $current_user;
 
-			// If BuddyPress or Friends plugins is not active
-			if ((empty($bp)) && (!is_plugin_active('friends/friends.php'))
-			 && ((is_multisite()) && (!is_plugin_active_for_network('friends/friends.php')))) {
-				 return;
+			// Check if any supported friendship system is available
+			$has_friendship_system = false;
+			
+			// 1. Check for CP Community
+			if ( function_exists( 'cpc_are_friends' ) && defined( 'CPC_CORE_PLUGINS' ) && strpos( CPC_CORE_PLUGINS, 'core-friendships' ) !== false ) {
+				$has_friendship_system = true;
+			}
+			// 2. Check for BuddyPress
+			elseif ( !empty( $bp ) && function_exists( 'bp_get_friend_ids' ) ) {
+				$has_friendship_system = true;
+			}
+			// 3. Check for Friends plugin
+			elseif ( is_plugin_active( 'friends/friends.php' ) || ( is_multisite() && is_plugin_active_for_network( 'friends/friends.php' ) ) ) {
+				$has_friendship_system = true;
+			}
+			
+			// If no friendship system is available, don't add the widget
+			if ( !$has_friendship_system ) {
+				return;
 			}
 
 			$this->instance = $psource_chat->_chat_options['dashboard'];
@@ -1116,62 +1184,142 @@ if (!class_exists('PSOURCEChatFriendsDashboardWidget')) {
 		}
 
 		function psource_chat_friends_dashboard_widget_proc() {
-			global $bp, $psource_chat, $current_user;
+			global $bp, $psource_chat, $current_user, $wpdb;
 
 			$friends_list_ids = array();
 
-			if ((!empty($bp)) && (function_exists('bp_get_friend_ids'))) {
-				$friends_ids = bp_get_friend_ids($bp->loggedin_user->id);
-				//echo "friends_ids=[". $friends_ids ."]<br />";
-				if (!empty($friends_ids)) {
-					$friends_list_ids = explode(',', $friends_ids);
+			// 1. Try CP Community first (modern preferred method)
+			if ( function_exists( 'cpc_are_friends' ) && defined( 'CPC_CORE_PLUGINS' ) && strpos( CPC_CORE_PLUGINS, 'core-friendships' ) !== false ) {
+				
+				// Get friends from CP Community
+				if ( !get_option( 'cpc_friendships_all' ) ) {
+					// Get published friendships for current user
+					$sql = "SELECT p.ID, m1.meta_value as cpc_member1, m2.meta_value as cpc_member2
+							FROM {$wpdb->prefix}posts p 
+							LEFT JOIN {$wpdb->prefix}postmeta m1 ON p.ID = m1.post_id
+							LEFT JOIN {$wpdb->prefix}postmeta m2 ON p.ID = m2.post_id
+							WHERE p.post_type='cpc_friendship'
+							  AND p.post_status='publish'
+							  AND m1.meta_key = 'cpc_member1'
+							  AND m2.meta_key = 'cpc_member2'
+							  AND (m1.meta_value = %d OR m2.meta_value = %d)";
+					
+					$cp_friends = $wpdb->get_results( $wpdb->prepare( $sql, $current_user->ID, $current_user->ID ) );
+					
+					if ( $cp_friends ) {
+						foreach ( $cp_friends as $friendship ) {
+							// Get the other member of the friendship
+							$other_member = ( $friendship->cpc_member1 == $current_user->ID ) 
+								? $friendship->cpc_member2 
+								: $friendship->cpc_member1;
+							
+							if ( $other_member != $current_user->ID ) {
+								$friends_list_ids[] = intval( $other_member );
+							}
+						}
+					}
+				} else {
+					// If "all friends" mode is enabled, get all site members
+					$site_members = get_users( 'blog_id=' . get_current_blog_id() );
+					foreach ( $site_members as $member ) {
+						if ( $member->ID != $current_user->ID ) {
+							$friends_list_ids[] = intval( $member->ID );
+						}
+					}
 				}
-				//echo "friends_list_ids<pre>"; print_r($friends_list_ids); echo "</pre>";
-
+				
+			// 2. Try BuddyPress (legacy compatibility)
+			} elseif ( !empty( $bp ) && function_exists( 'bp_get_friend_ids' ) ) {
+				$friends_ids = bp_get_friend_ids( $bp->loggedin_user->id );
+				if ( !empty( $friends_ids ) ) {
+					$friends_list_ids = explode( ',', $friends_ids );
+					$friends_list_ids = array_map( 'intval', $friends_list_ids );
+				}
+				
+			// 3. Try old Friends plugin (legacy fallback)
 			} else {
-
-				if ((!is_admin()) && (!function_exists('is_plugin_active'))) {
+				if ( !is_admin() && !function_exists( 'is_plugin_active' ) ) {
 					include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 				}
 
-				if (!is_plugin_active('friends/friends.php')) {
-					if ((is_multisite()) && (!is_plugin_active_for_network('friends/friends.php'))) {
-						?><p class="error"><?php $this->plugin_error_message; ?></p><?php
+				if ( !is_plugin_active( 'friends/friends.php' ) ) {
+					if ( is_multisite() && !is_plugin_active_for_network( 'friends/friends.php' ) ) {
+						?>
+						<div class="psource-chat-dashboard-widget-error">
+							<p class="error">
+								<?php _e( 'Freunde-Widget benötigt CP Community, BuddyPress oder ein kompatibles Community-Plugin.', 'psource-chat' ); ?>
+							</p>
+							<p>
+								<strong><?php _e( 'Empfehlung:', 'psource-chat' ); ?></strong> 
+								<?php _e( 'Installiere das CP Community Plugin für moderne Freundschafts-Funktionen.', 'psource-chat' ); ?>
+							</p>
+						</div>
+						<?php
 						return;
 					}
 				}
-				if (!function_exists('friends_get_list')) {return;}
-
-				$friends_list_ids = friends_get_list($current_user->ID);
+				
+				if ( function_exists( 'friends_get_list' ) ) {
+					$friends_list_ids = friends_get_list( $current_user->ID );
+				}
 			}
 
-			//echo "friends_list_ids<pre>"; print_r($friends_list_ids); echo "</pre>";
-			if ((!is_array($friends_list_ids)) || (!count($friends_list_ids))) {
+			// Debug info for admins
+			if ( current_user_can( 'manage_options' ) && empty( $friends_list_ids ) ) {
+				?>
+				<div class="psource-chat-debug-info">
+					<p><em><?php _e( 'Debug-Info (nur für Admins sichtbar):', 'psource-chat' ); ?></em></p>
+					<ul style="font-size: 11px; color: #666;">
+						<li><?php _e( 'CP Community aktiv:', 'psource-chat' ); ?> <?php echo function_exists( 'cpc_are_friends' ) ? '✅' : '❌'; ?></li>
+						<li><?php _e( 'BuddyPress aktiv:', 'psource-chat' ); ?> <?php echo function_exists( 'bp_get_friend_ids' ) ? '✅' : '❌'; ?></li>
+						<li><?php _e( 'Friends Plugin aktiv:', 'psource-chat' ); ?> <?php echo function_exists( 'friends_get_list' ) ? '✅' : '❌'; ?></li>
+						<li><?php _e( 'Gefundene Freunde:', 'psource-chat' ); ?> <?php echo count( $friends_list_ids ); ?></li>
+					</ul>
+				</div>
+				<?php
+			}
+
+			if ( !is_array( $friends_list_ids ) || !count( $friends_list_ids ) ) {
+				?>
+				<div class="psource-chat-no-friends">
+					<p><?php _e( 'Keine Freunde online.', 'psource-chat' ); ?></p>
+					<?php if ( function_exists( 'cpc_are_friends' ) ) : ?>
+						<p><small><?php _e( 'Verbinde Dich mit anderen Nutzern über das Community-Plugin.', 'psource-chat' ); ?></small></p>
+					<?php endif; ?>
+				</div>
+				<?php
 				return;
 			}
 
 			$chat_output = '';
 
-			$friends_status = psource_chat_get_friends_status($current_user->ID, $friends_list_ids);
-			//echo "friends_status<pre>"; print_r($friends_status); echo "</pre>";
-			if ( ($friends_status) && (is_array($friends_status)) && (count($friends_status)) ) {
-				//echo "friends_status<pre>"; print_r($friends_status); echo "</pre>";
-				foreach($friends_status as $friend) {
-					if ((isset($friend->chat_status)) && ($friend->chat_status == "available")) {
-						$friend_status_data = psource_chat_get_chat_status_data($current_user->ID, $friend);
+			$friends_status = psource_chat_get_friends_status( $current_user->ID, $friends_list_ids );
+			
+			if ( $friends_status && is_array( $friends_status ) && count( $friends_status ) ) {
+				foreach( $friends_status as $friend ) {
+					if ( isset( $friend->chat_status ) && $friend->chat_status == "available" ) {
+						$friend_status_data = psource_chat_get_chat_status_data( $current_user->ID, $friend );
 
 						$chat_output .= '<li><a class="'. $friend_status_data['href_class'] .'" title="'. $friend_status_data['href_title'] .'" href="#" rel="'.md5($friend->ID) .'"><span class="psource-chat-ab-icon psource-chat-ab-icon-'. $friend->chat_status .'"></span><span class="psource-chat-ab-label">'. $friend->display_name .'</span>'.'</a></li>';
-
 					}
 				}
 
-				if (!empty($chat_output)) {
-
+				if ( !empty( $chat_output ) ) {
 					$height_style = ' style="max-height: '. $this->instance['box_height'] .'; overflow:auto;" ';
 					echo '<ul id="psource-chat-friends-dashboard-widget" '. $height_style.' class="psource-chat-friends-widget">'. $chat_output .'</ul>';
+				} else {
+					?>
+					<div class="psource-chat-no-online-friends">
+						<p><?php _e( 'Keine Freunde sind derzeit online.', 'psource-chat' ); ?></p>
+					</div>
+					<?php
 				}
 			} else {
-				?><p><?php _e("Keine Freunde online.", 'psource-chat'); ?></p><?php
+				?>
+				<div class="psource-chat-no-friends-status">
+					<p><?php _e( 'Freunde-Status konnte nicht abgerufen werden.', 'psource-chat' ); ?></p>
+				</div>
+				<?php
 			}
 
 		}

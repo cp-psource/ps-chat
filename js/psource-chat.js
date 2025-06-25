@@ -102,6 +102,9 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         psource_chat.chat_privite_invite_click();
 
+        // Initialize avatar fallback system
+        psource_chat.init_avatar_fallbacks();
+
         psource_chat.chat_sessions_init();
         //psource_chat.chat_session_message_update();
     },
@@ -908,7 +911,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                     }
                 } else {
 
-                    //jQuery('div#psource-chat-box-'+chat_session['id']+' ul.psource-chat-actions-menu li.psource-chat-actions-settings').show();
+                    //jQuery('div.psource-chat-box-'+chat_session['id']+' ul.psource-chat-actions-menu li.psource-chat-actions-settings').show();
 
                     if (chat_session['moderator'] == "no") {
                         jQuery('div#psource-chat-box-' + chat_session['id'] + ' div.psource-chat-module-banned-status').hide();
@@ -1317,9 +1320,13 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             }
             if (chat_session['box_input_position'] == "top") {
                 jQuery('#psource-chat-box-' + chat_id + ' div.psource-chat-module-messages-list').prepend(updateContent);
+                // Refresh avatar fallbacks for new content
+                psource_chat.refresh_avatar_fallbacks();
 
             } else if (chat_session['box_input_position'] == "bottom") {
                 jQuery('#psource-chat-box-' + chat_id + ' div.psource-chat-module-messages-list').append(updateContent);
+                // Refresh avatar fallbacks for new content
+                psource_chat.refresh_avatar_fallbacks();
 
                 //Check User preference
                 $auto_scroll = jQuery('.manage-auto-scroll').attr('data-auto_scroll');
@@ -2675,6 +2682,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             return;
 
         var chat_session = psource_chat.chat_session_get_session_by_id(chat_id);
+
         if (chat_session == undefined) return;
 
         var chat_box = jQuery('#psource-chat-box-' + chat_id);
@@ -3001,6 +3009,54 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                 psource_chat.chat_process_private_invite(user_hash);
             }
         });
+    },
+    
+    /**
+     * Initialize avatar fallback system
+     * Handle broken avatar images by replacing them with placeholder
+     */
+    init_avatar_fallbacks: function() {
+        var placeholder_url = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNlMGUwZTAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iMTAiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTMyIDQwQzI0IDQwIDE4IDQ2IDE4IDU0VjYwSDQ2VjU0QzQ2IDQ2IDQwIDQwIDMyIDQwWiIgZmlsbD0iIzk5OTk5OSIvPgo8L3N2Zz4K';
+        
+        // Function to replace broken avatar with placeholder
+        function replaceAvatarWithPlaceholder(img) {
+            if (img.src !== placeholder_url) {
+                console.log('Avatar 404 detected, replacing with placeholder:', img.src);
+                img.src = placeholder_url;
+                img.classList.add('avatar-placeholder');
+                img.onerror = null; // Prevent infinite loop
+            }
+        }
+        
+        // Handle existing avatars on page
+        jQuery('.avatar, img[class*="avatar"]').each(function() {
+            var img = this;
+            
+            // If image is already loaded and broken
+            if (img.complete && img.naturalWidth === 0) {
+                replaceAvatarWithPlaceholder(img);
+            } else {
+                // Set error handler for future loads
+                img.onerror = function() {
+                    replaceAvatarWithPlaceholder(this);
+                };
+            }
+        });
+        
+        // Handle dynamically added avatars (via chat updates)
+        jQuery(document).on('load error', '.avatar, img[class*="avatar"]', function(e) {
+            if (e.type === 'error') {
+                replaceAvatarWithPlaceholder(this);
+            }
+        });
+    },
+
+    /**
+     * Refresh avatar fallbacks after content updates
+     * Call this after adding new chat messages with avatars
+     */
+    refresh_avatar_fallbacks: function() {
+        psource_chat.init_avatar_fallbacks();
     }
 });
 jQuery(document).ready(function () {

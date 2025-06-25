@@ -2835,9 +2835,8 @@ function psource_chat_form_section_dashboard( $form_section = 'widget' ) {
 		</table>
 	</fieldset>
 
-	<fieldset>
-		<legend><?php _e( 'Chat Freunde Widget im Dashboard', 'psource-chat' ); ?></legend>
-		<p><?php _e( 'Erfordert entweder das PS-Buddy-Plugins oder BuddyPress mit aktivierter Freunde-Option', 'psource-chat' ); ?></p>
+	<fieldset>        <legend><?php _e( 'Chat Freunde Widget im Dashboard', 'psource-chat' ); ?></legend>
+        <p><?php _e( 'Erfordert entweder das CP Community Plugin, BuddyPress mit aktivierter Freunde-Option oder kompatible Community-Plugins.', 'psource-chat' ); ?></p>
 		<table border="0" cellpadding="4" cellspacing="0">
 			<tr>
 				<td class="chat-label-column chat-label-column-top"><label for="chat_dashboard_friends_widget"><?php
