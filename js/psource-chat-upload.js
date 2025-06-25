@@ -223,8 +223,6 @@
             };
             
             this.uploadQueue.push(uploadItem);
-            console.log('Added to upload queue:', uploadItem);
-            console.log('Current queue:', this.uploadQueue);
             
             // KEINE Upload-Vorschau mehr anzeigen
             // this.showUploadPreview(uploadItem);
@@ -308,25 +306,16 @@
          * Upload-Queue beim Senden verarbeiten
          */
         processQueueOnSend: function($chatBox, callback) {
-            console.log('processQueueOnSend called');
-            console.log('Current upload queue:', this.uploadQueue);
             
             var queuedUploads = this.uploadQueue.filter(function(item) {
-                var match = item.status === 'queued' && item.chatBox.is($chatBox);
-                console.log('Queue item check:', item, 'matches chatBox:', match);
-                return match;
+                return item.status === 'queued' && item.chatBox.is($chatBox);
             });
             
-            console.log('Queued uploads for this chatBox:', queuedUploads);
-            
             if (queuedUploads.length === 0) {
-                console.log('No uploads to process - calling callback with null');
                 // Keine Uploads -> normale Nachricht senden
                 callback(null);
                 return;
             }
-            
-            console.log('Processing', queuedUploads.length, 'uploads...');
             
             // Upload-Status auf "uploading" setzen
             queuedUploads.forEach(function(item) {
@@ -342,13 +331,11 @@
             
             // Warten bis alle Uploads fertig sind
             Promise.all(uploadPromises).then(function(results) {
-                console.log('All uploads completed:', results);
                 // Upload-Referenzen sammeln
                 var uploadReferences = results
                     .filter(function(result) { return result && result.id; })
                     .map(function(result) { return '[upload:' + result.id + ']'; });
                 
-                console.log('Upload references:', uploadReferences);
                 callback(uploadReferences);
                 
                 // Keine Upload-Previews mehr zu entfernen
@@ -845,10 +832,6 @@
                 .replace(/📎\s+[^\n\r]+/g, '') // Entferne 📎 + Dateiname
                 .replace(/\n\s*\n/g, '\n')     // Mehrfache Leerzeilen zu einer
                 .trim();                        // Whitespace am Anfang/Ende
-            
-            // Debug: Log was passiert
-            console.log('Clean Message - Original:', messageText);
-            console.log('Clean Message - Result:', result);
             
             return result;
         },
