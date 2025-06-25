@@ -2507,26 +2507,6 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             return false;
         });
 
-        // ADMIN: Session Open (alte Version - für Rückwärtskompatibilität)
-        //jQuery('div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open a.psource-chat-action-session-open').off('click');
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open a.psource-chat-action-session-open').on( "click", function () {
-            var chat_session_status = 'open';
-            //var chat_id 				= jQuery(this).parents('div.psource-chat-box').attr('id').replace('psource-chat-box-', '');
-            psource_chat.chat_session_status_update(chat_id, chat_session_status);
-
-            return false;
-        });
-
-        // ADMIN: Session Close (alte Version - für Rückwärtskompatibilität)
-        //jQuery('div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed a.psource-chat-action-session-closed').off('click');
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed a.psource-chat-action-session-closed').on( "click", function () {
-            var chat_session_status = 'closed';
-            //var chat_id 				= jQuery(this).parents('div.psource-chat-box').attr('id').replace('psource-chat-box-', '');
-            psource_chat.chat_session_status_update(chat_id, chat_session_status);
-
-            return false;
-        });
-
         // ADMIN: Clear menu options
         jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-clear a.psource-chat-action-session-clear').on( "click", function () {
             var chat_box_id = jQuery(this).parents('.psource-chat-box').attr('id');
@@ -2713,8 +2693,8 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         });
 
         // Swap our corner images
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max img.psource-chat-min', chat_box).show();
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max img.psource-chat-max', chat_box).hide();
+        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min', chat_box).show();
+        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-max', chat_box).hide();
 
         jQuery('.psource-chat-module-header span.psource-chat-title-count', chat_box).html('');
         jQuery('.psource-chat-module-header span.psource-chat-title-count', chat_box).attr('last_row_count', '0');
@@ -2760,8 +2740,8 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         }
 
         // Swap our corner images
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max img.psource-chat-max', chat_box).show();
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max img.psource-chat-min', chat_box).hide();
+        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min', chat_box).show();
+        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-max', chat_box).hide();
         jQuery('.psource-chat-module-header span.psource-chat-title-count', chat_box).show();
 
 //		var last_row_id_viewed 		= '';
@@ -3047,5 +3027,127 @@ jQuery(document).ready(function () {
             $manage_scroll.attr('data-auto_scroll', 'on');
             jQuery(this).html(psource_chat_localized.auto_scroll.disable);
         }
+    });
+
+    // ============================================================================
+    // MODERN EMOJI PICKER FUNCTIONALITY
+    // ============================================================================
+    
+    // Emoji picker functionality
+    function initEmojiPicker() {
+        // Toggle emoji picker
+        jQuery(document).off('click.emoji', '.psource-chat-emoticons-menu').on('click.emoji', '.psource-chat-emoticons-menu', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            var picker = jQuery(this).siblings('.psource-chat-emoji-picker');
+            var wasVisible = picker.hasClass('active');
+            
+            // Close all other emoji pickers
+            jQuery('.psource-chat-emoji-picker').removeClass('active');
+            
+            // Toggle current picker
+            if (!wasVisible) {
+                picker.addClass('active');
+            }
+        });
+        
+        // Category tab switching
+        jQuery(document).off('click.emoji', '.psource-chat-emoji-category-tab').on('click.emoji', '.psource-chat-emoji-category-tab', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            var category = jQuery(this).data('category');
+            var picker = jQuery(this).closest('.psource-chat-emoji-picker');
+            
+            // Update active tab
+            picker.find('.psource-chat-emoji-category-tab').removeClass('active');
+            jQuery(this).addClass('active');
+            
+            // Update active grid
+            picker.find('.psource-chat-emoji-grid').removeClass('active');
+            picker.find('.psource-chat-emoji-grid[data-category="' + category + '"]').addClass('active');
+        });
+        
+        // Emoji selection
+        jQuery(document).off('click.emoji', '.psource-chat-emoji-item').on('click.emoji', '.psource-chat-emoji-item', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            var emoji = jQuery(this).data('emoji');
+            console.log('Emoji clicked:', emoji); // Debug
+            
+            // Find the textarea within the same chat module
+            var chatModule = jQuery(this).closest('.psource-chat-module-message-area');
+            var textarea = chatModule.find('textarea.psource-chat-send');
+            
+            console.log('Chat module found:', chatModule.length); // Debug
+            console.log('Textarea found:', textarea.length); // Debug
+            
+            if (textarea.length) {
+                // Insert emoji at cursor position
+                var currentText = textarea.val();
+                var cursorPos = textarea[0].selectionStart || currentText.length;
+                var newText = currentText.slice(0, cursorPos) + emoji + currentText.slice(cursorPos);
+                
+                textarea.val(newText);
+                
+                // Set cursor position after emoji
+                var newCursorPos = cursorPos + emoji.length;
+                if (textarea[0].setSelectionRange) {
+                    textarea[0].setSelectionRange(newCursorPos, newCursorPos);
+                }
+                
+                // Focus textarea
+                textarea.focus();
+                
+                console.log('Emoji inserted successfully'); // Debug
+            } else {
+                console.log('Textarea not found - trying global fallback'); // Debug
+                // Global fallback - find any visible chat textarea
+                var fallbackTextarea = jQuery('textarea.psource-chat-send:visible').first();
+                
+                if (fallbackTextarea.length) {
+                    var currentText = fallbackTextarea.val();
+                    var cursorPos = fallbackTextarea[0].selectionStart || currentText.length;
+                    var newText = currentText.slice(0, cursorPos) + emoji + currentText.slice(cursorPos);
+                    
+                    fallbackTextarea.val(newText);
+                    
+                    var newCursorPos = cursorPos + emoji.length;
+                    if (fallbackTextarea[0].setSelectionRange) {
+                        fallbackTextarea[0].setSelectionRange(newCursorPos, newCursorPos);
+                    }
+                    
+                    fallbackTextarea.focus();
+                    console.log('Emoji inserted via global fallback'); // Debug
+                } else {
+                    console.log('No textarea found at all'); // Debug
+                }
+            }
+            
+            // Close emoji picker
+            jQuery(this).closest('.psource-chat-emoji-picker').removeClass('active');
+        });
+        
+        // Close emoji picker when clicking outside
+        jQuery(document).off('click.emoji-outside').on('click.emoji-outside', function(e) {
+            if (!jQuery(e.target).closest('.psource-chat-send-input-emoticons').length) {
+                jQuery('.psource-chat-emoji-picker').removeClass('active');
+            }
+        });
+        
+        // Prevent emoji picker from closing when clicking inside
+        jQuery(document).off('click.emoji', '.psource-chat-emoji-picker').on('click.emoji', '.psource-chat-emoji-picker', function(e) {
+            e.stopPropagation();
+        });
+    }
+    
+    // Initialize emoji picker
+    initEmojiPicker();
+    
+    // Re-initialize on content updates
+    jQuery(document).on('psource_chat_content_updated', function() {
+        initEmojiPicker();
     });
 });

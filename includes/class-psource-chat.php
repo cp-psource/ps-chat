@@ -6,9 +6,14 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 	class PSOURCE_Chat {
 		public $tips;
 		private $_admin_panels;
-    	private $_pagehooks;
+		private $_pagehooks;
 		var $chat_current_version = '2.5.0';
 		//var $translation_domain = 'psource-chat';
+		
+		/**
+		 * @var PSource_Chat_Emoji $emoji_system Modern emoji picker system
+		 */
+		var $emoji_system = null;
 
 		/**
 		 * @var        array $_chat_options Consolidated options
@@ -57,6 +62,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->chat_auth          = array();
 			$this->chat_user          = array();
 			$this->_chat_options      = array();
+			
+			// Emoji-System initialisieren
+			$this->emoji_system = null;
 
 			$this->_chat_plugin_settings['plugin_path']    = dirname( dirname( __FILE__ ) );
 			$this->_chat_plugin_settings['plugin_url']     = plugins_url( '', dirname( __FILE__ ) );
@@ -3881,9 +3889,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$content .= $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta {
 				background-color: ' . $chat_session['box_border_color'] . '; }';
 
-			$content .= $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-emoticons ul.psource-chat-emoticons-list {
-			background-color: ' . $chat_session['box_border_color'] . '; }';
-
+			// Add modern emoji picker styles if enabled
+			if ( isset( $this->emoji_system ) && $chat_session['box_emoticons'] == "enabled" ) {
+				$content .= $this->emoji_system->get_emoji_picker_styles();
+			}
 
 			$content .= '</style>';
 
@@ -4083,21 +4092,15 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$content .= '<li class="psource-chat-action-menu-item-sound-off"><a href="#" class="psource-chat-action-sound" title="' .
 					            __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '"><img height="16" width="16" src="' . $this->get_plugin_url( '/images/sound-off.png' ) . '" alt="' . __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '" class="psource-chat-sound-off" title="' . __( 'Schalte Chat-Sound ein', 'psource-chat' ) . '" /></a></li>';
 				}
-				//Hier kannst Du die Emoji-Liste bearbeiten. Verwende Icons von https://emojipedia.org/
+				// Modern emoji picker using the new modular system
 				if ( $chat_session['box_emoticons'] == "enabled" ) {
-					$emoji_string = '😀,😃,😄,😁,😆,😅,🤣,😂,😊,😇,😍,🤩,😘,😗,😚,😛,🤪,😜,😝,🤑,🤗,🤭,🤫,🤔,🤐,🤨,😐,😑,😶,😏,😒,🙄,😬,🤥,😔,😪,🤤,😴,😷,🤒,🤕,🤢,🤮,🤧,🥵,🥶,🥴,😵,🤯,🤠,🥳,😎,🤓,🧐,😕,😟,😮,😳,😨,😢,😭,😱,😣,😓,😫,😤,🥱,😠,🤬,😈,👿,💩,🤡,👽,👻,💋,👋,🤚,🖐️,✋,🖖,👌,🤏,✌️,🤞,🤘,🤙,👍,👎,✊,👊,🤝,🙏,💪,👂,👃,🧠,👅,👄,💏,👩‍❤️‍💋‍👨,💑,👩‍❤️‍👨,👪,💘,💖,💗,💓,💕,💔,❤️,💯,💢,💬,💤,🛑,📣,📯,🔔,🎵,⛔,🚫,☢️,☣️,♀️,♂️,‼️,⁉️,❓,❗,🙈,🙉,🙊,💥,💦,🐵,🐶,🐺,🦊,🦝,🐱,🦁,🐯,🐴,🦄,🦓,🐮,🐷,🐭,🐹,🐻,🦇,🐔,🐣,🐧,🦅,🐍,🐲,🦖,🦕,🐟,🦈,🐛,🐜,🐝,🕷️,🍀,🌲,🌳,🌴,🌵,🍂,🍄,🌍,🌎,🌏,🌐,🌟,🌠,☁️,⛅,⛈️,🌤️,🌥️,🌦️,🌧️,🌨️,🌩️,🌪️,🌫️,🌈,⚡,❄️,🔥,💧,🌊,🎄,✨,💌,💶,🏝️,⚔️,⚰️,🛏️,🚿,🚽,🍏,🍎,🍐,🍊,🍋,🍌,🍉,🍇,🍓,🫐,🍈,🍒,🍑,🥭,🍍,🥥,🥝,🍅,🍆,🥑,🥦,🥬,🥒,🌶️,🌽,🥕,🥔,🍠,🍞,🥯,🥖,🧀,🥨,🥐,🍔,🍟,🍕,🌭,🍿,🧂,🥓,🍖,🍗,🍠,🍙,🍚,🍛,🍜,🍝,🍠,🍡,🍢,🍣,🍤,🍥,🥮,🍦,🍧,🍨,🍩,🍪,🎂,🍰,🧁,🥧,🍫,🍬,🍭,🍮,🍯,🍼,🥛,☕,🍵,🍶,🍾,🍷,🍸,🍹,🍺,🍻,🥂,🥃,🥤,🧊,🥄,🍴,🍽️,🥢';
-
-					$smilies_list = explode(',', $emoji_string);
-
-					$content .= '<li class="psource-chat-send-input-emoticons">';
-					$content .= '<a class="psource-chat-emoticons-menu" href="#">' . trim( convert_smilies( $smilies_list[0] ) ) . '</a>';
-					$content .= '<ul class="psource-chat-emoticons-list">';
-
-					foreach ( $smilies_list as $smilie ) {
-						$content .= '<li>' . convert_smilies( $smilie ) . '</li>';
+					// Use the new emoji system
+					if ( ! isset( $this->emoji_system ) ) {
+						require_once plugin_dir_path( __FILE__ ) . 'class-psource-chat-emoji.php';
+						$this->emoji_system = new PSource_Chat_Emoji( $this->get_plugin_url() );
 					}
-					$content .= '</ul>';
-					$content .= '</li>';
+					
+					$content .= $this->emoji_system->generate_emoji_picker( $chat_session );
 				}
 
 				$content .= '</ul>';

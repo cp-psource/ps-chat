@@ -6,9 +6,12 @@ Ein voll ausgestattetes Chat-Plugin für WordPress mit BuddyPress-Integration, p
 
 - **Vollständig modernisiert**: Objektorientierte Architektur mit PHP 7.4+ Namespaces
 - **Modular aufgebaut**: Saubere Trennung von Core, Admin, Frontend und API-Komponenten
+- **Modern Emoji System**: Komplett neues, kategorisiertes Emoji-System mit 500+ Emojis
 - **REST API**: Vollständige REST API für Chat-Operationen
 - **AJAX-Unterstützung**: Echtzeitaktualisierungen ohne Seitenneuladen
 - **Responsive Design**: Moderne, mobile-first CSS-Architektur
+- **Modernized UI**: Neue Chat-Interface mit CSS-basierten Icons und besserer UX
+- **Dashboard Widget**: Verbesserte Admin-Dashboard-Integration
 - **Erweiterte Logging**: Strukturiertes Logging-System für Debugging und Monitoring
 - **Datenbankoptimierung**: Optimierte Tabellenstruktur mit besserer Performance
 - **BuddyPress Integration**: Nahtlose Integration mit BuddyPress Groups
