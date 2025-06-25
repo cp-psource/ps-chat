@@ -1124,15 +1124,60 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
                     event.preventDefault();
 
+                    var $chatBox = jQuery('div#psource-chat-box-' + chat_id);
                     var message_text = jQuery(this).val().trim();
+                    
+                    console.log('Enter key - Message:', message_text);
+
+                    // Prüfe ob Upload-System verfügbar ist und Queue-Uploads vorhanden sind
+                    var hasUploads = false;
+                    if (typeof PSChatUpload !== 'undefined') {
+                        console.log('PSChatUpload available, checking queue...');
+                        hasUploads = PSChatUpload.uploadQueue.some(function(item) {
+                            return item.status === 'queued' && item.chatBox.is($chatBox);
+                        });
+                        console.log('Has uploads:', hasUploads);
+                    }
+
+                    // Senden nur wenn Text ODER Uploads vorhanden sind
+                    if (message_text === '' && !hasUploads) {
+                        console.log('Nothing to send via Enter');
+                        return;
+                    }
 
                     // IF we are NOT using the send button we want to remove the
                     //message_text = message_text.replace('\n', '');
 
-                    if (message_text != '') {
-                        psource_chat.chat_session_enqueue_message(message_text, chat_session);
-                        jQuery(this).val('');
-                        jQuery('#' + chat_box_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
+                    if (typeof PSChatUpload !== 'undefined' && hasUploads) {
+                        console.log('Processing uploads via Enter...');
+                        
+                        PSChatUpload.processQueueOnSend($chatBox, function(uploadReferences) {
+                            console.log('Enter Upload callback - References:', uploadReferences);
+                            // Text ohne Dateinamen (nur echten Text behalten)
+                            var cleanMessage = PSChatUpload.cleanMessageText(message_text);
+                            console.log('Enter Clean message:', cleanMessage);
+                            
+                            // Upload-Referenzen zur Nachricht hinzufügen
+                            var finalMessage = cleanMessage;
+                            if (uploadReferences && uploadReferences.length > 0) {
+                                finalMessage = cleanMessage ? cleanMessage + ' ' + uploadReferences.join(' ') : uploadReferences.join(' ');
+                            }
+                            console.log('Enter Final message:', finalMessage);
+                            
+                            // Nachricht senden
+                            if (finalMessage.trim() !== '') {
+                                psource_chat.chat_session_enqueue_message(finalMessage, chat_session);
+                                jQuery($chatBox.find('textarea.psource-chat-send')).val('');
+                                jQuery('#' + chat_box_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
+                            }
+                        });
+                    } else {
+                        // Fallback: normales Verhalten
+                        if (message_text != '') {
+                            psource_chat.chat_session_enqueue_message(message_text, chat_session);
+                            jQuery(this).val('');
+                            jQuery('#' + chat_box_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
+                        }
                     }
                 } else {
 
@@ -1147,12 +1192,70 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area button.psource-chat-send-button').on( "click", function (event) {
                 event.preventDefault();
 
-                var chat_textarea = jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-message-area textarea.psource-chat-send');
-                var message_text = chat_textarea.value.trim();
-                if (message_text != '') {
-                    psource_chat.chat_session_enqueue_message(message_text, chat_session);
-                    jQuery(chat_textarea).val('');
-                    jQuery('#psource-chat-box-' + chat_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
+                var $chatBox = jQuery('div#psource-chat-box-' + chat_id);
+                var chat_textarea = $chatBox.find('textarea.psource-chat-send');
+                var message_text = chat_textarea.val().trim();
+                
+                console.log('Send Button Click - Message:', message_text);
+                
+                // Prüfe ob Upload-System verfügbar ist und Queue-Uploads vorhanden sind
+                var hasUploads = false;
+                if (typeof PSChatUpload !== 'undefined') {
+                    console.log('PSChatUpload available, checking queue...');
+                    console.log('Upload Queue:', PSChatUpload.uploadQueue);
+                    
+                    hasUploads = PSChatUpload.uploadQueue.some(function(item) {
+                        var match = item.status === 'queued' && item.chatBox.is($chatBox);
+                        console.log('Queue item:', item, 'Match:', match);
+                        return match;
+                    });
+                    console.log('Has uploads:', hasUploads);
+                }
+                
+                // Senden nur wenn Text ODER Uploads vorhanden sind
+                if (message_text === '' && !hasUploads) {
+                    console.log('Nothing to send - no text and no uploads');
+                    return; // Nichts zu senden
+                }
+                
+                // Prüfe ob Upload-System verfügbar ist
+                if (typeof PSChatUpload !== 'undefined' && hasUploads) {
+                    console.log('Processing uploads...');
+                    // Button deaktivieren während Upload/Send
+                    var $sendButton = jQuery(this);
+                    $sendButton.prop('disabled', true).text('Wird gesendet...');
+                    
+                    PSChatUpload.processQueueOnSend($chatBox, function(uploadReferences) {
+                        console.log('Upload callback - References:', uploadReferences);
+                        // Text ohne Dateinamen (nur echten Text behalten)
+                        var cleanMessage = PSChatUpload.cleanMessageText(message_text);
+                        console.log('Clean message:', cleanMessage);
+                        
+                        // Upload-Referenzen zur Nachricht hinzufügen
+                        var finalMessage = cleanMessage;
+                        if (uploadReferences && uploadReferences.length > 0) {
+                            finalMessage = cleanMessage ? cleanMessage + ' ' + uploadReferences.join(' ') : uploadReferences.join(' ');
+                        }
+                        console.log('Final message:', finalMessage);
+                        
+                        // Nachricht senden
+                        if (finalMessage.trim() !== '') {
+                            psource_chat.chat_session_enqueue_message(finalMessage, chat_session);
+                            chat_textarea.val('');
+                            jQuery('#psource-chat-box-' + chat_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
+                        }
+                        
+                        // Button wieder aktivieren
+                        $sendButton.prop('disabled', false).text($sendButton.data('original-text') || 'Senden');
+                    });
+                } else {
+                    console.log('Fallback - sending normal message');
+                    // Fallback: normales Verhalten ohne Upload-System
+                    if (message_text != '') {
+                        psource_chat.chat_session_enqueue_message(message_text, chat_session);
+                        jQuery(chat_textarea).val('');
+                        jQuery('#psource-chat-box-' + chat_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
+                    }
                 }
             });
         } else {

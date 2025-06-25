@@ -838,6 +838,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'box_border_width'                         => defined( 'PSOURCE_CHAT_PAGE_BOX_BORDER_WIDTH' ) ? PSOURCE_CHAT_PAGE_BOX_BORDER_WIDTH : '1px',
 				//'box_padding'							   => '3px',
 				'box_emoticons'                            => defined( 'PSOURCE_CHAT_PAGE_BOX_EMOTICONS' ) ? PSOURCE_CHAT_PAGE_BOX_EMOTICONS : 'disabled',
+				'file_uploads_enabled' 					   => defined( 'PSOURCE_CHAT_PAGE_FILE_UPLOADS_ENABLED' ) ? PSOURCE_CHAT_PAGE_FILE_UPLOADS_ENABLED : 'disabled',
 				//Buttonbar testweise
 				//'buttonbar'							       => 'disabled',
 				'row_name_avatar'                          => defined( 'PSOURCE_CHAT_PAGE_ROW_NAME_AVATAR' ) ? PSOURCE_CHAT_PAGE_ROW_NAME_AVATAR : 'avatar',
@@ -1033,7 +1034,10 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'bp_group_admin_show_widget'     => defined( 'PSOURCE_CHAT_GLOBAL_BP_GROUP_ADMIN_SHOW_WIDGET' ) ? PSOURCE_CHAT_GLOBAL_BP_GROUP_ADMIN_SHOW_WIDGET : 'enabled',
 				'bp_form_background_color'       => defined( 'PSOURCE_CHAT_GLOBAL_BP_FORM_BACKGROUND_COLOR' ) ? PSOURCE_CHAT_GLOBAL_BP_FORM_BACKGROUND_COLOR : '#FDFDFD',
 				'bp_form_label_color'            => defined( 'PSOURCE_CHAT_GLOBAL_BP_FORM_LABEL_COLOR' ) ? PSOURCE_CHAT_GLOBAL_BP_FORM_LABEL_COLOR : '#333333',
-				'delete_user_messages'           => 'disabled'
+				'delete_user_messages'           => 'disabled',
+				'file_uploads_enabled' 			 => defined( 'PSOURCE_CHAT_GLOBAL_FILE_UPLOADS_ENABLED' ) ? PSOURCE_CHAT_GLOBAL_FILE_UPLOADS_ENABLED : 'disabled',
+				'file_uploads_max_size' 		 => defined( 'PSOURCE_CHAT_GLOBAL_FILE_UPLOADS_MAX_SIZE' ) ? PSOURCE_CHAT_GLOBAL_FILE_UPLOADS_MAX_SIZE : 5,
+				'file_uploads_allowed_types'	 => defined( 'PSOURCE_CHAT_GLOBAL_FILE_UPLOADS_ALLOWED_TYPES' ) ? PSOURCE_CHAT_GLOBAL_FILE_UPLOADS_ALLOWED_TYPES : 'jpg,jpeg,png,gif,webp,mp4,webm,pdf,doc,docx,txt,zip',
 
 			);
 
@@ -1558,6 +1562,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			//Register scripts
 			wp_register_script( 'psource-chat-js', $this->get_plugin_url( '/js/psource-chat.js' ), array( 'jquery' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-media-js', $this->get_plugin_url( '/js/psource-chat-media.js' ), array( 'jquery' ), $this->chat_current_version, true );
+			wp_register_script( 'psource-chat-upload-js', $this->get_plugin_url( '/js/psource-chat-upload.js' ), array( 'jquery' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-admin-js', $this->get_plugin_url( '/js/psource-chat-admin.js' ), array( 'jquery' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-admin-farbtastic-js', $this->get_plugin_url( '/js/psource-chat-admin-farbtastic.js' ), array(), $this->chat_current_version, true );
 
@@ -1593,6 +1598,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				wp_enqueue_script( 'psource-chat-media-js' );
 				$this->_registered_scripts['psource-chat-media-js'] = 'psource-chat-media-js';
+
+				wp_enqueue_script( 'psource-chat-upload-js' );
+				$this->_registered_scripts['psource-chat-upload-js'] = 'psource-chat-upload-js';
 
 				wp_enqueue_script( 'psource-chat-admin-js' );
 				$this->_registered_scripts['psource-chat-admin-js'] = 'psource-chat-admin-js';
@@ -1632,6 +1640,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 
 				wp_enqueue_script( 'psource-chat-media-js' );
 				$this->_registered_scripts['psource-chat-media-js'] = 'psource-chat-media-js';
+
+				wp_enqueue_script( 'psource-chat-upload-js' );
+				$this->_registered_scripts['psource-chat-upload-js'] = 'psource-chat-upload-js';
 			}
 		}
 
@@ -1860,6 +1871,17 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->chat_localized['auth']                   = $this->chat_auth;
 			$this->chat_localized['auto_scroll']['disable'] = __( 'Autoscroll aus', 'psource-chat' );
 			$this->chat_localized['auto_scroll']['enable']  = __( 'Autoscroll an', 'psource-chat' );
+
+			// Upload-Einstellungen hinzufügen
+			$this->chat_localized['upload_settings'] = array(
+				'enabled' => $this->get_option( 'file_uploads_enabled', 'global' ) === 'enabled',
+				'allowed_types' => $this->get_option( 'file_uploads_allowed_types', 'global' ) ?: 'jpg,jpeg,png,gif,webp,mp4,webm,pdf,doc,docx,txt,zip',
+				'max_size' => intval( $this->get_option( 'file_uploads_max_size', 'global' ) ?: 5 )
+			);
+
+			// Nonce für Upload-Anfragen
+			$this->chat_localized['nonce'] = wp_create_nonce( 'psource_chat_nonce' );
+			$this->chat_localized['ajax_url'] = admin_url( 'admin-ajax.php' );
 
 			wp_localize_script( 'psource-chat-js', 'psource_chat_localized', $this->chat_localized );
 		}
@@ -3892,6 +3914,41 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$content .= $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta {
 				background-color: ' . $chat_session['box_border_color'] . '; }';
 
+			$content .= $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-action-menu-item-file-upload {
+				cursor: pointer;
+				float: left !important;
+				margin-left: 5px !important;
+				margin-right: 0 !important;
+			}
+			' . $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-action-menu-item-file-upload a {
+				color: #666 !important;
+				text-decoration: none !important;
+				display: inline-block !important;
+				padding: 4px !important;
+				background: transparent !important;
+				border: none !important;
+				border-radius: 3px !important;
+				box-shadow: none !important;
+				outline: none !important;
+				transition: all 0.2s ease !important;
+			}
+			' . $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-action-menu-item-file-upload a:hover {
+				color: #333 !important;
+				background: rgba(0,0,0,0.05) !important;
+				text-decoration: none !important;
+			}
+			' . $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-action-menu-item-file-upload a:focus {
+				outline: none !important;
+				box-shadow: none !important;
+			}
+			' . $CSS_prefix . ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-action-menu-item-file-upload svg {
+				vertical-align: middle !important;
+				width: 16px !important;
+				height: 16px !important;
+				display: block !important;
+			}
+			';
+
 			// Add modern emoji picker styles if enabled
 			if ( isset( $this->emoji_system ) && $chat_session['box_emoticons'] == "enabled" ) {
 				$content .= $this->emoji_system->get_emoji_picker_styles();
@@ -4079,7 +4136,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$content .= '<button id="psource-chat-send-button-' . $chat_session['id'] . '" class="psource-chat-send-button">' . $chat_session['box_send_button_label'] . '</button>';
 			}
 
-			if ( ( $chat_session['box_emoticons'] == "enabled" ) || ( $chat_session['box_sound'] == "enabled" ) || ( intval( $chat_session['row_message_input_length'] ) > 0 ) ) {
+			if ( ( $chat_session['box_emoticons'] == "enabled" ) || ( $chat_session['box_sound'] == "enabled" ) || ( intval( $chat_session['row_message_input_length'] ) > 0 ) || ( $chat_session['file_uploads_enabled'] == "enabled" && $this->get_option( 'file_uploads_enabled', 'global' ) == 'enabled' ) ) {
 
 				$content .= '<ul class="psource-chat-send-meta">';
 
@@ -4104,6 +4161,18 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					}
 					
 					$content .= $this->emoji_system->generate_emoji_picker( $chat_session );
+				}
+
+				// File upload button
+				if ( $chat_session['file_uploads_enabled'] == "enabled" && $this->get_option( 'file_uploads_enabled', 'global' ) == 'enabled' ) {
+					$content .= '<li class="psource-chat-action-menu-item-file-upload">';
+					$content .= '<a href="#" class="psource-chat-upload-button" title="' . __( 'Datei hochladen', 'psource-chat' ) . '">';
+					$content .= '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">';
+					$content .= '<path d="M16.5,6V17.5A4,4 0 0,1 12.5,21.5A4,4 0 0,1 8.5,17.5V5A2.5,2.5 0 0,1 11,2.5A2.5,2.5 0 0,1 13.5,5V15.5A1,1 0 0,1 12.5,16.5A1,1 0 0,1 11.5,15.5V6H10V15.5A2.5,2.5 0 0,0 12.5,18A2.5,2.5 0 0,0 15,15.5V5A4,4 0 0,0 11,1A4,4 0 0,0 7,5V17.5A5.5,5.5 0 0,0 12.5,23A5.5,5.5 0 0,0 18,17.5V6H16.5Z"/>';
+					$content .= '</svg>';
+					$content .= '</a>';
+					$content .= '<input type="file" id="psource-chat-file-input-' . $chat_session['id'] . '" class="psource-chat-file-input" style="display: none;" multiple>';
+					$content .= '</li>';
 				}
 
 				$content .= '</ul>';

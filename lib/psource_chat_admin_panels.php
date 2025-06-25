@@ -380,6 +380,9 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 							<li id="psource_chat_interval_tab"><a href="#psource_chat_interval_panel"><span><?php
 										_e( 'Abfrageintervalle', 'psource-chat' ); ?></span></a></li>
 							<?php if ( ! is_network_admin() ) { ?>
+								<li id="psource_chat_file_uploads_tab">
+									<a href="#psource_chat_file_uploads_panel"><span><?php
+											_e( 'Datei-Uploads', 'psource-chat' ); ?></span></a></li>
 								<li id="psource_chat_blocked_ip_addresses_tab">
 									<a href="#psource_chat_blocked_ip_addresses_panel"><span><?php
 											_e( 'Blockiere IP/User', 'psource-chat' ); ?></span></a></li>
@@ -406,6 +409,9 @@ if ( ! class_exists( "psource_chat_admin_panels" ) ) {
 							<?php psource_chat_form_section_performance_content( $form_section ); ?>
 						</div>
 						<?php if ( ! is_network_admin() ) { ?>
+							<div id="psource_chat_file_uploads_panel" class="chat_panel">
+								<?php psource_chat_form_section_file_uploads_global( 'global' ); ?>
+							</div>
 							<div id="psource_chat_blocked_ip_addresses_panel" class="chat_panel">
 								<?php psource_chat_form_section_blocked_ip_addresses_global( $form_section ); ?>
 								<?php psource_chat_form_section_block_users_global( 'global' ); ?>

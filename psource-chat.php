@@ -37,6 +37,7 @@ if ( ( ! defined( 'PSOURCE_CHAT_SHORTINIT' ) ) || ( PSOURCE_CHAT_SHORTINIT != tr
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-avatar.php' );
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-emoji.php' );
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-media.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-upload.php' );
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat-ajax.php' );
 include_once( dirname( __FILE__ ) . '/includes/class-psource-chat.php' );
 

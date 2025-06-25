@@ -150,7 +150,7 @@ div.psource-chat-box div.psource-chat-module.avatar-disabled img.avatar {
 }
 
 div.psource-chat-box div.psource-chat-module-messages-list span.date,
-div.psource-chat-box div.psource-chat-module-messages-list span.time {
+div.psource-chat_box div.psource-chat-module-messages-list span.time {
     vertical-align: top;
     float: left;
     margin-right: 4px;
@@ -2133,4 +2133,307 @@ div.psource-chat-box a.psource-chat-user-avatar:hover img.avatar {
 @keyframes pulse {
     from { opacity: 0.6; }
     to { opacity: 1; }
+}
+
+/* ==========================================================================
+   File Attachment Styles - Upload & Download
+   ========================================================================== */
+
+/* File Attachments Container */
+.psource-chat-file-attachments {
+    margin: 8px 0;
+    border-top: 1px solid #e1e5e9;
+    padding-top: 8px;
+}
+
+/* Individual File Attachment */
+.psource-chat-file-attachment {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 6px;
+    transition: all 0.2s ease;
+}
+
+.psource-chat-file-attachment:hover {
+    background: #e9ecef;
+    border-color: #0073aa;
+}
+
+.psource-chat-file-attachment:last-child {
+    margin-bottom: 0;
+}
+
+/* File Icon */
+.psource-chat-file-icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+    color: #666;
+    font-size: 18px;
+}
+
+.psource-chat-file-attachment[data-file-type="image"] .psource-chat-file-icon {
+    color: #46b450;
+}
+
+.psource-chat-file-attachment[data-file-type="video"] .psource-chat-file-icon {
+    color: #dc3232;
+}
+
+.psource-chat-file-attachment[data-file-type="audio"] .psource-chat-file-icon {
+    color: #00a32a;
+}
+
+.psource-chat-file-attachment[data-file-type="pdf"] .psource-chat-file-icon {
+    color: #d63638;
+}
+
+.psource-chat-file-attachment[data-file-type="archive"] .psource-chat-file-icon {
+    color: #f56e28;
+}
+
+.psource-chat-file-attachment[data-file-type="text"] .psource-chat-file-icon {
+    color: #0073aa;
+}
+
+/* File Info */
+.psource-chat-file-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.psource-chat-file-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1d2129;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.psource-chat-file-size {
+    font-size: 11px;
+    color: #606770;
+}
+
+/* File Actions */
+.psource-chat-file-actions {
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.psource-chat-file-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #0073aa;
+    color: white;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.psource-chat-file-download:hover {
+    background: #005a87;
+    color: white;
+    text-decoration: none;
+}
+
+.psource-chat-file-download .dashicons {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+}
+
+/* Responsive Design für File Attachments */
+@media (max-width: 480px) {
+    .psource-chat-file-attachment {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .psource-chat-file-icon {
+        margin-right: 0;
+    }
+    
+    .psource-chat-file-actions {
+        margin-left: 0;
+        align-self: stretch;
+    }
+    
+    .psource-chat-file-download {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Dark Theme Support for File Attachments */
+.psource-chat-box.dark-theme .psource-chat-file-attachments {
+    border-top-color: #4a5568;
+}
+
+.psource-chat-box.dark-theme .psource-chat-file-attachment {
+    background: #2d3748;
+    border-color: #4a5568;
+}
+
+.psource-chat-box.dark-theme .psource-chat-file-attachment:hover {
+    background: #4a5568;
+    border-color: #63b3ed;
+}
+
+.psource-chat-box.dark-theme .psource-chat-file-name {
+    color: #e2e8f0;
+}
+
+.psource-chat-box.dark-theme .psource-chat-file-size {
+    color: #a0aec0;
+}
+
+.psource-chat-box.dark-theme .psource-chat-file-download {
+    background: #3182ce;
+}
+
+.psource-chat-box.dark-theme .psource-chat-file-download:hover {
+    background: #2c5aa0;
+}
+
+/* Upload Progress Indicators */
+.psource-chat-file-attachment.uploading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.psource-chat-file-attachment.upload-success {
+    border-color: #46b450;
+    background: #f0f8f0;
+}
+
+.psource-chat-file-attachment.upload-error {
+    border-color: #dc3232;
+    background: #ffeaea;
+}
+
+/* Datei-Anzeige in Chat-Nachrichten */
+.psource-chat-file-attachment {
+    margin: 8px 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    max-width: 320px;
+}
+
+.psource-chat-image-preview img {
+    display: block;
+    margin-bottom: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.psource-chat-image-download {
+    text-align: center;
+    margin-top: 4px;
+}
+
+.psource-chat-image-download-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #666 !important;
+    text-decoration: none !important;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.05);
+    transition: all 0.2s;
+}
+
+.psource-chat-image-download-link:hover {
+    background: rgba(0,0,0,0.1);
+    color: #333 !important;
+    text-decoration: none !important;
+}
+
+.psource-chat-video-preview video {
+    display: block;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.psource-chat-file-download {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.psource-chat-file-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #f0f0f0;
+}
+
+.psource-chat-file-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.psource-chat-file-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.psource-chat-file-name {
+    font-weight: 500;
+    color: #333;
+    word-break: break-word;
+}
+
+.psource-chat-file-size {
+    color: #888;
+    font-size: 12px;
+}
+
+.psource-chat-download-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #0073aa !important;
+    text-decoration: none !important;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.psource-chat-download-link:hover {
+    background-color: rgba(0, 115, 170, 0.1);
+    text-decoration: none !important;
+}
+
+.psource-chat-download-link svg {
+    flex-shrink: 0;
+}
+
+.psource-chat-message-text {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
 }

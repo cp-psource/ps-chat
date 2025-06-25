@@ -1129,7 +1129,40 @@ function psource_chat_form_section_messages_input( $form_section = 'page' ) {
 				</td>
 				<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'box_emoticons', 'tip' ); ?></td>
 			</tr>
-
+			<tr>
+                <td class="chat-label-column">
+                    <label for="chat_file_uploads_enabled"><?php _e( "Datei-Uploads", 'psource-chat' ); ?></label>
+                </td>
+                <td class="chat-value-column">
+                    <?php 
+                    $global_uploads_enabled = $psource_chat->get_option( 'file_uploads_enabled', 'global' ) === 'enabled';
+                    if ( ! $global_uploads_enabled ) : ?>
+                        <select disabled>
+                            <option><?php _e( "Global deaktiviert", 'psource-chat' ); ?></option>
+                        </select>
+                        <br />
+                        <small style="color: #d63638;"><?php _e( 'Datei-Uploads sind global deaktiviert. Aktiviere sie zuerst in den globalen Einstellungen.', 'psource-chat' ); ?></small>
+                    <?php else : ?>
+                        <select id="chat_file_uploads_enabled" name="chat[file_uploads_enabled]">
+                            <option value="enabled" <?php print ( $psource_chat->get_option( 'file_uploads_enabled', $form_section ) == 'enabled' ) ? 'selected="selected"' : ''; ?>><?php
+                                _e( "Aktiviert", 'psource-chat' ); ?></option>
+                            <option value="disabled" <?php print ( $psource_chat->get_option( 'file_uploads_enabled', $form_section ) == 'disabled' ) ? 'selected="selected"' : ''; ?>><?php
+                                _e( "Deaktiviert", 'psource-chat' ); ?></option>
+                        </select>
+                        <br />
+                        <small><?php 
+                            $max_size = $psource_chat->get_option( 'file_uploads_max_size', 'global' ) ?: 5;
+                            $allowed_types = $psource_chat->get_option( 'file_uploads_allowed_types', 'global' ) ?: 'jpg,jpeg,png,gif,webp,mp4,webm,pdf,doc,docx,txt,zip';
+                            printf( 
+                                __( 'Erlaubte Typen: %s | Max. Größe: %d MB', 'psource-chat' ), 
+                                esc_html( $allowed_types ), 
+                                intval( $max_size ) 
+                            ); 
+                        ?></small>
+                    <?php endif; ?>
+                </td>
+                <td class="chat-help-column"><?php echo psource_chat_get_help_item( 'file_uploads_enabled', 'tip' ); ?></td>
+            </tr>
 
 			<?php  ?>
 		<tr>
@@ -1481,6 +1514,55 @@ function psource_chat_form_section_performance_content( $form_section = 'global'
 		</table>
 	</fieldset>
 
+<?php
+}
+
+function psource_chat_form_section_file_uploads_global( $form_section = 'global' ) {
+    global $psource_chat;
+    ?>
+    <fieldset>
+        <legend><?php _e( 'Datei-Upload Einstellungen', 'psource-chat' ); ?></legend>
+        <p class="info"><?php _e( 'Globale Einstellungen für Datei-Uploads in allen Chat-Sitzungen. Diese Einstellungen gelten für ALLE Chats, können aber in einzelnen Chat-Sitzungen deaktiviert werden.', 'psource-chat' ); ?></p>
+        <table border="0" cellpadding="4" cellspacing="0">
+            <tr>
+                <td class="chat-label-column">
+                    <label for="chat_file_uploads_enabled"><?php _e( "Datei-Uploads erlauben", 'psource-chat' ); ?></label>
+                </td>
+                <td class="chat-value-column">
+                    <select id="chat_file_uploads_enabled" name="chat[file_uploads_enabled]">
+                        <option value="enabled" <?php print ( $psource_chat->get_option( 'file_uploads_enabled', $form_section ) == 'enabled' ) ? 'selected="selected"' : ''; ?>><?php
+                            _e( "Aktiviert", 'psource-chat' ); ?></option>
+                        <option value="disabled" <?php print ( $psource_chat->get_option( 'file_uploads_enabled', $form_section ) == 'disabled' ) ? 'selected="selected"' : ''; ?>><?php
+                            _e( "Deaktiviert", 'psource-chat' ); ?></option>
+                    </select>
+                </td>
+                <td class="chat-help-column"><?php echo psource_chat_get_help_item( 'file_uploads_enabled', 'tip' ); ?></td>
+            </tr>
+            <tr>
+                <td class="chat-label-column">
+                    <label for="chat_file_uploads_max_size"><?php _e( "Maximale Dateigröße (MB)", 'psource-chat' ); ?></label>
+                </td>
+                <td class="chat-value-column">
+                    <input type="number" id="chat_file_uploads_max_size" name="chat[file_uploads_max_size]" min="1" max="100"
+                        value="<?php echo intval( $psource_chat->get_option( 'file_uploads_max_size', $form_section ) ) ?: 5; ?>"/>
+                    <p class="description"><?php _e( 'Standard: 5 MB. Maximum: 100 MB.', 'psource-chat' ); ?></p>
+                </td>
+                <td class="chat-help-column"><?php echo psource_chat_get_help_item( 'file_uploads_max_size', 'tip' ); ?></td>
+            </tr>
+            <tr>
+                <td class="chat-label-column chat-label-column-top">
+                    <label for="chat_file_uploads_allowed_types"><?php _e( "Erlaubte Dateitypen", 'psource-chat' ); ?></label>
+                </td>
+                <td class="chat-value-column">
+                    <textarea id="chat_file_uploads_allowed_types" name="chat[file_uploads_allowed_types]" rows="4" cols="50"><?php
+                        echo esc_textarea( $psource_chat->get_option( 'file_uploads_allowed_types', $form_section ) ?: 'jpg,jpeg,png,gif,webp,mp4,webm,pdf,doc,docx,txt,zip' );
+                    ?></textarea>
+                    <p class="description"><?php _e( 'Erlaubte Dateierweiterungen, getrennt durch Kommas. Beispiel: jpg,png,pdf,doc,mp4', 'psource-chat' ); ?></p>
+                </td>
+                <td class="chat-help-column"><?php echo psource_chat_get_help_item( 'file_uploads_allowed_types', 'tip' ); ?></td>
+            </tr>
+        </table>
+    </fieldset>
 <?php
 }
 
