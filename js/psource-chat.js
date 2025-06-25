@@ -1956,7 +1956,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         // Second loop over the active_users list and add any new users.
         for (var user_type in active_users) {
-            if (!active_users.hasOwnProperty(user_type)) continue;
+            if (!active_users.hasOwnProperty(user_type)) return;
 
             if (chat_session['users'][user_type] == undefined) {
                 chat_session['users'][user_type] = {};
@@ -2693,7 +2693,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                         }
                     }
                 });
-            }
+ }
             return false;
         });
     },
@@ -3153,6 +3153,19 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 });
 jQuery(document).ready(function () {
     psource_chat.init();
+
+    // Lightbox für Chat-Bilder
+    jQuery(document).on('click', '.psource-chat-image-preview img', function(e) {
+        e.preventDefault();
+        var src = jQuery(this).attr('src');
+        if (!src) return;
+        // Lightbox-Overlay erzeugen
+        var overlay = jQuery('<div class="psource-chat-lightbox-overlay"></div>');
+        var img = jQuery('<img class="psource-chat-lightbox-img" src="'+src+'" alt="Bild" />');
+        overlay.append(img);
+        jQuery('body').append(overlay);
+        overlay.on('click', function() { overlay.remove(); });
+    });
 
     // Handle the Settings 'gear' children menu items clicks. Once a user click a child menu option we close the parent.
     jQuery('body').on('click', 'ul.psource-chat-actions-settings-menu li a', function (event) {

@@ -2469,3 +2469,23 @@ div.psource-chat-box a.psource-chat-user-avatar:hover img.avatar {
     font-size: 14px;
     line-height: 1.4;
 }
+
+/* Lightbox für Chat-Bilder */
+.psource-chat-lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+.psource-chat-lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+    background: #fff;
+    padding: 8px;
+}

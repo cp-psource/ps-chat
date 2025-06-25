@@ -783,7 +783,7 @@ class PSource_Chat_Upload {
 		if ( $is_image ) {
 			// Bild-Vorschau mit kleinem Download-Link
 			$html .= '<div class="psource-chat-image-preview">';
-			$html .= '<img src="' . esc_url( $download_url ) . '" alt="' . esc_attr( $file_data['original_name'] ) . '" style="max-width: 100%; height: auto; border-radius: 8px; cursor: pointer;" onclick="window.open(this.src, \'_blank\')">';
+			$html .= '<img src="' . esc_url( $download_url ) . '" alt="' . esc_attr( $file_data['original_name'] ) . '" style="max-width: 100%; height: auto; border-radius: 8px; cursor: pointer;">';
 			$html .= '<div class="psource-chat-image-download">';
 			$html .= '<a href="' . esc_url( $download_url ) . '" download="' . esc_attr( $file_data['original_name'] ) . '" class="psource-chat-image-download-link" title="' . esc_attr( $file_data['original_name'] ) . ' herunterladen">';
 			$html .= '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/></svg>';
@@ -898,7 +898,7 @@ class PSource_Chat_Upload {
 					return '<div class="psource-chat-image-preview">' .
 						   '<img src="' . esc_url( $download_url ) . '" alt="' . esc_attr( $file_data['original_name'] ) . '" ' .
 						   'style="max-width: 300px; max-height: 200px; height: auto; border-radius: 8px; margin: 5px 0; cursor: pointer;" ' .
-						   'onclick="window.open(this.src, \'_blank\')" title="' . esc_attr( $file_data['original_name'] ) . '" />' .
+						   'title="' . esc_attr( $file_data['original_name'] ) . '" />' .
 						   '</div>';
 				}
 				
