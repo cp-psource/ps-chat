@@ -1406,40 +1406,52 @@ function psource_chat_form_section_polling_interval( $form_section = 'global' ) 
 function psource_chat_form_section_polling_content( $form_section = 'global' ) {
 	global $psource_chat;
 
-	if ( psource_chat_validate_config_file( $psource_chat->_chat_plugin_settings['config_file'] ) ) {
-		$_use_plugin_ajax = true;
-	} else {
-		$_use_plugin_ajax = false;
-	}
-
 	?>
 	<fieldset>
-		<legend><?php _e( 'Abfrageinhalt von Chat-Sitzungen', 'psource-chat' ); ?></legend>
-		<p class="info"><?php _e( 'Standardmäßig rufen die Chat-Sitzungen eine spezielle AJAX-Datei ab, die sich im Plugin-Verzeichnis befindet (psource-chat-ajax.php). Manchmal ist dies aus Sicherheitsgründen auf dem Server nicht zulässig. In diesen Fällen setze den Abfragetyp auf System-Ajax.', 'psource-chat' ); ?></p>
-
-		<p class="info"><?php _e( '<strong>Das System AJAX ist viel langsamer und verwendet mehr Serverressourcen als das Plugin AJAX.</strong>', 'psource-chat' ); ?></p>
-		<?php
-		if ($_use_plugin_ajax !== true) {
+		<legend><?php _e( 'AJAX-System für Chat-Anfragen', 'psource-chat' ); ?></legend>
+		<p class="info"><?php _e( 'Wähle das AJAX-System für Chat-Anfragen. PS Chat AJAX bietet die beste Performance und Sicherheit.', 'psource-chat' ); ?></p>
+		
+		<?php 
+		// Check if modern AJAX is available
+		$modern_ajax_available = class_exists( 'PSource_Chat_AJAX' );
+		$current_type = $psource_chat->get_option( 'session_poll_type', $form_section );
+		
+		// Migrate legacy settings to modern defaults
+		if ( $current_type == 'plugin' ) {
+			$current_type = $modern_ajax_available ? 'modern' : 'wordpress';
+			$psource_chat->set_option( 'session_poll_type', $current_type, $form_section );
+		}
 		?>
-		<p class="psource-chat-error"><?php _e( "Das Chat-Plugin-Verzeichnis muss während der Aktivierung beschreibbar sein, um die schnellere Option 'Plugin AJAX' verwenden zu können.", 'psource-chat' );
-			}
-			?>
+		
 		<table border="0" cellpadding="4" cellspacing="0">
 			<tr>
 				<td class="chat-label-column chat-label-column-top">
-					<label for="chat_session_poll_type"><?php _e( 'Wählen für die Abfrage verwendete AJAX-Variante (System AJAX empfohlen)',
+					<label for="chat_session_poll_type"><?php _e( 'AJAX-System wählen',
 							'psource-chat' ); ?></label></td>
 				<td class="chat-value-column"><?php
 					?><select id="chat_session_poll_type" name="chat[session_poll_type]">
-						<?php if ( $_use_plugin_ajax === true ) { ?>
-							<option value="wordpress" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'wordpress' ) ? 'selected="selected"' : ''; ?>><?php _e( 'System AJAX', 'psource-chat' ); ?></option><?php
+						<?php if ( $modern_ajax_available ) { ?>
+							<option value="modern" <?php print ( $current_type == 'modern' ) ? 'selected="selected"' : ''; ?>><?php _e( '🚀 PS Chat AJAX (Empfohlen)', 'psource-chat' ); ?></option><?php
 						} ?>
-						<option value="plugin" <?php print ( $psource_chat->get_option( 'session_poll_type', $form_section ) == 'plugin' ) ? 'selected="selected"' : ''; ?>><?php _e( 'PS-Chat AJAX', 'psource-chat' ); ?></option>
+						<option value="wordpress" <?php print ( $current_type == 'wordpress' ) ? 'selected="selected"' : ''; ?>><?php _e( '✅ CMS AJAX (WordPress)', 'psource-chat' ); ?></option>
 					</select>
 				</td>
 				<td class="chat-help-column"><?php echo psource_chat_get_help_item( 'session_poll_type', 'tip' ); ?></td>
 			</tr>
 		</table>
+		
+		<?php if ( $current_type == 'modern' && $modern_ajax_available ) { ?>
+			<div class="notice notice-success inline">
+				<p><strong><?php _e( 'PS Chat AJAX aktiviert!', 'psource-chat' ); ?></strong><br>
+				<?php _e( 'Nutzt REST API, optimierte Datenbankabfragen und intelligentes Caching für beste Performance.', 'psource-chat' ); ?></p>
+			</div>
+		<?php } ?>
+		
+		<p class="description">
+			<strong><?php _e( 'AJAX-Systeme im Vergleich:', 'psource-chat' ); ?></strong><br>
+			• <strong><?php _e( 'PS Chat AJAX:', 'psource-chat' ); ?></strong> <?php _e( 'Modernes REST API System mit Caching und optimierten Queries (beste Performance)', 'psource-chat' ); ?><br>
+			• <strong><?php _e( 'CMS AJAX:', 'psource-chat' ); ?></strong> <?php _e( 'Standard WordPress admin-ajax.php (zuverlässig, mittlere Performance)', 'psource-chat' ); ?>
+		</p>
 	</fieldset>
 
 <?php

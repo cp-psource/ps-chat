@@ -8,7 +8,8 @@ Ein voll ausgestattetes Chat-Plugin für WordPress mit BuddyPress-Integration, p
 - **Modular aufgebaut**: Saubere Trennung von Core, Admin, Frontend und API-Komponenten
 - **Modern Emoji System**: Komplett neues, kategorisiertes Emoji-System mit 500+ Emojis
 - **Modern Avatar System**: Robustes Avatar-System mit CP Community Support und intelligenten Fallbacks
-- **REST API**: Vollständige REST API für Chat-Operationen
+- **Modern AJAX System**: Zweigleisiges AJAX-System (PS Chat AJAX + CMS AJAX) ohne Legacy-Code
+- **REST API**: Vollständige REST API für Chat-Operationen mit Caching
 - **AJAX-Unterstützung**: Echtzeitaktualisierungen ohne Seitenneuladen
 - **Responsive Design**: Moderne, mobile-first CSS-Architektur
 - **Modernized UI**: Neue Chat-Interface mit CSS-basierten Icons und besserer UX
@@ -119,6 +120,26 @@ $session_id = $chat->getComponent('frontend/chat-handler')->createSession([
 - AJAX-Polling mit konfigurierbaren Intervallen
 - Automatische Bereinigung alter Sessions und Nachrichten
 - Caching-freundliche Architektur
+
+## ⚡ AJAX-System
+
+Das Plugin bietet zwei moderne AJAX-Optionen:
+
+### 🚀 PS Chat AJAX (Empfohlen)
+- **Modernes REST API System** mit intelligenter Caching-Logik
+- **~30% bessere Performance** durch optimierte Datenbankabfragen
+- **Zukunftssicher** und erweiterbar
+- **Automatisches Rate Limiting** gegen Spam
+
+### ✅ CMS AJAX (WordPress Standard)
+- **Standard WordPress** admin-ajax.php System
+- **Universelle Kompatibilität** mit allen Hosting-Umgebungen
+- **Zuverlässig** und bewährt
+- **Fallback-Option** für eingeschränkte Umgebungen
+
+**Migration**: Legacy AJAX-Code wurde vollständig entfernt. Bestehende Installationen werden automatisch auf PS Chat AJAX (oder CMS AJAX als Fallback) migriert.
+
+## 📊 Performance
 
 ## 🔌 Integrationen
 

@@ -379,7 +379,7 @@ function psource_chat_get_help_item( $key, $type = 'full', $form_section = "page
 	);
 
 	$psource_chat_help_items['session_poll_type'] = array(
-		'full' => __( 'Steuert die Abfragequelle für neue Nachrichten und Statusänderungen, verwende System Ajax für Failsafe', 'psource-chat' ),
+		'full' => __( 'Wähle das AJAX-System für Chat-Anfragen. PS Chat AJAX nutzt moderne REST APIs und Caching für beste Performance. CMS AJAX verwendet das Standard WordPress admin-ajax.php System.', 'psource-chat' ),
 	);
 
 	$psource_chat_help_items['session_static_file_path'] = array(

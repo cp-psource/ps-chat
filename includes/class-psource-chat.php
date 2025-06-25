@@ -70,7 +70,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->_chat_plugin_settings['plugin_url']     = plugins_url( '', dirname( __FILE__ ) );
 			$this->_chat_plugin_settings['blocked_urls']   = array();
 			$this->_chat_plugin_settings['network_active'] = false;
-			$this->_chat_plugin_settings['config_file']    = dirname( dirname( __FILE__ ) ) . '/psource-chat-config.php';
+			// Legacy settings - no longer needed with modern AJAX system
 
 			// Check our version against the options table
 			if ( is_multisite() ) {
@@ -247,12 +247,6 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		 */
 		function install() {
 			global $wpdb;
-
-			if ( ( ! empty( $this->_chat_plugin_settings['config_file'] ) ) && ( is_writable( dirname( $this->_chat_plugin_settings['config_file'] ) ) ) ) {
-				$configs_array            = array();
-				$configs_array['ABSPATH'] = base64_encode( ABSPATH );
-				file_put_contents( $this->_chat_plugin_settings['config_file'], serialize( $configs_array ) );
-			}
 
 			/**
 			 * WordPress database upgrade/creation functions
@@ -1019,7 +1013,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'session_poll_interval_messages' => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_MESSAGES' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_MESSAGES : '3',
 				'session_poll_interval_invites'  => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_INVITES' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_INVITES : '3',
 				'session_poll_interval_meta'     => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_META' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_INTERVAL_META : '5',
-				'session_poll_type'              => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE : 'wordpress',
+				'session_poll_type'              => defined( 'PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE' ) ? PSOURCE_CHAT_GLOBAL_SESSION_POLL_TYPE : 'modern',
 				'session_performance'            => 'disabled',
 				'blocked_ip_addresses_active'    => defined( 'PSOURCE_CHAT_GLOBAL_BLOCKED_IP_ADDRESSES_ACTIVE' ) ? PSOURCE_CHAT_GLOBAL_BLOCKED_IP_ADDRESSES_ACTIVE : 'disabled',
 				'blocked_ip_addresses'           => array( '0.0.0.0' ),
@@ -1818,17 +1812,27 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		}
 
 		function set_chat_localized() {
-			if ( $this->get_option( 'session_poll_type', 'global' ) == "plugin" ) {
-				if ( psource_chat_validate_config_file( $this->_chat_plugin_settings['config_file'], 'ABSPATH' ) === true ) {
-					$this->chat_localized['settings']["ajax_url"] = $this->get_plugin_url( '/psource-chat-ajax.php' );
-				} else {
-					//$this->chat_localized['settings']["ajax_url"] 		= site_url()."/wp-admin/admin-ajax.php?xyz";
-					$this->chat_localized['settings']["ajax_url"] = admin_url( 'admin-ajax.php', 'relative' );
-				}
+			$poll_type = $this->get_option( 'session_poll_type', 'global' );
+			
+			// Migrate legacy plugin type to modern default
+			if ( $poll_type == "plugin" ) {
+				$poll_type = class_exists( 'PSource_Chat_AJAX' ) ? 'modern' : 'wordpress';
+				$this->set_option( 'session_poll_type', $poll_type, 'global' );
+			}
+			
+			if ( $poll_type == "modern" && class_exists( 'PSource_Chat_AJAX' ) ) {
+				// Use modern AJAX system with REST API
+				$ajax_config = PSource_Chat_AJAX::get_js_config();
+				$this->chat_localized['settings']['ajax_url'] = $ajax_config['ajax_url'];
+				$this->chat_localized['settings']['rest_url'] = $ajax_config['rest_url'];
+				$this->chat_localized['settings']['rest_nonce'] = $ajax_config['rest_nonce'];
+				$this->chat_localized['settings']['ajax_nonce'] = $ajax_config['ajax_nonce'];
+				$this->chat_localized['settings']['poll_url'] = $ajax_config['poll_url'];
+				$this->chat_localized['settings']['ajax_type'] = 'modern';
 			} else {
-				//$this->chat_localized['settings']["ajax_url"] 			= site_url()."/wp-admin/admin-ajax.php?123";
+				// Standard WordPress AJAX (CMS AJAX)
 				$this->chat_localized['settings']["ajax_url"] = admin_url( 'admin-ajax.php', 'relative' );
-
+				$this->chat_localized['settings']['ajax_type'] = 'wordpress';
 			}
 
 			$this->chat_localized['settings']['cookiepath']    = COOKIEPATH;

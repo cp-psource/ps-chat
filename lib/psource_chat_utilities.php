@@ -400,45 +400,11 @@ function psource_chat_utility_size_format( $bytes = 0, $precision = 2 ) {
 
 
 /**
- * When using the chat AJAX (wp-content/plugins/psource-chat/psource-chat-ajax.php) instead of the default (wp-admin/admin-ajax.php) hook we need
- * to store the path to wp-load.php. This config file created during the plugin activation will contain the path. It is verified here.
- *
- * @global    object $psource_chat
- *
- * @param    string $section Section name of options to check: site, widget, etc.
- *
- * @return    true/false            true = URL is blocked. false = URL is not blocked.
+ * Get active chat sessions by type
+ * 
+ * @param array $session_types Array of session types to get
+ * @return array Active chat sessions
  */
-function psource_chat_validate_config_file( $config_file = '' ) {
-	if ( empty( $config_file ) ) {
-		return false;
-	}
-
-	if ( ! file_exists( $config_file ) ) {
-		return false;
-	}
-
-	$configs_array = file_get_contents( $config_file );
-	if ( empty( $configs_array ) ) {
-		return false;
-	}
-
-	$configs_array = unserialize( $configs_array );
-	if ( ! is_array( $configs_array ) ) {
-		return false;
-	}
-
-	if ( ( ! isset( $configs_array['ABSPATH'] ) ) || ( empty( $configs_array['ABSPATH'] ) ) ) {
-		return false;
-	}
-
-	$configs_array['ABSPATH'] = base64_decode( $configs_array['ABSPATH'] );
-	if ( ! file_exists( $configs_array['ABSPATH'] . '/wp-load.php' ) ) {
-		return false;
-	}
-
-	return true;
-}
 
 function psource_chat_get_active_sessions( $session_types = array( 'page' ) ) {
 	global $wpdb, $blog_id;
