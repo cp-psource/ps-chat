@@ -4470,8 +4470,8 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$chat_header_actions = '<div class="psource-chat-module-header-actions"><ul class="psource-chat-actions-menu">';
 
 			if ( $chat_session['session_type'] != "bp-group" ) {
-				$chat_header_images .= '<img class="psource-chat-min" src="' . $this->get_plugin_url( '/images/16-square-blue-remove.png' ) . '" alt="-" width="16" height="16" style="' . $chat_style_min . '" title="' . __( 'Minimiere Chat', 'psource-chat' ) . '" />';
-				$chat_header_images .= '<img class="psource-chat-max" src="' . $this->get_plugin_url( '/images/16-square-green-add.png' ) . '" alt="+" width="16" height="16" style="' . $chat_style_max . '" title="' . __( 'Maximiere Chat', 'psource-chat' ) . '" />';
+				$chat_header_images .= '<span class="psource-chat-min psource-chat-icon-minimize" style="' . $chat_style_min . '" title="' . __( 'Minimiere Chat', 'psource-chat' ) . '"></span>';
+				$chat_header_images .= '<span class="psource-chat-max psource-chat-icon-maximize" style="' . $chat_style_max . '" title="' . __( 'Maximiere Chat', 'psource-chat' ) . '"></span>';
 				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-min-max"><a href="#">' . $chat_header_images . '</a></li>';
 			}
 			if ( $this->chat_user[ $chat_session['id'] ]['status_max_min'] == "max" ) {
@@ -4480,21 +4480,19 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				$chat_style_settings = "display:none;";
 			}
 
-			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><span class="dashicons dashicons-admin-tools"></span></a>' . $chat_action_menu . '</li>';
+			$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings" style="' . $chat_style_settings . '"><a href="#" class="psource-chat-actions-settings-button"><span class="psource-chat-icon-settings"></span></a>' . $chat_action_menu . '</li>';
 
 			//$transient_key = "chat-session-". $chat_session['blog_id'] ."-". $chat_session['id'] .'-'. $chat_session['session_type'];
-			$transient_key = "chat-session-" . $chat_session['id'] . '-' . $chat_session['session_type'];
-
-			if ( $chat_session['box_popout'] == "enabled" ) {
-				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', 'psource-chat' ) . '" href="' . add_query_arg( array(
-					'psource-chat-action' => 'pop-out',
-					'psource-chat-key'    => base64_encode( $transient_key )
-				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#x25B2;</a></li>';
-				$chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', 'psource-chat' ) . '" href="' . add_query_arg( array(
-					'psource-chat-action' => 'pop-in',
-					'psource-chat-id'     => base64_encode( $chat_session['id'] )
-				), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out">&#9660;</a></li>';
-			}
+			$transient_key = "chat-session-" . $chat_session['id'] . '-' . $chat_session['session_type'];            if ( $chat_session['box_popout'] == "enabled" ) {
+                $chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-out"><a title="' . __( 'Eigenes Fenster', 'psource-chat' ) . '" href="' . add_query_arg( array(
+                    'psource-chat-action' => 'pop-out',
+                    'psource-chat-key'    => base64_encode( $transient_key )
+                ), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="psource-chat-icon-popout"></span></a></li>';
+                $chat_header_actions .= '<li class="psource-chat-action-item psource-chat-actions-settings-pop-in"><a title="' . __( 'Original-Chat', 'psource-chat' ) . '" href="' . add_query_arg( array(
+                    'psource-chat-action' => 'pop-in',
+                    'psource-chat-id'     => base64_encode( $chat_session['id'] )
+                ), get_option( 'siteurl' ) ) . '" class="psource-chat-action-pop-out"><span class="psource-chat-icon-popin"></span></a></li>';
+            }
 
 			$chat_header_actions .= '</ul></div>';
 
@@ -4551,61 +4549,84 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		function chat_session_settings_action_menu( $chat_session ) {
 			$chat_action_menu = '<ul class="psource-chat-actions-settings-menu">';
 
+			// Login/Logout Status ermitteln und nur relevante Option anzeigen
+			$is_logged_in = false;
+			$show_auth_option = true; // Erstmal immer anzeigen für Debug
+			
 			if ( ( isset( $this->chat_auth['type'] ) ) && ( ! empty( $this->chat_auth['type'] ) ) ) {
 				if ( $this->chat_auth['type'] === 'wordpress' ) {
-					$chat_style_login  = "display: none;";
-					$chat_style_logout = "display: none;";
+					// WordPress User ist automatisch eingeloggt - für jetzt noch anzeigen
+					$is_logged_in = true;
+					$show_auth_option = true; // Ändern wir später
 				} else {
-					$chat_style_login  = "display: none;";
-					$chat_style_logout = "display: block;";
+					// Anderer Auth-Type - User ist eingeloggt
+					$is_logged_in = true;
+					$show_auth_option = true;
 				}
 			} else {
-				$chat_style_login  = "display: block;";
-				$chat_style_logout = "display: none;";
+				// Kein Auth-Type - User ist nicht eingeloggt
+				$is_logged_in = false;
+				$show_auth_option = true;
 			}
 
-			$chat_action_menu .= '<li class="psource-chat-action-menu-item-login" style="' . $chat_style_login . '"><a href="#" class="psource-chat-action-login">' .
-			                     __( 'Anmelden', 'psource-chat' ) . '</a></li>';
-			$chat_action_menu .= '<li class="psource-chat-action-menu-item-logout" style="' . $chat_style_logout . '"><a href="#" class="psource-chat-action-logout">' .
-			                     __( 'Abmelden', 'psource-chat' ) . '</a></li>';
+			// Debug: Immer die entsprechende Option anzeigen
+			if ( $is_logged_in ) {
+				// User ist eingeloggt - Option zum Abmelden anzeigen
+				$chat_action_menu .= '<li class="psource-chat-action-menu-item-auth-toggle logged-in"><a href="#" class="psource-chat-action-logout" title="' . __( 'Vom Chat abmelden', 'psource-chat' ) . '"><span class="psource-chat-icon-logout"></span>' . __( 'Abmelden', 'psource-chat' ) . '</a></li>';
+			} else {
+				// User ist nicht eingeloggt - Option zum Anmelden anzeigen
+				$chat_action_menu .= '<li class="psource-chat-action-menu-item-auth-toggle logged-out"><a href="#" class="psource-chat-action-login" title="' . __( 'Im Chat anmelden', 'psource-chat' ) . '"><span class="psource-chat-icon-login"></span>' . __( 'Anmelden', 'psource-chat' ) . '</a></li>';
+			}
 
 			if ( $chat_session['session_type'] == "private" ) {
 				$chat_action_menu .= '<li class="psource-chat-action-menu-item-exit"><a href="#" class="psource-chat-action-exit">' .
-				                     __( 'Chat verlassen', 'psource-chat' ) . '</a></li>';
+				__( 'Chat verlassen', 'psource-chat' ) . '</a></li>';
 			}
 
 			if ( $chat_session['box_sound'] == "enabled" ) {
-				$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-on"><a title="' . __( 'Chat-Sound ausschalten', 'psource-chat' ) . '"
-				href="#" class="psource-chat-action-sound">' . __( 'Sound Aus', 'psource-chat' ) . '</a></li>';
-				$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-off"><a title="' . __( 'Chat-Sound einschalten', 'psource-chat' ) . '"
-				href="#" class="psource-chat-action-sound">' . __( 'Sound An', 'psource-chat' ) . '</a></li>';
+				// Aktueller Sound-Status prüfen
+				$current_sound_status = isset( $this->chat_user[ $chat_session['id'] ]['sound_on_off'] ) ? $this->chat_user[ $chat_session['id'] ]['sound_on_off'] : 'on';
+				
+				if ( $current_sound_status == "on" ) {
+					// Sound ist AN - Option zum Ausschalten anzeigen
+					$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-toggle sound-active"><a title="' . __( 'Chat-Sound ausschalten', 'psource-chat' ) . '"
+					href="#" class="psource-chat-action-sound" data-action="off"><span class="psource-chat-icon-sound-on"></span>' . __( 'Sound ausschalten', 'psource-chat' ) . '</a></li>';
+				} else {
+					// Sound ist AUS - Option zum Einschalten anzeigen
+					$chat_action_menu .= '<li class="psource-chat-action-menu-item-sound-toggle sound-inactive"><a title="' . __( 'Chat-Sound einschalten', 'psource-chat' ) . '"
+					href="#" class="psource-chat-action-sound" data-action="on"><span class="psource-chat-icon-sound-off"></span>' . __( 'Sound einschalten', 'psource-chat' ) . '</a></li>';
+				}
 			}
 
 			if ( psource_chat_is_moderator( $chat_session ) ) {
 
-				$chat_style_session_status_open   = '';
-				$chat_style_session_status_closed = '';
-
+				// Chat-Status Toggle (nur für Moderatoren und nicht-private Chats)
 				if ( $chat_session['session_type'] != "private" ) {
-
-					$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-status-open" style="' . $chat_style_session_status_open . '"><a href="#" class="psource-chat-action-session-open">' . __( 'Chat öffnen', 'psource-chat' ) . '</a></li>';
-					$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-status-closed" style="' . $chat_style_session_status_closed . '"><a href="#" class="psource-chat-action-session-closed">' . __( 'Chat schliessen', 'psource-chat' ) . '</a></li>';
+					$current_session_status = isset( $chat_session['session_status'] ) ? $chat_session['session_status'] : 'open';
+					
+					if ( $current_session_status == "open" ) {
+						// Chat ist OFFEN - Option zum Schließen anzeigen
+						$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-toggle session-open"><a href="#" class="psource-chat-action-session-closed" title="' . __( 'Chat für andere Benutzer schließen', 'psource-chat' ) . '"><span class="psource-chat-icon-lock-open"></span>' . __( 'Chat schließen', 'psource-chat' ) . '</a></li>';
+					} else {
+						// Chat ist GESCHLOSSEN - Option zum Öffnen anzeigen
+						$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-toggle session-closed"><a href="#" class="psource-chat-action-session-open" title="' . __( 'Chat für andere Benutzer öffnen', 'psource-chat' ) . '"><span class="psource-chat-icon-lock-closed"></span>' . __( 'Chat öffnen', 'psource-chat' ) . '</a></li>';
+					}
 				}
 
-				$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-clear"><a href="#"
-				class="psource-chat-action-session-clear">' .
-				                     __( 'Chat löschen', 'psource-chat' ) . '</a></li>';
+				$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-clear"><a href="#" title="' . __( 'Alle Chat-Nachrichten unwiderruflich löschen', 'psource-chat' ) . '"
+				class="psource-chat-action-session-clear"><span class="psource-chat-icon-delete"></span>' .
+				__( 'Chat löschen', 'psource-chat' ) . '</a></li>';
 
 				if ( $chat_session['session_type'] != "private" ) {
 
 					if ( isset( $chat_session['log_creation'] ) && $chat_session['log_creation'] == 'enabled' ) {
-						$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-archive"><a href="#" class="psource-chat-action-session-archive">' .
-						                     __( 'Archiviere Chat', 'psource-chat' ) . '</a></li>';
+						$chat_action_menu .= '<li class="psource-chat-action-menu-item-session-archive"><a href="#" title="' . __( 'Chat-Verlauf als Archiv speichern', 'psource-chat' ) . '" class="psource-chat-action-session-archive"><span class="psource-chat-icon-archive"></span>' .
+						__( 'Archiviere Chat', 'psource-chat' ) . '</a></li>';
 					}
 				}
 			}
 			//Disable Auto Scroll
-			$chat_action_menu .= '<li class="manage-auto-scroll" data-auto_scroll="on"><a href="#">' . __( 'Autoscroll aus', 'psource-chat' ) . '</a></li>';
+			$chat_action_menu .= '<li class="manage-auto-scroll" data-auto_scroll="on"><a href="#" title="' . __( 'Automatisches Scrollen deaktivieren', 'psource-chat' ) . '"><span class="psource-chat-icon-scroll"></span>' . __( 'Autoscroll aus', 'psource-chat' ) . '</a></li>';
 			$chat_action_menu .= '</ul>';
 
 			return $chat_action_menu;

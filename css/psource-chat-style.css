@@ -379,7 +379,7 @@ div.psource-chat-box .psource-chat-module {
 }
 
 div.psource-chat-box .psource-chat-module:first-child,
-div.psource-chat-box .psource-chat-module:last-child {
+div.psource-chat_box .psource-chat-module:last-child {
     margin-bottom: 0;
 }
 
@@ -470,21 +470,24 @@ div.psource-chat-box div.psource-chat-module-header {
     height: 20px;
     line-height: 20px;
     font-weight: normal;
-    /*	overflow: hidden; */
+    overflow: visible;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 div.psource-chat-box div.psource-chat-module-header div.psource-chat-module-header-title,
 div.psource-chat-box div.psource-chat-module-header div.psource-chat-module-header-actions {
-    float: left;
     height: 20px;
     line-height: 20px;
     margin: 0px;
 }
 
 div.psource-chat-box div.psource-chat-module-header div.psource-chat-module-header-title {
+    flex: 1;
     font-size: 16px;
     overflow: hidden;
-    cursor: pointer
+    cursor: pointer;
 }
 
 div.psource-chat-box div.psource-chat-module-header div.psource-chat-module-header-title a {
@@ -495,7 +498,7 @@ div.psource-chat-box div.psource-chat-module-header div.psource-chat-module-head
 }
 
 div.psource-chat-box div.psource-chat-module-header div.psource-chat-module-header-actions {
-    float: right;
+    flex-shrink: 0;
 }
 
 div.psource-chat-box-bp-group div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out,
@@ -534,41 +537,43 @@ div.psource-chat-box-bp-group div.psource-chat-module-header ul.psource-chat-act
 }
 
 div.psource-chat-box div.psource-chat-module-header a img,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta a img {
+div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-meta a img {
     cursor: pointer;
     border: 0px !important;
 }
 
 div.psource-chat-box div.psource-chat-module-header a:hover img,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta a:hover img {
+div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-meta a:hover img {
     border: 0px;
 }
 
-div.psource-chat-box div.psource-chat-module-header div.psource-chat-module-header-actions {
-    width: 60px;
-}
 
-div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu {
+
+div.psource-chat_box div.psource-chat-module-header ul.psource-chat-actions-menu {
     margin: 0;
     padding: 0;
     list-style: none;
-    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
     width: 100%;
-    line-height: 12px;
+    height: 20px;
+    line-height: 20px;
 }
 
 .psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li {
     margin: 0;
     padding: 0;
     list-style: none;
-    line-height: 15px;
     background: none;
+    display: inline-block;
 }
 
 .psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li a {
-    display: block;
-    font-size: 15px;
-    line-height: 15px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
     text-decoration: none;
 }
 
@@ -577,11 +582,13 @@ div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu
 }
 
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-action-item {
-    border: 0 solid red;
-    float: right;
-    padding-left: 0px;
-    margin-right: 2px;
-    width: 16px;
+    border: 0;
+    padding: 0;
+    margin: 0 1px;
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+    display: inline-block;
 }
 
 div.psource-chat-box ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button {
@@ -595,49 +602,66 @@ div.psource-chat-box ul.psource-chat-actions-menu li.psource-chat-actions-settin
     width: 16px;
 }
 
+/* Settings Dropdown-Menu korrekt positionieren und stylen */
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu {
+div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu {
     margin: 0;
-    padding: 0;
-    position: relative;
-    right: 20px;
-    width: 100px;
+    padding: 5px 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 160px;
     display: none;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    z-index: 1000;
+    list-style: none !important;
 }
 
-div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu {
-    display: none;
+/* Sicherstellen dass das Menü sichtbar ist wenn geöffnet */
+div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu[style*="block"] {
+    display: block !important;
 }
 
-div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu {
-    right: 82px;
-    margin-top: 0px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    z-index: 999;
+/* Settings Container für korrekte Positionierung */
+div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings {
+    position: relative !important;
 }
 
+/* Menu Items verbessern */
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li {
-    /*    display: block; */
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    line-height: 12px;
+div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    line-height: normal;
+    border-bottom: 1px solid #f0f0f0;
+    background: none !important;
+}
+
+div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li:last-child {
+    border-bottom: none;
 }
 
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li a,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li a {
-    text-decoration: none;
-    display: block;
-    padding: 5px 3px;
-    font-size: 1em;
+div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li a {
+    text-decoration: none !important;
+    display: block !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    color: #333 !important;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+    background: transparent !important;
 }
 
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li a:hover,
-div.psource-chat-box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li a:hover {
-    text-decoration: none;
+div.psource-chat_box div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-actions-settings ul.psource-chat-actions-settings-menu li a:hover {
+    background-color: #f5f5f5 !important;
+    text-decoration: none !important;
+    color: #0073aa !important;
 }
 
 div.psource-chat-box-page div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max,
@@ -652,7 +676,7 @@ div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu
 }
 
 div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out,
-div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-in {
+div.psource-chat_box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-in {
     font-size: 16px; /* Ändern Sie die Schriftgröße je nach Bedarf */
     width: auto; /* Setzen Sie die Breite auf "auto", um den Text nicht abzuschneiden */
     margin-top: 3px;
@@ -675,11 +699,11 @@ body.psource-chat-pop-out div.psource-chat-box div.psource-chat-module-header ul
     margin-top: 4px;
 }
 
-body.psource-chat-pop-out div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out {
+body.psource-chat-pop-out div.psource-chat_box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings-pop-out {
     display: none;
 }
 
-body.psource-chat-pop-out div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max {
+body.psource-chat-pop-out div.psource-chat_box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min-max {
     display: none;
 }
 
@@ -722,12 +746,12 @@ div.psource-chat-box div.psource-chat-module-login p.psource-chat-login-buttons 
 }
 
 div.psource-chat-box-invite-pending div.psource-chat-module-invite-prompt p.psource-chat-invite-buttons button.psource-chat-invite-accept,
-div.psource-chat-box div.psource-chat-module-login p.psource-chat-login-buttons button.psource-chat-login-submit {
+div.psource-chat_box div.psource-chat-module-login p.psource-chat-login-buttons button.psource-chat-login-submit {
     margin-right: 4px;
 }
 
 div.psource-chat-box-invite-pending div.psource-chat-module-invite-prompt p.psource-chat-invite-buttons button.psource-chat-invite-accept,
-div.psource-chat-box-invite-pending div.psource-chat-module-invite-prompt p.psource-chat-invite-buttons button.psource-chat-invite-declined {
+div.psource-chat_box-invite-pending div.psource-chat-module-invite-prompt p.psource-chat-invite-buttons button.psource-chat-invite-declined {
     float: left;
 }
 
@@ -751,12 +775,12 @@ div.psource-chat-box div.psource-chat-module-login span.psource-chat-login-butto
 }
 
 div.psource-chat-box.psource-chat-session-open div.psource-chat-module-session-status,
-div.psource-chat-box.psource-chat-session-closed div.psource-chat-module-message-area {
+div.psource-chat_box.psource-chat-session-closed div.psource-chat-module-message-area {
     display: none;
 }
 
 div.psource-chat-box.psource-chat-session-closed div.psource-chat-module-session-status,
-div.psource-chat-box.psource-chat-session-open div.psource-chat-module-message-area {
+div.psource-chat_box.psource-chat-session-open div.psource-chat-module-message-area {
     display: block;
 }
 
@@ -902,5 +926,758 @@ select.psource-chat-status-widget option.available {
     font-size: 12px;
 }
 
+/* Moderne CSS-Icons für Chat-Aktionen */
 
-/*  */
+/* Header-Actions Container anpassen */
+.psource-chat-box .psource-chat-module-header-actions {
+    height: 20px;
+    line-height: 20px;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-action-item {
+    border: 0;
+    float: right;
+    padding: 0;
+    margin: 1px 1px 0 0;
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+}
+
+/* Action Links anpassen - höhere Spezifizität für neue Icons */
+.psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-action-item a {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    line-height: 16px !important;
+    text-align: center;
+    margin: 1px;
+    padding: 0 !important;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    vertical-align: top;
+    font-size: 12px !important;
+}
+
+.psource-chat-box .psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-action-item a:hover {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    transform: scale(1.05);
+    text-decoration: none !important;
+}
+
+/* Pop-out/Pop-in Icons */
+.psource-chat-icon-popout,
+.psource-chat-icon-popin {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+/* Pop-out Icon (neues Fenster) */
+.psource-chat-icon-popout::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    border: 1px solid currentColor;
+    border-radius: 1px;
+}
+
+.psource-chat-icon-popout::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 4px;
+    border: 1px solid currentColor;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 0 1px 0 0;
+}
+
+/* Pop-in Icon (zurück zum Original) */
+.psource-chat-icon-popin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border: 1px solid currentColor;
+    border-radius: 1px;
+}
+
+.psource-chat-icon-popin::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 0;
+    height: 0;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 3px solid currentColor;
+}
+
+/* Hover-Effekte für Pop-out/Pop-in */
+.psource-chat-action-pop-out:hover .psource-chat-icon-popout,
+.psource-chat-action-pop-out:hover .psource-chat-icon-popin {
+    color: #0073aa;
+}
+
+/* Minimize/Maximize Icons - kompakter für Header */
+.psource-chat-icon-minimize,
+.psource-chat-icon-maximize {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    vertical-align: top;
+    margin: 0;
+}
+
+/* Minimize Icon (Minus/Remove) */
+.psource-chat-icon-minimize {
+    background-color: #dc3545;
+    border: 1px solid #c82333;
+}
+
+.psource-chat-icon-minimize::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+}
+
+/* Maximize Icon (Plus/Add) */
+.psource-chat-icon-maximize {
+    background-color: #28a745;
+    border: 1px solid #1e7e34;
+}
+
+.psource-chat-icon-maximize::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+}
+
+.psource-chat-icon-maximize::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 8px;
+    background-color: white;
+    border-radius: 1px;
+}
+
+/* Hover-Effekte für Minimize/Maximize */
+.psource-chat-min-max:hover .psource-chat-icon-minimize {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.psource-chat-min-max:hover .psource-chat-icon-maximize {
+    background-color: #1e7e34;
+    transform: scale(1.05);
+}
+
+/* Settings Icon (Zahnrad) */
+.psource-chat-icon-settings {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.psource-chat-icon-settings::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.psource-chat-icon-settings::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 4px;
+    background: currentColor;
+    border-radius: 50%;
+}
+
+/* Zahnrad-Zähne als Box-Shadow */
+.psource-chat-icon-settings {
+    box-shadow: 
+        0 -7px 0 -5px currentColor,
+        0 7px 0 -5px currentColor,
+        -7px 0 0 -5px currentColor,
+        7px 0 0 -5px currentColor,
+        -5px -5px 0 -5px currentColor,
+        5px -5px 0 -5px currentColor,
+        -5px 5px 0 -5px currentColor,
+        5px 5px 0 -5px currentColor;
+}
+
+/* Hover-Effekt für Settings Icon */
+.psource-chat-actions-settings-button:hover .psource-chat-icon-settings {
+    color: #0073aa;
+    transform: rotate(45deg);
+}
+
+/* Settings Button anpassen */
+.psource-chat-box ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button {
+    width: 16px !important;
+    height: 16px !important;
+    display: inline-block !important;
+    margin: 1px !important;
+    padding: 0 !important;
+    text-align: center;
+    line-height: 16px !important;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    vertical-align: top;
+}
+
+.psource-chat-box ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button:hover {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Spezifische Menu-Item Verbesserungen */
+
+/* Auto-Scroll Item mit spezieller Behandlung */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.manage-auto-scroll {
+    position: relative;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.manage-auto-scroll a {
+    padding: 8px 12px !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Sound Menu Items */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-on,
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-off {
+    display: block;
+}
+
+/* Menu Items mit Icons oder Buttons richtig ausrichten */
+.psource-chat-box ul.psource-chat-actions-settings-menu li a {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Sicherstellen dass alle Menu-Items die gleiche Höhe haben */
+.psource-chat-box ul.psource-chat-actions-settings-menu li {
+    min-height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li a {
+    flex: 1 !important;
+    min-height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Spezielle Behandlung für Input-Elemente oder Buttons im Menu */
+.psource-chat-box ul.psource-chat-actions-settings-menu li input,
+.psource-chat-box ul.psource-chat-actions-settings-menu li button,
+.psource-chat-box ul.psource-chat-actions-settings-menu li select {
+    margin: 0 !important;
+    padding: 2px 6px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 3px !important;
+    font-size: 12px !important;
+    width: auto !important;
+    max-width: 100% !important;
+}
+
+/* Verbesserung für möglicherweise verschachtelte Elemente */
+.psource-chat-box ul.psource-chat-actions-settings-menu li * {
+    box-sizing: border-box;
+}
+
+/* Reset für möglicherweise störende Float-Eigenschaften */
+.psource-chat-box ul.psource-chat-actions-settings-menu li,
+.psource-chat-box ul.psource-chat-actions-settings-menu li * {
+    float: none !important;
+    clear: both !important;
+}
+
+/* Sound Toggle Icons */
+.psource-chat-icon-sound-on,
+.psource-chat-icon-sound-off {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    position: relative;
+    margin-right: 8px;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+
+/* Sound ON Icon (Lautsprecher mit Schallwellen) */
+.psource-chat-icon-sound-on::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 6px;
+    height: 8px;
+    background: currentColor;
+    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0 70%);
+}
+
+.psource-chat-icon-sound-on::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid currentColor;
+    border-left: none;
+    border-radius: 0 50% 50% 0;
+    background: transparent;
+}
+
+/* Sound OFF Icon (Lautsprecher mit X) */
+.psource-chat-icon-sound-off::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 6px;
+    height: 8px;
+    background: currentColor;
+    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0 70%);
+}
+
+.psource-chat-icon-sound-off::after {
+    content: '✕';
+    position: absolute;
+    top: 1px;
+    right: 0;
+    font-size: 10px;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Sound Menu Item Styling */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-toggle {
+    transition: all 0.3s ease;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-toggle.sound-active a {
+    color: #28a745;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-toggle.sound-active a:hover {
+    background-color: #f8f9fa;
+    color: #dc3545;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-toggle.sound-inactive a {
+    color: #6c757d;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-toggle.sound-inactive a:hover {
+    background-color: #f8f9fa;
+    color: #28a745;
+}
+
+/* Spezielle Icon-Farben basierend auf Status */
+.psource-chat-action-menu-item-sound-toggle.sound-active .psource-chat-icon-sound-on {
+    color: #28a745;
+}
+
+.psource-chat-action-menu-item-sound-toggle.sound-inactive .psource-chat-icon-sound-off {
+    color: #6c757d;
+}
+
+/* Alte Sound-Menu Items ausblenden (falls noch vorhanden) */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-on,
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-sound-off {
+    display: none !important;
+}
+
+/* Login/Logout Toggle Icons */
+.psource-chat-icon-login,
+.psource-chat-icon-logout {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    position: relative;
+    margin-right: 8px;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+
+/* Login Icon (Pfeil nach rechts mit Person) */
+.psource-chat-icon-login::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 8px;
+    height: 10px;
+    border: 2px solid currentColor;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: transparent;
+}
+
+.psource-chat-icon-login::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 4px solid currentColor;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+
+/* Logout Icon (Pfeil nach links mit X) */
+.psource-chat-icon-logout::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    width: 8px;
+    height: 10px;
+    border: 2px solid currentColor;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: transparent;
+}
+
+.psource-chat-icon-logout::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-right: 4px solid currentColor;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+
+/* Auth Menu Item Styling */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-auth-toggle {
+    transition: all 0.3s ease;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-auth-toggle.logged-in a {
+    color: #dc3545;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-auth-toggle.logged-in a:hover {
+    background-color: #f8f9fa;
+    color: #a71e2a;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-auth-toggle.logged-out a {
+    color: #28a745;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-auth-toggle.logged-out a:hover {
+    background-color: #f8f9fa;
+    color: #1e7e34;
+}
+
+/* Icon-Farben basierend auf Status */
+.psource-chat-action-menu-item-auth-toggle.logged-in .psource-chat-icon-logout {
+    color: #dc3545;
+}
+
+.psource-chat-action-menu-item-auth-toggle.logged-out .psource-chat-icon-login {
+    color: #28a745;
+}
+
+/* Alte Login/Logout Menu Items ausblenden (falls noch vorhanden) */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-login,
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-logout {
+    display: none !important;
+}
+
+/* Chat Session Status Toggle Icons (Schloss) */
+.psource-chat-icon-lock-open,
+.psource-chat-icon-lock-closed {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    position: relative;
+    margin-right: 8px;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+
+/* Offenes Schloss Icon (Chat ist offen) */
+.psource-chat-icon-lock-open::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 10px;
+    height: 8px;
+    border: 2px solid currentColor;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    background: transparent;
+}
+
+.psource-chat-icon-lock-open::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 6px;
+    width: 4px;
+    height: 6px;
+    border: 2px solid currentColor;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 4px 0 0 0;
+    background: transparent;
+}
+
+/* Geschlossenes Schloss Icon (Chat ist geschlossen) */
+.psource-chat-icon-lock-closed::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 10px;
+    height: 8px;
+    border: 2px solid currentColor;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    background: transparent;
+}
+
+.psource-chat-icon-lock-closed::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 6px;
+    width: 4px;
+    height: 6px;
+    border: 2px solid currentColor;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    background: transparent;
+}
+
+/* Session Status Menu Item Styling */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-toggle {
+    transition: all 0.3s ease;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-toggle.session-open a {
+    color: #28a745;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-toggle.session-open a:hover {
+    background-color: #f8f9fa;
+    color: #dc3545;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-toggle.session-closed a {
+    color: #dc3545;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-toggle.session-closed a:hover {
+    background-color: #f8f9fa;
+    color: #28a745;
+}
+
+/* Icon-Farben basierend auf Status */
+.psource-chat-action-menu-item-session-toggle.session-open .psource-chat-icon-lock-open {
+    color: #28a745;
+}
+
+.psource-chat-action-menu-item-session-toggle.session-closed .psource-chat-icon-lock-closed {
+    color: #dc3545;
+}
+
+/* Alte Session Status Menu Items ausblenden (falls noch vorhanden) */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open,
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed {
+    display: none !important;
+}
+
+/* Chat Management Icons (Löschen, Archivieren, Auto-Scroll) */
+.psource-chat-icon-delete,
+.psource-chat-icon-archive,
+.psource-chat-icon-scroll {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    position: relative;
+    margin-right: 8px;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+
+/* Delete Icon (Mülleimer) */
+.psource-chat-icon-delete::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 8px;
+    border: 2px solid currentColor;
+    border-top: none;
+    border-radius: 0 0 2px 2px;
+    background: transparent;
+}
+
+.psource-chat-icon-delete::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    width: 6px;
+    height: 2px;
+    border: 1px solid currentColor;
+    border-bottom: none;
+    border-radius: 2px 2px 0 0;
+    background: transparent;
+    box-shadow: 0 4px 0 -2px currentColor, 2px 4px 0 -2px currentColor; /* Vertikale Linien im Mülleimer */
+}
+
+/* Archive Icon (Archiv-Box) */
+.psource-chat-icon-archive::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 10px;
+    border: 2px solid currentColor;
+    border-radius: 2px;
+    background: transparent;
+}
+
+.psource-chat-icon-archive::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 6px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+}
+
+/* Auto-Scroll Icon (Scroll-Pfeil) */
+.psource-chat-icon-scroll::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    width: 8px;
+    height: 10px;
+    border: 2px solid currentColor;
+    border-radius: 2px;
+    background: transparent;
+}
+
+.psource-chat-icon-scroll::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 1px;
+    width: 0;
+    height: 0;
+    border-left: 3px solid currentColor;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+}
+
+/* Chat Management Menu Items Styling */
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-clear a {
+    color: #dc3545;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-clear a:hover {
+    background-color: #f8f9fa;
+    color: #a71e2a;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-archive a {
+    color: #6c757d;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-archive a:hover {
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.manage-auto-scroll a {
+    color: #17a2b8;
+}
+
+.psource-chat-box ul.psource-chat-actions-settings-menu li.manage-auto-scroll a:hover {
+    background-color: #f8f9fa;
+    color: #0c7489;
+}
+
+/* Icon-Farben für bessere Erkennbarkeit */
+.psource-chat-action-menu-item-session-clear .psource-chat-icon-delete {
+    color: #dc3545;
+}
+
+.psource-chat-action-menu-item-session-archive .psource-chat-icon-archive {
+    color: #6c757d;
+}
+
+.manage-auto-scroll .psource-chat-icon-scroll {
+    color: #17a2b8;
+}

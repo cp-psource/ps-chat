@@ -2135,19 +2135,35 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
         jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-actions-settings a.psource-chat-actions-settings-button').on( "click", function (event) {
 
             event.preventDefault();
+            event.stopPropagation();
 
             //console.log('click event settings gear [%o]', event);
-            //var parent_li = jQuery(this).parent();
+            var settingsMenu = jQuery(this).next();
+            
+            // Alle anderen offenen Menüs schließen
+            jQuery('.psource-chat-actions-settings-menu').not(settingsMenu).slideUp(200);
+            
+            // Dieses Menü umschalten
+            settingsMenu.slideToggle(400);
+        });
 
-            jQuery(this).next().slideToggle(400);
-//	    	jQuery('ul.psource-chat-actions-settings-menu', parent_li).slideToggle(400);
+        // Klick außerhalb des Menüs schließt es
+        jQuery(document).on('click.chat-settings-' + chat_id, function(event) {
+            var target = jQuery(event.target);
+            var chatBox = jQuery('div#psource-chat-box-' + chat_id);
+            
+            // Wenn Klick nicht innerhalb des Settings-Menüs oder Settings-Buttons
+            if (!target.closest('.psource-chat-actions-settings').length) {
+                chatBox.find('.psource-chat-actions-settings-menu:visible').slideUp(200);
+            }
+        });
 
-
-//			if (jQuery('ul.psource-chat-actions-settings-menu', this).is(':visible') ) {
-//				jQuery('ul.psource-chat-actions-settings-menu', this).css('z-index', '9999');
-//			} else {
-//				jQuery('ul.psource-chat-actions-settings-menu', this).css('z-index', '0');
-//			}
+        // Verhindere dass Klicks innerhalb des Menüs es schließen (außer bei spezifischen Aktionen)
+        jQuery('div#psource-chat-box-' + chat_id + ' .psource-chat-actions-settings-menu').on('click', function(event) {
+            // Nur bei bestimmten Aktionen nicht stoppen
+            if (!jQuery(event.target).closest('.psource-chat-action-sound, .psource-chat-action-logout, .psource-chat-action-login, .psource-chat-action-exit, .psource-chat-action-session-open, .psource-chat-action-session-closed').length) {
+                event.stopPropagation();
+            }
         });
 
         // Handle the Emoticons click/hover.
@@ -2304,12 +2320,13 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
          });
          */
 
-        // Event handler when the login event is clicked
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-login a.psource-chat-action-login').on( "click", function (event) {
+        // Event handler when the login event is clicked (updated for new toggle system)
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box').on('click', 'ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-auth-toggle a.psource-chat-action-login', function (event) {
             event.preventDefault();
+            event.stopPropagation();
 
             //Hide settings menu
-            jQuery(this).parents().eq(1).hide();
+            jQuery(this).closest('.psource-chat-actions-settings-menu').slideUp(200);
 
             var chat_box_id = jQuery(this).parents('.psource-chat-box').attr('id');
 
@@ -2323,9 +2340,10 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             return false;
         });
 
-        // Event handler when logout is clicked
-        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-logout a.psource-chat-action-logout').on( "click", function (event) {
+        // Event handler when logout is clicked (updated for new toggle system)
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box').on('click', 'ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-auth-toggle a.psource-chat-action-logout', function (event) {
             event.preventDefault();
+            event.stopPropagation();
 
             if (psource_chat.settings['auth']['type'] == "wordpress") {
                 // There is no logout for wordpress users.
@@ -2342,7 +2360,26 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                 domain: psource_chat_localized['settings']['cookie_domain']
             });
 
-            psource_chat.chat_session_set_auth_view();
+            //Hide settings menu
+            jQuery(this).closest('.psource-chat-actions-settings-menu').slideUp(200);
+
+            // Update the auth toggle display immediately
+            var authMenuItem = jQuery(this).closest('li.psource-chat-action-menu-item-auth-toggle');
+            var currentIcon = jQuery(this).find('span[class*="psource-chat-icon-"]');
+            var linkElement = jQuery(this);
+            
+            // Switch to login state
+            authMenuItem.removeClass('logged-in').addClass('logged-out');
+            currentIcon.removeClass('psource-chat-icon-logout').addClass('psource-chat-icon-login');
+            linkElement.removeClass('psource-chat-action-logout').addClass('psource-chat-action-login');
+            linkElement.attr('title', 'Im Chat anmelden');
+            linkElement.contents().filter(function() {
+                return this.nodeType === 3; // Text nodes
+            }).first().replaceWith('Anmelden');
+
+            // Reload the page or update the chat session
+            psource_chat.chat_session_site_reload(chat_id);
+
             return false;
         });
 
@@ -2415,7 +2452,62 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
 
         });
 
-        // ADMIN: Session Open
+        // ADMIN: Session Status Toggle (neue Version)
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box').on('click', 'ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-toggle a.psource-chat-action-session-open', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            var chat_session_status = 'open';
+            psource_chat.chat_session_status_update(chat_id, chat_session_status);
+            
+            // Menü-Inhalt sofort aktualisieren
+            var sessionMenuItem = jQuery(this).closest('li.psource-chat-action-menu-item-session-toggle');
+            var currentIcon = jQuery(this).find('span[class*="psource-chat-icon-lock"]');
+            var linkElement = jQuery(this);
+            
+            // Zu "schließen" Option wechseln
+            sessionMenuItem.removeClass('session-closed').addClass('session-open');
+            currentIcon.removeClass('psource-chat-icon-lock-closed').addClass('psource-chat-icon-lock-open');
+            linkElement.removeClass('psource-chat-action-session-open').addClass('psource-chat-action-session-closed');
+            linkElement.attr('title', 'Chat für andere Benutzer schließen');
+            linkElement.contents().filter(function() {
+                return this.nodeType === 3; // Text nodes
+            }).first().replaceWith('Chat schließen');
+            
+            // Chat-Box Klassen aktualisieren
+            jQuery('#psource-chat-box-' + chat_id).removeClass('psource-chat-session-closed').addClass('psource-chat-session-open');
+
+            return false;
+        });
+
+        jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box').on('click', 'ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-toggle a.psource-chat-action-session-closed', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            var chat_session_status = 'closed';
+            psource_chat.chat_session_status_update(chat_id, chat_session_status);
+            
+            // Menü-Inhalt sofort aktualisieren
+            var sessionMenuItem = jQuery(this).closest('li.psource-chat-action-menu-item-session-toggle');
+            var currentIcon = jQuery(this).find('span[class*="psource-chat-icon-lock"]');
+            var linkElement = jQuery(this);
+            
+            // Zu "öffnen" Option wechseln
+            sessionMenuItem.removeClass('session-open').addClass('session-closed');
+            currentIcon.removeClass('psource-chat-icon-lock-open').addClass('psource-chat-icon-lock-closed');
+            linkElement.removeClass('psource-chat-action-session-closed').addClass('psource-chat-action-session-open');
+            linkElement.attr('title', 'Chat für andere Benutzer öffnen');
+            linkElement.contents().filter(function() {
+                return this.nodeType === 3; // Text nodes
+            }).first().replaceWith('Chat öffnen');
+            
+            // Chat-Box Klassen aktualisieren
+            jQuery('#psource-chat-box-' + chat_id).removeClass('psource-chat-session-open').addClass('psource-chat-session-closed');
+
+            return false;
+        });
+
+        // ADMIN: Session Open (alte Version - für Rückwärtskompatibilität)
         //jQuery('div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open a.psource-chat-action-session-open').off('click');
         jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-open a.psource-chat-action-session-open').on( "click", function () {
             var chat_session_status = 'open';
@@ -2425,7 +2517,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             return false;
         });
 
-        // ADMIN: Session Close
+        // ADMIN: Session Close (alte Version - für Rückwärtskompatibilität)
         //jQuery('div.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed a.psource-chat-action-session-closed').off('click');
         jQuery('div#psource-chat-box-' + chat_id + '.psource-chat-box div.psource-chat-module-header ul.psource-chat-actions-settings-menu li.psource-chat-action-menu-item-session-status-closed a.psource-chat-action-session-closed').on( "click", function () {
             var chat_session_status = 'closed';
@@ -2549,6 +2641,7 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
     },
     chat_session_site_change_sound: function (event) {
         event.preventDefault();
+        event.stopPropagation(); // Verhindert Event Bubbling, das das Menü schließt
 
         var chat_box = jQuery(this).parents('.psource-chat-box');
         var chat_id = jQuery(chat_box).attr('id').replace('psource-chat-box-', '');
@@ -2569,6 +2662,32 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             path: psource_chat_localized['settings']['cookiepath'],
             domain: psource_chat_localized['settings']['cookie_domain']
         });
+
+        // Menü-Inhalt sofort aktualisieren
+        var soundMenuItem = jQuery(this).closest('li.psource-chat-action-menu-item-sound-toggle');
+        var currentIcon = jQuery(this).find('span[class*="psource-chat-icon-sound"]');
+        var linkText = jQuery(this);
+        
+        if (jQuery(chat_box).hasClass('psource-chat-box-sound-on')) {
+            // Sound ist jetzt AN - zeige "ausschalten" Option
+            soundMenuItem.removeClass('sound-inactive').addClass('sound-active');
+            currentIcon.removeClass('psource-chat-icon-sound-off').addClass('psource-chat-icon-sound-on');
+            linkText.attr('title', psource_chat_localized['sound_off_title'] || 'Chat-Sound ausschalten');
+            linkText.contents().filter(function() {
+                return this.nodeType === 3; // Text nodes
+            }).first().replaceWith('Sound ausschalten');
+        } else {
+            // Sound ist jetzt AUS - zeige "einschalten" Option  
+            soundMenuItem.removeClass('sound-active').addClass('sound-inactive');
+            currentIcon.removeClass('psource-chat-icon-sound-on').addClass('psource-chat-icon-sound-off');
+            linkText.attr('title', psource_chat_localized['sound_on_title'] || 'Chat-Sound einschalten');
+            linkText.contents().filter(function() {
+                return this.nodeType === 3; // Text nodes
+            }).first().replaceWith('Sound einschalten');
+        }
+
+        // Menü offen halten - Return false verhindert weitere Event-Handler
+        return false;
 
     },
     chat_session_site_max: function (chat_id) {
