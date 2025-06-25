@@ -75,6 +75,10 @@ class PSource_Chat_Upload {
 		// Hook für Chat-Session-Löschung
 		add_action( 'psource_chat_delete_session', array( __CLASS__, 'cleanup_session_files' ) );
 		
+		// Tägliches Cleanup für verwaiste Dateien
+		add_action( 'psource_chat_cleanup_uploads', array( __CLASS__, 'cleanup_orphaned_files' ) );
+		self::schedule_cleanup();
+		
 		// Message-Filter deaktiviert
 		self::init_message_filters();
 		
@@ -685,6 +689,63 @@ class PSource_Chat_Upload {
 		// Metadaten aus Datenbank löschen
 		$table_name = $wpdb->prefix . 'psource_chat_files';
 		$wpdb->delete( $table_name, array( 'session_id' => $session_id ), array( '%s' ) );
+	}
+
+	/**
+	 * Bereinigt verwaiste Upload-Dateien (ältere als 24h ohne Chat-Referenz)
+	 */
+	public static function cleanup_orphaned_files() {
+		global $wpdb;
+		
+		$table_name = $wpdb->prefix . 'psource_chat_files';
+		$message_table = PSOURCE_Chat::tablename( 'message' );
+		
+		// Finde Dateien die älter als 24 Stunden sind
+		$old_files = $wpdb->get_results( $wpdb->prepare(
+			"SELECT f.* FROM {$table_name} f 
+			 WHERE f.upload_time < %s 
+			 AND NOT EXISTS (
+				 SELECT 1 FROM {$message_table} m 
+				 WHERE m.message LIKE CONCAT('%%[upload:', f.id, ']%%')
+			 )",
+			date( 'Y-m-d H:i:s', strtotime( '-24 hours' ) )
+		), ARRAY_A );
+		
+		$deleted_count = 0;
+		foreach ( $old_files as $file ) {
+			// Physische Datei löschen
+			$file_path = self::get_upload_dir() . '/' . $file['session_id'] . '/' . $file['stored_name'];
+			if ( file_exists( $file_path ) ) {
+				unlink( $file_path );
+			}
+			
+			// DB-Eintrag löschen
+			$wpdb->delete( $table_name, array( 'id' => $file['id'] ), array( '%s' ) );
+			$deleted_count++;
+		}
+		
+		// Log für Admin
+		if ( $deleted_count > 0 ) {
+			error_log( "PS Chat Upload Cleanup: {$deleted_count} verwaiste Dateien gelöscht" );
+		}
+		
+		return $deleted_count;
+	}
+	
+	/**
+	 * Aktiviert tägliche Cleanup-Aufgabe
+	 */
+	public static function schedule_cleanup() {
+		if ( ! wp_next_scheduled( 'psource_chat_cleanup_uploads' ) ) {
+			wp_schedule_event( time(), 'daily', 'psource_chat_cleanup_uploads' );
+		}
+	}
+	
+	/**
+	 * Deaktiviert Cleanup-Aufgabe
+	 */
+	public static function unschedule_cleanup() {
+		wp_clear_scheduled_hook( 'psource_chat_cleanup_uploads' );
 	}
 
 	/**

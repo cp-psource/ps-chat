@@ -5414,6 +5414,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 					$wpdb->query( $sql_str );
 					//log_chat_message(__FUNCTION__ .": [". $sql_str ."]");
 
+					// Upload-Dateien für diese Session auch löschen (Datenschutz)
+					if ( class_exists( 'PSource_Chat_Upload' ) ) {
+						PSource_Chat_Upload::cleanup_session_files( $chat_session['id'] );
+					}
+
 					$this->chat_session_set_meta( $chat_session, 'last_row_id', '__EMPTY__' );
 					$this->chat_session_set_meta( $chat_session, 'log_row_id', '__EMPTY__' );
 					$this->chat_session_update_message_rows_deleted( $chat_session );

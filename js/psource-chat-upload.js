@@ -226,7 +226,8 @@
             console.log('Added to upload queue:', uploadItem);
             console.log('Current queue:', this.uploadQueue);
             
-            this.showUploadPreview(uploadItem);
+            // KEINE Upload-Vorschau mehr anzeigen
+            // this.showUploadPreview(uploadItem);
             
             // Dateiname ins Textfeld einfügen als Visualisierung
             var $textarea = $chatBox.find('textarea.psource-chat-send');
@@ -330,7 +331,8 @@
             // Upload-Status auf "uploading" setzen
             queuedUploads.forEach(function(item) {
                 item.status = 'uploading';
-                PSChatUpload.updateUploadPreview(item);
+                // Keine Vorschau-Updates mehr
+                // PSChatUpload.updateUploadPreview(item);
             });
             
             // Alle Uploads parallel starten
@@ -349,10 +351,10 @@
                 console.log('Upload references:', uploadReferences);
                 callback(uploadReferences);
                 
-                // Upload-Previews entfernen
-                queuedUploads.forEach(function(item) {
-                    PSChatUpload.removeUploadPreview(item);
-                });
+                // Keine Upload-Previews mehr zu entfernen
+                // queuedUploads.forEach(function(item) {
+                //     PSChatUpload.removeUploadPreview(item);
+                // });
                 
             }).catch(function(error) {
                 console.error('Upload error:', error);
@@ -361,7 +363,8 @@
                 // Upload-Status zurücksetzen
                 queuedUploads.forEach(function(item) {
                     item.status = 'queued';
-                    PSChatUpload.updateUploadPreview(item);
+                    // Keine Vorschau-Updates mehr
+                    // PSChatUpload.updateUploadPreview(item);
                 });
             });
         },
