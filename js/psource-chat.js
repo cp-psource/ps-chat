@@ -1163,15 +1163,16 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
                                 finalMessage = cleanMessage ? cleanMessage + ' ' + uploadReferences.join(' ') : uploadReferences.join(' ');
                             }
                             console.log('Enter Final message:', finalMessage);
-                                 // Nachricht senden
-                        if (finalMessage.trim() !== '') {
-                            console.log('Sending final message via Enter:', finalMessage);
-                            psource_chat.chat_session_enqueue_message(finalMessage, chat_session);
-                            jQuery($chatBox.find('textarea.psource-chat-send')).val('');
-                            jQuery('#' + chat_box_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
-                        } else {
-                            console.log('Final message is empty, not sending');
-                        }
+                            
+                            // Nachricht senden
+                            if (finalMessage.trim() !== '') {
+                                console.log('Sending final message via Enter:', finalMessage);
+                                psource_chat.chat_session_enqueue_message(finalMessage, chat_session);
+                                jQuery($chatBox.find('textarea.psource-chat-send')).val('');
+                                jQuery('#' + chat_box_id + ' div.psource-chat-module-message-area ul.psource-chat-send-meta li.psource-chat-send-input-length span.psource-chat-character-count').html('0');
+                            } else {
+                                console.log('Final message is empty, not sending');
+                            }
                         });
                     } else {
                         // Fallback: normales Verhalten
@@ -2791,9 +2792,9 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             }
         });
 
-        // Swap our corner images
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min', chat_box).show();
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-max', chat_box).hide();
+        // Swap our corner images - Maximiert: zeige Minimize-Button (rotes -), verstecke Maximize-Button
+        jQuery('.psource-chat-module-header span.psource-chat-min', chat_box).show();
+        jQuery('.psource-chat-module-header span.psource-chat-max', chat_box).hide();
 
         jQuery('.psource-chat-module-header span.psource-chat-title-count', chat_box).html('');
         jQuery('.psource-chat-module-header span.psource-chat-title-count', chat_box).attr('last_row_count', '0');
@@ -2838,9 +2839,9 @@ var psource_chat = jQuery.extend(psource_chat || {}, {
             }
         }
 
-        // Swap our corner images
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-min', chat_box).show();
-        jQuery('.psource-chat-module-header ul.psource-chat-actions-menu li.psource-chat-max', chat_box).hide();
+        // Swap our corner images - Minimiert: verstecke Minimize-Button, zeige Maximize-Button (grünes +)
+        jQuery('.psource-chat-module-header span.psource-chat-min', chat_box).hide();
+        jQuery('.psource-chat-module-header span.psource-chat-max', chat_box).show();
         jQuery('.psource-chat-module-header span.psource-chat-title-count', chat_box).show();
 
 //		var last_row_id_viewed 		= '';
