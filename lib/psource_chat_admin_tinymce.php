@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<?php
-	wp_print_styles( array( 'farbtastic', 'psource-chat-admin-css' ) );
+	wp_print_styles( array( 'wp-color-picker', 'psource-chat-admin-css' ) );
 	wp_print_scripts( array(
 		'jquery',
 		'tiny_mce_popup.js',
@@ -11,7 +11,7 @@
 		'validate.js',
 		'form_utils.js',
 		'editable_selects.js',
-		'farbtastic',
+		'wp-color-picker',
 		'jquery-cookie',
 		'psource-chat-admin-js',
 		'psource-chat-admin-tinymce-js',

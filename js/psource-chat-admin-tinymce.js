@@ -98,7 +98,12 @@
 						
 					}
 				} else {
-					var chat_form_value = jQuery('#chat_'+chat_form_key).val().trim();
+					var chat_form_value = jQuery('#chat_'+chat_form_key).val();
+					if (chat_form_value !== undefined && chat_form_value !== null) {
+						chat_form_value = chat_form_value.trim();
+					} else {
+						chat_form_value = '';
+					}
 					//console.log("chat_form_key=["+chat_form_key+"]=["+chat_form_value+"]");
 					
 					if ((chat_form_key == "blocked_words_active") && (chat_form_value == '')) {

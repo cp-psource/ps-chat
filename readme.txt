@@ -3,7 +3,7 @@ Contributors: DerN3rd (PSOURCE)
 Tags: multisite, chat, community, messenger, support
 Requires at least: 4.9
 Tested up to: 6.8.1
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,6 +25,11 @@ Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin 
 
 
 == ChangeLog ==
+
+= 2.5.3 =
+
+* Colorpicker hinzugefügt (Beta)
+* Bug im TinyMce Editor behoben
 
 = 2.5.2 =
 

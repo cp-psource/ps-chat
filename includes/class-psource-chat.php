@@ -7,7 +7,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 		public $tips;
 		private $_admin_panels;
 		private $_pagehooks;
-		var $chat_current_version = '2.5.2';
+		var $chat_current_version = '2.5.3';
 		//var $translation_domain = 'psource-chat';
 		
 		/**
@@ -1400,7 +1400,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				'jquery-ui-tabs'
 			), $this->chat_current_version );
 			wp_register_script( 'jquery-cookie', $this->get_plugin_url( '/js/jquery-cookie.js' ), array( 'jquery' ), $this->chat_current_version, true );
-			wp_register_script( 'psource-chat-admin-farbtastic-js', $this->get_plugin_url( '/js/psource-chat-admin-farbtastic.js' ), array(), $this->chat_current_version, true );
+			wp_register_script( 'psource-chat-admin-farbtastic-js', $this->get_plugin_url( '/js/psource-chat-admin-farbtastic.js' ), array( 'wp-color-picker' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-admin-js', $this->get_plugin_url( '/js/psource-chat-admin.js' ), array(
 				'jquery',
 				'jquery-ui-core',
@@ -1433,11 +1433,11 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			// if we are showing one of our own settings panels then we don't need to be here since the
 			if ( $this->_show_own_admin === true ) {
 
-				wp_enqueue_style( 'farbtastic' );
-				$this->_registered_styles['farbtastic'] = 'farbtastic';
+				wp_enqueue_style( 'wp-color-picker' );
+				$this->_registered_styles['wp-color-picker'] = 'wp-color-picker';
 
-				wp_enqueue_script( 'farbtastic' );
-				$this->_registered_scripts['farbtastic'] = 'farbtastic';
+				wp_enqueue_script( 'wp-color-picker' );
+				$this->_registered_scripts['wp-color-picker'] = 'wp-color-picker';
 
 				/* enqueue our plugin styles */
 				$this->_registered_styles['psource-chat-admin-css'] = 'psource-chat-admin-css';
@@ -1449,7 +1449,7 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 				wp_enqueue_script( 'jquery-cookie' );
 				$this->_registered_scripts['jquery-cookie'] = 'jquery-cookie';
 
-				//Include Farbtastic Script
+				//Include WordPress Color Picker Script
 				wp_enqueue_script( 'psource-chat-admin-farbtastic-js' );
 				$this->_registered_scripts['psource-chat-admin-farbtastic-js'] = 'psource-chat-admin-farbtastic-js';
 
@@ -1562,11 +1562,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			//Register scripts
 			wp_register_script( 'psource-chat-js', $this->get_plugin_url( '/js/psource-chat.js' ), array( 'jquery' ), $this->chat_current_version, true );
 			wp_register_script( 'psource-chat-media-js', $this->get_plugin_url( '/js/psource-chat-media.js' ), array( 'jquery' ), $this->chat_current_version, true );
-			wp_register_script( 'psource-chat-upload-js', $this->get_plugin_url( '/js/psource-chat-upload.js' ), array( 'jquery' ), $this->chat_current_version, true );
-			wp_register_script( 'psource-chat-admin-js', $this->get_plugin_url( '/js/psource-chat-admin.js' ), array( 'jquery' ), $this->chat_current_version, true );
-			wp_register_script( 'psource-chat-admin-farbtastic-js', $this->get_plugin_url( '/js/psource-chat-admin-farbtastic.js' ), array(), $this->chat_current_version, true );
-
-			//$_SCRIPTS_LOADED = false;
+		wp_register_script( 'psource-chat-upload-js', $this->get_plugin_url( '/js/psource-chat-upload.js' ), array( 'jquery' ), $this->chat_current_version, true );
+		wp_register_script( 'psource-chat-admin-js', $this->get_plugin_url( '/js/psource-chat-admin.js' ), array( 'jquery' ), $this->chat_current_version, true );
+		wp_register_script( 'psource-chat-admin-farbtastic-js', $this->get_plugin_url( '/js/psource-chat-admin-farbtastic.js' ), array( 'wp-color-picker' ), $this->chat_current_version, true );			//$_SCRIPTS_LOADED = false;
 			$_BLOCK_URL = false;
 
 			// Why yes we are loading the scripts and styles for admin and non-admin pages. Because we are allowing chat to run under both!
@@ -2585,9 +2583,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			global $wp_version;
 
 			// Enaueue the WordPress things
-			wp_enqueue_style( 'farbtastic' );
+			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'farbtastic' );
+			wp_enqueue_script( 'wp-color-picker' );
 
 			wp_enqueue_script( 'tiny_mce_popup.js', includes_url() . 'js/tinymce/tiny_mce_popup.js', array(), $wp_version );
 			wp_enqueue_script( 'mctabs.js', includes_url() . 'js/tinymce/utils/mctabs.js', array(), $wp_version );
@@ -2610,12 +2608,12 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			$this->_registered_scripts['psource-chat-admin-js'] = 'psource-chat-admin-js';
 
 			wp_enqueue_script( 'psource-chat-admin-tinymce-js', $this->get_plugin_url( '/js/psource-chat-admin-tinymce.js' ),
-				array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs', 'farbtastic' ), $this->chat_current_version );
+				array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs', 'wp-color-picker' ), $this->chat_current_version );
 			$this->_registered_scripts['psource-chat-admin-tinymce-js'] = 'psource-chat-admin-tinymce-js';
 
 			wp_enqueue_script( 'psource-chat-admin-farbtastic-js', $this->get_plugin_url( '/js/psource-chat-admin-farbtastic.js' ), array(
 				'jquery',
-				'farbtastic'
+				'wp-color-picker'
 			), $this->chat_current_version, true );
 			$this->_registered_scripts['psource-chat-admin-farbtastic-js'] = 'psource-chat-admin-farbtastic-js';
 
@@ -2629,6 +2627,9 @@ if ( ! class_exists( 'PSOURCE_Chat' ) ) {
 			include_once( dirname( __FILE__ ) . '/../lib/psource_chat_form_sections.php' );
 			include_once( dirname( __FILE__ ) . '/../lib/psource_chat_admin_panels_help.php' );
 			include_once( dirname( __FILE__ ) . '/../lib/psource_chat_admin_tinymce.php' );
+			
+			// Prevent WordPress from adding "0" to the end of the AJAX response
+			wp_die();
 		}
 
 

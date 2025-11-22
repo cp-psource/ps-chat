@@ -131,11 +131,11 @@ class PSOURCE_Chat_BuddyPress extends BP_Group_Extension {
 
 			$admin_panels->chat_settings_panel_buddypress();
 
-			// not sure why Farbtastic will not work with wp_register/enqueue_script
+			// Use WordPress Color Picker instead of deprecated Farbtastic
 			?>
-			<link rel='stylesheet' id='farbtastic-css'  href='<?php echo admin_url(); ?>/css/farbtastic.css?ver=1.3u1'
+			<link rel='stylesheet' id='wp-color-picker-css'  href='<?php echo includes_url(); ?>/css/wp-color-picker.min.css'
 				type='text/css' media='all' />
-			<script type='text/javascript' src='<?php echo admin_url(); ?>/js/farbtastic.js'></script>
+			<script type='text/javascript' src='<?php echo includes_url(); ?>/js/wp-color-picker.min.js'></script>
 			<?php
 			$psource_chat->tips->initialize();
 		}
